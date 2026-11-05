@@ -12,3 +12,4 @@ next-env.d.ts
 
 # статическая сборка прототипа (npm run build:static)
 static-dist/
+.vercel

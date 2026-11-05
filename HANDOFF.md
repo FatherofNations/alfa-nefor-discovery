@@ -1069,3 +1069,18 @@ reload), переход на `#/accountant`; консоль чистая.
 чисткой sessionStorage; маршрут в hash; при добавлении новых зависимостей
 от Next API (`next/link`, `next/navigation`, серверные `headers()`) нужна
 подмена/обход, иначе сборка отвалится.
+
+### Деплой: GitHub + Vercel (06.11.2026)
+
+- Репозиторий: `FatherofNations/alfa-nefor-discovery`, ветка `main`.
+- Vercel-проект `alfa-discovery-prototype` (scope `fatherofnations-projects`),
+  production-алиас: **https://alfa-discovery-prototype.vercel.app**.
+- Деплой: `npx vercel deploy --prod --yes` из корня (CLI залогинен).
+  `.vercelignore` исключает `.figma`, `qa`, `static-dist`, `node_modules`,
+  `.next` — на Vercel уезжает только Next-приложение, статическая сборка
+  остаётся локальным артефактом.
+- Проверено на production: без сессии `/` уводит на `/login`; с сессией
+  главная (hero «Анна, добрый день», плашка «Альфа-Интеллект»), бухгалтер
+  (`/accountant`, плашка «Alpha Intellect», табы активны только визуально и
+  не переключаются), битых картинок 0, шрифт Alfa Interface Sans грузится,
+  консоль чистая.
