@@ -1,0 +1,100 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/5f1aee9e-8236-4f8e-92d0-93998e8c01a4";
+const imgFormSuperellipse = `${assetPathPrefix}/2b8b4.svg`;
+const imgShapeContent = `${assetPathPrefix}/c7fb8.svg`;
+const imgFixer = `${assetPathPrefix}/4078d.svg`;
+
+type ShapeProps = {
+  className?: string;
+  form?: "Superellipse";
+};
+
+function Shape({ className, form = "Superellipse" }: ShapeProps) {
+  return (
+    <div className={className || "relative size-[40px]"} data-node-id="1:113">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFormSuperellipse} />
+    </div>
+  );
+}
+
+type RightControlProps = {
+  className?: string;
+  opened?: "True";
+  vertical?: "False";
+};
+
+function RightControl({ className, opened = "True", vertical = "False" }: RightControlProps) {
+  return (
+    <div className={className || "content-stretch flex gap-[12px] h-[48px] items-center relative"} data-node-id="1:823">
+      <div className="bg-[var(--neutral-translucent\/200,rgba(30,43,68,0.08))] content-stretch flex items-center p-[2px] relative rounded-[12px] shrink-0" data-node-id="1:824" data-name="SegmentedControl">
+        <div className="bg-[var(--neutral-translucent\/0,white)] border-[0.5px] border-[var(--neutral-translucent\/200,rgba(30,43,68,0.08))] border-solid content-stretch flex flex-col items-start overflow-clip p-[6px] relative rounded-[10px] shadow-[0px_12px_16px_0px_rgba(0,0,0,0.04),0px_4px_8px_0px_rgba(0,0,0,0.04),0px_0px_1px_0px_rgba(0,0,0,0.04)] shrink-0" data-node-id="I1:824;331:18760" data-name="Segment">
+          <div className="bg-[#d8eaff] border border-[#2288fa] border-dashed content-stretch flex flex-col items-start relative rounded-[4px] shrink-0" data-node-id="I1:824;331:18760;18175:115745" data-name="🔩 SwapMe">
+            <div className="relative shrink-0 size-[24px]" data-node-id="I1:824;331:18760;18175:115745;18175:115744" data-name="Fixer" />
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col items-start overflow-clip p-[6px] relative rounded-[10px] shrink-0" data-node-id="I1:824;331:18761" data-name="Segment">
+          <div className="bg-[#d8eaff] border border-[#2288fa] border-dashed content-stretch flex flex-col items-start relative rounded-[4px] shrink-0" data-node-id="I1:824;331:18761;18175:115766" data-name="🔩 SwapMe">
+            <div className="relative shrink-0 size-[24px]" data-node-id="I1:824;331:18761;18175:115766;18175:115744" data-name="Fixer" />
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex items-center relative shrink-0" data-node-id="1:826" data-name="Right Slot">
+        <div className="content-stretch flex flex-col items-start max-h-[40px] max-w-[40px] min-h-[40px] min-w-[40px] relative shrink-0" data-node-id="1:827" data-name="IconView">
+          <div className="relative shrink-0 size-[40px]" data-node-id="I1:827;448:17348" data-name="Content">
+            <div className="absolute left-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[40px_40px] size-[40px] top-0" data-node-id="I1:827;448:17359" style={{ maskImage: `url("${imgShapeContent}")` }} data-name="ShapeContent">
+              <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I1:827;448:33204" data-name="🔩 Content">
+                <div className="relative shrink-0 size-[20px]" data-node-id="I1:827;448:33204;485:6861" data-name="Fixer">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Tablo() {
+  return (
+    <div className="relative rounded-[16px] size-full" data-node-id="59:43014" data-name="📍tablo">
+      <div className="[word-break:break-word] absolute content-stretch flex font-[family-name:var(--font_family\/\>19,'Alfa_Interface_Sans:Bold')] gap-[32px] items-center leading-[26px] left-0 not-italic text-[22px] top-[11px] tracking-[var(--bold_letter_spacing\/22,0.2px)] whitespace-nowrap" data-node-id="59:43015" data-name="tabloNames">
+        <p className="relative shrink-0 text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="59:43016">
+          Сводка
+        </p>
+        <p className="relative shrink-0 text-[color:var(--text\/tertiary,rgba(5,8,29,0.38))]" data-node-id="59:43017">
+          С чего начать
+        </p>
+        <p className="relative shrink-0 text-[color:var(--text\/tertiary,rgba(5,8,29,0.38))]" data-node-id="59:43018">
+          Мультибанк
+        </p>
+      </div>
+      <RightControl className="absolute content-stretch flex gap-[12px] h-[48px] items-center left-[1112px] top-0" />
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Headline–System/22–26 Small (Typography.Title view='small'): Font(family: "font_family/>19", style: Bold, size: 22, weight: 700, lineHeight: 26, letterSpacing: bold_letter_spacing/22), shadow/S Action/Default: Effect(type: DROP_SHADOW, color: #0000000A, offset: (0, 0), radius: 1, spread: 0); Effect(type: DROP_SHADOW, color: #0000000A, offset: (0, 4), radius: 8, spread: 0); Effect(type: DROP_SHADOW, color: #0000000A, offset: (0, 12), radius: 16, spread: 0), 💊Placeholder/Solid/2: #3778FB.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## 🔩 Segment
+**Node ID:** 1:167
+
+size=40, shape=rectangular
+
+## 🔩 Shape
+**Node ID:** 1:112
+
+40
+
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

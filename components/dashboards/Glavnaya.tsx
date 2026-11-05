@@ -2,9 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode, type Ref } from "react";
 import { useRouter } from "next/navigation";
-import { analytics, menuItems, operationDays, taskCards, workItems, type Operation } from "@/data/demo";
+import { analytics, menuItems, operationDays, taskCards, type Operation } from "@/data/demo";
 import { AccountsPanel, SummaryPanel, TariffsPanel } from "@/components/dashboards/TabPanels";
 import { hasEntered, resetEntry } from "@/lib/entry-session";
+import { useClientName } from "@/lib/client-name";
+import AssistantBar from "@/components/chrome/AssistantBar";
 
 const asset = (name: string) => `/assets/figma/${name === "ops-table-ec6f5.png" ? name : name.replace(".png", ".webp")}`;
 
@@ -117,6 +119,14 @@ function OperationRow({ operation, checked, onCheck }: { operation: Operation; c
 
 const TABS = ["Ассистент", "Сводка", "Счета на главной", "Тарифы и подписки"];
 
+/* Ширины шапки табов в макетах табло: 556 (Сводка), 558 (Счета), 559 (Тарифы)
+   — кадры 59:27766 / 59:32554 / 59:33713; в кадре ассистента 585 с бейджем. */
+const COMPACT_CLASS: Record<string, string> = {
+  "Сводка": "summary",
+  "Счета на главной": "accounts",
+  "Тарифы и подписки": "tariffs",
+};
+
 /* Высота сцены вкладки = отступ + высота панели (включая field 36/40),
    чтобы смена вкладки анимировала height, а «Мои дела» ехали плавно. */
 const TAB_HEIGHTS: Record<string, number> = {
@@ -137,6 +147,7 @@ export default function Glavnaya() {
   useEffect(() => {
     if (!hasEntered()) router.replace("/login");
   }, [router]);
+  const clientName = useClientName();
   const [shownTab, setShownTab] = useState("Ассистент");
   const [tabPhase, setTabPhase] = useState<"idle" | "out" | "in-prep" | "in">("idle");
   const tabTimers = useRef<number[]>([]);
@@ -145,12 +156,10 @@ export default function Glavnaya() {
   const [capsule, setCapsule] = useState({ left: 0, width: 0, ready: false });
   const [capsuleSyncing, setCapsuleSyncing] = useState(false);
   const [counter, setCounter] = useState<"shown" | "hiding" | "gone">("shown");
-  const [workOpen, setWorkOpen] = useState(false);
   const [taskOffset, setTaskOffset] = useState(0);
   const [search, setSearch] = useState("");
   const [checked, setChecked] = useState<Set<string>>(new Set());
   const [accountOpen, setAccountOpen] = useState(false);
-  const workRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const accountTriggerRef = useRef<HTMLButtonElement>(null);
   const accountPanelRef = useRef<HTMLElement>(null);
@@ -255,17 +264,23 @@ export default function Glavnaya() {
     }, 240));
   }, [activeTab]);
 
-  /* Счётчик скрывается, только если пользователь непрерывно пробыл на
-     «Сводке» 3 секунды. Ушёл раньше — таймер снимается, при возврате
-     отсчёт начинается заново. */
+  /* Счётчик «2» на «Сводка»: пока вкладка не открыта — бейдж остаётся
+     (на «Ассистенте» и других табах); при открытии «Сводки» запускается
+     таймер 3 s, затем бейдж гаснет за 0.22 s и снимается, шапка табов
+     сужается. Уход с вкладки до срабатывания отменяет отсчёт — при
+     возврате он начинается заново (канон: см. HANDOFF, «Анимации вкладок
+     и счётчик»). */
   useEffect(() => {
     if (counter !== "shown" || activeTab !== "Сводка") return;
-    const hideId = window.setTimeout(() => {
-      setCounter("hiding");
-      window.setTimeout(() => setCounter("gone"), 220);
-    }, 3000);
-    return () => clearTimeout(hideId);
+    const hideId = window.setTimeout(() => setCounter("hiding"), 3000);
+    return () => window.clearTimeout(hideId);
   }, [activeTab, counter]);
+
+  useEffect(() => {
+    if (counter !== "hiding") return;
+    const hideId = window.setTimeout(() => setCounter("gone"), 220);
+    return () => window.clearTimeout(hideId);
+  }, [counter]);
 
   const measureCapsule = useCallback(() => {
     const index = TABS.indexOf(activeTab);
@@ -315,22 +330,6 @@ export default function Glavnaya() {
       setCapsuleSyncing(false);
     };
   }, [counter, measureCapsule]);
-
-  useEffect(() => {
-    if (!workOpen) return;
-    const close = (event: MouseEvent) => {
-      if (!workRef.current?.contains(event.target as Node)) setWorkOpen(false);
-    };
-    const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setWorkOpen(false);
-    };
-    document.addEventListener("mousedown", close);
-    document.addEventListener("keydown", escape);
-    return () => {
-      document.removeEventListener("mousedown", close);
-      document.removeEventListener("keydown", escape);
-    };
-  }, [workOpen]);
 
   const toggleChecked = (id: string) => {
     setChecked((current) => {
@@ -403,7 +402,7 @@ export default function Glavnaya() {
         <span className="vertical-divider" />
         <button className="company-account" type="button">
           <span className="account-avatar"><img src="/assets/figma/avatar-photo.png" alt="" /></span>
-          <span><strong>ООО «Город Нагатино»</strong><small>Набокова А.Д.</small></span>
+          <span><strong>ООО «Город Нагатино»</strong><small>{clientName.headerLabel}</small></span>
         </button>
         <span className="vertical-divider" />
         <RoleChip role={role} open={roleOpen} onToggle={() => setRoleOpen((open) => !open)} triggerRef={roleTriggerRef} />
@@ -412,13 +411,17 @@ export default function Glavnaya() {
       </header>
 
       <div className="dashboard-content">
-        <nav ref={navRef} className={`tabs${counter === "gone" ? " tabs-compact" : ""}`} aria-label="Разделы главной">
+        <nav
+          ref={navRef}
+          className={`tabs${counter === "gone" ? ` tabs-compact tabs-${COMPACT_CLASS[activeTab] ?? "summary"}` : ""}`}
+          aria-label="Разделы главной"
+        >
           {capsule.ready && <span className="tab-capsule" style={{ left: capsule.left, width: capsule.width, transition: capsuleSyncing ? "none" : undefined }} aria-hidden="true" />}
           {TABS.map((tab, i) => (
             <button ref={(el) => { tabRefs.current[i] = el; }} key={tab} type="button" className={`tab${activeTab === tab ? " active" : ""}`} onClick={() => changeTab(tab)} aria-pressed={activeTab === tab}>
               <span>{tab}</span>
               {tab === "Сводка" && counter !== "gone" && (
-                <span className={`tab-counter${counter === "hiding" ? " hiding" : ""}`}><Indicator value={3} /></span>
+                <span className={`tab-counter${counter === "hiding" ? " hiding" : ""}`}><Indicator value={2} /></span>
               )}
             </button>
           ))}
@@ -427,18 +430,17 @@ export default function Glavnaya() {
         <div className={`tab-stage phase-${tabPhase}`} style={{ height: TAB_HEIGHTS[shownTab] }}>
         {shownTab === "Ассистент" && (<section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <div className="hero-heading"><span className="hero-dash">—</span><h1 id="hero-title">Анна, добрый день</h1></div>
+            <div className="hero-heading"><span className="hero-dash">—</span><h1 id="hero-title">{clientName.greetingName}, добрый день</h1></div>
             <div className="hero-subtitle">
               <p>Разберёмся, на что уходили деньги в этом году?</p>
               <button type="button"><Icon name="hero-6a06a.svg" /><span>Доходы и расходы</span></button>
             </div>
           </div>
           <div className="hero-actions">
-            <div className="work-dropdown" ref={workRef}>
-              <button className="hero-chip" type="button" onClick={() => setWorkOpen(!workOpen)} aria-expanded={workOpen}>
+            <div className="work-dropdown">
+              <span className="hero-chip hero-chip-static">
                 <span>Дела в работе</span><Indicator value={4} /><Chevron direction="down" />
-              </button>
-              {workOpen && <div className="work-menu">{workItems.map(([label, value]) => <button type="button" key={label} onClick={() => setWorkOpen(false)} className={value === 0 ? "empty" : ""}><span>{label}</span><span className="work-count">{value}</span></button>)}</div>}
+              </span>
             </div>
             <button className="hero-chip" type="button"><Icon name="hero-92b54.svg" /><span>Себе в Альфу</span></button>
             <button className="hero-chip" type="button" onClick={download}><Icon name="hero-b373c.svg" /><span>Скачать выписку</span></button>
@@ -455,29 +457,60 @@ export default function Glavnaya() {
         </div>
 
         <section className={`tasks${shownTab === "Ассистент" ? "" : " tasks-after-panel"}`} aria-labelledby="tasks-title">
-          <button className="section-title" type="button"><h2 id="tasks-title">Мои дела</h2><Chevron /></button>
+          <button className="section-title" type="button"><h2 id="tasks-title">Мои дела</h2><Icon name="task-chevron-muted.svg" className="chevron" /></button>
           <div className="tasks-viewport">
             <div className="tasks-track" style={{ transform: `translateX(-${taskOffset}px)` }}>
               <article className="task-card payment-card">
                 <span className="overdue">Просрочено</span>
-                <div className="payment-copy"><p>Платёж по&nbsp;кредиту</p><p>от 04.06.26<br />32 000,00 ₽</p></div>
-                <div className="task-navigation"><span className="card-divider" /><div className="payment-controls">
-                  <button type="button" aria-label="Предыдущий платёж"><Icon name="chevron-right-tertiary.svg" className="chevron chevron-prev" /></button>
-                  <span className="slider-dots">{[0, 1, 2].map((dot) => <span key={dot} className={dot === 0 ? "current" : ""} />)}</span>
-                  <button type="button" aria-label="Следующий платёж"><Icon name="chevron-right-primary.svg" className="chevron" /></button>
-                </div></div>
+                <div className="payment-copy"><p>Платёж<br />по кредиту</p><p>от 04.06.26<br />32 000,00 ₽</p></div>
+                <div className="task-navigation">
+                  <span className="card-divider" />
+                  <div className="payment-controls">
+                    <button type="button" aria-label="Предыдущий платёж"><Icon name="task-chevron-muted.svg" className="chevron chevron-prev" /></button>
+                    <span className="slider-dots">{[0, 1, 2].map((dot) => <span key={dot} className={dot === 0 ? "current" : ""} />)}</span>
+                    <button type="button" aria-label="Следующий платёж"><Icon name="task-chevron-strong.svg" className="chevron" /></button>
+                  </div>
+                </div>
+                <img className="task-light" src={asset("task-light.svg")} alt="" aria-hidden="true" />
               </article>
               <article className="task-card work-card">
-                <div className="work-card-main"><img src={asset("task2-illustration.png")} alt="" /><p>Дела<br />в работе</p></div>
-                <div className="task-navigation"><span className="card-divider" /><button className="resolve-button" type="button" onClick={() => setWorkOpen(true)}><Indicator value={4} small /><span>Разобрать</span></button></div>
+                <div className="work-card-illu" aria-hidden="true">
+                  <div className="work-sheet work-sheet-back">
+                    <div className="work-paper work-paper-back">
+                      <div className="paper-top">
+                        <div className="paper-row">
+                          <div className="paper-lines"><span style={{ width: 24.936 }} /><span style={{ width: 16.135 }} /></div>
+                          <span className="paper-dot" />
+                        </div>
+                        <div className="paper-lines"><span style={{ width: 19.155 }} /><span style={{ width: 28.664 }} /></div>
+                      </div>
+                      <span className="paper-line-bottom" />
+                    </div>
+                  </div>
+                  <div className="work-sheet work-sheet-front">
+                    <div className="work-paper work-paper-front">
+                      <div className="paper-top">
+                        <div className="paper-row">
+                          <div className="paper-lines"><span style={{ width: 34.369 }} /><span style={{ width: 22.239 }} /></div>
+                          <span className="paper-dot" />
+                        </div>
+                        <div className="paper-lines"><span style={{ width: 26.401 }} /><span style={{ width: 43.899 }} /></div>
+                      </div>
+                      <span className="paper-line-bottom" />
+                    </div>
+                  </div>
+                  <img className="work-glow" src={asset("task-work-glow.svg")} alt="" />
+                </div>
+                <p className="work-card-title">Дела<br />в работе</p>
+                <div className="task-navigation"><span className="card-divider" /><span className="resolve-button"><Indicator value={4} small /><span>Разобрать</span></span></div>
               </article>
               {taskCards.map((card) => <article className="task-card action-card" key={card.title}>
-                <div className="action-card-main"><span className={`task-illustration ${card.className}`}><img src={asset(card.image)} alt="" /></span><p>{card.title}</p></div>
+                <div className="action-card-main"><span className={`task-illustration ${card.className}`}><img src={`/assets/figma/${card.image}`} alt="" /></span><p>{card.title}</p></div>
                 <div className="task-navigation"><span className="card-divider" /><button type="button" className="score">+500<Icon name="menu-a8252.svg" className="score-icon" /></button></div>
               </article>)}
             </div>
             <span className="tasks-fade" />
-            <button className="task-next" type="button" aria-label={taskOffset ? "Показать начало списка" : "Следующая карточка"} onClick={() => setTaskOffset(taskOffset ? 0 : 48)}><Chevron /></button>
+            <button className="task-next" type="button" aria-label={taskOffset ? "Показать начало списка" : "Следующая карточка"} onClick={() => setTaskOffset(taskOffset ? 0 : 48)}><Icon name="task-next-chevron.svg" className="chevron" /></button>
           </div>
         </section>
 
@@ -568,15 +601,7 @@ export default function Glavnaya() {
         </section>
       )}
 
-      <div className="footer-fade" />
-      <div className="viewport-strip" aria-hidden="true" />
-      <section className="spotlight" aria-label="Альфа-Интеллект">
-        <div className="spotlight-logo"><span className="neural-logo"><img className="neural-shadow" src={asset("spotlight-d6d2f.svg")} alt="" /><img src={asset("spotlight-dbc5c.svg")} alt="" /></span><strong>Альфа-Интеллект</strong></div>
-        <div className="spotlight-body">
-          <div className="assistant-input"><span className="paperclip"><img src={asset("paperclip-icon.svg")} alt="" /></span><input placeholder="Как открыть депозит" aria-label="Вопрос Альфа-Интеллекту" /><button type="button" aria-label="Развернуть Альфа-Интеллект"><Icon name="spotlight-69a3f.svg" /></button></div>
-          <button className="support-button" type="button"><img src={asset("support-icon.svg")} alt="" /><span>Связь с банком</span><Indicator value={1} small /></button>
-        </div>
-      </section>
+      <AssistantBar label="Альфа-Интеллект" />
 
       {assistantOpen && (
         <section className="assistant" role="dialog" aria-modal="true" aria-label="Нейропомощник">
@@ -591,7 +616,7 @@ export default function Glavnaya() {
               <span className="vertical-divider" />
               <button className="company-account" type="button">
                 <span className="account-avatar"><img src="/assets/figma/avatar-photo.png" alt="" /></span>
-                <span><strong>ООО «Город Нагатино»</strong><small>Набокова А.Д.</small></span>
+                <span><strong>ООО «Город Нагатино»</strong><small>{clientName.headerLabel}</small></span>
               </button>
             </div>
           </header>

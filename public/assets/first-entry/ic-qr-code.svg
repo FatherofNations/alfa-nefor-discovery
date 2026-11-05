@@ -1,14 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" className="absolute block inset-0 size-full" fill="none" height="24" preserveAspectRatio="none" viewBox="0 0 24 24" width="24">
-        <g id="qr-code">
-          <g id="icon">
-            <path d="M11 21H3V13H11V21ZM5 19H9V15H5V19Z" fill="#9032EE" />
-            <path d="M17 19H15V21H13V17H17V19Z" fill="#9032EE" />
-            <path d="M21 21H17V19H19V17H21V21Z" fill="#9032EE" />
-            <path d="M19 17H17V15H19V17Z" fill="#9032EE" />
-            <path d="M17 15H13V13H17V15Z" fill="#9032EE" />
-            <path d="M21 15H19V13H21V15Z" fill="#9032EE" />
-            <path d="M11 11H3V3H11V11ZM5 9H9V5H5V9Z" fill="#9032EE" />
-            <path d="M21 11H13V3H21V11ZM15 9H19V5H15V9Z" fill="#9032EE" />
-          </g>
-        </g>
-      </svg>
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Fixer">
+<path id="PaintMe" d="M11.0001 21.0002H3.00014V13.0002H11.0001V21.0002ZM17.0001 19.0002H15.0001V21.0002H13.0001V17.0002H17.0001V19.0002ZM21.0001 21.0002H17.0001V19.0002H19.0001V17.0002H21.0001V21.0002ZM5.00014 19.0002H9.00014V15.0002H5.00014V19.0002ZM19.0001 17.0002H17.0001V15.0002H19.0001V17.0002ZM17.0001 15.0002H13.0001V13.0002H17.0001V15.0002ZM21.0001 15.0002H19.0001V13.0002H21.0001V15.0002ZM11.0001 11.0002H3.00014V3.00018H11.0001V11.0002ZM21.0001 11.0002H13.0001V3.00018H21.0001V11.0002ZM5.00014 9.00018H9.00014V5.00018H5.00014V9.00018ZM15.0001 9.00018H19.0001V5.00018H15.0001V9.00018Z" fill="#030306" fill-opacity="0.88"/>
+</g>
+</svg>

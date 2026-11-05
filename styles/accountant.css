@@ -1,9 +1,13 @@
-/* ═══════════ Наполнение дашборда «Бухгалтер» — byte-perfect из nefor-dash /current ═══════════
+/* ═══════════ Наполнение дашборда «Бухгалтер» ═══════════
+   Источник: макет Figma HL4PatufFZkyPKtx3LGivP, фрейм 136:18883 «С чего начать»
+   (get_metadata/get_design_context 136:18900…136:19073) + блоки пресета
+   @accountant как кодовая библиотека этого дизайна. Шрифт — alfa-sans (гейт проекта),
+   в макете SF Pro. Баннеры/данные — из MCP.
    Стили контента (быстрые действия, баланс, дела в работе, баннеры, табло,
    лента операций). Сайдбар/шапку даёт chrome.css. Классы cur-* — скоуп
    пресета, с вёрсткой макета не пересекаются. Правки контента — в html. */
 
-/* дизайн зафиксирован на 1600 (сайдбар 248 + контент 1248 + поля 104); уже — скролл всей страницы */
+/* Дизайн зафиксирован на 1600 (сайдбар 248 + контент 1248 + поля 104); уже — скролл всей страницы */
 body.cur { min-width: 1600px; }
 
 /* ── Контент ── */
@@ -15,15 +19,13 @@ body.cur { min-width: 1600px; }
      экранах поля растут симметрично; на 1600 поля по 52 — byte-perfect. */
   max-width: 1248px;
   margin: 0 auto;
-  padding: 24px 0 140px;
-  /* вся типографика прототипа — alfa-sans (var(--font)): решение
-     пользователя, см. HANDOFF. Раньше контент шёл системным SF Pro. */
+  padding: 32px 0 140px;
 }
 
 /* ══ Быстрые действия ══ */
 .cur-qa { display: flex; gap: 12px; align-items: flex-start; }
 .cur-qa-btn {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 12px;
   background: var(--neutral-0);
   border-radius: 10px;
   padding: 12px 20px;
@@ -65,11 +67,11 @@ body.cur { min-width: 1600px; }
 .cur-badge-blue {
   font: 700 11px/16px var(--font);
   text-transform: uppercase; letter-spacing: 0.3px;
-  color: #3778fb; background: rgba(55, 120, 251, 0.12);
-  border-radius: 6px; padding: 2px 6px; white-space: nowrap;
+  color: var(--decorative-blue-text, #2a77ef); background: var(--decorative-blue-muted, #d8eaff);
+  border-radius: 6px; padding: 2px 8px; white-space: nowrap;
 }
 .cur-bal-connect-sub { font: 400 14px/20px var(--font); color: var(--text-secondary); }
-.cur-bal-x { flex: none; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); }
+.cur-bal-x { flex: none; width: 16px; height: 16px; margin-right: 4px; display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); }
 
 .cur-bal-div { height: 1px; background: var(--nt-300); margin: 20px 0; }
 
@@ -100,7 +102,7 @@ body.cur { min-width: 1600px; }
 /* ── Дела в работе ── */
 .cur-inwork { background: #fff; border-radius: 16px; padding: 12px; display: flex; flex-direction: column; }
 .cur-iw-head { font: 700 16px/20px var(--font); color: var(--text-primary); padding: 12px 16px; }
-.cur-iw-list { display: flex; flex-direction: column; }
+.cur-iw-list { display: flex; flex-direction: column; margin-top: 8px; }
 .cur-iw-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; font: 400 16px/20px var(--font); color: var(--text-primary); }
 .cur-iw-zero { color: var(--text-tertiary); }
 .cur-ind {
@@ -113,35 +115,33 @@ body.cur { min-width: 1600px; }
 .cur-ind.red  { background: var(--accent-primary); color: #fff; }
 .cur-iw-zero .cur-ind { color: var(--text-tertiary); }
 
-/* ── Баннеры ── */
+/* ── Баннеры (MCP 136:18907: 294×120, radius 16, тексты pl20/py16) ── */
 .cur-banners { display: flex; flex-direction: column; gap: 12px; }
 .cur-ban {
   flex: 1; min-height: 120px; position: relative; overflow: hidden;
-  border-radius: 16px; padding: 18px 84px 18px 20px;
-  display: flex; flex-direction: column; gap: 4px;
+  border-radius: 16px; padding: 16px 84px 16px 20px;
+  display: flex; flex-direction: column;
 }
-.cur-ban.b1 { background: #abceff; }
-.cur-ban.b2 { background: #fcb1a7; }
-.cur-ban.b3 { background: #e5bcfa; }
+.cur-ban.b1 { background: #9edfff; } /* static_promo/sonata */
+.cur-ban.b2 { background: #dfbfff; } /* static_promo/oasis */
+.cur-ban.b3 { background: #d6f09a; } /* static_promo/primrose */
 .cur-ban-txt { display: flex; flex-direction: column; gap: 4px; }
 .cur-ban-txt b { font: 700 14px/20px var(--font); color: var(--text-primary); }
-.cur-ban-txt span { font: 400 14px/20px var(--font); color: var(--text-secondary); }
-.cur-ban-img { position: absolute; right: 0; top: 0; bottom: 0; width: 76px; overflow: hidden; }
-.cur-ban-img img { position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 100px; height: 100px; object-fit: contain; }
+.cur-ban-txt span { font: 400 14px/18px var(--font); color: var(--text-secondary); }
+/* арт-плашка: видимая часть 64 px у правого края, центрируется по высоте */
+.cur-ban-img { position: absolute; right: 0; top: 50%; width: 64px; transform: translateY(-50%); }
+.cur-ban-img img { display: block; width: 64px; height: auto; }
 
 /* ══ Табло: табы + переключатель + карточки ══ */
 .cur-tablo-section { margin-top: 48px; }
-.cur-tablo { display: flex; align-items: center; justify-content: space-between; height: 48px; }
+.cur-tablo { display: flex; align-items: center; justify-content: space-between; height: 48px; padding-right: 10px; }
 .cur-tablo-tabs { display: flex; gap: 32px; align-items: center; }
-.cur-tab { font: 700 22px/26px var(--font); color: var(--text-tertiary); cursor: pointer; white-space: nowrap; }
+.cur-tab { font: 700 22px/26px var(--font); color: var(--text-tertiary); cursor: default; white-space: nowrap; }
 .cur-tab.active { color: var(--text-primary); }
 .cur-tablo-ctrl { display: flex; align-items: center; gap: 22px; }
 .cur-seg { position: relative; display: flex; gap: 12px; background: var(--nt-200); border-radius: 12px; padding: 8px; }
 .cur-seg-hl {
-  /* позиция вычислена из геометрии сегмента: кнопка 28 + gap 12 = шаг 40.
-     --seg-i ставит хук: 0 — «показывать», 1 — «скрыть». */
-  position: absolute; left: calc(2px + var(--seg-i, 0) * 40px); top: 2px; width: 40px; height: 40px;
-  transition: left 0.55s cubic-bezier(0.32, 0.72, 0, 1);
+  position: absolute; left: 2px; top: 2px; width: 40px; height: 40px;
   background: #fff; border: 0.5px solid var(--nt-200); border-radius: 10px;
   box-shadow: 0 0 1px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.04), 0 12px 16px rgba(0,0,0,0.04);
 }
@@ -153,34 +153,40 @@ body.cur { min-width: 1600px; }
 .cur-cards { display: flex; gap: 12px; margin-top: 24px; }
 .cur-card { width: 198px; flex: none; height: 135px; background: #fff; border-radius: 16px; position: relative; overflow: hidden; }
 
-/* задания */
+/* задания (MCP 136:18980): карточка 198×135, padding 16/16/14, белая, radius 16 */
 .cur-task { padding: 16px 16px 14px; display: flex; flex-direction: column; justify-content: space-between; }
-.cur-task-title { font: 500 14px/20px var(--font); color: var(--text-primary); position: relative; z-index: 1; }
+.cur-task-title { height: 40px; font: 500 14px/20px var(--font); color: var(--text-primary); position: relative; z-index: 1; white-space: pre-line; }
 .cur-task-meta { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
 .cur-task-pts { display: flex; align-items: center; gap: 2px; font: 700 14px/20px var(--font); color: var(--text-primary); }
 .cur-task-pts img { width: 20px; height: 20px; }
 .cur-task-min { font: 400 14px/20px var(--font); color: var(--text-secondary); }
-.cur-task-img { position: absolute; right: -10px; bottom: -10px; width: 65px; height: 65px; object-fit: contain; }
+/* арт карточки: absolute bottom/right −10, бокс 65×65; кропы — из MCP */
+.cur-task-art { position: absolute; right: -10px; bottom: -10px; width: 65px; height: 65px; overflow: hidden; }
+.cur-task-art img { position: absolute; max-width: none; }
+.cur-task-art.art2 img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cur-task-art.art3 img { left: 3.54%; top: -3.1%; width: 106.19%; height: 106.19%; }
+.cur-task-art.art4 img { left: 7.24%; top: 6.51%; width: 86.62%; height: 86.14%; }
+.cur-task-art.art5 img, .cur-task-art.art6 img { inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-/* точка входа */
+/* точка входа (MCP 136:18981): та же плита 198×135 с белой обводкой 2 */
+.cur-card-entry { border: 2px solid var(--neutral-0); padding: 0; }
 .cur-card-entry-bg { position: absolute; left: -128.5px; top: 12.5px; width: 430px; height: 252px; max-width: none; }
-.cur-card-entry-head { position: absolute; left: 14px; right: 14px; top: 10px; display: flex; align-items: center; justify-content: space-between; z-index: 1; }
+.cur-card-entry-head { position: absolute; left: -2px; top: -2px; width: 198px; height: 44px; padding: 12px 16px 0; box-sizing: border-box; display: flex; align-items: flex-start; justify-content: space-between; z-index: 1; }
 .cur-card-entry-head span { font: 700 16px/24px var(--font); color: var(--text-primary); }
 .cur-card-entry-head img { width: 20px; height: 20px; }
 .cur-card-entry-content { position: absolute; left: 14px; top: 83px; width: 94px; display: flex; flex-direction: column; gap: 12px; z-index: 1; }
-/* nowrap: контейнер шириной 94px взят из пресета, где подпись шла SF Pro
-   (79.4px). Цифры alfa-sans шире — «0/7 выполнено» стало 94.4px и переносилось
-   на вторую строку (+16px высоты). Подпись-статус переноситься не должна. */
-.cur-card-entry-sub { font: 400 13px/16px var(--font); color: var(--text-secondary); white-space: nowrap; }
+.cur-card-entry-sub { width: 108px; font: 400 13px/16px var(--font); color: var(--text-secondary); white-space: nowrap; }
 .cur-progress { height: 8px; border-radius: 8px; background: var(--nt-300); overflow: hidden; }
-.cur-progress i { display: block; height: 8px; width: 14px; border-radius: 8px; background: var(--decorative-indigo); }
-.cur-card-entry-cap { position: absolute; left: 144px; top: 76px; width: 52px; height: 57px; object-fit: contain; z-index: 1; }
+.cur-progress i { display: block; height: 8px; width: 10px; border-radius: 0 8px 8px 0; background: var(--decorative-indigo); }
+.cur-card-entry-cap { position: absolute; left: 144px; top: 76px; width: 52px; height: 57px; border-radius: 8.582px; overflow: hidden; z-index: 1; }
+.cur-card-entry-cap img { position: absolute; left: -7px; top: -15px; width: 92.923px; height: 88px; max-width: none; object-fit: cover; }
 
 /* ══ Лента операций ══ */
 .cur-title { margin-top: 48px; font: 700 30px/36px var(--font); color: var(--text-primary); letter-spacing: 0.1px; }
 
 /* ── Фильтры ── */
-.cur-filters { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+.cur-filters { margin-top: 32px; display: flex; flex-direction: column; }
+.cur-filters::after { content: ""; height: 1px; margin-top: 20px; background: var(--nt-300); }
 .cur-filters-row1 { display: flex; gap: 16px; }
 .cur-datefield {
   flex: none; width: 340px; height: 56px;
@@ -198,7 +204,7 @@ body.cur { min-width: 1600px; }
 .cur-search-mag { width: 24px; height: 24px; flex: none; color: var(--text-tertiary); }
 .cur-search-ph { font: 400 16px/20px var(--font); color: var(--text-tertiary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.cur-filters-row2 { display: flex; gap: 8px; flex-wrap: wrap; }
+.cur-filters-row2 { display: flex; margin-top: 20px; gap: 8px; flex-wrap: wrap; }
 .cur-ftag {
   height: 40px; padding: 0 16px; border-radius: 10px;
   background: var(--nt-100);
@@ -214,11 +220,11 @@ body.cur { min-width: 1600px; }
 }
 
 /* ── TopBar ── */
-.cur-topbar { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 16px; }
-.cur-topbar-count { display: flex; align-items: center; gap: 4px; padding: 0 4px; }
+.cur-topbar { display: flex; height: 72px; align-items: center; justify-content: space-between; padding: 24px 0 16px; box-sizing: border-box; }
+.cur-topbar-count { display: flex; height: 32px; align-items: center; gap: 4px; padding: 0 4px; }
 .cur-tb-lbl { font: 500 14px/20px var(--font); color: var(--text-secondary); }
 .cur-tb-num { font: 500 14px/20px var(--font); color: var(--text-primary); }
-.cur-topbar-set { display: flex; align-items: center; gap: 2px; padding: 4px 12px; border-radius: 8px; }
+.cur-topbar-set { display: flex; height: 32px; align-items: center; gap: 2px; padding: 4px 12px; box-sizing: border-box; border-radius: 8px; }
 .cur-topbar-set img { width: 16px; height: 16px; opacity: 0.6; }
 .cur-topbar-set span { font: 500 14px/20px var(--font); color: var(--text-primary); padding: 0 4px; }
 
@@ -277,8 +283,9 @@ body.cur { min-width: 1600px; }
 
 .cur-dots { margin-top: 2px; fill: var(--text-primary); }
 
+.cur-tr-tall .cur-tr-purpose { min-height: 60px; }
 .cur-tr-purpose {
-  margin: 0 16px; padding: 0 527px 16px 116px;
+  margin: 0 16px; padding: 0 527px 0 116px; min-height: 40px;
   font: 400 14px/20px var(--font); color: var(--text-secondary); letter-spacing: -0.08px;
 }
 .cur-tr-border { height: 1px; background: var(--nt-300); margin: 0 16px; }
@@ -287,19 +294,17 @@ body.cur { min-width: 1600px; }
 
 .cur-pagination { height: 76px; border-radius: 0 0 16px 16px; }
 
-/* ── Суммы скрыты (глаз перечёркнут) ──
-   Блюр 12px и кривые — канонические (styles/canon.css, рецепт скрытия):
-   своего значения не придумываем. Состояние ставит хук страницы. */
-.cur-bal-amount,
-.cur-bal-sum {
-  transition: filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
+/* ══ Интерактив прототипа (состояния макета не описывает) ══ */
+.cur-tab, .cur-seg-btn, .cur-tablo-gear, .cur-bal-x, .cur-bal-foot-links a { cursor: pointer; }
+.cur-tab, .cur-seg-btn { user-select: none; }
+.cur-tab { transition: color 0.22s ease-in; }
+/* белый сегмент-переключатель ходит между «показать» и «скрыть»:
+   позиция из геометрии сегмента (кнопка 28 + gap 12 = шаг 40) */
+.cur-seg-hl { left: calc(2px + var(--seg-i, 0) * 40px); transition: left 0.55s cubic-bezier(0.32, 0.72, 0, 1); }
+/* суммы скрыты (глаз перечёркнут): блюр 12px, кривые из canon.css */
+.cur-bal-amount, .cur-bal-sum { transition: filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
 body.cur-amounts-hidden .cur-bal-amount,
-body.cur-amounts-hidden .cur-bal-sum {
-  filter: blur(12px);
-  user-select: none;
-}
+body.cur-amounts-hidden .cur-bal-sum { filter: blur(12px); user-select: none; }
 @media (prefers-reduced-motion: reduce) {
-  .cur-bal-amount,
-  .cur-bal-sum { transition: none; }
+  .cur-seg-hl, .cur-tab, .cur-bal-amount, .cur-bal-sum { transition: none; }
 }

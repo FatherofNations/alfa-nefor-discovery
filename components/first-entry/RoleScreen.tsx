@@ -50,6 +50,7 @@ export default function RoleScreen() {
     <div className={`entry-page entry-role${leaving ? " is-leaving" : ""}`}>
       <div className="entry-role-bg" aria-hidden="true" />
       <EntryHeader />
+      <div className="entry-role-stage">
       <h1 className="entry-role-heading">— Выберите вид главной</h1>
       <div className="entry-bubble entry-bubble-1">
         <StreamedText
@@ -89,6 +90,7 @@ export default function RoleScreen() {
       </div>
 
       <img className="entry-role-sphere" src="/assets/figma/neural-sphere.svg" alt="" />
+      </div>
       <button className="entry-role-sound" type="button" aria-label="Включить звук">
         <img src="/assets/first-entry/ic-sound.svg" alt="" />
       </button>

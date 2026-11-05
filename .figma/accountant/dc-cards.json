@@ -1,0 +1,213 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/8795ecd7-e497-4a0a-8a7a-84bff677fc1d";
+const imgGrid = `${assetPathPrefix}/c5314.png`;
+const imgBonusesSignBox = `${assetPathPrefix}/a6970.svg`;
+const img4 = `${assetPathPrefix}/aa5ae.png`;
+const imgGrid1 = `${assetPathPrefix}/116b6.png`;
+const imgGrid2 = `${assetPathPrefix}/a16c9.png`;
+const imgImgDefault = `${assetPathPrefix}/d0dae.png`;
+const imgImgDefault1 = `${assetPathPrefix}/91071.png`;
+const imgVector234254873 = `${assetPathPrefix}/516cd.svg`;
+const imgChevronRightShiftRight = `${assetPathPrefix}/13eb2.svg`;
+
+type ComponentProps = {
+  className?: string;
+  property1?: "Default";
+};
+
+function Component({ className, property1 = "Default" }: ComponentProps) {
+  return (
+    <div className={className || "bg-[var(--base-bg\\/primary,white)] content-stretch flex flex-col gap-[45px] items-start overflow-clip pb-[14px] pt-[16px] px-[16px] relative rounded-[16px] w-[198px]"} data-node-id="136:18821">
+      <div className="content-stretch flex h-[40px] items-start relative shrink-0 w-full" data-node-id="136:18822" data-name="RowTitle">
+        <p className="[word-break:break-word] flex-[1_0_0] font-['SF_Pro_Text:Medium'] leading-[20px] min-w-px not-italic relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-pre-wrap" data-node-id="I136:18822;100:3003">
+          {`Защитить бизнес `}
+          <br aria-hidden />
+          от блокировок
+        </p>
+      </div>
+      <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="136:18823" data-name="Content">
+        <div className="content-stretch flex gap-[2px] items-center overflow-clip relative rounded-[999px] shrink-0" data-node-id="136:18824" data-name="points">
+          <p className="[word-break:break-word] font-['SF_Pro_Text:Bold'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="136:18825">
+            500
+          </p>
+          <div className="relative shrink-0 size-[20px]" data-node-id="136:18827" data-name="bonuses-sign-box">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBonusesSignBox} />
+          </div>
+        </div>
+        <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] whitespace-nowrap" data-node-id="136:18828">
+          1 мин
+        </p>
+      </div>
+      <div className="absolute bottom-[-10px] right-[-10px] size-[65px]" data-node-id="136:18829" data-name="img_Default">
+        <div className="absolute inset-0" data-node-id="I136:18829;1919:40900;2201:702" data-name="Grid">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGrid} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Card() {
+  return (
+    <div className="content-stretch flex gap-[12px] items-start relative size-full" data-node-id="136:18980" data-name="Card">
+      <div className="bg-[var(--base-bg\/primary,white)] border-2 border-[var(--base-bg\/primary,white)] border-solid h-[135px] overflow-clip relative rounded-[16px] shrink-0 w-[198px]" data-node-id="136:18981" data-name="Точка входа">
+        <div className="absolute h-[252px] left-[-128.5px] top-[12.5px] w-[430px]" data-node-id="I136:18981;1747:144100">
+          <div className="absolute inset-[-43.55%_-24.54%_-38.85%_-15.23%]">
+            <img alt="" className="block max-w-none size-full" src={imgVector234254873} />
+          </div>
+        </div>
+        <div className="absolute content-stretch flex h-[44px] items-start left-[-2px] px-[var(--16,16px)] py-[var(--12,12px)] top-[-2px] w-[198px]" data-node-id="I136:18981;1747:144101" data-name="head">
+          <div className="content-stretch flex flex-[1_0_0] items-center justify-between min-w-px relative" data-node-id="I136:18981;1747:144102" data-name="_ headerWidgetSM">
+            <div className="content-stretch flex items-center relative shrink-0" data-node-id="I136:18981;1747:144102;16354:77702" data-name="Left">
+              <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Bold'] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis whitespace-nowrap" data-node-id="I136:18981;1747:144102;16354:77703">
+                <p className="leading-[24px] overflow-hidden text-ellipsis">Все задания</p>
+              </div>
+            </div>
+            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18981;1747:144102;17292:22922" data-name="chevron-right-shift-right">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronRightShiftRight} />
+            </div>
+          </div>
+        </div>
+        <div className="absolute content-stretch flex flex-col gap-[12px] items-start left-[14px] top-[83px] w-[94px]" data-node-id="I136:18981;1747:144117" data-name="Content">
+          <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[16px] not-italic relative shrink-0 text-[13px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] w-[108px]" data-node-id="I136:18981;1747:144107">
+            0/7 выполнено
+          </p>
+          <div className="bg-[var(--neutral-translucent\/300,rgba(15,25,55,0.1))] content-stretch flex flex-col items-start max-h-[8px] min-h-[8px] overflow-clip relative rounded-[8px] shrink-0 w-full" data-node-id="I136:18981;1747:144106" data-name="ProgressBar">
+            <div className="bg-[var(--decorative\/indigo,#897eff)] content-stretch flex items-start max-h-[8px] min-h-[8px] pr-[10px] relative rounded-br-[8px] rounded-tr-[8px] shrink-0 w-[10px]" data-node-id="I136:18981;1747:144106;2130:59627" data-name="Fill">
+              <div className="h-[8px] relative shrink-0 w-[4px]" data-node-id="I136:18981;1747:144106;2130:59628" data-name="fixer" />
+            </div>
+          </div>
+        </div>
+        <div className="absolute h-[57px] left-[144px] overflow-clip rounded-[8.582px] top-[76px] w-[52px]" data-node-id="I136:18981;1747:144123" data-name="img_Сompleted">
+          <div className="absolute h-[88px] left-[-7px] top-[-15px] w-[92.923px]" data-node-id="I136:18981;1747:144103" data-name="голуб 4">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img4} />
+          </div>
+        </div>
+      </div>
+      <Component className="bg-[var(--base-bg\/primary,white)] content-stretch flex flex-col gap-[45px] items-start overflow-clip pb-[14px] pt-[16px] px-[16px] relative rounded-[16px] shrink-0 w-[198px]" />
+      <div className="bg-[var(--base-bg\/primary,white)] content-stretch flex flex-col h-full items-start justify-between overflow-clip pb-[14px] pt-[16px] px-[16px] relative rounded-[16px] shrink-0 w-[198px]" data-node-id="136:18983" data-name="Задание">
+        <div className="content-stretch flex h-[40px] items-start relative shrink-0 w-full" data-node-id="I136:18983;1728:96670" data-name="RowTitle">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['SF_Pro_Text:Medium'] leading-[20px] min-w-px not-italic relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="I136:18983;1728:96670;100:3003">
+            Пополнить счёт
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="I136:18983;1728:96672" data-name="Content">
+          <div className="content-stretch flex gap-[2px] items-center overflow-clip relative rounded-[999px] shrink-0" data-node-id="I136:18983;1728:96673" data-name="points">
+            <p className="[word-break:break-word] font-['SF_Pro_Text:Bold'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="I136:18983;1728:96674">
+              500
+            </p>
+            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18983;1728:96676" data-name="bonuses-sign-box">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBonusesSignBox} />
+            </div>
+          </div>
+          <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] whitespace-nowrap" data-node-id="I136:18983;1728:96677">
+            1 мин
+          </p>
+        </div>
+        <div className="absolute bottom-[-10px] right-[-10px] size-[65px]" data-node-id="I136:18983;1728:116055" data-name="img_Default">
+          <div className="absolute inset-0" data-node-id="I136:18983;1728:116055;1919:40969;2201:702" data-name="Grid">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <img alt="" className="absolute left-[3.54%] max-w-none size-[106.19%] top-[-3.1%]" src={imgGrid1} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[var(--base-bg\/primary,white)] content-stretch flex flex-col gap-[45px] items-start overflow-clip pb-[14px] pt-[16px] px-[16px] relative rounded-[16px] shrink-0 w-[198px]" data-node-id="136:18984" data-name="Задание">
+        <div className="content-stretch flex h-[40px] items-start relative shrink-0 w-full" data-node-id="I136:18984;1728:96670" data-name="RowTitle">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['SF_Pro_Text:Medium'] leading-[20px] min-w-px not-italic relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="I136:18984;1728:96670;100:3003">
+            Изучить условия тарифа
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="I136:18984;1728:96672" data-name="Content">
+          <div className="content-stretch flex gap-[2px] items-center overflow-clip relative rounded-[999px] shrink-0" data-node-id="I136:18984;1728:96673" data-name="points">
+            <p className="[word-break:break-word] font-['SF_Pro_Text:Bold'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="I136:18984;1728:96674">
+              500
+            </p>
+            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18984;1728:96676" data-name="bonuses-sign-box">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBonusesSignBox} />
+            </div>
+          </div>
+          <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] whitespace-nowrap" data-node-id="I136:18984;1728:96677">
+            1 мин
+          </p>
+        </div>
+        <div className="absolute bottom-[-10px] right-[-10px] size-[65px]" data-node-id="I136:18984;1728:116055" data-name="img_Default">
+          <div className="absolute inset-0" data-node-id="I136:18984;1728:116055;1919:40973;2201:702" data-name="Grid">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <img alt="" className="absolute h-[86.14%] left-[7.24%] max-w-none top-[6.51%] w-[86.62%]" src={imgGrid2} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[var(--base-bg\/primary,white)] content-stretch flex flex-col gap-[45px] items-start overflow-clip pb-[14px] pt-[16px] px-[16px] relative rounded-[16px] shrink-0 w-[198px]" data-node-id="136:18985" data-name="Задание">
+        <div className="content-stretch flex h-[40px] items-start relative shrink-0 w-full" data-node-id="I136:18985;1728:96670" data-name="RowTitle">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['SF_Pro_Text:Medium'] h-[20px] leading-[20px] min-w-px not-italic relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-pre-wrap" data-node-id="I136:18985;1728:96670;100:3003">
+            {`Переводить `}
+            <br aria-hidden />
+            {`без комиссии `}
+            <br aria-hidden />с подпиской
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="I136:18985;1728:96672" data-name="Content">
+          <div className="content-stretch flex gap-[2px] items-center overflow-clip relative rounded-[999px] shrink-0" data-node-id="I136:18985;1728:96673" data-name="points">
+            <p className="[word-break:break-word] font-['SF_Pro_Text:Bold'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="I136:18985;1728:96674">
+              500
+            </p>
+            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18985;1728:96676" data-name="bonuses-sign-box">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBonusesSignBox} />
+            </div>
+          </div>
+          <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] whitespace-nowrap" data-node-id="I136:18985;1728:96677">
+            1 мин
+          </p>
+        </div>
+        <div className="absolute bottom-[-10px] right-[-10px] size-[65px]" data-node-id="I136:18985;1728:116055" data-name="img_Default">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImgDefault} />
+        </div>
+      </div>
+      <div className="bg-[var(--base-bg\/primary,white)] content-stretch flex flex-col h-full items-start justify-between overflow-clip pb-[14px] pt-[16px] px-[16px] relative rounded-[16px] shrink-0 w-[198px]" data-node-id="136:18986" data-name="Задание">
+        <div className="content-stretch flex h-[40px] items-start relative shrink-0 w-full" data-node-id="I136:18986;1728:96670" data-name="RowTitle">
+          <p className="[word-break:break-word] flex-[1_0_0] font-['SF_Pro_Text:Medium'] leading-[20px] min-w-px not-italic relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="I136:18986;1728:96670;100:3003">
+            Подключить налоговую копилку
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="I136:18986;1728:96672" data-name="Content">
+          <div className="content-stretch flex gap-[2px] items-center overflow-clip relative rounded-[999px] shrink-0" data-node-id="I136:18986;1728:96673" data-name="points">
+            <p className="[word-break:break-word] font-['SF_Pro_Text:Bold'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="I136:18986;1728:96674">
+              500
+            </p>
+            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18986;1728:96676" data-name="bonuses-sign-box">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBonusesSignBox} />
+            </div>
+          </div>
+          <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] whitespace-nowrap" data-node-id="I136:18986;1728:96677">
+            1 мин
+          </p>
+        </div>
+        <div className="absolute bottom-[-10px] right-[-10px] size-[65px]" data-node-id="I136:18986;1728:116055" data-name="img_Default">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImgDefault1} />
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Accent/16–24 Primary Medium (Typography.Text view='primary-medium' weight='bold'): Font(family: "SF Pro Text", style: Bold, size: 16, weight: 700, lineHeight: 24, letterSpacing: 0), Paragraph/13–16 Secondary Large (Typography.Text view='secondary-large'): Font(family: "SF Pro Text", style: Regular, size: 13, weight: 400, lineHeight: 16, letterSpacing: 0), Action/14–20 Primary Small (Typography.Text view='primary-small' weight='medium'): Font(family: "SF Pro Text", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0), Accent/14–20 Primary Small (Typography.Text view='primary-small' weight='bold'): Font(family: "SF Pro Text", style: Bold, size: 14, weight: 700, lineHeight: 20, letterSpacing: 0), Paragraph/14–20 Primary Small (Typography.Text view='primary-small'): Font(family: "SF Pro Text", style: Regular, size: 14, weight: 400, lineHeight: 20, letterSpacing: 0).
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Size=20, Style=Default, Color=False
+**Node ID:** 4:13
+
+\[logo-corp\_bonuses-sign-box\_20\]
+
+## bonuses-sign-box
+**Node ID:** 1:121
+
+Продукт: Бонусы
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

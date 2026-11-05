@@ -1,0 +1,699 @@
+[
+  {
+    "node": "chrome-0",
+    "name": "imgSizeSStroke2",
+    "path": "/assets/figma/accountant-chrome-0-imgSizeSStroke2.svg",
+    "bytes": 831,
+    "width": "12",
+    "height": "12",
+    "fills": [
+      "fill=\"black\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgAlfaBankSignBoxMWhite",
+    "path": "/assets/figma/accountant-chrome-0-imgAlfaBankSignBoxMWhite.svg",
+    "bytes": 572,
+    "width": "24",
+    "height": "24",
+    "fills": [
+      "fill=\"none\"",
+      "fill=\"white\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgFormSuperellipse",
+    "path": "/assets/figma/accountant-chrome-0-imgFormSuperellipse.svg",
+    "bytes": 767,
+    "width": "40",
+    "height": "40",
+    "fills": [
+      "fill=\"#2288FA\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgBorder",
+    "path": "/assets/figma/accountant-chrome-0-imgBorder.png",
+    "bytes": 1317,
+    "dimensions": [
+      64,
+      64
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgFadeLine",
+    "path": "/assets/figma/accountant-chrome-0-imgFadeLine.svg",
+    "bytes": 475,
+    "width": "248",
+    "height": "32",
+    "fills": [
+      "fill=\"none\"",
+      "fill=\"url(#paint0_linear_0_329)\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgGear",
+    "path": "/assets/figma/accountant-chrome-0-imgGear.svg",
+    "bytes": 2022,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgShapeContent",
+    "path": "/assets/figma/accountant-chrome-0-imgShapeContent.svg",
+    "bytes": 722,
+    "width": "40",
+    "height": "40",
+    "fills": [
+      "fill=\"#3778FB\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgFixer",
+    "path": "/assets/figma/accountant-chrome-0-imgFixer.svg",
+    "bytes": 546,
+    "width": "24",
+    "height": "24",
+    "fills": [
+      "fill=\"none\"",
+      "fill=\"white\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "img",
+    "path": "/assets/figma/accountant-chrome-0-img.svg",
+    "bytes": 7118,
+    "width": "123",
+    "height": "16",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgAllServicesProductsSignBox",
+    "path": "/assets/figma/accountant-chrome-0-imgAllServicesProductsSignBox.svg",
+    "bytes": 1074,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill=\"#3193FC\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgBonusesSignBox",
+    "path": "/assets/figma/accountant-chrome-0-imgBonusesSignBox.svg",
+    "bytes": 900,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill=\"#897EFF\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgNewPaymentSignBox",
+    "path": "/assets/figma/accountant-chrome-0-imgNewPaymentSignBox.svg",
+    "bytes": 302,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgTransactionFeedSignBox",
+    "path": "/assets/figma/accountant-chrome-0-imgTransactionFeedSignBox.svg",
+    "bytes": 738,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgFileArrowsCircle",
+    "path": "/assets/figma/accountant-chrome-0-imgFileArrowsCircle.svg",
+    "bytes": 1019,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-0",
+    "name": "imgSafeDeposit",
+    "path": "/assets/figma/accountant-chrome-0-imgSafeDeposit.svg",
+    "bytes": 823,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill=\"#212124\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgFixer",
+    "path": "/assets/figma/accountant-chrome-1-imgFixer.svg",
+    "bytes": 588,
+    "width": "20.0001",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.47\"",
+      "fill=\"#040415\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgFixer1",
+    "path": "/assets/figma/accountant-chrome-1-imgFixer1.svg",
+    "bytes": 366,
+    "width": "20.0001",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.47\"",
+      "fill=\"#040415\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgFixer2",
+    "path": "/assets/figma/accountant-chrome-1-imgFixer2.svg",
+    "bytes": 1039,
+    "width": "20.0001",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.47\"",
+      "fill=\"#040415\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgFixer3",
+    "path": "/assets/figma/accountant-chrome-1-imgFixer3.svg",
+    "bytes": 590,
+    "width": "20.0001",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.47\"",
+      "fill=\"#040415\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgFormSuperellipse",
+    "path": "/assets/figma/accountant-chrome-1-imgFormSuperellipse.svg",
+    "bytes": 767,
+    "width": "40",
+    "height": "40",
+    "fills": [
+      "fill=\"#2288FA\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgBgImg",
+    "path": "/assets/figma/accountant-chrome-1-imgBgImg.png",
+    "bytes": 242297,
+    "dimensions": [
+      1024,
+      1024
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgShapeContent",
+    "path": "/assets/figma/accountant-chrome-1-imgShapeContent.svg",
+    "bytes": 722,
+    "width": "40",
+    "height": "40",
+    "fills": [
+      "fill=\"#3778FB\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgBgColor",
+    "path": "/assets/figma/accountant-chrome-1-imgBgColor.png",
+    "bytes": 415305,
+    "dimensions": [
+      683,
+      1024
+    ]
+  },
+  {
+    "node": "chrome-1",
+    "name": "imgShapeContent1",
+    "path": "/assets/figma/accountant-chrome-1-imgShapeContent1.svg",
+    "bytes": 324,
+    "width": "24",
+    "height": "24",
+    "fills": [
+      "fill=\"#CF70FF\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-2",
+    "name": "imgTopUpAccountSignBox",
+    "path": "/assets/figma/accountant-chrome-2-imgTopUpAccountSignBox.svg",
+    "bytes": 784,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-2",
+    "name": "imgGetStatementSignBox",
+    "path": "/assets/figma/accountant-chrome-2-imgGetStatementSignBox.svg",
+    "bytes": 718,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-2",
+    "name": "imgCreatePaymentSignBox",
+    "path": "/assets/figma/accountant-chrome-2-imgCreatePaymentSignBox.svg",
+    "bytes": 506,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-2",
+    "name": "imgImportPaymentsSignBox",
+    "path": "/assets/figma/accountant-chrome-2-imgImportPaymentsSignBox.svg",
+    "bytes": 805,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-2",
+    "name": "imgIssueInvoiceSignBox",
+    "path": "/assets/figma/accountant-chrome-2-imgIssueInvoiceSignBox.svg",
+    "bytes": 727,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-3",
+    "name": "imgFormSuperellipse",
+    "path": "/assets/figma/accountant-chrome-3-imgFormSuperellipse.svg",
+    "bytes": 767,
+    "width": "40",
+    "height": "40",
+    "fills": [
+      "fill=\"#2288FA\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-3",
+    "name": "imgShapeContent",
+    "path": "/assets/figma/accountant-chrome-3-imgShapeContent.svg",
+    "bytes": 722,
+    "width": "40",
+    "height": "40",
+    "fills": [
+      "fill=\"#3778FB\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "chrome-3",
+    "name": "imgFixer",
+    "path": "/assets/figma/accountant-chrome-3-imgFixer.svg",
+    "bytes": 2231,
+    "width": "20.0001",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgImageContainer",
+    "path": "/assets/figma/accountant-43000-imgImageContainer.png",
+    "bytes": 22907,
+    "dimensions": [
+      2720,
+      1680
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgImageContainer1",
+    "path": "/assets/figma/accountant-43000-imgImageContainer1.png",
+    "bytes": 22736,
+    "dimensions": [
+      2720,
+      1680
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgImageContainer2",
+    "path": "/assets/figma/accountant-43000-imgImageContainer2.png",
+    "bytes": 51153,
+    "dimensions": [
+      1920,
+      1210
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgBg",
+    "path": "/assets/figma/accountant-43000-imgBg.svg",
+    "bytes": 345,
+    "width": "612",
+    "height": "316",
+    "fills": [
+      "fill=\"none\"",
+      "fill=\"white\""
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgIcon",
+    "path": "/assets/figma/accountant-43000-imgIcon.svg",
+    "bytes": 745,
+    "width": "48",
+    "height": "48",
+    "fills": [
+      "fill-opacity=\"0.08\"",
+      "fill=\"#1E2B44\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgCardImage",
+    "path": "/assets/figma/accountant-43000-imgCardImage.svg",
+    "bytes": 723,
+    "width": "48",
+    "height": "48",
+    "fills": [
+      "fill=\"none\"",
+      "fill=\"white\""
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgIcon1",
+    "path": "/assets/figma/accountant-43000-imgIcon1.svg",
+    "bytes": 1168,
+    "width": "48",
+    "height": "48",
+    "fills": [
+      "fill-opacity=\"0.47\"",
+      "fill=\"#040415\"",
+      "fill=\"none\"",
+      "fill=\"white\""
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgCross",
+    "path": "/assets/figma/accountant-43000-imgCross.svg",
+    "bytes": 372,
+    "width": "16",
+    "height": "16",
+    "fills": [
+      "fill-opacity=\"0.18\"",
+      "fill=\"#050B2C\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgIcon2",
+    "path": "/assets/figma/accountant-43000-imgIcon2.svg",
+    "bytes": 998,
+    "width": "48",
+    "height": "48",
+    "fills": [
+      "fill=\"#0CC44D\"",
+      "fill=\"#DFF8E5\"",
+      "fill=\"none\"",
+      "fill=\"white\""
+    ]
+  },
+  {
+    "node": "43000",
+    "name": "imgBonusesSignBox",
+    "path": "/assets/figma/accountant-43000-imgBonusesSignBox.svg",
+    "bytes": 660,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill=\"#897EFF\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43003",
+    "name": "img",
+    "path": "/assets/figma/accountant-43003-img.png",
+    "bytes": 169072,
+    "dimensions": [
+      500,
+      500
+    ]
+  },
+  {
+    "node": "43004",
+    "name": "img",
+    "path": "/assets/figma/accountant-43004-img.png",
+    "bytes": 169072,
+    "dimensions": [
+      500,
+      500
+    ]
+  },
+  {
+    "node": "43005",
+    "name": "img",
+    "path": "/assets/figma/accountant-43005-img.png",
+    "bytes": 12759,
+    "dimensions": [
+      118,
+      123
+    ]
+  },
+  {
+    "node": "43022",
+    "name": "imgGroup4",
+    "path": "/assets/figma/accountant-43022-imgGroup4.svg",
+    "bytes": 20149,
+    "width": "32",
+    "height": "21.3334",
+    "fills": [
+      "fill=\"#41479B\"",
+      "fill=\"#F5F5F5\"",
+      "fill=\"#FF4B55\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43022",
+    "name": "imgGroup3",
+    "path": "/assets/figma/accountant-43022-imgGroup3.svg",
+    "bytes": 5894,
+    "width": "32",
+    "height": "21.3333",
+    "fills": [
+      "fill=\"#41479B\"",
+      "fill=\"#FFE15A\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43022",
+    "name": "imgGroup",
+    "path": "/assets/figma/accountant-43022-imgGroup.svg",
+    "bytes": 2757,
+    "width": "32",
+    "height": "21.3333",
+    "fills": [
+      "fill=\"#FF4B55\"",
+      "fill=\"#FFE15A\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43022",
+    "name": "imgIcon",
+    "path": "/assets/figma/accountant-43022-imgIcon.svg",
+    "bytes": 329,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43023",
+    "name": "imgDivider",
+    "path": "/assets/figma/accountant-43023-imgDivider.svg",
+    "bytes": 694,
+    "width": "188",
+    "height": "1",
+    "fills": [
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43023",
+    "name": "imgIcon",
+    "path": "/assets/figma/accountant-43023-imgIcon.svg",
+    "bytes": 329,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43024",
+    "name": "imgGroup4",
+    "path": "/assets/figma/accountant-43024-imgGroup4.svg",
+    "bytes": 20149,
+    "width": "32",
+    "height": "21.3334",
+    "fills": [
+      "fill=\"#41479B\"",
+      "fill=\"#F5F5F5\"",
+      "fill=\"#FF4B55\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43024",
+    "name": "imgGroup3",
+    "path": "/assets/figma/accountant-43024-imgGroup3.svg",
+    "bytes": 5894,
+    "width": "32",
+    "height": "21.3333",
+    "fills": [
+      "fill=\"#41479B\"",
+      "fill=\"#FFE15A\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43024",
+    "name": "imgGroup",
+    "path": "/assets/figma/accountant-43024-imgGroup.svg",
+    "bytes": 2757,
+    "width": "32",
+    "height": "21.3333",
+    "fills": [
+      "fill=\"#FF4B55\"",
+      "fill=\"#FFE15A\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43024",
+    "name": "imgIcon",
+    "path": "/assets/figma/accountant-43024-imgIcon.svg",
+    "bytes": 329,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43025",
+    "name": "imgDivider",
+    "path": "/assets/figma/accountant-43025-imgDivider.svg",
+    "bytes": 694,
+    "width": "188",
+    "height": "1",
+    "fills": [
+      "fill=\"none\""
+    ]
+  },
+  {
+    "node": "43025",
+    "name": "imgIcon",
+    "path": "/assets/figma/accountant-43025-imgIcon.svg",
+    "bytes": 329,
+    "width": "20",
+    "height": "20",
+    "fills": [
+      "fill-opacity=\"0.88\"",
+      "fill=\"#030306\"",
+      "fill=\"none\""
+    ]
+  }
+]

@@ -5,6 +5,9 @@ import "@/styles/fonts.css";
 import "@/styles/canon.css";
 import "@/styles/app.css";
 import "@/styles/first-entry.css";
+import "@/styles/wide.css";
+import "@/styles/skeleton.css";
+import ClientNameModal from "@/components/client-name/ClientNameModal";
 
 export const metadata: Metadata = {
   title: "Альфа-Бизнес — Ассистент",
@@ -21,5 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   for (const font of FONTS) {
     preload(font, { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   }
-  return <html lang="ru"><body>{children}</body></html>;
+  return <html lang="ru"><body>
+        {children}
+        <ClientNameModal />
+      </body></html>;
 }

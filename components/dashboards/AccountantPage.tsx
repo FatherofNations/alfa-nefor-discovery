@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import BodyClass from "@/components/BodyClass";
 import AppChrome from "@/components/chrome/AppChrome";
-import SpotlightBar from "@/components/chrome/SpotlightBar";
+import AssistantBar from "@/components/chrome/AssistantBar";
 import { ACCOUNTANT_HTML } from "./accountantHtml";
-import { hasEntered, resetEntry } from "@/lib/entry-session";
+import { hasEntered, resetEntry, setEntryRole } from "@/lib/entry-session";
 
 /* Дашборд бухгалтера — byte-perfect партиал из пресета @Main.
    Хром (AppChrome + SpotlightBar) и стили chrome.css/accountant.css здесь же,
@@ -23,11 +23,8 @@ export default function AccountantPage() {
     if (!root) return;
     const onClick = (event: Event) => {
       const target = event.target as Element;
-      const tab = target.closest(".cur-tab");
-      if (tab) {
-        document.querySelectorAll(".cur-tab").forEach((t) => t.classList.toggle("active", t === tab));
-        return;
-      }
+      /* табы «С чего начать»/«Сводка» — некликабельные: по нажатию ничего не
+         меняется (ни активное состояние, ни текст) */
       const segBtn = target.closest(".cur-seg-btn");
       if (segBtn) {
         const buttons = [...document.querySelectorAll(".cur-seg-btn")];
@@ -41,10 +38,8 @@ export default function AccountantPage() {
   }, []);
 
   useEffect(() => {
-    const chip = document.querySelector<HTMLButtonElement>(".chrome-person");
+    const chip = document.querySelector<HTMLButtonElement>(".gate-content .chrome-person") ?? document.querySelector<HTMLButtonElement>(".chrome-person");
     if (!chip) return;
-    const label = chip.querySelector(".chrome-person-t");
-    if (label) label.textContent = "Бухгалтер";
     const onChip = () => setMenuOpen((open) => !open);
     chip.addEventListener("click", onChip);
     return () => chip.removeEventListener("click", onChip);
@@ -72,6 +67,9 @@ export default function AccountantPage() {
 
   const goEntrepreneur = useCallback(() => {
     setMenuOpen(false);
+    /* без этого чипса на главной предпринимателя оставалась «бухгалтерской»
+       (неверная аватарка/подпись) — роль обязана переключиться */
+    setEntryRole("entrepreneur");
     router.push("/");
   }, [router]);
 
@@ -93,11 +91,11 @@ export default function AccountantPage() {
   return (
     <>
       <BodyClass name="cur" />
-      <AppChrome />
+      <AppChrome personLabel="Бухгалтер" />
       <main className="cur-main">
         <div className="cur-content" dangerouslySetInnerHTML={{ __html: ACCOUNTANT_HTML }} />
       </main>
-      <SpotlightBar />
+      <AssistantBar label="Alpha Intellect" />
 
       {menuOpen && (
         <div className="role-menu cur-role" role="menu" aria-label="Вид главной" ref={menuRef} tabIndex={-1}>

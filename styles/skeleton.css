@@ -1,0 +1,435 @@
+/* ═══════════ skeleton.css — скелетные состояния дашбордов ═══════════
+   По мотивам core-ds Skeleton (packages/skeleton): блок маскирует контент,
+   фон — neutral-translucent-100, «дыхание» — слой neutral-translucent-300
+   с opacity-animation .7→.9 (0.5s, alternate, ease-in-out). Значения взяты
+   из исходников core-ds, не «на глаз»:
+   - packages/skeleton/src/index.module.css, default.module.css, vars.css
+   - packages/vars/src/colors-bluetint.css:
+     --color-light-neutral-translucent-100: rgba(38, 55, 88, 0.06)
+     --color-light-neutral-translucent-300: rgba(15, 25, 55, 0.10)
+   Текст — как useSkeleton: строки-«пилюли» высотой с глиф (≈0.72 кегля)
+   внутри строки заданного line-height: padding сверху/снизу = (line - глиф)/2.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --sk-base: rgba(38, 55, 88, 0.06);   /* color-light-neutral-translucent-100 */
+  --sk-flash: rgba(15, 25, 55, 0.1);   /* color-light-neutral-translucent-300 */
+}
+
+/* ── Блок скелетона ── */
+.sk {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--sk-base);
+}
+
+/* контент внутри блока (если он есть) не показываем — как core-ds */
+.sk > * {
+  visibility: hidden;
+}
+
+.sk::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+}
+
+.sk-animate {
+  background: none;
+}
+
+.sk-animate::before {
+  background: var(--sk-flash);
+  opacity: 0.5;
+  animation: sk-pulse 0.5s ease-in-out infinite alternate;
+}
+
+/* в core-ds с backdrop-filter-поддержкой слой чуть прозрачнее */
+@supports (backdrop-filter: blur(1px)) {
+  .sk-animate::before {
+    opacity: 0.4;
+  }
+}
+
+@keyframes sk-pulse {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+/* статичный режим: анимацию выключаем, блок остаётся */
+@media (prefers-reduced-motion: reduce) {
+  .sk-animate::before {
+    animation: none;
+  }
+}
+
+/* ── Текстовые строки (useSkeleton) ── */
+.sk-line {
+  display: block;
+}
+
+.sk-line-in {
+  display: block;
+}
+
+.sk-line .sk {
+  border-radius: 999px;
+}
+
+.sk-line-align-center .sk-line-in {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sk-line-align-right .sk-line-in {
+  margin-left: auto;
+}
+
+/* ═══════════════ Дашборд предпринимателя ═══════════════ */
+.sk-side-body {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px;
+}
+
+.sk-amounts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 4px;
+}
+
+.sk-balance {
+  display: flex;
+  height: 42px;
+  align-items: center;
+  gap: 12px;
+}
+
+.sk-balance-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* нижняя плашка «Альфа-Интеллект» — фикс. низ, 60px, как .spotlight */
+.sk-spot {
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  padding: 0 6px 0 14px;
+  border-radius: 20px 20px 0 0;
+  background: #f2f3f5;
+  box-shadow: inset 1px 1px 2px #fff;
+}
+
+.sk-spot-left {
+  display: flex;
+  width: 234px;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+  margin-right: 12px;
+}
+
+.sk-spot-input {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.sk-divider {
+  height: 1px;
+  margin: 12px 3px;
+  background: rgb(30 43 68 / 8%);
+}
+
+.sk-menu-wrap {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sk-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.sk-menu-row {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  gap: 22px;
+  padding-left: 10px;
+}
+
+.sk-topbar-buttons {
+  display: flex;
+  flex: none;
+  gap: 8px;
+}
+
+.sk-company {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 12px;
+  padding-left: 8px;
+}
+
+.sk-company-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+.sk-tabs {
+  width: 585px;
+  margin-left: 196px;
+}
+
+.sk-hero {
+  display: flex;
+  width: 967px;
+  margin-top: 36px;
+  margin-left: 5px;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.sk-hero-copy {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sk-hero-sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sk-hero-chips {
+  display: flex;
+  width: 910px;
+  height: 52px;
+  align-items: center;
+  gap: 12px;
+}
+
+.sk-tasks {
+  margin-top: 62px;
+}
+
+.sk-cards {
+  display: flex;
+  height: 212px;
+  margin-top: 24px;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.sk-ops {
+  margin-top: 56px;
+}
+
+.sk-ops-title {
+  display: flex;
+  height: 26px;
+  align-items: center;
+  gap: 12px;
+}
+
+.sk-ops-title-main {
+  display: block;
+  width: 201px;
+}
+
+.sk-filters {
+  display: flex;
+  height: 40px;
+  margin-top: 24px;
+  align-items: center;
+  gap: 8px;
+}
+
+.sk-analytics {
+  display: flex;
+  height: 76px;
+  margin-top: 24px;
+  gap: 16px;
+}
+
+.sk-table {
+  display: flex;
+  min-height: 817px;
+  margin-top: 24px;
+  padding: 22px 16px;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+/* ═══════════════ Дашборд бухгалтера ═══════════════ */
+.sk-acc {
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 32px 0 140px;
+}
+
+.sk-qa {
+  display: flex;
+  gap: 12px;
+}
+
+.sk-row1 {
+  display: flex;
+  margin-top: 24px;
+  gap: 24px;
+}
+
+.sk-tablo {
+  display: flex;
+  height: 48px;
+  margin-top: 48px;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.sk-tablo-tabs {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.sk-tablo-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.sk-cards {
+  display: flex;
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.sk-feed {
+  margin-top: 48px;
+}
+
+.sk-filters {
+  display: flex;
+  margin-top: 32px;
+  gap: 16px;
+}
+
+.sk-tags {
+  display: flex;
+  margin-top: 12px;
+  gap: 8px;
+}
+
+
+/* ═══ Переход «скелетон → контент» ═══
+   Контент рендерится сразу под скелетоном (visibility: hidden), поэтому к
+   моменту показа раскладка и картинки уже готовы — показ в том же кадре,
+   без фейдов и без сдвигов. Секции проявляются мгновенными шагами
+   (0 / 30 / 60 / 90 мс) — имитация «живого» прода, а не анимация. */
+/* ═══ Прогрессивная загрузка по виджетам ═══
+   Скелетон не снимается целиком: у каждого виджета своя плитка-скелетон, и
+   она остаётся на месте, пока этот виджет не «загрузился». В момент загрузки
+   плитка прячется, а контент виджета показывается — геометрия у слоёв общая,
+   поэтому нет ни сдвигов, ни пустого кадра между скелетоном и контентом.
+   Расписание приходит из страницы (DashboardSkeletonGate → widgets). */
+.dash-gate {
+  position: relative;
+}
+
+.gate-skeleton {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* настоящий хром бухгалтера уже виден под оверлеем — не дублируем его */
+.gate-skeleton .chrome-side,
+.gate-skeleton .chrome-header,
+.gate-skeleton .spot,
+.gate-skeleton .spotlight {
+  visibility: hidden;
+}
+
+/* контент виджета скрыт до его загрузки (место в раскладке при этом занято) */
+body:not(.sk-loaded-shell) .gate-content .dashboard-page > .sidebar,
+body:not(.sk-loaded-shell) .gate-content .dashboard-page > .topbar,
+body:not(.sk-loaded-spot) .gate-content .dashboard-page .spotlight,
+body:not(.sk-loaded-spot) .gate-content .dashboard-page .viewport-strip,
+body:not(.sk-loaded-spot) .gate-content .dashboard-page .footer-fade,
+body:not(.sk-loaded-spot) .gate-content .dashboard-page .spotlight-corner,
+body:not(.sk-loaded-tabs) .gate-content .dashboard-page .tabs,
+body:not(.sk-loaded-hero) .gate-content .dashboard-page .hero,
+body:not(.sk-loaded-tasks) .gate-content .dashboard-page .tasks,
+body:not(.sk-loaded-operations) .gate-content .dashboard-page .operations,
+body:not(.sk-loaded-qa) .gate-content .cur-main .cur-qa,
+body:not(.sk-loaded-balance) .gate-content .cur-main .cur-balance,
+body:not(.sk-loaded-inwork) .gate-content .cur-main .cur-inwork,
+body:not(.sk-loaded-banners) .gate-content .cur-main .cur-banners,
+body:not(.sk-loaded-tablo) .gate-content .cur-main .cur-tablo,
+body:not(.sk-loaded-cards) .gate-content .cur-main .cur-cards,
+body:not(.sk-loaded-feed) .gate-content .cur-main .cur-title,
+body:not(.sk-loaded-feed) .gate-content .cur-main .cur-filters,
+body:not(.sk-loaded-feed) .gate-content .cur-main .cur-topbar,
+body:not(.sk-loaded-feed) .gate-content .cur-main .cur-table {
+  visibility: hidden;
+}
+
+/* плитка скелетона прячется ровно тогда, когда её виджет уже показан */
+body.sk-loaded-shell .gate-skeleton .sidebar,
+body.sk-loaded-shell .gate-skeleton .topbar,
+body.sk-loaded-spot .gate-skeleton .sk-spot,
+body.sk-loaded-tabs .gate-skeleton .sk-tabs,
+body.sk-loaded-hero .gate-skeleton .sk-hero,
+body.sk-loaded-tasks .gate-skeleton .sk-tasks,
+body.sk-loaded-operations .gate-skeleton .sk-ops,
+body.sk-loaded-qa .gate-skeleton .sk-acc .sk-qa,
+body.sk-loaded-balance .gate-skeleton .sk-acc .sk-balance,
+body.sk-loaded-inwork .gate-skeleton .sk-acc .sk-inwork,
+body.sk-loaded-banners .gate-skeleton .sk-acc .sk-banners,
+body.sk-loaded-tablo .gate-skeleton .sk-acc .sk-tablo,
+body.sk-loaded-cards .gate-skeleton .sk-acc .sk-cards,
+body.sk-loaded-feed .gate-skeleton .sk-acc .sk-feed {
+  visibility: hidden;
+}
+
+/* ряд бухгалтера: обёртки-плитки фиксированной ширины */
+.sk-row1 > div {
+  flex: none;
+}

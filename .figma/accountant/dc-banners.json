@@ -1,0 +1,252 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/cb243aed-1c39-4176-ba79-dba492f996ac";
+const imgObjectFire = `${assetPathPrefix}/6ba0f.png`;
+const img = `${assetPathPrefix}/0b2e3.png`;
+const imgImage = `${assetPathPrefix}/9befc.png`;
+const imgLightBlueCoin004811 = `${assetPathPrefix}/695d8.png`;
+const imgVector4221 = `${assetPathPrefix}/fa968.png`;
+const imgACardV10B4BlackV21 = `${assetPathPrefix}/38b5c.png`;
+const imgRectangle240663286 = `${assetPathPrefix}/5c1a9.png`;
+const img61 = `${assetPathPrefix}/e4538.png`;
+const imgRectangle240663354 = `${assetPathPrefix}/4d59c.png`;
+const imgGroup21313297311 = `${assetPathPrefix}/bbadd.png`;
+const imgVector4222 = `${assetPathPrefix}/73299.svg`;
+const imgLogo = `${assetPathPrefix}/1565c.svg`;
+const imgRectangle240663285 = `${assetPathPrefix}/0252b.svg`;
+
+function ObjectFire({ className }: { className?: string }) {
+  return (
+    <div className={className || "overflow-clip relative size-[128px]"} data-node-id="1:613" data-name="object_fire">
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgObjectFire} />
+    </div>
+  );
+}
+
+function TimerNone({ className }: { className?: string }) {
+  return (
+    <div className={className || "content-stretch flex items-center pt-[16px] relative rounded-[8px]"} data-node-id="136:18700" data-name="Timer/None">
+      <div className="bg-black content-stretch flex gap-[2px] h-[24px] items-center opacity-0 pl-[4px] pr-[8px] py-[8px] relative rounded-[8px] shrink-0" data-node-id="136:18701" data-name="content">
+        <div className="content-stretch flex items-start max-h-[16px] max-w-[16px] min-h-[16px] min-w-[16px] relative shrink-0" data-node-id="136:18702" data-name="🔩 Content">
+          <div className="relative shrink-0 size-[16px]" data-node-id="I136:18702;3270:5780" data-name="Fixer">
+            <ObjectFire className="absolute inset-0 overflow-clip" />
+          </div>
+        </div>
+        <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[12px] text-[color:var(--static_text_inverted\/primary,rgba(255,255,255,0.94))] text-right whitespace-nowrap" data-node-id="136:18703">
+          <p className="leading-[16px]">04:20:00</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Banners() {
+  return (
+    <div className="relative size-full" data-node-id="136:18907" data-name="banners">
+      <div className="absolute bg-[var(--static_promo\/tomato,#ffcac7)] content-stretch flex gap-[8px] isolate items-center left-0 overflow-clip rounded-[16px] top-[-152px] w-[294px]" data-node-id="136:18908" data-name="1">
+        <div className="flex flex-[1_0_0] flex-row items-center self-stretch" data-node-id="I136:18908;19482:30091">
+          <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-between min-w-px pl-[20px] py-[16px] relative z-[2]">
+            <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="I136:18908;18911:95749" data-name="text">
+              <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-node-id="I136:18908;20015:69457" data-name="Container">
+                <div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['SF_Pro_Text:Bold'] justify-center leading-[0] left-0 not-italic text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] top-[10px] w-[194px]" data-node-id="I136:18908;18911:95750">
+                  <p className="leading-[20px]">Игра Слово бизнеса</p>
+                </div>
+              </div>
+              <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[18px] not-italic relative shrink-0 text-[14px] text-[color:var(--static_text\/secondary,rgba(4,4,19,0.55))] w-full whitespace-pre-wrap" data-node-id="I136:18908;18911:95751">
+                {`Разыграем авто, `}
+                <br aria-hidden />
+                миллионы и айфоны
+              </p>
+            </div>
+            <div className="content-stretch flex items-center pb-[2px] pt-[16px] relative shrink-0" data-node-id="I136:18908;18911:95752" data-name="Timer/White">
+              <div className="bg-[var(--static_neutral_inverted\/1500-\(deprecated\),white)] content-stretch flex gap-[2px] h-[24px] items-center pl-[4px] pr-[8px] py-[8px] relative rounded-[8px] shrink-0" data-node-id="I136:18908;18911:95752;19482:30735" data-name="content">
+                <div className="content-stretch flex items-start max-h-[16px] max-w-[16px] min-h-[16px] min-w-[16px] relative shrink-0" data-node-id="I136:18908;18911:95752;18903:119366" data-name="🔩 Content">
+                  <div className="relative shrink-0 size-[16px]" data-node-id="I136:18908;18911:95752;18903:119366;3270:5780" data-name="Fixer">
+                    <ObjectFire className="absolute inset-0 overflow-clip" />
+                  </div>
+                </div>
+                <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[12px] text-[color:var(--static_text\/primary,rgba(3,3,6,0.88))] text-right whitespace-nowrap" data-node-id="I136:18908;18911:95752;18903:119367">
+                  <p className="leading-[16px]">04:20:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-row items-center self-stretch" data-node-id="I136:18908;18911:95753">
+          <div className="content-stretch flex h-full items-center py-[13px] relative shrink-0 w-[64px] z-[1]" data-name="imagecontainer">
+            <div className="relative shrink-0 size-[106px]" data-node-id="I136:18908;18911:95807" data-name="Название продукта кириллицей">
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[var(--static_promo\/sonata,#9edfff)] content-stretch flex gap-[8px] h-[120px] isolate items-center left-0 overflow-clip rounded-[16px] top-0 w-[294px]" data-node-id="136:18909" data-name="2">
+        <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-between min-w-px pl-[20px] py-[16px] relative z-[2]" data-node-id="136:18910">
+          <div className="content-stretch flex flex-col gap-[4px] items-start mb-[-12px] relative shrink-0 w-full" data-node-id="136:18911" data-name="text">
+            <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-node-id="136:18912" data-name="Container">
+              <div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['SF_Pro_Text:Bold'] justify-center leading-[0] left-0 not-italic text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] top-[10px] w-[194px]" data-node-id="136:18913">
+                <p className="leading-[20px]">Зарплатный проект</p>
+              </div>
+            </div>
+            <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[18px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] w-full whitespace-pre-wrap" data-node-id="136:18914">
+              {`Новые условия `}
+              <br aria-hidden />
+              онлайн-инкассации
+            </p>
+          </div>
+          <TimerNone className="content-stretch flex items-center pt-[16px] relative rounded-[8px] shrink-0" />
+        </div>
+        <div className="content-stretch flex h-full items-center py-[13px] relative shrink-0 w-[64px] z-[1]" data-node-id="136:18916" data-name="imagecontainer">
+          <div className="relative shrink-0 size-[93px]" data-node-id="136:18917" data-name="Image">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <img alt="" className="absolute left-[-1.86%] max-w-none size-[107.81%] top-[-3.91%]" src={imgImage} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[var(--static_promo\/oasis,#dfbfff)] content-stretch flex gap-[8px] h-[120px] isolate items-center left-0 overflow-clip rounded-[16px] top-[132px] w-[294px]" data-node-id="136:18918" data-name="3">
+        <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-between min-w-px pl-[20px] py-[16px] relative z-[2]" data-node-id="136:18919">
+          <div className="content-stretch flex flex-col gap-[4px] items-start mb-[-12px] relative shrink-0 w-full" data-node-id="136:18920" data-name="text">
+            <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-node-id="136:18921" data-name="Container">
+              <div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['SF_Pro_Text:Bold'] justify-center leading-[0] left-0 not-italic text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] top-[10px] w-[194px]" data-node-id="136:18922">
+                <p className="leading-[20px]">Выгодные условия</p>
+              </div>
+            </div>
+            <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[18px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] w-full whitespace-pre-wrap" data-node-id="136:18923">
+              {`Новые условия `}
+              <br aria-hidden />
+              онлайн-инкассации
+            </p>
+          </div>
+          <TimerNone className="content-stretch flex items-center pt-[16px] relative rounded-[8px] shrink-0" />
+        </div>
+        <div className="content-stretch flex h-full items-center py-[13px] relative shrink-0 w-[64px] z-[1]" data-node-id="136:18925" data-name="imagecontainer">
+          <div className="overflow-clip relative shrink-0 size-[96px]" data-node-id="136:18926" data-name="ABM/Main/150x150(old)">
+            <div className="absolute contents left-[-5.76px] top-[-8.32px]" data-node-id="136:18927">
+              <div className="absolute h-[61.085px] left-[-5.76px] top-[-8.32px] w-[61.94px]" data-node-id="136:18928" data-name="Light_blue_coin0048 1 1">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" height="61.085" src={imgLightBlueCoin004811} width="61.94" />
+              </div>
+              <div className="absolute contents left-[-5.76px] top-[-8.32px]" data-node-id="136:18929" data-name="Mask group">
+                <div className="absolute h-[28.218px] left-[20.52px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-26.282px_-24.949px] mask-size-[61.937px_61.082px] top-[16.63px] w-[19.916px]" data-node-id="136:18931" style={{ maskImage: `url("${imgVector4221}")` }}>
+                  <div className="absolute inset-[-18.75%_-26.57%]">
+                    <img alt="" className="block max-w-none size-full" src={imgVector4222} />
+                  </div>
+                </div>
+              </div>
+              <div className="absolute h-[90.849px] left-[18.67px] overflow-clip top-[7.34px] w-[51.103px]" data-node-id="136:18932" data-name="business one">
+                <div className="absolute contents inset-[3.18%_3.2%_2.88%_2.86%]" data-node-id="I136:18932;18073:783363" data-name="business_one">
+                  <div className="absolute contents inset-[3.18%_3.2%_2.88%_2.86%]" data-node-id="I136:18932;18073:783364" data-name="A_Card_v10_B4_black_v3 2">
+                    <div className="absolute inset-[3.18%_3.2%_2.88%_2.86%]" data-node-id="I136:18932;18073:783365" data-name="A_Card_v10_B4_black_v2 1">
+                      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgACardV10B4BlackV21} />
+                    </div>
+                    <div className="absolute inset-[40.66%_38.17%_39.33%_38.35%] mix-blend-soft-light" data-node-id="I136:18932;18073:783366" data-name="logo">
+                      <div className="absolute inset-[-0.24%_-0.37%]">
+                        <img alt="" className="block max-w-none size-full" src={imgLogo} />
+                      </div>
+                    </div>
+                  </div>
+                  <p className="[word-break:break-word] absolute font-['Styrene_B_LC:Medium'] inset-[15.86%_40.47%_72.68%_13.06%] leading-[5.172px] not-italic text-[5.78px] text-white tracking-[-0.2312px] whitespace-nowrap" data-node-id="I136:18932;18073:783367">
+                    business
+                    <br aria-hidden />
+                    one
+                  </p>
+                </div>
+              </div>
+              <div className="absolute contents left-[20.14px] top-[10.18px]" data-node-id="136:18933" data-name="Mask group">
+                <div className="absolute contents left-[26.85px] top-[57.15px]" data-node-id="136:18939" data-name="Mask group">
+                  <div className="absolute bg-black h-[24.691px] left-[31.32px] mask-position-[-11.184px_-57.298px,_-4.474px_-10.324px] mask-size-[48.005px_85.343px,_54.458px_54.458px] top-[67.47px] w-[45.941px]" data-node-id="136:18941" style={{ maskImage: `url("${imgRectangle240663285}"), url("${imgRectangle240663286}")` }} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[var(--static_promo\/primrose,#d6f09a)] content-stretch flex gap-[8px] h-[120px] isolate items-center left-0 overflow-clip rounded-[16px] top-[264px] w-[294px]" data-node-id="136:18942" data-name="4">
+        <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-between min-w-px pl-[20px] py-[16px] relative z-[2]" data-node-id="136:18943">
+          <div className="content-stretch flex flex-col gap-[4px] items-start mb-[-12px] relative shrink-0 w-full" data-node-id="136:18944" data-name="text">
+            <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-node-id="136:18945" data-name="Container">
+              <div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['SF_Pro_Text:Bold'] justify-center leading-[0] left-0 not-italic text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] top-[10px] w-[194px]" data-node-id="136:18946">
+                <p className="leading-[20px]">Выгодные условия</p>
+              </div>
+            </div>
+            <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[18px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] w-full whitespace-pre-wrap" data-node-id="136:18947">
+              {`Новые условия `}
+              <br aria-hidden />
+              онлайн-инкассации
+            </p>
+          </div>
+          <TimerNone className="content-stretch flex items-center pt-[16px] relative rounded-[8px] shrink-0" />
+        </div>
+        <div className="content-stretch flex h-full items-center py-[13px] relative shrink-0 w-[64px] z-[1]" data-node-id="136:18949" data-name="imagecontainer">
+          <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="136:18950">
+            <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-0 mt-0 place-items-start relative row-1" data-node-id="136:18951">
+              <div className="col-1 ml-0 mt-0 relative row-1 size-[60.605px]" data-node-id="136:18952" data-name="6-1">
+                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img61} />
+              </div>
+              <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-0 mt-0 place-items-start relative row-1" data-node-id="136:18953" data-name="Mask group">
+                <div className="bg-[#85eb00] col-1 h-[66.314px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-6.92px_2.307px] mask-size-[60.605px_60.605px] mix-blend-color ml-[6.92px] mt-[-2.31px] relative row-1 w-[46.824px]" data-node-id="136:18955" style={{ maskImage: `url("${imgRectangle240663354}")` }} />
+                <div className="col-1 flex h-[76.255px] items-center justify-center ml-[39.05px] mt-[9.88px] relative row-1 w-[57.157px]" data-node-id="136:18956">
+                  <div className="flex-none rotate-[-76.17deg]">
+                    <div className="bg-[#bf0000] blur-[24.511px] h-[42.08px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-39.048px_-9.879px] mask-size-[60.605px_60.605px] relative w-[68.172px]" style={{ maskImage: `url("${imgRectangle240663354}")` }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-1 h-[80px] ml-[16.94px] mt-0 relative row-1 w-[68.977px]" data-node-id="136:18957" data-name="Group 2131329731 1">
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <img alt="" className="absolute h-[165.55%] left-[-43.36%] max-w-none top-[-35.66%] w-[192.01%]" src={imgGroup21313297311} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bg-[var(--static_promo\/tomato,#ffcac7)] content-stretch flex gap-[8px] h-[120px] isolate items-center left-0 overflow-clip rounded-[16px] top-[396px] w-[294px]" data-node-id="136:18958" data-name="5">
+        <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-between min-w-px pl-[20px] py-[16px] relative z-[2]" data-node-id="I136:18958;19482:30091">
+          <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0 w-full" data-node-id="I136:18958;18911:95749" data-name="text">
+            <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-node-id="I136:18958;20015:69457" data-name="Container">
+              <div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['SF_Pro_Text:Bold'] justify-center leading-[0] left-0 not-italic text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] top-[10px] w-[194px]" data-node-id="I136:18958;18911:95750">
+                <p className="leading-[20px]">Игра Слово бизнеса</p>
+              </div>
+            </div>
+            <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[18px] not-italic relative shrink-0 text-[14px] text-[color:var(--static_text\/secondary,rgba(4,4,19,0.55))] w-full whitespace-pre-wrap" data-node-id="I136:18958;18911:95751">
+              {`Разыграем авто, `}
+              <br aria-hidden />
+              миллионы и айфоны
+            </p>
+          </div>
+          <div className="content-stretch flex items-center pt-[16px] relative rounded-[8px] shrink-0" data-node-id="I136:18958;18911:95752" data-name="Timer/None">
+            <div className="bg-black content-stretch flex gap-[2px] h-[24px] items-center opacity-0 pl-[4px] pr-[8px] py-[8px] relative rounded-[8px] shrink-0" data-node-id="I136:18958;18911:95752;19482:30911" data-name="content">
+              <div className="content-stretch flex items-start max-h-[16px] max-w-[16px] min-h-[16px] min-w-[16px] relative shrink-0" data-node-id="I136:18958;18911:95752;19482:30912" data-name="🔩 Content">
+                <div className="relative shrink-0 size-[16px]" data-node-id="I136:18958;18911:95752;19482:30912;3270:5780" data-name="Fixer">
+                  <ObjectFire className="absolute inset-0 overflow-clip" />
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[12px] text-[color:var(--static_text_inverted\/primary,rgba(255,255,255,0.94))] text-right whitespace-nowrap" data-node-id="I136:18958;18911:95752;19482:30913">
+                <p className="leading-[16px]">04:20:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex h-full items-center py-[13px] relative shrink-0 w-[64px] z-[1]" data-node-id="I136:18958;18911:95753" data-name="imagecontainer">
+          <div className="relative shrink-0 size-[106px]" data-node-id="I136:18958;18911:95807" data-name="Название продукта кириллицей">
+            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Accent/14–20 Primary Small (Typography.Text view='primary-small' weight='bold'): Font(family: "SF Pro Text", style: Bold, size: 14, weight: 700, lineHeight: 20, letterSpacing: 0), Paragraph/14–18 Component Secondary (Typography.Text view='component-secondary'): Font(family: "SF Pro Text", style: Regular, size: 14, weight: 400, lineHeight: 18, letterSpacing: 0), Action/12–16 Secondary Medium (Typography.Text view='secondary-medium' weight='medium'): Font(family: "SF Pro Text", style: Medium, size: 12, weight: 500, lineHeight: 16, letterSpacing: 0).
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## object_fire
+**Node ID:** 1:613
+
+\[object\_fire\]
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

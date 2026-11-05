@@ -1,0 +1,15 @@
+<instance id="59:43003" name="Banners :: Dashboard 5.1" x="0" y="0" width="294" height="120.00006103515625">
+  <frame id="I59:43003;24167:424410" name="Text" x="0" y="0" width="222" height="120.00006103515625">
+    <frame id="I59:43003;24167:424411" name="Text" x="20" y="16" width="202" height="60">
+      <frame id="I59:43003;24167:424412" name="Container" x="0" y="0" width="202" height="20">
+        <text id="I59:43003;24167:424413" name="title" x="0" y="0" width="194" height="20" />
+      </frame>
+      <text id="I59:43003;24167:424414" name="subtitle" x="0" y="24" width="202" height="36" />
+    </frame>
+    <text id="I59:43003;24167:424415" name="Name" x="20.000001907348633" y="83.99999237060547" width="202.00000174846082" height="20.000078694557487" />
+  </frame>
+  <frame id="I59:43003;24167:424416" name="Image" x="230" y="0" width="64" height="120.00006103515625">
+    <instance id="I59:43003;24167:424417" name="Название продукта кириллицей" x="0" y="8.000030517578125" width="104" height="104" />
+  </frame>
+</instance>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

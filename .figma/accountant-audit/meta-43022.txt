@@ -1,0 +1,36 @@
+<instance id="59:43022" name="📍conversion" x="0" y="0" width="294" height="384">
+  <text id="I59:43022;233:9306" name="По самому выгодному курсу Alfa FX" x="28" y="320" width="200" height="40" />
+  <text id="I59:43022;233:9305" name="Обменять валюту" x="28" y="292" width="125" height="20" />
+  <rounded-rectangle id="I59:43022;233:9304" name="Divider" x="28" y="275" width="238" height="1" />
+  <text id="I59:43022;233:9112" name="79,85" x="223" y="188" width="43" height="24" />
+  <text id="I59:43022;233:9113" name="77,75" x="162" y="188" width="40" height="24" />
+  <text id="I59:43022;233:9114" name="currency" x="54" y="188" width="71" height="24" />
+  <frame id="I59:43022;233:9115" name="flag" x="28" y="190" width="20" height="20">
+    <frame id="I59:43022;233:9233" name="USD" x="-6" y="-6" width="32" height="32" />
+  </frame>
+  <text id="I59:43022;233:8926" name="91,47" x="225" y="148" width="41" height="24" />
+  <text id="I59:43022;233:8927" name="90,37" x="158" y="148" width="44" height="24" />
+  <text id="I59:43022;233:8928" name="currency" x="54" y="148" width="70" height="24" />
+  <frame id="I59:43022;233:8929" name="flag" x="28" y="150" width="20" height="20">
+    <frame id="I59:43022;233:9031" name="EUR" x="-6" y="-6" width="32" height="32" />
+  </frame>
+  <text id="I59:43022;233:8547" name="11,07" x="228" y="108" width="38" height="24" />
+  <text id="I59:43022;233:8551" name="9,97" x="169" y="108" width="33" height="24" />
+  <text id="I59:43022;233:8559" name="currency" x="54" y="108" width="71" height="24" />
+  <frame id="I59:43022;233:8742" name="flag" x="28" y="110" width="20" height="20">
+    <frame id="I59:43022;233:8743" name="JPN" x="-6" y="-6" width="32" height="32" hidden="true" />
+    <frame id="I59:43022;233:8747" name="GBR" x="-6" y="-6" width="32" height="32" hidden="true" />
+    <frame id="I59:43022;233:8757" name="BYN" x="0" y="-6" width="32" height="32" hidden="true" />
+    <frame id="I59:43022;233:8805" name="KZT" x="-6" y="-6" width="32" height="32" hidden="true" />
+    <frame id="I59:43022;233:8844" name="EUR" x="-6" y="-6" width="32" height="32" hidden="true" />
+    <frame id="I59:43022;233:8860" name="USD" x="-6" y="-6" width="32" height="32" hidden="true" />
+    <frame id="I59:43022;233:8914" name="CNY" x="0" y="-6" width="32" height="32" />
+    <frame id="I59:43022;233:8923" name="NONE" x="0" y="0" width="20" height="20" hidden="true" />
+  </frame>
+  <text id="I59:43022;233:8546" name="Валюта" x="28" y="72" width="45" height="16" />
+  <text id="I59:43022;233:9298" name="Продать" x="150" y="72" width="52" height="16" />
+  <text id="I59:43022;233:9299" name="Купить" x="224" y="72" width="42" height="16" />
+  <frame id="I59:43022;233:8548" name="icon" x="246" y="24" width="20" height="20" />
+  <text id="I59:43022;233:8550" name="title" x="28" y="24" width="110" height="20" />
+</instance>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

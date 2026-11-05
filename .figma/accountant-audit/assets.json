@@ -1,0 +1,83 @@
+{
+  "chrome-0": {
+    "imgSizeSStroke2": "/assets/figma/accountant-chrome-0-imgSizeSStroke2.svg",
+    "imgAlfaBankSignBoxMWhite": "/assets/figma/accountant-chrome-0-imgAlfaBankSignBoxMWhite.svg",
+    "imgFormSuperellipse": "/assets/figma/accountant-chrome-0-imgFormSuperellipse.svg",
+    "imgBorder": "/assets/figma/accountant-chrome-0-imgBorder.png",
+    "imgFadeLine": "/assets/figma/accountant-chrome-0-imgFadeLine.svg",
+    "imgGear": "/assets/figma/accountant-chrome-0-imgGear.svg",
+    "imgShapeContent": "/assets/figma/accountant-chrome-0-imgShapeContent.svg",
+    "imgFixer": "/assets/figma/accountant-chrome-0-imgFixer.svg",
+    "img": "/assets/figma/accountant-chrome-0-img.svg",
+    "imgAllServicesProductsSignBox": "/assets/figma/accountant-chrome-0-imgAllServicesProductsSignBox.svg",
+    "imgBonusesSignBox": "/assets/figma/accountant-chrome-0-imgBonusesSignBox.svg",
+    "imgNewPaymentSignBox": "/assets/figma/accountant-chrome-0-imgNewPaymentSignBox.svg",
+    "imgTransactionFeedSignBox": "/assets/figma/accountant-chrome-0-imgTransactionFeedSignBox.svg",
+    "imgFileArrowsCircle": "/assets/figma/accountant-chrome-0-imgFileArrowsCircle.svg",
+    "imgSafeDeposit": "/assets/figma/accountant-chrome-0-imgSafeDeposit.svg"
+  },
+  "chrome-1": {
+    "imgFixer": "/assets/figma/accountant-chrome-1-imgFixer.svg",
+    "imgFixer1": "/assets/figma/accountant-chrome-1-imgFixer1.svg",
+    "imgFixer2": "/assets/figma/accountant-chrome-1-imgFixer2.svg",
+    "imgFixer3": "/assets/figma/accountant-chrome-1-imgFixer3.svg",
+    "imgFormSuperellipse": "/assets/figma/accountant-chrome-1-imgFormSuperellipse.svg",
+    "imgBgImg": "/assets/figma/accountant-chrome-1-imgBgImg.png",
+    "imgShapeContent": "/assets/figma/accountant-chrome-1-imgShapeContent.svg",
+    "imgBgColor": "/assets/figma/accountant-chrome-1-imgBgColor.png",
+    "imgShapeContent1": "/assets/figma/accountant-chrome-1-imgShapeContent1.svg"
+  },
+  "chrome-2": {
+    "imgTopUpAccountSignBox": "/assets/figma/accountant-chrome-2-imgTopUpAccountSignBox.svg",
+    "imgGetStatementSignBox": "/assets/figma/accountant-chrome-2-imgGetStatementSignBox.svg",
+    "imgCreatePaymentSignBox": "/assets/figma/accountant-chrome-2-imgCreatePaymentSignBox.svg",
+    "imgImportPaymentsSignBox": "/assets/figma/accountant-chrome-2-imgImportPaymentsSignBox.svg",
+    "imgIssueInvoiceSignBox": "/assets/figma/accountant-chrome-2-imgIssueInvoiceSignBox.svg"
+  },
+  "chrome-3": {
+    "imgFormSuperellipse": "/assets/figma/accountant-chrome-3-imgFormSuperellipse.svg",
+    "imgShapeContent": "/assets/figma/accountant-chrome-3-imgShapeContent.svg",
+    "imgFixer": "/assets/figma/accountant-chrome-3-imgFixer.svg"
+  },
+  "43000": {
+    "imgImageContainer": "/assets/figma/accountant-43000-imgImageContainer.png",
+    "imgImageContainer1": "/assets/figma/accountant-43000-imgImageContainer1.png",
+    "imgImageContainer2": "/assets/figma/accountant-43000-imgImageContainer2.png",
+    "imgBg": "/assets/figma/accountant-43000-imgBg.svg",
+    "imgIcon": "/assets/figma/accountant-43000-imgIcon.svg",
+    "imgCardImage": "/assets/figma/accountant-43000-imgCardImage.svg",
+    "imgIcon1": "/assets/figma/accountant-43000-imgIcon1.svg",
+    "imgCross": "/assets/figma/accountant-43000-imgCross.svg",
+    "imgIcon2": "/assets/figma/accountant-43000-imgIcon2.svg",
+    "imgBonusesSignBox": "/assets/figma/accountant-43000-imgBonusesSignBox.svg"
+  },
+  "43003": {
+    "img": "/assets/figma/accountant-43003-img.png"
+  },
+  "43004": {
+    "img": "/assets/figma/accountant-43004-img.png"
+  },
+  "43005": {
+    "img": "/assets/figma/accountant-43005-img.png"
+  },
+  "43022": {
+    "imgGroup4": "/assets/figma/accountant-43022-imgGroup4.svg",
+    "imgGroup3": "/assets/figma/accountant-43022-imgGroup3.svg",
+    "imgGroup": "/assets/figma/accountant-43022-imgGroup.svg",
+    "imgIcon": "/assets/figma/accountant-43022-imgIcon.svg"
+  },
+  "43023": {
+    "imgDivider": "/assets/figma/accountant-43023-imgDivider.svg",
+    "imgIcon": "/assets/figma/accountant-43023-imgIcon.svg"
+  },
+  "43024": {
+    "imgGroup4": "/assets/figma/accountant-43024-imgGroup4.svg",
+    "imgGroup3": "/assets/figma/accountant-43024-imgGroup3.svg",
+    "imgGroup": "/assets/figma/accountant-43024-imgGroup.svg",
+    "imgIcon": "/assets/figma/accountant-43024-imgIcon.svg"
+  },
+  "43025": {
+    "imgDivider": "/assets/figma/accountant-43025-imgDivider.svg",
+    "imgIcon": "/assets/figma/accountant-43025-imgIcon.svg"
+  }
+}

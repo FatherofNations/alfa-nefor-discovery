@@ -1,0 +1,227 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/00f33d77-8827-4227-ac1b-d334a7fb986a";
+const imgSizeSStroke2 = `${assetPathPrefix}/b3361.svg`;
+const imgAlfaBankSignBoxMWhite = `${assetPathPrefix}/67229.svg`;
+const imgFormSuperellipse = `${assetPathPrefix}/2b8b4.svg`;
+const imgBorder = `${assetPathPrefix}/00517.png`;
+const imgFadeLine = `${assetPathPrefix}/1ceb0.svg`;
+const imgGear = `${assetPathPrefix}/d8ad9.svg`;
+const imgShapeContent = `${assetPathPrefix}/c7fb8.svg`;
+const imgFixer = `${assetPathPrefix}/28779.svg`;
+const img = `${assetPathPrefix}/c3a1b.svg`;
+const imgAllServicesProductsSignBox = `${assetPathPrefix}/57105.svg`;
+const imgBonusesSignBox = `${assetPathPrefix}/9eef4.svg`;
+const imgNewPaymentSignBox = `${assetPathPrefix}/daec1.svg`;
+const imgTransactionFeedSignBox = `${assetPathPrefix}/75803.svg`;
+const imgFileArrowsCircle = `${assetPathPrefix}/c7fbe.svg`;
+const imgSafeDeposit = `${assetPathPrefix}/8116c.svg`;
+
+function DividerHorizontal({ className }: { className?: string }) {
+  return (
+    <div className={className || "content-stretch flex flex-col items-start px-[16px] py-[12px] relative w-[248px]"} data-node-id="1:426" data-name="DividerHorizontal">
+      <div className="bg-[var(--neutral-translucent\/300,rgba(15,25,55,0.1))] h-px relative shrink-0 w-full" data-node-id="1:427" data-name="Divider" />
+    </div>
+  );
+}
+
+type SubRightBottomArrowsCircleProps = {
+  className?: string;
+  size?: "S";
+  stroke?: "2";
+};
+
+function SubRightBottomArrowsCircle({ className, size = "S", stroke = "2" }: SubRightBottomArrowsCircleProps) {
+  return (
+    <div className={className || "relative size-[12px]"} data-node-id="1:431">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSizeSStroke2} />
+    </div>
+  );
+}
+
+function AlfaBankSignBoxMWhite({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="1:385" data-name="alfa-bank-sign-box_m_white">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgAlfaBankSignBoxMWhite} />
+    </div>
+  );
+}
+
+type ShapeProps = {
+  className?: string;
+  form?: "Superellipse";
+};
+
+function Shape({ className, form = "Superellipse" }: ShapeProps) {
+  return (
+    <div className={className || "relative size-[40px]"} data-node-id="1:113">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFormSuperellipse} />
+    </div>
+  );
+}
+
+export default function SideMenu() {
+  return (
+    <div className="bg-[var(--base-bg-alt\/primary,#f2f3f5)] content-stretch flex flex-col isolate items-start relative size-full" data-node-id="59:42950" data-name="📍sideMenu">
+      <div className="absolute bottom-0 content-stretch flex flex-col items-start left-0 w-[248px] z-[3]" data-node-id="59:42951" data-name="footer">
+        <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="59:42952" data-name="bg">
+          <div className="bg-[var(--base-bg-alt\/primary,#f2f3f5)] col-1 h-[32px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[248px_32px] ml-0 mt-0 relative row-1 w-[248px]" data-node-id="59:42954" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="fade line" />
+        </div>
+        <div className="bg-[var(--base-bg-alt\/primary,#f2f3f5)] content-stretch flex gap-[14px] items-center pb-[22px] pt-[10px] px-[22px] relative shrink-0 w-full" data-node-id="59:42955" data-name="cell">
+          <div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="59:42956" data-name="color correct box">
+            <div className="relative shrink-0 size-[20px]" data-node-id="59:42957" data-name="gear">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGear} />
+            </div>
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-ellipsis whitespace-nowrap" data-node-id="59:42965">
+            <p className="leading-[20px] overflow-hidden text-ellipsis">Настроить меню</p>
+          </div>
+        </div>
+      </div>
+      <div className="absolute content-stretch flex flex-col items-start justify-center left-0 right-0 top-0 z-[2]" data-node-id="59:42966" data-name="LogoCell">
+        <div className="bg-[var(--base-bg-alt\/primary,#f2f3f5)] content-stretch flex gap-[12px] items-center p-[12px] relative shrink-0 w-[248px]" data-node-id="I59:42966;46640:78293" data-name="Logo">
+          <div className="content-stretch flex flex-col items-start max-h-[40px] max-w-[40px] min-h-[40px] min-w-[40px] relative shrink-0" data-node-id="I59:42966;46640:78294" data-name="IconView">
+            <div className="relative shrink-0 size-[40px]" data-node-id="I59:42966;46640:78294;448:17348" data-name="Content">
+              <div className="absolute left-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[40px_40px] size-[40px] top-0" data-node-id="I59:42966;46640:78294;448:17359" style={{ maskImage: `url("${imgShapeContent}")` }} data-name="ShapeContent">
+                <div className="absolute bg-[#ef3124] left-0 size-[40px] top-0" data-node-id="I59:42966;46640:78294;448:17360" data-name="BgColor" />
+                <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[24px] max-w-[24px] min-h-[24px] min-w-[24px] top-1/2" data-node-id="I59:42966;46640:78294;448:33204" data-name="Content">
+                  <div className="relative shrink-0 size-[24px]" data-node-id="I59:42966;46640:78294;448:33204;485:6351" data-name="Fixer">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="h-[16px] relative shrink-0 w-[123px]" data-node-id="I59:42966;46640:78295" data-name="Альфа-Бизнес">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img} />
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col items-start pt-[72px] relative shrink-0 w-[248px] z-[1]" data-node-id="59:42967" data-name="cells">
+        <div className="content-stretch flex gap-[14px] items-center px-[22px] py-[14px] relative shrink-0 w-full" data-node-id="59:42968" data-name="cell">
+          <div className="relative shrink-0 size-[20px]" data-node-id="59:42969" data-name="all-services-products-sign-box">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgAllServicesProductsSignBox} />
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis whitespace-nowrap" data-node-id="59:42970">
+            <p className="leading-[20px] overflow-hidden text-ellipsis">Все сервисы</p>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[14px] items-center px-[22px] py-[14px] relative shrink-0 w-full" data-node-id="59:42971" data-name="cell">
+          <div className="relative shrink-0 size-[20px]" data-node-id="59:42972" data-name="bonuses-sign-box">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBonusesSignBox} />
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis whitespace-nowrap" data-node-id="59:42973">
+            <p className="leading-[20px] overflow-hidden text-ellipsis">Альфа-Выгодно</p>
+          </div>
+        </div>
+        <DividerHorizontal className="content-stretch flex flex-col items-start px-[16px] py-[12px] relative shrink-0 w-[248px]" />
+        <div className="content-stretch flex gap-[14px] items-center px-[22px] py-[14px] relative shrink-0 w-full" data-node-id="59:42975" data-name="cell">
+          <div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="59:42976" data-name="color correct box">
+            <div className="relative shrink-0 size-[20px]" data-node-id="59:42977" data-name="new-payment-sign-box">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgNewPaymentSignBox} />
+            </div>
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis whitespace-nowrap" data-node-id="59:42978">
+            <p className="leading-[20px] overflow-hidden text-ellipsis">Новый платёж</p>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[14px] items-center px-[22px] py-[14px] relative shrink-0 w-full" data-node-id="59:42979" data-name="cell">
+          <div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="59:42980" data-name="color correct box">
+            <div className="relative shrink-0 size-[20px]" data-node-id="59:42981" data-name="transaction-feed-sign-box">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTransactionFeedSignBox} />
+            </div>
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis whitespace-nowrap" data-node-id="59:42982">
+            <p className="leading-[20px] overflow-hidden text-ellipsis">Лента операций</p>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[14px] items-center px-[22px] py-[14px] relative shrink-0 w-full" data-node-id="59:42983" data-name="cell">
+          <div className="relative shrink-0 size-[20px]" data-node-id="59:42984" data-name="file-arrows-circle">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFileArrowsCircle} />
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis whitespace-nowrap" data-node-id="59:42985">
+            <p className="leading-[20px] overflow-hidden text-ellipsis">Счета на оплату</p>
+          </div>
+        </div>
+        <DividerHorizontal className="content-stretch flex flex-col items-start px-[16px] py-[12px] relative shrink-0 w-[248px]" />
+        <div className="content-stretch flex gap-[14px] items-center px-[22px] py-[14px] relative shrink-0 w-full" data-node-id="59:42987" data-name="cell">
+          <div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="59:42988" data-name="color correct box">
+            <div className="relative shrink-0 size-[20px]" data-node-id="59:42989" data-name="safe-deposit">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSafeDeposit} />
+            </div>
+          </div>
+          <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis whitespace-nowrap" data-node-id="59:42991">
+            <p className="leading-[20px] overflow-hidden text-ellipsis">Депозиты</p>
+          </div>
+          <div className="absolute left-[16px] size-[32px] top-[8px]" data-node-id="59:42992" data-name="border">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" height="32" src={imgBorder} width="32" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Action/16–20 Component Primary (Typography.Text view='component' weight='medium'): Font(family: "SF Pro Text", style: Medium, size: 16, weight: 500, lineHeight: 20, letterSpacing: 0), 💊Placeholder/Solid/2: #3778FB.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## 🔩 Shape
+**Node ID:** 1:112
+
+40
+
+## alfa-bank-sign-box_m_white
+**Node ID:** 1:385
+
+\[logo\_alfa-bank-sign-box\_m\_white\]
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:119
+
+\[logo-corp\_all-services-products-sign-box-line\_20\]
+
+## all-services-products-sign-box
+**Node ID:** 1:118
+
+Все сервисы и продукты
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:122
+
+\[logo-corp\_bonuses-sign-box-line\_20\]
+
+## bonuses-sign-box
+**Node ID:** 1:121
+
+Продукт: Бонусы
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:127
+
+\[logo-corp\_new-payment-sign-box-line\_20\]
+
+## new-payment-sign-box
+**Node ID:** 1:126
+
+Верхнее меню: Новый платёж
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:130
+
+\[logo-corp\_transaction-feed-sign-box-line\_20\]
+
+## transaction-feed-sign-box
+**Node ID:** 1:129
+
+Лента операций
+
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

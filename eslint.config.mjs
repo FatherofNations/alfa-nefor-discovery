@@ -9,7 +9,7 @@ const compat = new FlatCompat({ baseDirectory: __dirname });
 
 const eslintConfig = [
   // артефакты сборки не линтим (запуск через eslint CLI, не next lint)
-  { ignores: [".next/**", ".vercel/**", "node_modules/**", "next-env.d.ts", ".figma/qa/chrome*/**"] },
+  { ignores: [".next/**", ".vercel/**", "node_modules/**", "static-dist/**", "next-env.d.ts", ".figma/**"] },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {

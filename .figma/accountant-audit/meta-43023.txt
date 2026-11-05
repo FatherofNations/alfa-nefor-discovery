@@ -1,0 +1,32 @@
+<instance id="59:43023" name="📍turnover" x="318" y="0" width="294" height="384">
+  <vector id="I59:43023;228:8440" name="Divider" x="78" y="327" width="188" height="0" />
+  <vector id="I59:43023;228:8441" name="Divider" x="78" y="297" width="188" height="0" />
+  <vector id="I59:43023;228:8442" name="Divider" x="78" y="267" width="188" height="0" />
+  <vector id="I59:43023;228:8443" name="Divider" x="78" y="237" width="188" height="0" />
+  <text id="I59:43023;228:8437" name="Start Date" x="78" y="340" width="35" height="20" />
+  <text id="I59:43023;228:8438" name="End Date" x="219" y="340" width="47" height="20" />
+  <text id="I59:43023;228:8431" name="Value" x="28" y="198" width="38" height="18" />
+  <text id="I59:43023;228:8432" name="Value" x="28" y="228" width="32" height="18" />
+  <text id="I59:43023;228:8433" name="Value" x="28" y="258" width="32" height="18" />
+  <text id="I59:43023;228:8434" name="Value" x="28" y="288" width="32" height="18" />
+  <text id="I59:43023;228:8435" name="Value" x="28" y="318" width="32" height="18" />
+  <rounded-rectangle id="I59:43023;228:8451" name="Income" x="242" y="322" width="8" height="2" />
+  <rounded-rectangle id="I59:43023;228:8452" name="Outcome" x="254" y="322" width="8" height="2" />
+  <rounded-rectangle id="I59:43023;228:8453" name="Income" x="202" y="322" width="8" height="2" />
+  <rounded-rectangle id="I59:43023;228:8454" name="Outcome" x="214" y="322" width="8" height="2" />
+  <rounded-rectangle id="I59:43023;228:8449" name="Income" x="162" y="322" width="8" height="2" />
+  <rounded-rectangle id="I59:43023;228:8450" name="Outcome" x="174" y="322" width="8" height="2" />
+  <rounded-rectangle id="I59:43023;228:8445" name="Income" x="122" y="246" width="8" height="78" />
+  <rounded-rectangle id="I59:43023;228:8446" name="Outcome" x="134" y="284" width="8" height="40" />
+  <rounded-rectangle id="I59:43023;228:8447" name="Income" x="82" y="254" width="8" height="70" />
+  <rounded-rectangle id="I59:43023;228:8448" name="Outcome" x="94" y="294" width="8" height="30" />
+  <rounded-rectangle id="I59:43023;228:8429" name="indicator" x="102" y="164" width="6" height="6" />
+  <text id="I59:43023;227:8423" name="Списания" x="28" y="156" width="69" height="20" />
+  <text id="I59:43023;227:8424" name="72 309,13 ₽ " x="28" y="128" width="92" height="24" />
+  <rounded-rectangle id="I59:43023;227:8420" name="indicator" x="126" y="100" width="6" height="6" />
+  <text id="I59:43023;227:8408" name="Поступления" x="28" y="92" width="93" height="20" />
+  <text id="I59:43023;227:8407" name="158 970,22 ₽ " x="28" y="64" width="102" height="24" />
+  <frame id="I59:43023;229:8686" name="icon" x="246" y="24" width="20" height="20" />
+  <text id="I59:43023;218:9146" name="title" x="28" y="24" width="180" height="20" />
+</instance>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

@@ -1,6 +1,7 @@
-/* АВТОГЕН alfa-mcp (пресет accountant) — byte-perfect блоки главной
-   «Бухгалтера». Правки контента — прямо в этой разметке (или через
-   register_dashboard/пресет заново). Блоки: quick-actions, row1, tablo, feed. */
+/* АВТОГЕН по макету Figma HL4PatufFZkyPKtx3LGivP, фрейм 136:18883 «С чего начать»
+   (Corporate-дизайн дашборда бухгалтера). Классы cur-* и стили —
+   styles/accountant.css; геометрия сверена с get_metadata 136:18900/….
+   Правки контента — прямо в этой разметке. */
 
 export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfect из nefor-dash /current, Figma 132:34615) -->
 <section class="cur-qa">
@@ -33,21 +34,21 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
 <section class="cur-row1">
   <div class="cur-balance">
     <div class="cur-bal-body">
-      <div class="cur-bal-amount">570 880,95 ₽</div>
+      <div class="cur-bal-amount">570 880,95 ₽</div>
       <div class="cur-bal-bottom">
         <div class="cur-bal-connect">
           <div class="cur-bal-connect-main">
             <span class="cur-bal-ic cur-bal-ic-green"><img src="/assets/accountant/curBalPlus.svg" width="24" height="24" alt=""></span>
             <div class="cur-bal-connect-txt">
               <div class="cur-bal-connect-top">
-                <span class="cur-bal-sum">500 000 ₽</span>
+                <span class="cur-bal-sum">500 000 ₽ </span>
                 <span class="cur-badge-blue">Доступно к подключению</span>
               </div>
               <div class="cur-bal-connect-sub">Переводите себе бесплатно</div>
             </div>
           </div>
           <button class="cur-bal-x" aria-label="Скрыть">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </button>
         </div>
         <div class="cur-bal-div"></div>
@@ -75,7 +76,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
         <a>Тарифы и подписки</a>
       </div>
       <div class="cur-bal-loyalty">
-        2570 <img src="/assets/accountant/curBalCircleA.svg" width="20" height="20" alt="">
+        100 <img src="/assets/accountant/curBalCircleA.svg" width="20" height="20" alt="">
       </div>
     </div>
   </div>
@@ -84,8 +85,8 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
     <div class="cur-iw-head">Дела в работе</div>
     <div class="cur-iw-list">
       <div class="cur-iw-row"><span>Оплатить</span><span class="cur-ind gray">1</span></div>
-      <div class="cur-iw-row"><span>Подписать</span><span class="cur-ind red">1</span></div>
-      <div class="cur-iw-row"><span>Отправить</span><span class="cur-ind gray">1</span></div>
+      <div class="cur-iw-row"><span>Подписать</span><span class="cur-ind red">3</span></div>
+      <div class="cur-iw-row"><span>Отправить</span><span class="cur-ind gray">2</span></div>
       <div class="cur-iw-row cur-iw-zero"><span>Доработать</span><span class="cur-ind gray">0</span></div>
       <div class="cur-iw-row cur-iw-zero"><span>Отклонённые</span><span class="cur-ind gray">0</span></div>
       <div class="cur-iw-row"><span>Черновики</span><span class="cur-ind gray">1</span></div>
@@ -99,21 +100,21 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
         <b>Зарплатный проект</b>
         <span>Новые условия<br>онлайн-инкассации</span>
       </div>
-      <div class="cur-ban-img"><img src="/assets/accountant/curBan1.webp" alt=""></div>
+      <div class="cur-ban-img"><img src="/assets/accountant/acc-ban1-art.png" alt=""></div>
     </div>
     <div class="cur-ban b2">
       <div class="cur-ban-txt">
-        <b>Умная карта для всех</b>
-        <span>Кэшбэк, бонусы<br>и удобные платежи</span>
+        <b>Выгодные условия</b>
+        <span>Новые условия<br>онлайн-инкассации</span>
       </div>
-      <div class="cur-ban-img"><img src="/assets/accountant/curBan2.webp" alt=""></div>
+      <div class="cur-ban-img"><img src="/assets/accountant/acc-ban2-art.png" alt=""></div>
     </div>
     <div class="cur-ban b3">
       <div class="cur-ban-txt">
-        <b>Кэшбек до 100%</b>
-        <span>За бизнес-расходы,<br>1 балл = 1 ₽</span>
+        <b>Выгодные условия</b>
+        <span>Новые условия<br>онлайн-инкассации</span>
       </div>
-      <div class="cur-ban-img"><img src="/assets/accountant/curBan3.webp" alt=""></div>
+      <div class="cur-ban-img"><img src="/assets/accountant/acc-ban3-art.png" alt=""></div>
     </div>
   </div>
 </section>
@@ -139,16 +140,16 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
 
   <div class="cur-cards">
     <div class="cur-card cur-card-entry">
-      <img class="cur-card-entry-bg" src="/assets/accountant/curCardEntryBg.svg" alt="">
+      <img class="cur-card-entry-bg" src="/assets/accountant/acc-card-entry-bg.svg" alt="">
       <div class="cur-card-entry-head">
         <span>Все задания</span>
-        <img src="/assets/accountant/curChevR.svg" width="20" height="20" alt="">
+        <img src="/assets/accountant/acc-card-chevron.svg" width="20" height="20" alt="">
       </div>
       <div class="cur-card-entry-content">
         <span class="cur-card-entry-sub">0/7 выполнено</span>
         <div class="cur-progress"><i></i></div>
       </div>
-      <img class="cur-card-entry-cap" src="/assets/accountant/curCardEntryCap.webp" alt="">
+      <div class="cur-card-entry-cap"><img src="/assets/accountant/acc-card-entry-img.png" alt=""></div>
     </div>
     <div class="cur-card cur-task">
       <div class="cur-task-title">Защитить бизнес<br>от блокировок</div>
@@ -156,7 +157,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
         <span class="cur-task-pts">500<img src="/assets/accountant/curCardBonus.svg" width="20" height="20" alt=""></span>
         <span class="cur-task-min">1 мин</span>
       </div>
-      <img class="cur-task-img" src="/assets/accountant/curCard2img.webp" alt="">
+      <div class="cur-task-art art2"><img src="/assets/accountant/acc-card2-img.png" alt=""></div>
     </div>
     <div class="cur-card cur-task">
       <div class="cur-task-title">Пополнить счёт</div>
@@ -164,7 +165,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
         <span class="cur-task-pts">500<img src="/assets/accountant/curCardBonus.svg" width="20" height="20" alt=""></span>
         <span class="cur-task-min">1 мин</span>
       </div>
-      <img class="cur-task-img" src="/assets/accountant/curCard3img.webp" alt="">
+      <div class="cur-task-art art3"><img src="/assets/accountant/acc-card3-img.png" alt=""></div>
     </div>
     <div class="cur-card cur-task">
       <div class="cur-task-title">Изучить условия тарифа</div>
@@ -172,7 +173,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
         <span class="cur-task-pts">500<img src="/assets/accountant/curCardBonus.svg" width="20" height="20" alt=""></span>
         <span class="cur-task-min">1 мин</span>
       </div>
-      <img class="cur-task-img" src="/assets/accountant/curCard4img.webp" alt="">
+      <div class="cur-task-art art4"><img src="/assets/accountant/acc-card4-img.png" alt=""></div>
     </div>
     <div class="cur-card cur-task">
       <div class="cur-task-title">Переводить<br>без комиссии<br>с подпиской</div>
@@ -180,16 +181,17 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
         <span class="cur-task-pts">500<img src="/assets/accountant/curCardBonus.svg" width="20" height="20" alt=""></span>
         <span class="cur-task-min">1 мин</span>
       </div>
-      <img class="cur-task-img" src="/assets/accountant/curCard5img.webp" alt="">
+      <div class="cur-task-art art5"><img src="/assets/accountant/acc-card5-img.png" alt=""></div>
     </div>
     <div class="cur-card cur-task">
-      <div class="cur-task-title">Подключить налоговую копилку</div>
+      <div class="cur-task-title">Подключить<br>налоговую копилку</div>
       <div class="cur-task-meta">
         <span class="cur-task-pts">500<img src="/assets/accountant/curCardBonus.svg" width="20" height="20" alt=""></span>
         <span class="cur-task-min">1 мин</span>
       </div>
-      <img class="cur-task-img" src="/assets/accountant/curCard6img.webp" alt="">
+      <div class="cur-task-art art6"><img src="/assets/accountant/acc-card6-img.png" alt=""></div>
     </div>
+
   </div>
 </section>
 
@@ -294,7 +296,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
     <div class="cur-tr-border"></div>
   </div>
 
-  <div class="cur-tr">
+  <div class="cur-tr cur-tr-tall">
     <div class="cur-tr-main">
       <div class="cur-td cur-td-ctrl"><span class="cur-cb"></span></div>
       <div class="cur-td cur-td-name">
@@ -314,7 +316,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
     <div class="cur-tr-border"></div>
   </div>
 
-  <div class="cur-tr">
+  <div class="cur-tr cur-tr-tall">
     <div class="cur-tr-main">
       <div class="cur-td cur-td-ctrl"><span class="cur-cb"></span></div>
       <div class="cur-td cur-td-name">
@@ -355,4 +357,5 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
   </div>
 
   <div class="cur-pagination"></div>
-</div>`;
+</div>
+`;

@@ -1,17 +1,17 @@
 /* Базовый хром страницы: боковое меню (fixed слева, 248) + шапка (fixed
-   сверху, 56). Пересобран по эталонным компонентам core-ds в файле
-   NrzEFUSTXgzOUmsfYym0xD: [D] SideMenu 138079:83013 и [D] Header
-   137517:83456. Эталоны-скриншоты лежат в .figma/, сверка — parity.mjs.
+   сверху, 56). Источник — макет Figma HL4PatufFZkyPKtx3LGivP, фрейм
+   136:18883: [D] SideMenu 136:18896 и [D] Header 136:18898 (дизайн Corporate),
+   геометрия — get_metadata 136:18896 / 136:18898.
 
    Ячейка меню: обёртка 248×48 (поля 12/4) → строка 224×40 с радиусом 12
    (.chrome-cell-in — поверхность hover/active/focus) → бокс иконки 32×32 с
-   глифом 20 → подпись 14/20 medium. Геометрия и типографика в chrome.css.
+   глифом 20 → подпись 14/20 medium. Геометрия и типографика в chrome.css. */
 
-   Серверный компонент — разметка статична, активное состояние навешивает
-   ChromeNavActive по текущему роуту. */
+"use client";
 
 import ChromeNavActive from "./NavActive";
 import Link from "next/link";
+import { useClientName } from "@/lib/client-name";
 
 const A = "/assets/chrome/";
 
@@ -19,8 +19,7 @@ const A = "/assets/chrome/";
    получает активное состояние, без href — инертен (см. NavActive). */
 type NavItem = { icon: string; label: string; href?: string; dim?: boolean };
 
-/* Порядок и состав — из эталонного компонента. Расхождения с ним (нет
-   «Ваш продукт», нет «Эквайринга и кассы») записаны в HANDOFF. */
+/* Порядок и состав — из инстанса [D] SideMenu 136:18896 (MCP get_metadata). */
 const NAV_TOP: readonly NavItem[] = [
   { icon: "nav-all.svg", label: "Все сервисы" },
   { icon: "nav-bonus.svg", label: "Альфа-Выгодно" },
@@ -65,7 +64,8 @@ function Cell({ n }: { n: NavItem }) {
   );
 }
 
-export default function AppChrome() {
+export default function AppChrome({ personLabel = "Предприниматель" }: { personLabel?: string }) {
+  const clientName = useClientName();
   return (
     <>
       {/* ═══ Боковое меню ═══ */}
@@ -95,7 +95,7 @@ export default function AppChrome() {
               пунктирная обводка вокруг иконки */}
           <a className="chrome-cell chrome-cell-proc" aria-disabled="true">
             <CellBody n={{ icon: "nav-procurement.svg", label: "Госзакупки", dim: true }}>
-              <img className="chrome-proc-border" src={`${A}nav-proc-border.webp`} width="32" height="32" alt="" />
+              <span className="chrome-proc-border" />
             </CellBody>
           </a>
         </nav>
@@ -123,13 +123,13 @@ export default function AppChrome() {
           <span className="chrome-co-logo" />
           <span className="chrome-co-info">
             <b>ООО «Город Нагатино»</b>
-            <i>Набоков И.Д.</i>
+            <i>{clientName.headerLabel}</i>
           </span>
         </div>
         <span className="chrome-hdiv" />
         <button className="chrome-person">
           <span className="chrome-person-av" />
-          <span className="chrome-person-t">Предприниматель</span>
+          <span className="chrome-person-t">{personLabel}</span>
         </button>
         <span className="chrome-hdiv" />
         <button className="chrome-hbtn" aria-label="Выйти">

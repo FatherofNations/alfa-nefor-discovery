@@ -8,15 +8,19 @@ export function SummaryPanel() {
   return (
     <div className="dash-panel summary-panel">
       <section className="summary-card turnover-card">
-        <div className="widget-head"><h3>В сентябре</h3><img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" /></div>
+        <span className="widget-badge widget-badge-new">Новое</span>
+        <div className="widget-head">
+          <h3>В сентябре</h3>
+          <img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" />
+        </div>
         <div className="turnover-body">
           <div className="turnover-amounts">
             <div className="turnover-money">
-              <strong>50 000,00 ₽</strong>
+              <strong>50 000,00&nbsp;₽</strong>
               <span><em>Поступления</em><i className="dot dot-green" /></span>
             </div>
             <div className="turnover-money">
-              <strong>10 000,00 ₽</strong>
+              <strong>10 000,00&nbsp;₽</strong>
               <span><em>Списания</em><i className="dot dot-red" /></span>
             </div>
           </div>
@@ -24,15 +28,19 @@ export function SummaryPanel() {
             <div className="turnover-bars"><i className="bar bar-green" style={{ height: 84 }} /><i className="bar bar-red" style={{ height: 21 }} /></div>
             <div className="turnover-bars"><i className="bar bar-green" style={{ height: 84 }} /><i className="bar bar-red" style={{ height: 21 }} /></div>
             <div className="turnover-bars"><i className="bar-dot bar-green" /><i className="bar-dot bar-red" /></div>
-            <div className="turnover-bars"><i className="bar-dot bar-gray" /><i className="bar-dot bar-gray" /></div>
-            <div className="turnover-bars"><i className="bar-dot bar-gray" /><i className="bar-dot bar-gray" /></div>
+            <div className="turnover-bars"><i className="bar-dot bar-dot-empty" /><i className="bar-dot bar-dot-empty" /></div>
+            <div className="turnover-bars"><i className="bar-dot bar-dot-empty" /><i className="bar-dot bar-dot-empty" /></div>
             <div className="turnover-dates"><span>1 сен</span><span>30 сен</span></div>
           </div>
         </div>
       </section>
 
       <section className="summary-card risk-card">
-        <div className="widget-head"><h3>Индикатор риска</h3><img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" /></div>
+        <span className="widget-badge widget-badge-important">Важное</span>
+        <div className="widget-head">
+          <h3>Индикатор риска</h3>
+          <img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" />
+        </div>
         <div className="risk-body">
           <div className="risk-gauge-wrap">
             <img className="risk-gauge-img" src={asset("risk-gauge.svg")} alt="" />
@@ -44,32 +52,39 @@ export function SummaryPanel() {
           </div>
           <span className="summary-divider" />
           <div className="risk-rows">
-            <div className="risk-row"><span>Контрагенты</span><img src={asset("ic-risk-flash.svg")} alt="" /></div>
-            <div className="risk-row"><span>Налоговые платежи</span><img src={asset("ic-risk-flash.svg")} alt="" /></div>
-            <div className="risk-row"><span>Хоз. платежи</span><img src={asset("ic-risk-exclaim.svg")} alt="" /></div>
-            <p className="risk-more">Ещё 4 критерия</p>
+            <div className="risk-row"><span>Контрагенты</span><span className="risk-icon"><img src={asset("ic-risk-flash.svg")} alt="" /></span></div>
+            <div className="risk-row"><span>Налоговые платежи</span><span className="risk-icon"><img src={asset("ic-risk-flash.svg")} alt="" /></span></div>
+            <div className="risk-row"><span>Хоз. платежи</span><span className="risk-icon risk-icon-lg"><img src={asset("ic-risk-exclaim.svg")} alt="" /></span></div>
+            <div className="risk-row risk-row-more"><span>Ещё 4 критерия</span><span className="risk-icon" /></div>
           </div>
         </div>
       </section>
 
       <section className="summary-card credit-card">
-        <div className="widget-head"><h3>Кредиты</h3><img className="widget-chev" src={asset("chevron-right-credit.svg")} alt="" /></div>
-        <div className="credit-title">
-          <strong>1 500 900,21 ₽</strong>
-          <p>Осталось выплатить</p>
+        <div className="credit-top">
+          <div className="credit-head">
+            <h3>Кредиты</h3>
+            <img className="widget-chev" src={asset("chevron-right-credit.svg")} alt="" />
+          </div>
+          <div className="credit-title">
+            <strong>1 500 900,21&nbsp;₽</strong>
+            <p>Осталось выплатить</p>
+          </div>
         </div>
         <div className="credit-info">
-          <div className="credit-overdue">
-            <span className="credit-badge">Есть просрочка</span>
-            <div className="credit-overdue-sum">
-              <strong>349 909,21 ₽</strong>
-              <span>25 дней, 2 продукта</span>
+          <div className="credit-success">
+            <span className="credit-success-badge"><i /></span>
+            <div className="credit-success-copy">
+              <strong>Всё оплачено</strong>
+              <span>Просрочек нет — так держать</span>
             </div>
           </div>
           <div className="credit-help-wrap">
             <span className="summary-divider" />
-            <p className="credit-help">Поможем погасить долг</p>
-            <p className="credit-help-sub">Снизим кредитную нагрузку</p>
+            <div className="credit-help-copy">
+              <strong>Доступны кредитные каникулы</strong>
+              <span>Оформить можно онлайн</span>
+            </div>
           </div>
         </div>
       </section>
@@ -87,22 +102,31 @@ export function AccountsPanel() {
   return (
     <div className="dash-panel accounts-panel">
       <section className="accounts-card">
-        {accountRows.map((row, i) => (
+        {accountRows.map((row) => (
           <div className="account-row" key={row.number}>
             <span className="account-icon"><img src={asset("rub-icon.svg")} alt="" /></span>
-            <span className="account-copy"><strong>Рублёвый счёт</strong><span>{row.number}</span></span>
-            {row.card && (
-              <span className="account-card">
-                <i className="account-card-glyph" aria-hidden="true" />
-                <span><strong>Business One</strong><small>{row.card}</small></span>
-              </span>
-            )}
-            <span className="account-amount">1 000,00 ₽</span>
+            <span className="account-copy">
+              <strong>Рублёвый счёт</strong>
+              <span>{row.number}</span>
+            </span>
+            <span className={`account-card${row.card ? "" : " account-card-empty"}`}>
+              {row.card && (
+                <>
+                  <i className="account-card-glyph" aria-hidden="true"><img src={asset("account-card-image.png")} alt="" /></i>
+                  <span className="account-card-copy">
+                    <strong>Business One</strong>
+                    <span>{row.card}</span>
+                  </span>
+                </>
+              )}
+            </span>
+            <span className="account-amount">1 000,00&nbsp;₽</span>
             <button className="account-more" type="button" aria-label="Действия со счётом"><img src={asset("ops-table-da23c.svg")} alt="" /></button>
-            {i < accountRows.length - 1 && <span className="account-line" />}
           </div>
         ))}
-        <button className="accounts-more" type="button">К счетам</button>
+        <div className="accounts-footer">
+          <button className="accounts-more" type="button">К счетам</button>
+        </div>
       </section>
     </div>
   );
@@ -127,21 +151,28 @@ export function TariffsPanel() {
         </div>
         <div className="tariff-content">
           <div className="tariff-headline">
-            <div className="tariff-plan">
-              <span className="tariff-plan-name">Тариф Простой</span>
-              <div className="tariff-cost"><strong>0 ₽</strong><span>в месяц</span></div>
-            </div>
-            <div className="tariff-subs">
-              <span>Подписки не подключены</span>
-              <button className="tariff-plus" type="button" aria-label="Подключить подписку"><img src={asset("ic-plus.svg")} alt="" /></button>
+            <div className="tariff-headline-inner">
+              <div className="tariff-plan">
+                <span className="tariff-plan-name">Тариф Простой</span>
+                <div className="tariff-cost"><strong>0 ₽</strong><span>в месяц</span></div>
+              </div>
+              <div className="tariff-subs">
+                <span>Подписки не подключены</span>
+                <button className="tariff-plus" type="button" aria-label="Подключить подписку"><img src={asset("ic-plus.svg")} alt="" /></button>
+              </div>
             </div>
           </div>
           <div className="tariff-rows">
             {tariffRows.map((row) => (
               <div className="tariff-row" key={row.title}>
                 <span className={`tariff-icon${row.accent ? " accent" : ""}`}><img src={asset(row.icon)} alt="" /></span>
-                <span className="tariff-copy"><strong>{row.title}</strong><span>{row.sub}</span></span>
-                <span className="tariff-value">{row.value}</span>
+                <span className="tariff-copy">
+                  <span className="tariff-copy-row">
+                    <strong>{row.title}</strong>
+                    <span className="tariff-value">{row.value}</span>
+                  </span>
+                  <span className="tariff-copy-sub">{row.sub}</span>
+                </span>
               </div>
             ))}
           </div>

@@ -1,0 +1,128 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/538ecf29-74c6-4c5e-a84b-acae6f23b115";
+const imgTopUpAccountSignBox = `${assetPathPrefix}/7a1a0.svg`;
+const imgGetStatementSignBox = `${assetPathPrefix}/3412f.svg`;
+const imgCreatePaymentSignBox = `${assetPathPrefix}/05e54.svg`;
+const imgImportPaymentsSignBox = `${assetPathPrefix}/12d85.svg`;
+const imgIssueInvoiceSignBox = `${assetPathPrefix}/5777b.svg`;
+
+function QuickActionsMmb({ className }: { className?: string }) {
+  return (
+    <div className={className || "content-stretch flex gap-[12px] items-center relative"} data-node-id="1:506" data-name="📍quickActions _ mmb">
+      <div className="bg-[var(--neutral\/0,white)] content-stretch flex gap-[12px] items-center px-[20px] py-[12px] relative rounded-[10px] shrink-0" data-node-id="1:507" data-name="button">
+        <div className="relative shrink-0 size-[20px]" data-node-id="1:508" data-name="top-up-account-sign-box">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTopUpAccountSignBox} />
+        </div>
+        <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="1:509">
+          <p className="leading-[24px]">Пополнить счёт</p>
+        </div>
+      </div>
+      <div className="bg-[var(--neutral\/0,white)] content-stretch flex gap-[12px] items-center px-[20px] py-[12px] relative rounded-[10px] shrink-0" data-node-id="1:510" data-name="button">
+        <div className="relative shrink-0 size-[20px]" data-node-id="1:511" data-name="get-statement-sign-box">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGetStatementSignBox} />
+        </div>
+        <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="1:512">
+          <p className="leading-[24px]">Скачать выписку</p>
+        </div>
+      </div>
+      <div className="bg-[var(--neutral\/0,white)] content-stretch flex gap-[12px] items-center px-[20px] py-[12px] relative rounded-[10px] shrink-0" data-node-id="1:513" data-name="button">
+        <div className="relative shrink-0 size-[20px]" data-node-id="1:514" data-name="create-payment-sign-box">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgCreatePaymentSignBox} />
+        </div>
+        <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="1:515">
+          <p className="leading-[24px]">Создать платёж</p>
+        </div>
+      </div>
+      <div className="bg-[var(--neutral\/0,white)] content-stretch flex gap-[12px] items-center px-[20px] py-[12px] relative rounded-[10px] shrink-0" data-node-id="1:516" data-name="button">
+        <div className="relative shrink-0 size-[20px]" data-node-id="1:517" data-name="import-payments-sign-box">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgImportPaymentsSignBox} />
+        </div>
+        <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="1:518">
+          <p className="leading-[24px]">Импорт платежей</p>
+        </div>
+      </div>
+      <div className="bg-[var(--neutral\/0,white)] content-stretch flex gap-[12px] items-center px-[20px] py-[12px] relative rounded-[10px] shrink-0" data-node-id="1:519" data-name="button">
+        <div className="relative shrink-0 size-[20px]" data-node-id="1:520" data-name="Issue-invoice-sign-box">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIssueInvoiceSignBox} />
+        </div>
+        <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="1:521">
+          <p className="leading-[24px]">Выставить счёт</p>
+        </div>
+      </div>
+      <div className="bg-[var(--neutral-translucent\/100,rgba(38,55,88,0.06))] content-stretch flex items-center px-[20px] py-[12px] relative rounded-[10px] shrink-0" data-node-id="1:522" data-name="button">
+        <div className="[word-break:break-word] flex flex-col font-['SF_Pro_Text:Medium'] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] whitespace-nowrap" data-node-id="1:523">
+          <p className="leading-[24px]">Ещё</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function QuickActionsMmb1() {
+  return <QuickActionsMmb className="content-stretch flex gap-[12px] items-center relative size-full" />;
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Action/16–24 Primary Medium (Typography.Text view='primary-medium' weight='medium'): Font(family: "SF Pro Text", style: Medium, size: 16, weight: 500, lineHeight: 24, letterSpacing: 0).
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:140
+
+\[logo-corp\_top-up-account-sign-box-line\_20\]
+
+## top-up-account-sign-box
+**Node ID:** 1:139
+
+Быстрые действия: Пополнить счёт
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:143
+
+\[logo-corp\_get-statement-sign-box-line\_20\]
+
+## get-statement-sign-box
+**Node ID:** 1:142
+
+Чат: Получить выписку
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:146
+
+\[logo-corp\_create-payment-sign-box-line\_20\]
+
+## create-payment-sign-box
+**Node ID:** 1:145
+
+Быстрые действия: Создать платеж
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:149
+
+\[logo-corp\_import-payments-sign-box-line\_20\]
+
+## import-payments-sign-box
+**Node ID:** 1:148
+
+Быстрые действия: Импорт платежей и реестров
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:152
+
+\[logo-corp\_Issue-invoice-sign-box-line\_20\]
+
+## Issue-invoice-sign-box
+**Node ID:** 1:151
+
+Быстрые действия: Выставить счет
+
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

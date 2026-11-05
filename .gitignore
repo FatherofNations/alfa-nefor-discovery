@@ -9,3 +9,6 @@ next-env.d.ts
 
 # Chrome user-data профили QA (cookies/кеш, не часть проекта)
 .figma/qa/chrome*/
+
+# статическая сборка прототипа (npm run build:static)
+static-dist/

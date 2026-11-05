@@ -1,0 +1,32 @@
+<instance id="59:43001" name="📍inWork" x="636" y="0" width="294" height="384">
+  <frame id="I59:43001;56:6297" name="Indicator" x="246" y="340" width="20" height="20">
+    <text id="I59:43001;56:6298" name="Count" x="5.5" y="2" width="9" height="16" />
+  </frame>
+  <text id="I59:43001;56:6293" name="categoryName" x="28" y="340" width="134" height="20" />
+  <frame id="I59:43001;56:6285" name="Indicator" x="246" y="296" width="20" height="20">
+    <text id="I59:43001;56:6286" name="Count" x="6.5" y="2" width="7" height="16" />
+  </frame>
+  <text id="I59:43001;56:6287" name="categoryName" x="28" y="296" width="87" height="20" />
+  <frame id="I59:43001;56:6302" name="Indicator" x="246" y="252" width="20" height="20">
+    <text id="I59:43001;56:6303" name="Count" x="5.5" y="2" width="9" height="16" />
+  </frame>
+  <text id="I59:43001;56:6281" name="categoryName" x="28" y="252" width="107" height="20" />
+  <frame id="I59:43001;56:6273" name="Indicator" x="246" y="208" width="20" height="20">
+    <text id="I59:43001;56:6274" name="Count" x="5.5" y="2" width="9" height="16" />
+  </frame>
+  <text id="I59:43001;56:6275" name="categoryName" x="28" y="208" width="93" height="20" />
+  <frame id="I59:43001;56:6267" name="Indicator" x="246" y="164" width="20" height="20">
+    <text id="I59:43001;56:6268" name="Count" x="6" y="2" width="8" height="16" />
+  </frame>
+  <text id="I59:43001;56:6269" name="categoryName" x="28" y="164" width="84" height="20" />
+  <frame id="I59:43001;56:6261" name="Indicator" x="246" y="120" width="20" height="20">
+    <text id="I59:43001;56:6262" name="Count" x="5.5" y="2" width="9" height="16" />
+  </frame>
+  <text id="I59:43001;56:6263" name="categoryName" x="28" y="120" width="85" height="20" />
+  <frame id="I59:43001;56:6255" name="Indicator" x="246" y="76" width="20" height="20">
+    <text id="I59:43001;56:6256" name="Count" x="6.5" y="2" width="7" height="16" />
+  </frame>
+  <text id="I59:43001;56:6247" name="categoryName" x="28" y="76" width="75" height="20" />
+  <text id="I59:43001;56:6245" name="title" x="28" y="24" width="118" height="20" />
+</instance>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

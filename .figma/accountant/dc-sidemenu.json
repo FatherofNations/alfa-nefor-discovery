@@ -1,0 +1,909 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/e4578de1-2822-4440-a0b7-3e1d96283b38";
+const imgFormSuperellipse = `${assetPathPrefix}/6e71c.svg`;
+const imgAlfaBankSignBoxMWhite = `${assetPathPrefix}/67229.svg`;
+const imgFormSuperellipse1 = `${assetPathPrefix}/2b8b4.svg`;
+const imgShapeContent = `${assetPathPrefix}/4e5a5.svg`;
+const imgFixer = `${assetPathPrefix}/ac567.svg`;
+const imgGradient = `${assetPathPrefix}/53654.png`;
+const img = `${assetPathPrefix}/2926e.svg`;
+const imgFadeLine1 = `${assetPathPrefix}/1ceb0.svg`;
+const imgFixer11 = `${assetPathPrefix}/f54b2.svg`;
+const imgFadeLine = `${assetPathPrefix}/77ce6.svg`;
+const imgFixer12 = `${assetPathPrefix}/0cd43.svg`;
+const imgFixer13 = `${assetPathPrefix}/33ac9.svg`;
+const imgFixer14 = `${assetPathPrefix}/5cb3f.svg`;
+const imgFixer15 = `${assetPathPrefix}/75925.svg`;
+const imgFixer16 = `${assetPathPrefix}/f522e.svg`;
+const imgFixer17 = `${assetPathPrefix}/cee21.svg`;
+const imgFixer18 = `${assetPathPrefix}/0e169.svg`;
+const imgFixer19 = `${assetPathPrefix}/66f12.svg`;
+const imgFixer20 = `${assetPathPrefix}/bcd52.svg`;
+const imgFixer21 = `${assetPathPrefix}/4cbf0.svg`;
+const imgFixer22 = `${assetPathPrefix}/0f565.svg`;
+const imgFixer23 = `${assetPathPrefix}/d035a.svg`;
+const imgFixer24 = `${assetPathPrefix}/b7212.svg`;
+const imgFixer25 = `${assetPathPrefix}/a3b5b.svg`;
+const imgBorder = `${assetPathPrefix}/383bd.svg`;
+
+type BorderProps = {
+  className?: string;
+  form?: "Superellipse";
+};
+
+function Border({ className, form = "Superellipse" }: BorderProps) {
+  return (
+    <div className={className || "relative size-[32px]"} data-node-id="1:3616">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFormSuperellipse} />
+    </div>
+  );
+}
+
+function DividerHorizontal({ className }: { className?: string }) {
+  return (
+    <div className={className || "content-stretch flex flex-col items-start px-[16px] py-[12px] relative w-[248px]"} data-node-id="1:4626" data-name="DividerHorizontal">
+      <div className="bg-[var(--neutral-translucent\/300,rgba(15,25,55,0.1))] h-px relative shrink-0 w-full" data-node-id="1:4627" data-name="Divider" />
+    </div>
+  );
+}
+
+function AlfaBankSignBoxMWhite({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="1:385" data-name="alfa-bank-sign-box_m_white">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgAlfaBankSignBoxMWhite} />
+    </div>
+  );
+}
+
+type ShapeProps = {
+  className?: string;
+  form?: "Superellipse";
+};
+
+function Shape({ className, form = "Superellipse" }: ShapeProps) {
+  return (
+    <div className={className || "relative size-[40px]"} data-node-id="1:3891">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFormSuperellipse1} />
+    </div>
+  );
+}
+
+type LogoProps = {
+  className?: string;
+  home?: "false";
+  hover?: "false";
+};
+
+function Logo({ className, home = "false", hover = "false" }: LogoProps) {
+  return (
+    <div className={className || "content-stretch flex items-center relative"} data-node-id="136:18064">
+      <div className="content-stretch flex flex-col items-start max-h-[40px] max-w-[40px] min-h-[40px] min-w-[40px] relative shrink-0" data-node-id="136:18065" data-name="IconView">
+        <div className="relative shrink-0 size-[40px]" data-node-id="I136:18065;448:17348" data-name="Content">
+          <div className="absolute left-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[40px_40px] size-[40px] top-0" data-node-id="I136:18065;448:17359" style={{ maskImage: `url("${imgShapeContent}")` }} data-name="ShapeContent">
+            <div className="absolute bg-[var(--accent\/primary,#ef3124)] left-0 size-[40px] top-0" data-node-id="I136:18065;448:17360" data-name="BgColor" />
+            <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[24px] max-w-[24px] min-h-[24px] min-w-[24px] top-1/2" data-node-id="I136:18065;448:33204" data-name="Content">
+              <div className="relative shrink-0 size-[24px]" data-node-id="I136:18065;448:33204;485:6351" data-name="Fixer">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type DSideMenuProps = {
+  className?: string;
+  editMode?: "False";
+  mmb?: boolean;
+  products?: React.ReactNode | null;
+  reccomended?: React.ReactNode | null;
+};
+
+function DSideMenu({ className, editMode = "False", mmb = true, products = null, reccomended = null }: DSideMenuProps) {
+  return (
+    <div className={className || "bg-[var(--base-bg-alt\\/primary,#f2f3f5)] content-stretch flex flex-col h-[900px] isolate items-start max-h-[900px] overflow-clip relative w-[var(--grid\\/sidemenu-w,248px)]"} data-node-id="136:18037">
+      <div className="absolute content-stretch flex flex-col h-[64px] items-start left-0 right-0 top-0 z-[3]" data-node-id="136:18038" data-name="LogoCell">
+        <div className="bg-[var(--base-bg-alt\/primary,#f2f3f5)] content-stretch flex gap-[12px] items-center p-[12px] relative shrink-0 w-[248px]" data-node-id="I136:18038;46640:78293" data-name="Content">
+          <Logo className="content-stretch flex items-center relative shrink-0" />
+          <div className="h-[16px] relative shrink-0 w-[123px]" data-node-id="I136:18038;46640:78295" data-name="Альфа-Бизнес">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={img} />
+          </div>
+        </div>
+        <div className="h-[8px] relative shrink-0 w-full" data-node-id="I136:18038;46640:78296" data-name="Gradient">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGradient} />
+        </div>
+      </div>
+      <div className="absolute bottom-0 content-stretch flex flex-col items-start left-0 z-[2]" data-node-id="136:18039" data-name="Footer">
+        <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="136:18040" data-name="BG">
+          <div className="bg-[var(--base-bg-alt\/primary,#f2f3f5)] col-1 h-[32px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[248px_32px] ml-0 mt-0 relative row-1 w-[248px]" data-node-id="136:18042" style={{ maskImage: `url("${imgFadeLine1}")` }} data-name="Fade Line" />
+        </div>
+        <div className="bg-[var(--base-bg-alt\/primary,#f2f3f5)] content-stretch flex flex-col items-start pb-[12px] pt-[4px] px-[12px] relative shrink-0 w-[248px]" data-node-id="136:18043" data-name="ProductCell">
+          <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18043;46640:78245" data-name="Content">
+            <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18043;46640:78246" data-name="LeftAddon">
+              <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18043;46640:78246;46640:78288" data-name="IconView">
+                <div className="relative shrink-0 size-[32px]" data-node-id="I136:18043;46640:78246;46640:78288;448:17371" data-name="Content">
+                  <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18043;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                    <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18043;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                      <div className="relative shrink-0 size-[20px]" data-node-id="I136:18043;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer11} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18043;46640:78247">
+              <p className="leading-[20px] overflow-hidden text-ellipsis">Настроить меню</p>
+            </div>
+            <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18043;121551:58303" data-name="Fade bg">
+              <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18043;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col items-start pt-[72px] relative shrink-0 w-[248px] z-[1]" data-node-id="136:18044" data-name="Cells">
+        <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18045" data-name="AllServices">
+          <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18045;46640:78245" data-name="Content">
+            <div className="content-stretch flex items-start relative shrink-0" data-node-id="I136:18045;46640:78246" data-name="LeftAddon">
+              <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18045;46640:78246;46640:78288" data-name="IconView">
+                <div className="relative shrink-0 size-[32px]" data-node-id="I136:18045;46640:78246;46640:78288;448:17371" data-name="Content">
+                  <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18045;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                    <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18045;46640:78246;46640:78288;448:33926" data-name="Content">
+                      <div className="relative shrink-0 size-[20px]" data-node-id="I136:18045;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer12} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18045;46640:78247">
+              <p className="leading-[20px] overflow-hidden text-ellipsis">Все сервисы</p>
+            </div>
+            <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18045;121551:58303" data-name="Fade bg">
+              <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18045;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+            </div>
+          </div>
+        </div>
+        {mmb && (
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18046" data-name="Bonus">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18046;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start relative shrink-0" data-node-id="I136:18046;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18046;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18046;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18046;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18046;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18046;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer13} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18046;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Альфа-Выгодно</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18046;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18046;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+        )}
+        <DividerHorizontal className="content-stretch flex flex-col items-start px-[16px] py-[12px] relative shrink-0 w-full" />
+        <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="136:18048" data-name="Products">
+          {products || (
+            <>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18049" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18049;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18049;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18049;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18049;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18049;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18049;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18049;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer14} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18049;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Новый платёж</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18049;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18049;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18050" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18050;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18050;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18050;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18050;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18050;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18050;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18050;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer15} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18050;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Лента операций</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18050;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18050;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18051" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18051;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18051;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18051;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18051;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18051;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18051;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18051;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer16} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18051;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Платежи в работе</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18051;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18051;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18052" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18052;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18052;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18052;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18052;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18052;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18052;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18052;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer17} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18052;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Импорт реестров</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18052;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18052;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18053" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18053;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18053;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18053;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18053;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18053;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18053;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18053;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer18} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18053;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Выписка</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18053;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18053;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18054" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18054;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18054;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18054;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18054;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18054;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18054;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18054;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer19} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18054;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Счета</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18054;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18054;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18055" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18055;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18055;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18055;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18055;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18055;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18055;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18055;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer20} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18055;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Контрагенты</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18055;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18055;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18056" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18056;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18056;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18056;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18056;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18056;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18056;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18056;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer21} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18056;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Справки</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18056;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18056;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18057" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18057;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18057;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18057;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18057;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18057;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18057;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18057;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer22} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18057;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Счета на оплату</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18057;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18057;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18058" data-name="ProductCell">
+                <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18058;46640:78245" data-name="Content">
+                  <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18058;46640:78246" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18058;46640:78246;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18058;46640:78246;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18058;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18058;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18058;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer23} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18058;46640:78247">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Карты</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18058;121551:58303" data-name="Fade bg">
+                    <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18058;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col gap-[4px] items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18059" data-name="ProductCell">
+                <div className="bg-[var(--neutral\/300,#e7e8eb)] content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18059;46640:78257" data-name="Content">
+                  <div className="content-stretch flex items-start relative shrink-0" data-node-id="I136:18059;46640:78258" data-name="LeftAddon">
+                    <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18059;46640:78258;46640:78288" data-name="IconView">
+                      <div className="relative shrink-0 size-[32px]" data-node-id="I136:18059;46640:78258;46640:78288;448:17371" data-name="Content">
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18059;46640:78258;46640:78288;448:17376" data-name="ShapeContent">
+                          <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18059;46640:78258;46640:78288;448:33926" data-name="🔩 Content">
+                            <div className="relative shrink-0 size-[20px]" data-node-id="I136:18059;46640:78258;46640:78288;448:33926;485:6861" data-name="Fixer">
+                              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer24} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18059;46640:78259">
+                    <p className="leading-[20px] overflow-hidden text-ellipsis">Ваш продукт</p>
+                  </div>
+                  <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18059;121551:58297" data-name="Fade bg">
+                    <div className="absolute bg-[var(--neutral\/300,#e7e8eb)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18059;121551:58299" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                  </div>
+                </div>
+                <div className="-translate-y-1/2 absolute bg-[var(--accent\/primary,#ef3124)] h-[36px] left-0 rounded-br-[2px] rounded-tr-[2px] top-1/2 w-[2px]" data-node-id="I136:18059;46640:78262" data-name="Border" />
+              </div>
+            </>
+          )}
+        </div>
+        <DividerHorizontal className="content-stretch flex flex-col items-start px-[16px] py-[12px] relative shrink-0 w-full" />
+        <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="136:18061" data-name="Reccomended">
+          {reccomended || (
+            <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18062" data-name="ProductCell">
+              <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18062;46640:78245" data-name="Content">
+                <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18062;46640:78246" data-name="LeftAddon">
+                  <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18062;46640:78246;46640:78290" data-name="IconView">
+                    <div className="relative shrink-0 size-[32px]" data-node-id="I136:18062;46640:78246;46640:78290;448:17371" data-name="Content">
+                      <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18062;46640:78246;46640:78290;448:17376" data-name="ShapeContent">
+                        <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18062;46640:78246;46640:78290;448:33926" data-name="🔩 Content">
+                          <div className="relative shrink-0 size-[20px]" data-node-id="I136:18062;46640:78246;46640:78290;448:33926;485:6861" data-name="Fixer">
+                            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer25} />
+                          </div>
+                        </div>
+                        <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18062;46640:78246;46640:78290;448:17381" data-name="Border">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBorder} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18062;46640:78247">
+                  <p className="leading-[20px] overflow-hidden text-ellipsis">Госзакупки</p>
+                </div>
+                <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18062;121551:58303" data-name="Fade bg">
+                  <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18062;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function DSideMenu1() {
+  return (
+    <DSideMenu
+      className="bg-[var(--base-bg-alt\/primary,#f2f3f5)] content-stretch flex flex-col isolate items-start relative size-full"
+      products={
+        <>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18886" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18886;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18886;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18886;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18886;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18886;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18886;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18886;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer1} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18886;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Новый платёж</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18886;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18886;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18887" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18887;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18887;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18887;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18887;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18887;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18887;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18887;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer2} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18887;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Лента операций</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18887;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18887;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18888" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18888;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18888;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18888;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18888;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18888;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18888;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18888;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer3} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18888;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Платежи в работе</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18888;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18888;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18889" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18889;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18889;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18889;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18889;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18889;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18889;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18889;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer4} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18889;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Импорт реестров</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18889;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18889;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18890" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18890;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18890;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18890;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18890;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18890;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18890;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18890;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer5} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18890;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Выписка</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18890;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18890;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18891" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18891;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18891;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18891;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18891;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18891;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18891;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18891;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer6} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18891;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Счета</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18891;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18891;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18892" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18892;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18892;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18892;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18892;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18892;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18892;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18892;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer7} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18892;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Контрагенты</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18892;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18892;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18893" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18893;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18893;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18893;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18893;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18893;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18893;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18893;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer8} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18893;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Справки</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18893;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18893;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18894" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18894;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18894;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18894;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18894;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18894;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18894;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18894;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer9} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18894;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Счета на оплату</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18894;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18894;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start px-[12px] py-[4px] relative shrink-0 w-[248px]" data-node-id="136:18895" data-name="ProductCell">
+            <div className="content-stretch flex gap-[8px] items-center overflow-clip pl-[4px] pr-[8px] py-[4px] relative rounded-[12px] shrink-0 w-full" data-node-id="I136:18895;46640:78245" data-name="Content">
+              <div className="content-stretch flex items-start opacity-60 relative shrink-0" data-node-id="I136:18895;46640:78246" data-name="LeftAddon">
+                <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="I136:18895;46640:78246;46640:78288" data-name="IconView">
+                  <div className="relative shrink-0 size-[32px]" data-node-id="I136:18895;46640:78246;46640:78288;448:17371" data-name="Content">
+                    <div className="absolute left-0 size-[32px] top-0" data-node-id="I136:18895;46640:78246;46640:78288;448:17376" data-name="ShapeContent">
+                      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[20px] max-w-[20px] min-h-[20px] min-w-[20px] top-1/2" data-node-id="I136:18895;46640:78246;46640:78288;448:33926" data-name="🔩 Content">
+                        <div className="relative shrink-0 size-[20px]" data-node-id="I136:18895;46640:78246;46640:78288;448:33926;485:6861" data-name="Fixer">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer10} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I136:18895;46640:78247">
+                <p className="leading-[20px] overflow-hidden text-ellipsis">Карты</p>
+              </div>
+              <div className="-translate-y-1/2 absolute h-[40px] right-0 top-1/2 w-[28px]" data-node-id="I136:18895;121551:58303" data-name="Fade bg">
+                <div className="absolute bg-[var(--base-bg-alt\/primary,#f2f3f5)] inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[28px_40px]" data-node-id="I136:18895;121551:58305" style={{ maskImage: `url("${imgFadeLine}")` }} data-name="Fade Line" />
+              </div>
+            </div>
+          </div>
+        </>
+      }
+    />
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: 💊Placeholder/Solid/2: #3778FB, Action/14–20 Primary Small (Typography.Text view='primary-small' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: medium_letter_spacing/14).
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Edit Mode=False
+**Node ID:** 136:18037
+
+[CorporateAppHeaderNew](https://design/s/demo/arui-private/storybook/?path=/docs/components-corporateappheadernew--docs)
+
+## [D] SideMenu
+**Node ID:** 136:18036
+
+Используй только внутри [CorporatePage](https://www.figma.com/design/NrzEFUSTXgzOUmsfYym0xD/branch/cMyLDCjUUFi7DjBNZn1fbT/Web----Corp-Components?m=auto&node-id=12777-198991&t=q7nelWdeHnHZj8gr-1)
+
+## 🔩 Shape
+**Node ID:** 1:3890
+
+40
+
+## alfa-bank-sign-box_m_white
+**Node ID:** 1:385
+
+\[logo\_alfa-bank-sign-box\_m\_white\]
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:3061
+
+\[glyph-26\_gear-line\_20\]
+
+## gear
+**Node ID:** 13:3060
+
+настройки, шестерёнки, settings, механизм
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6766
+
+\[logo-corp\_all-services-products-sign-box-line\_20\]
+
+## all-services-products-sign-box
+**Node ID:** 13:6765
+
+Все сервисы и продукты
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6711
+
+\[logo-corp\_bonuses-sign-box-line\_20\]
+
+## bonuses-sign-box
+**Node ID:** 13:6710
+
+Продукт: Бонусы
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:17973
+
+\[logo-corp\_new-payment-sign-box-line\_20\]
+
+## new-payment-sign-box
+**Node ID:** 136:17972
+
+Верхнее меню: Новый платёж
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6787
+
+\[logo-corp\_transaction-feed-sign-box-line\_20\]
+
+## transaction-feed-sign-box
+**Node ID:** 13:6786
+
+Лента операций
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6772
+
+\[logo-corp\_payments-in-progress-sign-box-line\_20\]
+
+## payments-in-progress-sign-box
+**Node ID:** 13:6771
+
+Верхнее меню: Платежи в работе
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:18016
+
+\[logo-corp\_import-payments-sign-box-line\_20\]
+
+## import-payments-sign-box
+**Node ID:** 136:18015
+
+Быстрые действия: Импорт платежей и реестров
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:18019
+
+\[logo-corp\_statement-sign-box-line\_20\]
+
+## statement-sign-box
+**Node ID:** 136:18018
+
+Верхнее меню: Выписка  
+Быстрые действия: Выписка
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:18022
+
+\[logo-corp\_accounts-sign-box-line\_20\]
+
+## accounts-sign-box
+**Node ID:** 136:18021
+
+Верхнее меню: Счета
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:18025
+
+\[logo-corp\_contragents-sign-box-line\_20\]
+
+## contragents-sign-box
+**Node ID:** 136:18024
+
+Продукт: Подбор контрагентов  
+Мои контрагенты
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:18028
+
+\[logo-corp\_certificates-sign-box-line\_20\]
+
+## certificates-sign-box
+**Node ID:** 136:18027
+
+Чат: Справки
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:18031
+
+\[logo-corp\_invoice-sign-box-line\_20\]
+
+## invoice-sign-box
+**Node ID:** 136:18030
+
+Продукт: Счета на оплату
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:18034
+
+\[logo-corp\_cards-sign-box-line\_20\]
+
+## cards-sign-box
+**Node ID:** 136:18033
+
+Продукт: Карты
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 136:18085
+
+\[logo-corp\_procurement-sign-box-line\_20\]
+
+## procurement-sign-box
+**Node ID:** 136:18084
+
+Госзакупки
+
+## 🔩 Border
+**Node ID:** 1:3615
+
+32
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

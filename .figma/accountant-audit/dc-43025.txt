@@ -1,0 +1,91 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/9dcd01e5-8d45-4b77-8aa4-f446180c8e07";
+const imgDivider = `${assetPathPrefix}/d03fe.svg`;
+const imgIcon = `${assetPathPrefix}/df88c.svg`;
+
+function Turnover({ className }: { className?: string }) {
+  return (
+    <div className={className || "bg-[var(--neutral\\/0,white)] h-[384px] overflow-clip relative rounded-[var(--16,16px)] w-[294px]"} data-node-id="1:1122" data-name="📍turnover">
+      <div className="absolute bottom-[57px] h-0 left-[26.53%] right-[9.52%]" data-node-id="1:1123" data-name="Divider">
+        <div className="absolute inset-[-0.5px_0]">
+          <img alt="" className="block max-w-none size-full" src={imgDivider} />
+        </div>
+      </div>
+      <div className="absolute bottom-[87px] h-0 left-[26.53%] right-[9.52%]" data-node-id="1:1124" data-name="Divider">
+        <div className="absolute inset-[-0.5px_0]">
+          <img alt="" className="block max-w-none size-full" src={imgDivider} />
+        </div>
+      </div>
+      <div className="absolute bottom-[117px] h-0 left-[26.53%] right-[9.52%]" data-node-id="1:1125" data-name="Divider">
+        <div className="absolute inset-[-0.5px_0]">
+          <img alt="" className="block max-w-none size-full" src={imgDivider} />
+        </div>
+      </div>
+      <div className="absolute bottom-[147px] h-0 left-[26.53%] right-[9.52%]" data-node-id="1:1126" data-name="Divider">
+        <div className="absolute inset-[-0.5px_0]">
+          <img alt="" className="block max-w-none size-full" src={imgDivider} />
+        </div>
+      </div>
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Regular'] leading-[20px] left-[78px] not-italic overflow-hidden text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-ellipsis top-[340px] whitespace-nowrap" data-node-id="1:1127">
+        1 сен
+      </p>
+      <p className="-translate-x-full [word-break:break-word] absolute font-['SF_Pro_Text:Regular'] leading-[20px] left-[266px] not-italic overflow-hidden text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-ellipsis text-right top-[340px] whitespace-nowrap" data-node-id="1:1128">
+        30 сен
+      </p>
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Regular'] leading-[18px] left-[28px] not-italic overflow-hidden text-[14px] text-[color:var(--text\/tertiary,rgba(5,8,29,0.38))] text-ellipsis top-[198px] whitespace-nowrap" data-node-id="1:1129">
+        тыс ₽
+      </p>
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Regular'] leading-[18px] left-[28px] not-italic overflow-hidden text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-ellipsis top-[228px] w-[32px] whitespace-nowrap" data-node-id="1:1130">
+        90
+      </p>
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Regular'] leading-[18px] left-[28px] not-italic overflow-hidden text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-ellipsis top-[258px] w-[32px] whitespace-nowrap" data-node-id="1:1131">
+        60
+      </p>
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Regular'] leading-[18px] left-[28px] not-italic overflow-hidden text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-ellipsis top-[288px] w-[32px] whitespace-nowrap" data-node-id="1:1132">
+        30
+      </p>
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Regular'] leading-[18px] left-[28px] not-italic overflow-hidden text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-ellipsis top-[318px] w-[32px] whitespace-nowrap" data-node-id="1:1133">
+        0
+      </p>
+      <div className="absolute bg-[var(--neutral\/400,#d2d3d9)] h-[2px] left-[242px] rounded-[4px] top-[322px] w-[8px]" data-node-id="1:1134" data-name="Income" />
+      <div className="absolute bg-[var(--neutral\/400,#d2d3d9)] h-[2px] left-[254px] rounded-[4px] top-[322px] w-[8px]" data-node-id="1:1135" data-name="Outcome" />
+      <div className="absolute bg-[var(--neutral\/400,#d2d3d9)] h-[2px] left-[202px] rounded-[4px] top-[322px] w-[8px]" data-node-id="1:1136" data-name="Income" />
+      <div className="absolute bg-[var(--neutral\/400,#d2d3d9)] h-[2px] left-[214px] rounded-[4px] top-[322px] w-[8px]" data-node-id="1:1137" data-name="Outcome" />
+      <div className="absolute bg-[var(--qualitative-duocolor\/set-a\/1,#0cc44d)] h-[2px] left-[162px] rounded-[2px] top-[322px] w-[8px]" data-node-id="1:1138" data-name="Income" />
+      <div className="absolute bg-[var(--qualitative-duocolor\/set-a\/2,#ff4837)] h-[2px] left-[174px] rounded-[2px] top-[322px] w-[8px]" data-node-id="1:1139" data-name="Outcome" />
+      <div className="absolute bg-[var(--qualitative-duocolor\/set-a\/1,#0cc44d)] h-[78px] left-[122px] rounded-bl-[2px] rounded-br-[2px] rounded-tl-[4px] rounded-tr-[4px] top-[246px] w-[8px]" data-node-id="1:1140" data-name="Income" />
+      <div className="absolute bg-[var(--qualitative-duocolor\/set-a\/2,#ff4837)] h-[40px] left-[134px] rounded-bl-[2px] rounded-br-[2px] rounded-tl-[4px] rounded-tr-[4px] top-[284px] w-[8px]" data-node-id="1:1141" data-name="Outcome" />
+      <div className="absolute bg-[var(--qualitative-duocolor\/set-a\/1,#0cc44d)] h-[70px] left-[82px] rounded-bl-[2px] rounded-br-[2px] rounded-tl-[4px] rounded-tr-[4px] top-[254px] w-[8px]" data-node-id="1:1142" data-name="Income" />
+      <div className="absolute bg-[var(--qualitative-duocolor\/set-a\/2,#ff4837)] h-[30px] left-[94px] rounded-bl-[2px] rounded-br-[2px] rounded-tl-[4px] rounded-tr-[4px] top-[294px] w-[8px]" data-node-id="1:1143" data-name="Outcome" />
+      <div className="absolute bg-[var(--qualitative-duocolor\/set-a\/2,#ff4837)] left-[102px] rounded-[30px] size-[6px] top-[164px]" data-node-id="1:1144" data-name="indicator" />
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Medium'] leading-[20px] left-[28px] not-italic text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] top-[156px] whitespace-nowrap" data-node-id="1:1145">
+        Списания
+      </p>
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Medium'] leading-[24px] left-[28px] not-italic text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] top-[128px] whitespace-nowrap" data-node-id="1:1146">{`72 309,13 ₽ `}</p>
+      <div className="absolute bg-[var(--qualitative-duocolor\/set-a\/1,#0cc44d)] left-[126px] rounded-[30px] size-[6px] top-[100px]" data-node-id="1:1147" data-name="indicator" />
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Medium'] leading-[20px] left-[28px] not-italic text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] top-[92px] whitespace-nowrap" data-node-id="1:1148">
+        Поступления
+      </p>
+      <p className="[word-break:break-word] absolute font-['SF_Pro_Text:Medium'] leading-[24px] left-[28px] not-italic text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] top-[64px] whitespace-nowrap" data-node-id="1:1149">{`158 970,22 ₽ `}</p>
+      <div className="absolute left-[246px] size-[20px] top-[24px]" data-node-id="1:1150" data-name="icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon} />
+      </div>
+      <div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['SF_Pro_Text:Bold'] justify-center leading-[0] left-[28px] not-italic text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] top-[34px] whitespace-nowrap" data-node-id="1:1152">
+        <p className="leading-[20px]">Обороты за сентябрь</p>
+      </div>
+    </div>
+  );
+}
+
+export default function Turnover1() {
+  return <Turnover className="bg-[var(--neutral\/0,white)] overflow-clip relative rounded-[var(--16,16px)] size-full" />;
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Paragraph/14–20 Primary Small (Typography.Text view='primary-small'): Font(family: "SF Pro Text", style: Regular, size: 14, weight: 400, lineHeight: 20, letterSpacing: 0), Paragraph/14–18 Component Secondary (Typography.Text view='component-secondary'): Font(family: "SF Pro Text", style: Regular, size: 14, weight: 400, lineHeight: 18, letterSpacing: 0), Action/14–20 Primary Small (Typography.Text view='primary-small' weight='medium'): Font(family: "SF Pro Text", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0), Action/16–24 Primary Medium (Typography.Text view='primary-medium' weight='medium'): Font(family: "SF Pro Text", style: Medium, size: 16, weight: 500, lineHeight: 24, letterSpacing: 0), Accent/16–20 Component Primary (Typography.Text view='component' weight='bold'): Font(family: "SF Pro Text", style: Bold, size: 16, weight: 700, lineHeight: 20, letterSpacing: 0).
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

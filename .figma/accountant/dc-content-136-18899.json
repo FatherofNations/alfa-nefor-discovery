@@ -1,0 +1,232 @@
+<frame id="136:18899" name="[D] CorporateContent" x="0" y="56" width="1352" height="2068">
+  <frame id="136:18900" name="[D] Body" x="52" y="0" width="1248" height="2004">
+    <instance id="136:18901" name="↕ SpacingVertical" x="0" y="0" width="1248" height="32" />
+    <instance id="136:18902" name="📍quickActions _ mmb" x="0" y="32" width="1161" height="48" />
+    <instance id="136:18903" name="↕ SpacingVertical" x="0" y="80" width="1248" height="24" />
+    <frame id="136:18904" name="1st line" x="0" y="104" width="1248" height="384">
+      <instance id="136:18905" name="📍balance _ single account _ mmb" x="0" y="0" width="612" height="384" />
+      <instance id="136:18906" name="📍inWork" x="636" y="0" width="294" height="384" />
+      <frame id="136:18907" name="banners" x="954" y="0" width="294" height="384.00018310546875">
+        <instance id="136:18908" name="1" x="0" y="-152" width="294" height="134" />
+        <frame id="136:18909" name="2" x="0" y="0" width="294" height="120">
+          <frame id="136:18910" name="Frame 2131330357" x="0" y="0" width="222" height="120">
+            <frame id="136:18911" name="text" x="20" y="16" width="202" height="60">
+              <frame id="136:18912" name="Container" x="0" y="0" width="202" height="20">
+                <text id="136:18913" name="title" x="0" y="0" width="194" height="20" />
+              </frame>
+              <text id="136:18914" name="subtitle" x="0" y="24" width="202" height="36" />
+            </frame>
+            <instance id="136:18915" name="Timer/None" x="20" y="64" width="85" height="40" />
+          </frame>
+          <frame id="136:18916" name="imagecontainer" x="230" y="0" width="64" height="120">
+            <instance id="136:18917" name="Image" x="-7.105427357601002e-15" y="13.5" width="93" height="93" />
+          </frame>
+        </frame>
+        <frame id="136:18918" name="3" x="0" y="132" width="294" height="120">
+          <frame id="136:18919" name="Frame 2131330357" x="0" y="0" width="222" height="120">
+            <frame id="136:18920" name="text" x="20" y="16" width="202" height="60">
+              <frame id="136:18921" name="Container" x="0" y="0" width="202" height="20">
+                <text id="136:18922" name="title" x="0" y="0" width="194" height="20" />
+              </frame>
+              <text id="136:18923" name="subtitle" x="0" y="24" width="202" height="36" />
+            </frame>
+            <instance id="136:18924" name="Timer/None" x="20" y="64" width="85" height="40" />
+          </frame>
+          <frame id="136:18925" name="imagecontainer" x="230" y="0" width="64" height="120">
+            <frame id="136:18926" name="ABM/Main/150x150(old)" x="0" y="12" width="96" height="96">
+              <frame id="136:18927" name="Group 15" x="-5.760002613067627" y="-8.320089340209961" width="75.53227233886719" height="106.50920104980469">
+                <vector id="136:18928" name="Light_blue_coin0048 1 1" x="-5.760002613067627" y="-8.320089340209961" width="61.93952178955078" height="61.08518600463867" />
+                <frame id="136:18929" name="Mask group" x="-5.760002613067627" y="-8.320089340209961" width="61.93653869628906" height="61.08224105834961">
+                  <vector id="136:18930" name="Light_blue_coin0048 1 2" x="-5.760002613067627" y="-8.320089340209961" width="61.93653869628906" height="61.08224105834961" />
+                  <vector id="136:18931" name="Vector 4221" x="20.522223949432373" y="16.62912940979004" width="19.916244506835938" height="28.218278884887695" />
+                </frame>
+                <instance id="136:18932" name="business one" x="18.669684886932373" y="7.340066909790039" width="51.10258865356445" height="90.84904479980469" />
+                <frame id="136:18933" name="Mask group" x="20.13544225692749" y="10.177009582519531" width="48.005470275878906" height="85.34304809570312">
+                  <frame id="136:18934" name="business_one" x="20.13544225692749" y="10.177009582519531" width="48.005470275878906" height="85.34304809570312">
+                    <frame id="136:18935" name="A_Card_v10_B4_black_v3 2" x="20.13544225692749" y="10.177009582519531" width="48.005470275878906" height="85.34304809570312">
+                      <rounded-rectangle id="136:18936" name="A_Card_v10_B4_black_v2 1" x="20.13544225692749" y="10.177009582519531" width="48.005470275878906" height="85.34304809570312" />
+                      <vector id="136:18937" name="logo" x="38.27118444442749" y="44.22534942626953" width="12.001367568969727" height="18.179847717285156" />
+                    </frame>
+                    <text id="136:18938" name="business one" x="25.348401069641113" y="21.69980525970459" width="24" height="11" />
+                  </frame>
+                  <frame id="136:18939" name="Mask group" x="26.84540319442749" y="57.15064239501953" width="54.45780563354492" height="54.45780563354492">
+                    <rounded-rectangle id="136:18940" name="Mask group copy 4" x="26.84540319442749" y="57.15064239501953" width="54.45780563354492" height="54.45780563354492" />
+                    <rounded-rectangle id="136:18941" name="Rectangle 240663285" x="31.31903600692749" y="67.47486114501953" width="45.94070053100586" height="24.690975189208984" />
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+        <frame id="136:18942" name="4" x="0" y="264" width="294" height="120">
+          <frame id="136:18943" name="Frame 2131330357" x="0" y="0" width="222" height="120">
+            <frame id="136:18944" name="text" x="20" y="16" width="202" height="60">
+              <frame id="136:18945" name="Container" x="0" y="0" width="202" height="20">
+                <text id="136:18946" name="title" x="0" y="0" width="194" height="20" />
+              </frame>
+              <text id="136:18947" name="subtitle" x="0" y="24" width="202" height="36" />
+            </frame>
+            <instance id="136:18948" name="Timer/None" x="20" y="64" width="85" height="40" />
+          </frame>
+          <frame id="136:18949" name="imagecontainer" x="230" y="0" width="64" height="120">
+            <frame id="136:18950" name="Group 2131329828" x="0" y="19.9998779296875" width="85.9133071899414" height="80.000244140625">
+              <frame id="136:18951" name="Group 2131329827" x="0" y="20.000100791454315" width="60.6052360534668" height="60.6052360534668">
+                <rounded-rectangle id="136:18952" name="6-1" x="0" y="20.000100791454315" width="60.6052360534668" height="60.6052360534668" />
+                <frame id="136:18953" name="Mask group" x="0" y="20.000100791454315" width="60.6052360534668" height="60.6052360534668">
+                  <rounded-rectangle id="136:18954" name="6-1" x="0" y="20.000100791454315" width="60.6052360534668" height="60.6052360534668" />
+                  <rounded-rectangle id="136:18955" name="Rectangle 240663354" x="6.919715881347656" y="17.693552911281586" width="46.823760986328125" height="66.31443786621094" />
+                  <rounded-rectangle id="136:18956" name="Rectangle 240663355" x="39.04790115356445" y="96.07525795698166" width="57.15736626010039" height="76.2554087043427" />
+                </frame>
+              </frame>
+              <rounded-rectangle id="136:18957" name="Group 2131329731 1" x="16.9364070892334" y="19.9998779296875" width="68.9769058227539" height="80.000244140625" />
+            </frame>
+          </frame>
+        </frame>
+        <instance id="136:18958" name="5" x="0" y="396" width="294" height="120" />
+        <frame id="136:18959" name="Banners :: Dashboard" x="0" y="340.0000915527344" width="294" height="44.000091552734375" hidden="true">
+          <frame id="136:18960" name="text" x="20" y="18" width="166" height="64">
+            <text id="136:18961" name="title" x="0" y="0" width="166" height="20" />
+            <text id="136:18962" name="subtitle" x="0" y="24" width="166" height="40" />
+          </frame>
+          <frame id="136:18963" name="Frame 1948754533" x="202" y="0" width="92" height="110">
+            <instance id="136:18964" name="Торговый эквайринг : Лендинг" x="-3" y="-5" width="120" height="120" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="136:18965" name="↕ SpacingVertical" x="0" y="488" width="1248" height="48" />
+    <frame id="136:18966" name="Frame 2147224438" x="0" y="536" width="1248" height="207">
+      <frame id="136:18967" name="📍tablo" x="0" y="0" width="1248" height="48">
+        <rounded-rectangle id="136:18968" name="segmentBg" x="1112" y="2" width="84" height="44" />
+        <rounded-rectangle id="136:18969" name="segmentBg" x="1114" y="4" width="40" height="40" />
+        <frame id="136:18970" name="tabloNames" x="0" y="11" width="660" height="26">
+          <text id="136:18971" name="name" x="0" y="0" width="144" height="26" />
+          <text id="136:18972" name="name" x="176" y="0" width="79" height="26" />
+          <text id="136:18973" name="name" x="287" y="0" width="182" height="26" />
+          <text id="136:18974" name="name" x="501" y="0" width="159" height="26" />
+        </frame>
+        <frame id="136:18975" name="color correct box" x="1218" y="14" width="20" height="20">
+          <instance id="136:18976" name="gear" x="0" y="0" width="20" height="20" />
+        </frame>
+        <instance id="136:18977" name="eye" x="1120" y="10" width="28" height="28" />
+        <instance id="136:18978" name="eye-off-local" x="1160" y="10" width="28" height="28" />
+      </frame>
+      <instance id="136:18979" name="↕ SpacingVertical" x="0" y="48" width="1248" height="24" />
+      <frame id="136:18980" name="Card" x="0" y="72" width="1248" height="135">
+        <instance id="136:18981" name="Точка входа" x="0" y="0" width="198" height="135" />
+        <instance id="136:18982" name="Задание" x="210" y="0" width="198" height="135" />
+        <instance id="136:18983" name="Задание" x="420" y="0" width="198" height="135" />
+        <instance id="136:18984" name="Задание" x="630" y="0" width="198" height="135" />
+        <instance id="136:18985" name="Задание" x="840" y="0" width="198" height="135" />
+        <instance id="136:18986" name="Задание" x="1050" y="0" width="198" height="135" />
+      </frame>
+    </frame>
+    <instance id="136:18987" name="↕ SpacingVertical" x="0" y="743" width="1248" height="48" />
+    <frame id="136:18988" name="Лента операций" x="0" y="791" width="1264" height="1181.0009765625">
+      <instance id="136:18989" name="↕ SpacingVertical" x="0" y="0" width="1248" height="16" />
+      <frame id="136:18990" name="Contaner" x="0" y="16" width="1248" height="1133.0009765625">
+        <instance id="136:18991" name="[D] TitleView" x="0" y="0" width="235" height="36" />
+        <instance id="136:18992" name="↕ SpacingVertical" x="0" y="36" width="1248" height="32" />
+        <instance id="136:18993" name="[D] FiltersBlock" x="0" y="68" width="1248" height="137" />
+        <instance id="136:18994" name="[D] TopBar/false" x="0" y="205" width="1248" height="72.0009994506836" />
+        <frame id="136:18995" name="Table" x="0" y="277.0009765625" width="1248" height="856">
+          <instance id="136:18996" name="[D] BackgroundPlate" x="16" y="-214" width="1248" height="856" />
+          <frame id="136:18997" name="[D] HeadRow :: Universal" x="16" y="0" width="1216" height="73">
+            <frame id="136:18998" name="Cells" x="0" y="0" width="1216" height="72">
+              <instance id="136:18999" name="[D] HeadControlCell" x="0" y="0" width="52" height="72" />
+              <instance id="136:19000" name="[D] HeadCell" x="52" y="0" width="480" height="72" />
+              <instance id="136:19001" name="[D] HeadCell" x="532" y="0" width="168" height="72" />
+              <instance id="136:19002" name="[D] HeadCell" x="700" y="0" width="132" height="72" />
+              <instance id="136:19003" name="[D] HeadCell" x="832" y="0" width="200" height="72" />
+              <instance id="136:19004" name="[D] HeadCell" x="1032" y="0" width="132" height="72" />
+              <instance id="136:19005" name="[D] HeadActionCell" x="1164" y="0" width="52" height="72" />
+            </frame>
+            <instance id="136:19006" name="BorderLine" x="0" y="72" width="1216" height="1" />
+          </frame>
+          <frame id="136:19007" name="[D] BodyRow :: Basic" x="16" y="73" width="1216" height="133">
+            <frame id="136:19008" name="Cells" x="0" y="0" width="1216" height="92">
+              <instance id="136:19009" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+              <instance id="136:19010" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+              <instance id="136:19011" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+              <instance id="136:19012" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+              <instance id="136:19013" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+              <instance id="136:19014" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+              <instance id="136:19015" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+            </frame>
+            <frame id="136:19016" name="Cells" x="0" y="92" width="1216" height="40">
+              <instance id="136:19017" name="[D] BodyCell :: Basic" x="106" y="0" width="595" height="40" />
+            </frame>
+            <instance id="136:19018" name="BorderLine" x="0" y="132" width="1216" height="1" />
+          </frame>
+          <frame id="136:19019" name="[D] BodyRow :: Basic" x="16" y="206" width="1216" height="133">
+            <frame id="136:19020" name="Cells" x="0" y="0" width="1216" height="92">
+              <instance id="136:19021" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+              <instance id="136:19022" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+              <instance id="136:19023" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+              <instance id="136:19024" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+              <instance id="136:19025" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+              <instance id="136:19026" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+              <instance id="136:19027" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+            </frame>
+            <frame id="136:19028" name="Cells" x="0" y="92" width="1216" height="40">
+              <instance id="136:19029" name="[D] BodyCell :: Basic" x="106" y="0" width="595" height="40" />
+            </frame>
+            <instance id="136:19030" name="BorderLine" x="0" y="132" width="1216" height="1" />
+          </frame>
+          <frame id="136:19031" name="[D] BodyRow :: Basic" x="16" y="339" width="1216" height="153">
+            <frame id="136:19032" name="Cells" x="0" y="0" width="1216" height="92">
+              <instance id="136:19033" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+              <instance id="136:19034" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+              <instance id="136:19035" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+              <instance id="136:19036" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+              <instance id="136:19037" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+              <instance id="136:19038" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+              <instance id="136:19039" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+            </frame>
+            <frame id="136:19040" name="Cells" x="0" y="92" width="1216" height="60">
+              <instance id="136:19041" name="[D] BodyCell :: Basic" x="106" y="0" width="595" height="60" />
+            </frame>
+            <instance id="136:19042" name="BorderLine" x="0" y="152" width="1216" height="1" />
+          </frame>
+          <frame id="136:19043" name="[D] BodyRow :: Basic" x="16" y="492" width="1216" height="153">
+            <frame id="136:19044" name="Cells" x="0" y="0" width="1216" height="92">
+              <instance id="136:19045" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+              <instance id="136:19046" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+              <instance id="136:19047" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+              <instance id="136:19048" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+              <instance id="136:19049" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+              <instance id="136:19050" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+              <instance id="136:19051" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+            </frame>
+            <frame id="136:19052" name="Cells" x="0" y="92" width="1216" height="60">
+              <instance id="136:19053" name="[D] BodyCell :: Basic" x="106" y="0" width="595" height="60" />
+            </frame>
+            <instance id="136:19054" name="BorderLine" x="0" y="152" width="1216" height="1" />
+          </frame>
+          <frame id="136:19055" name="[D] BodyRow :: Basic" x="16" y="645" width="1216" height="133">
+            <frame id="136:19056" name="Cells" x="0" y="0" width="1216" height="92">
+              <instance id="136:19057" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+              <instance id="136:19058" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+              <instance id="136:19059" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+              <instance id="136:19060" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+              <instance id="136:19061" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+              <instance id="136:19062" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+              <instance id="136:19063" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+            </frame>
+            <frame id="136:19064" name="Cells" x="0" y="92" width="1216" height="40">
+              <instance id="136:19065" name="[D] BodyCell :: Basic" x="106" y="0" width="595" height="40" />
+            </frame>
+            <instance id="136:19066" name="BorderLine" x="0" y="132" width="1216" height="1" />
+          </frame>
+          <instance id="136:19067" name="[D] BodyRow :: Basic" x="16" y="538" width="1060" height="93" hidden="true" />
+          <instance id="136:19068" name="[D] BodyRow :: Basic" x="16" y="631" width="1060" height="93" hidden="true" />
+          <instance id="136:19069" name="[D] BodyRow :: Basic" x="16" y="724" width="1060" height="93" hidden="true" />
+          <instance id="136:19070" name="[D] BodyRow :: Basic" x="16" y="817" width="1060" height="93" hidden="true" />
+          <instance id="136:19071" name="[D] BodyRow :: Basic" x="16" y="910" width="1060" height="93" hidden="true" />
+          <instance id="136:19072" name="[D] StickyPagination" x="0" y="778" width="1248" height="76" />
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: The design was too large to fit into context with get_design_context. Instead you have received a sparse metadata response, you MUST call get_design_context on the IDs of the sublayers to get the full code. Split up the calls to ensure the sublayers do not also exceed the context limit.

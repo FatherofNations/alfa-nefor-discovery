@@ -1,0 +1,48 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/54ece814-3c20-4950-819f-8a3b59e8abfd";
+const imgGear = `${assetPathPrefix}/ce8ef.svg`;
+const imgEye = `${assetPathPrefix}/7da40.svg`;
+const imgEyeOffLocal = `${assetPathPrefix}/196df.svg`;
+
+export default function Tablo() {
+  return (
+    <div className="relative rounded-[16px] size-full" data-node-id="136:18967" data-name="📍tablo">
+      <div className="absolute bg-[var(--neutral-translucent\/200,rgba(30,43,68,0.08))] h-[44px] right-[52px] rounded-[var(--12,12px)] top-[2px] w-[84px]" data-node-id="136:18968" data-name="segmentBg" />
+      <div className="absolute bg-[var(--neutral-translucent\/0,white)] border-[0.5px] border-[var(--neutral-translucent\/200,rgba(30,43,68,0.08))] border-solid right-[94px] rounded-[10px] shadow-[0px_12px_16px_0px_rgba(0,0,0,0.04),0px_4px_8px_0px_rgba(0,0,0,0.04),0px_0px_1px_0px_rgba(0,0,0,0.04)] size-[40px] top-[4px]" data-node-id="136:18969" data-name="segmentBg" />
+      <div className="[word-break:break-word] absolute content-stretch flex font-['SF_Pro_Display:Bold'] gap-[32px] items-center leading-[26px] left-0 not-italic text-[22px] top-[11px] whitespace-nowrap" data-node-id="136:18970" data-name="tabloNames">
+        <p className="relative shrink-0 text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="136:18971">
+          С чего начать
+        </p>
+        <p className="relative shrink-0 text-[color:var(--text\/tertiary,rgba(5,8,29,0.38))]" data-node-id="136:18972">
+          Сводка
+        </p>
+        <p className="relative shrink-0 text-[color:var(--text\/tertiary,rgba(5,8,29,0.38))]" data-node-id="136:18973">
+          Счета на главной
+        </p>
+        <p className="relative shrink-0 text-[color:var(--text\/tertiary,rgba(5,8,29,0.38))]" data-node-id="136:18974">
+          Обзор отрасли
+        </p>
+      </div>
+      <div className="absolute content-stretch flex items-center left-[1218px] top-[14px]" data-node-id="136:18975" data-name="color correct box">
+        <div className="relative shrink-0 size-[20px]" data-node-id="136:18976" data-name="gear">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGear} />
+        </div>
+      </div>
+      <div className="absolute left-[1120px] size-[28px] top-[10px]" data-node-id="136:18977" data-name="eye">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEye} />
+      </div>
+      <div className="absolute left-[1160px] size-[28px] top-[10px]" data-node-id="136:18978" data-name="eye-off-local">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEyeOffLocal} />
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: shadow/S Action/Default: Effect(type: DROP_SHADOW, color: #0000000A, offset: (0, 0), radius: 1, spread: 0); Effect(type: DROP_SHADOW, color: #0000000A, offset: (0, 4), radius: 8, spread: 0); Effect(type: DROP_SHADOW, color: #0000000A, offset: (0, 12), radius: 16, spread: 0), Headline–System/22–26 Small (Typography.Title view='small' font='system'): Font(family: "SF Pro Display", style: Bold, size: 22, weight: 700, lineHeight: 26, letterSpacing: 0).
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

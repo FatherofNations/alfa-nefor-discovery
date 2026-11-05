@@ -12,10 +12,10 @@
   left: 0;
   top: 0;
   width: 248px;
-  /* Высота за вычетом плашки: в макете `SideMenu` — 248×844, потому что низ
-     900-го фрейма занимает `Spotlight-bar`. При 100vh подвал сайдбара
-     («Настроить меню») уезжал на 56 px вниз и прятался под плашку. */
-  height: calc(100vh - 56px);
+  /* Макет 136:18883: SideMenu 248×900 на всю высоту кадра, плашка
+     Spotlight-bar (840…900) просто лежит поверх (z-index выше), подвал
+     меню «Настроить меню» скрыт под ней. */
+  height: 100vh;
   background: var(--page-bg);
   display: flex;
   flex-direction: column;
@@ -236,11 +236,12 @@ a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124);
   letter-spacing: var(--ls-12-medium, 0.19px);
   color: var(--text-inverted-primary, rgba(255, 255, 255, 0.94));
   white-space: nowrap;
-  /* в эталоне ширина текста фиксирована: без этого пилюля уже на 1.9px и
-     весь левый край шапки уезжает вправо */
-  width: 112px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Ширина по тексту, как `.cur-person-t` в эталоне (@Main): паддинги чипсы
+     8/16 и зазор 8 — единственное, что задаёт геометрию. Фиксированные 112 px
+     держали ширину пилюли 168 под длинную подпись «Предприниматель»; с подписью
+     «Бухгалтер» они давали 50 px пустоты справа и отрыв текста от аватара. */
+  /* кнопка по умолчанию центрирует текст — в макете у PersonSelect text-left */
+  text-align: left;
 }
 
 /* ── Контент под хромом ──
@@ -260,9 +261,8 @@ a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124);
   right: 0;
   bottom: 0;
   min-width: 1600px;
-  /* 56, а не 60: в макете `Spotlight-bar` — 1600×56 @ y=844. Из-за 60 плашка
-     поднималась на 4 px и перекрывала подвал сайдбара. Найдено geomdiff. */
-  height: 56px;
+  /* макет 136:18883: Spotlight-bar — 1600×60 @ y=840 (MCP 136:19073) */
+  height: 60px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -280,10 +280,11 @@ a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124);
 .spot-left {
   flex: none;
   width: 248px;
+  height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 14px 12px 14px 14px;
+  padding: 8px 12px 8px 14px;
 }
 .spot-logo { display: flex; align-items: center; gap: 12px; width: 222px; }
 
@@ -318,7 +319,7 @@ a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124);
   line-height: 24px;
   font-weight: 700;
   letter-spacing: 0.43px;
-  background-image: linear-gradient(to right, #7a63f1, #9933ff);
+  background-image: linear-gradient(to right, #6868e9, #904bff);
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
@@ -339,11 +340,14 @@ a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124);
   height: 48px;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 0 20px;
+  gap: 8px;
+  padding: 0 20px 0 8px;
   border-radius: 999px;
   background: var(--neutral-0, #fff);
 }
+/* LeftAddons макета: бокс 32 с глифом скрепки 24, выравнивание по центру */
+.spot-clip { flex: none; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+.spot-clip img { width: 24px; height: 24px; }
 .spot-ph {
   flex: 1 1 0;
   min-width: 0;
@@ -357,32 +361,6 @@ a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124);
 }
 .spot-expand { flex: none; display: flex; }
 
-.spot-cta {
-  flex: none;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  /* 197×48 из макета (`SupportButton` 1397/4 197×48): ширина задана, потому
-     что текст в alfa-sans на 1 px уже макетного; радиус — пилюля, а не 10:
-     в макете кнопка `shape="rounded"` при высоте 48, то есть скругление во
-     всю высоту. Из-за радиуса 10 кнопка читалась прямоугольником. */
-  width: 197px;
-  padding: 4px 20px;
-  border-radius: 24px;
-  background: var(--accent-secondary, #212124);
-}
-.spot-cta-i { flex: none; display: flex; }
-.spot-cta-t {
-  padding: 0 4px;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-  letter-spacing: var(--ls-16-medium, -0.05px);
-  color: var(--text-inverted-primary, rgba(255, 255, 255, 0.94));
-  white-space: nowrap;
-}
 
 /* Фокус пункта меню ложится на строку 224×40, а не на всю ячейку 248×48:
    контейнер для этого и появился при переборке по эталону. */

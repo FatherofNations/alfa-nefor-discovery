@@ -1,0 +1,29 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="154" height="212" viewBox="0 0 154 212" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Light">
+<g clip-path="url(#clip0_0_449)">
+<g id="shadow" filter="url(#filter0_f_0_449)">
+<use xlink:href="#stroke0_0_449" fill="url(#paint0_linear_0_449)"/>
+<use xlink:href="#stroke0_0_449" fill="white" fill-opacity="0.1"/>
+<mask id="stroke1_0_449" fill="white">
+<use xlink:href="#stroke0_0_449"/>
+</mask>
+<path d="M146 7.68994C146 16.1375 108.443 -19.0325 76.4202 -19.0325C44.3969 -19.0325 8 16.1375 8 7.68994C8 -0.757639 44.3969 -28 76.4202 -28C108.443 -28 146 -0.757639 146 7.68994Z" stroke-width="0.323944" stroke="#1E2B44" stroke-opacity="0.08" mask="url(#stroke1_0_449)"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_0_449" x="-38.2" y="-74.2" width="230.4" height="129.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="23.1" result="effect1_foregroundBlur_0_449"/>
+</filter>
+<linearGradient id="paint0_linear_0_449" x1="45.2399" y1="-28.8096" x2="51.2043" y2="17.1019" gradientUnits="userSpaceOnUse">
+<stop offset="0.3" stop-color="#EF3124"/>
+<stop offset="0.85" stop-color="#F756BB"/>
+</linearGradient>
+<clipPath id="clip0_0_449">
+<rect width="154" height="212" rx="16" fill="white"/>
+</clipPath>
+<path id="stroke0_0_449" d="M146 7.68994C146 16.1375 108.443 -19.0325 76.4202 -19.0325C44.3969 -19.0325 8 16.1375 8 7.68994C8 -0.757639 44.3969 -28 76.4202 -28C108.443 -28 146 -0.757639 146 7.68994Z"/>
+</defs>
+</svg>

@@ -6,21 +6,11 @@ export const menuItems = [
   { label: "Платежи в работе", icon: "menu-7ff07.svg", muted: true },
 ] as const;
 
-export const workItems = [
-  ["Оплатить", 0],
-  ["Подписать", 2],
-  ["Отправить", 0],
-  ["Доработать", 1],
-  ["Отклонённые", 1],
-  ["Черновики", 0],
-  ["В работе у банка", 0],
-] as const;
-
 export const taskCards = [
-  { title: "Индикатор\nриска", image: "task-slot3-6f3c6.png", className: "contain" },
-  { title: "Изучить условия тарифа", image: "task-slot4-02f60.png", className: "tariff" },
-  { title: "Добавить нового пользователя", image: "task-slot5-82477.png", className: "user" },
-  { title: "Принять платёж онлайн", image: "task-slot6-4e15a.png", className: "online" },
+  { title: "Индикатор\nриска", image: "task-action-risk.png", className: "risk" },
+  { title: "Изучить условия тарифа", image: "task-action-tariff.png", className: "tariff" },
+  { title: "Добавить нового пользователя", image: "task-action-user.png", className: "user" },
+  { title: "Принять платёж онлайн", image: "task-action-online.png", className: "online" },
 ] as const;
 
 export const analytics = [

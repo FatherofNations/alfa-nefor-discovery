@@ -1,0 +1,232 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/d492ad8f-dca4-472b-b38d-0d714faf1af5";
+const imgLightWeightFalse = `${assetPathPrefix}/ce929.svg`;
+const imgLightWeightFalse1 = `${assetPathPrefix}/77b77.svg`;
+const imgSize24StyleLineColorFalse = `${assetPathPrefix}/99596.svg`;
+const imgFixer = `${assetPathPrefix}/a5033.svg`;
+const imgFixer1 = `${assetPathPrefix}/d3851.svg`;
+const imgIconMagnifier = `${assetPathPrefix}/67877.svg`;
+const imgIconNeuralAssistant = `${assetPathPrefix}/a4cff.svg`;
+const imgLight = `${assetPathPrefix}/ed712.svg`;
+
+type CompositionDefault20Props = {
+  className?: string;
+  variant?: "Custom";
+};
+
+function CompositionDefault20({ className, variant = "Custom" }: CompositionDefault20Props) {
+  return <div className={className || "relative size-[20px]"} data-node-id="9:134" />;
+}
+
+type GridProps = {
+  className?: string;
+  lightWeight?: "False";
+};
+
+function Grid({ className, lightWeight = "False" }: GridProps) {
+  return (
+    <div className={className || "relative size-[20px]"} data-node-id="9:175">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLightWeightFalse} />
+    </div>
+  );
+}
+
+type CompositionDefault24Props = {
+  className?: string;
+  variant?: "Custom";
+};
+
+function CompositionDefault24({ className, variant = "Custom" }: CompositionDefault24Props) {
+  return <div className={className || "relative size-[24px]"} data-node-id="9:196" />;
+}
+
+type Grid1Props = {
+  className?: string;
+  lightWeight?: "False";
+};
+
+function Grid1({ className, lightWeight = "False" }: Grid1Props) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="9:242">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLightWeightFalse1} />
+    </div>
+  );
+}
+
+type PaperclipProps = {
+  className?: string;
+  color?: "False";
+  size?: "24";
+  style?: "Line";
+};
+
+function Paperclip({ className, color = "False", size = "24", style = "Line" }: PaperclipProps) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="13:6656">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSize24StyleLineColorFalse} />
+    </div>
+  );
+}
+
+type DCorporateInputProps = {
+  className?: string;
+  active?: "False";
+  filled?: "False";
+  massiveContent?: "No";
+  size?: "48";
+  state?: "Normal";
+};
+
+function DCorporateInput({ className, active = "False", filled = "False", massiveContent = "No", size = "48", state = "Normal" }: DCorporateInputProps) {
+  return (
+    <div className={className || "content-stretch flex flex-col gap-[10px] h-[48px] items-start relative w-[320px]"} data-node-id="60:4650">
+      <div className="bg-[var(--neutral-translucent\/0,white)] content-stretch flex flex-[1_0_0] items-center min-h-px relative rounded-[var(--max,999px)] w-full" data-node-id="60:4669" data-name="Field">
+        <div className="content-stretch flex h-full items-center pl-[var(--8,8px)] py-[8px] relative shrink-0" data-node-id="60:4670" data-name="LeftAddons">
+          <div className="content-stretch flex items-start max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative shrink-0" data-node-id="60:4671" data-name="IconView">
+            <div className="relative shrink-0 size-[32px]" data-node-id="I60:4671;448:17371" data-name="Content">
+              <div className="absolute left-0 size-[32px] top-0" data-node-id="I60:4671;448:17376" data-name="ShapeContent">
+                <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col items-center justify-center left-1/2 max-h-[24px] max-w-[24px] min-h-[24px] min-w-[24px] top-1/2" data-node-id="I60:4671;448:33926" data-name="Content">
+                  <div className="relative shrink-0 size-[24px]" data-node-id="I60:4671;448:33926;485:6351" data-name="Fixer">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-center min-w-px pl-[var(--8,8px)] pr-[var(--20,20px)] relative" data-node-id="60:4672" data-name="Content">
+          <div className="h-[20px] overflow-clip relative shrink-0 w-full" data-node-id="60:4673" data-name="[D] Placeholder :: Local">
+            <div className="absolute content-stretch flex items-center left-0 overflow-clip top-0 w-[209px]" data-node-id="I60:4673;31:17304" data-name="Анимация подсказок">
+              <div className="h-[20px] overflow-clip relative shrink-0 w-[169px]" data-node-id="I60:4673;31:17304;31:16710" data-name="Value">
+                <div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] justify-center leading-[0] left-0 not-italic text-[16px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] top-[10px] tracking-[var(--regular_letter_spacing\/16,-0.24px)] whitespace-nowrap" data-node-id="I60:4673;31:17304;31:16711">
+                  <p className="leading-[20px]">Как открыть депозит</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[4px] h-full items-center justify-end pl-[var(--0,0px)] pr-[var(--20,20px)] py-[var(--8,8px)] relative shrink-0" data-node-id="60:4674" data-name="RightAddons">
+          <div className="content-stretch flex items-center justify-center max-h-[19.999998092651367px] max-w-[19.999998092651367px] min-h-[19.999998092651367px] min-w-[19.999998092651367px] relative shrink-0" data-node-id="60:4676" data-name="RightAddon1">
+            <div className="relative shrink-0 size-[20px]" data-node-id="I60:4676;485:52922" data-name="Fixer">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer1} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type LogotypeXsProps = {
+  className?: string;
+  icon?: "Magnifier" | "Neural-assistant";
+};
+
+function LogotypeXs({ className, icon = "Magnifier" }: LogotypeXsProps) {
+  const isNeuralAssistant = icon === "Neural-assistant";
+  return (
+    <div className={className || "relative size-[28px]"} id={isNeuralAssistant ? "node-62_303" : "node-62_302"}>
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={isNeuralAssistant ? imgIconNeuralAssistant : imgIconMagnifier} />
+    </div>
+  );
+}
+
+type NeuroLogotypeProps = {
+  className?: string;
+  label?: boolean;
+  showLight?: boolean;
+  size?: "XS";
+};
+
+function NeuroLogotype({ className, label = true, showLight = true, size = "XS" }: NeuroLogotypeProps) {
+  return (
+    <div className={className || "content-stretch flex gap-[12px] items-center relative"} data-node-id="62:348">
+      {showLight && (
+        <div className="absolute left-[-6px] size-[44px] top-[-6px]" data-node-id="62:352" data-name="Light">
+          <div className="absolute inset-[-115%]">
+            <img alt="" className="block max-w-none size-full" src={imgLight} />
+          </div>
+        </div>
+      )}
+      <LogotypeXs className="relative shrink-0 size-[28px]" icon="Neural-assistant" />
+      {label && (
+        <div className="content-stretch flex items-center py-[2px] relative shrink-0" data-node-id="62:354" data-name="Name">
+          <div className="[word-break:break-word] bg-clip-text bg-gradient-to-r flex flex-col font-['SF_Pro_Text:Bold'] from-[#6868e9] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[transparent] text-ellipsis to-[#904bff] whitespace-nowrap" data-node-id="62:355">
+            <p className="leading-[24px] overflow-hidden text-ellipsis">Нейропомощник</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function LogoCell({ className }: { className?: string }) {
+  return (
+    <div className={className || "content-stretch flex flex-col items-start pl-[14px] pr-[var(--12,12px)] py-[var(--8,8px)] relative w-[248px]"} data-node-id="136:18880" data-name="LogoCell">
+      <NeuroLogotype className="content-stretch flex gap-[12px] items-center relative shrink-0 w-full" />
+    </div>
+  );
+}
+
+export default function SpotlightBar() {
+  return (
+    <div className="content-stretch flex items-center overflow-clip relative rounded-tl-[var(--20,20px)] rounded-tr-[var(--20,20px)] size-full" data-node-id="136:19073" data-name="Spotlight-bar">
+      <div aria-hidden className="absolute inset-0 pointer-events-none rounded-tl-[var(--20,20px)] rounded-tr-[var(--20,20px)]" style={{ backgroundImage: "linear-gradient(-75.1302380752264deg, var(--base-bg\\/secondary,rgb(242, 243, 245)) 87.714%, var(--decorative-muted-alt\\/indigo,rgb(227, 230, 254)) 96.192%, var(--decorative-muted-alt\\/purple,rgb(241, 226, 252)) 102.82%)" }} />
+      <LogoCell className="content-stretch flex flex-col items-start pl-[14px] pr-[var(--12,12px)] py-[var(--8,8px)] relative shrink-0 w-[248px]" />
+      <div className="content-stretch flex flex-[1_0_0] gap-[24px] items-center min-w-px pl-[var(--12,12px)] pr-[var(--6,6px)] py-[var(--6,6px)] relative" data-node-id="I136:19073;425:21487" data-name="Body">
+        <DCorporateInput className="content-stretch flex flex-[1_0_0] flex-col gap-[10px] h-[48px] items-start min-w-px relative" />
+      </div>
+      <div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_1px_1px_2px_0px_white]" />
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: ui/Logo/Search: #FF1418,, Text/Light/AI-title: , Accent/16–24 Primary Medium (Typography.Text view='primary-medium' weight='bold'): Font(family: "SF Pro Text", style: Bold, size: 16, weight: 700, lineHeight: 24, letterSpacing: 0), Paragraph/16–20 Component Primary (Typography.Text view='component'): Font(family: "font_family/<20", style: Regular, size: 16, weight: 400, lineHeight: 20, letterSpacing: regular_letter_spacing/16), Spotlight inner shadow: Effect(type: INNER_SHADOW, color: #FFFFFF, offset: (1, 1), radius: 2, spread: 0).
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Size=M
+**Node ID:** 136:18321
+
+Используется для экранов с разрешением 768-1600
+
+## Size=m
+**Node ID:** 13:6091
+
+\[corp\_neural-assistant\_m\]
+
+## neural-assistant
+**Node ID:** 13:6090
+
+нейропомощник, ассистент, нейроассистент, искусственный интеллект, нейросеть, AI
+
+## Size=24, Style=Line, Color=False
+**Node ID:** 13:6656
+
+\[glyph-26\_paperclip-line\_24\]
+
+## paperclip
+**Node ID:** 13:6655
+
+скрепка, добавить, прикрепить, paperclip
+
+## 🔩 Addon
+**Node ID:** 8:2071
+
+Inverted=False, 24
+
+## Size=20, Style=Thinline, Color=False
+**Node ID:** 13:6665
+
+\[glyph-26\_arrows-out-thinline\_20\]
+
+## arrows-out
+**Node ID:** 13:6664
+
+раздвинуть, развернуть
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
