@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.vercel/
+out/
+*.log
+.DS_Store
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# Chrome user-data профили QA (cookies/кеш, не часть проекта)
+.figma/qa/chrome*/

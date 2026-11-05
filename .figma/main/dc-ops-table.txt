@@ -1,0 +1,321 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/3f10722a-17e8-4efa-9b50-92eb851e9f86";
+import { Checkbox } from '@alfalab/core-components/checkbox';
+import Status from "packages/status/src/index.ts"
+import { Amount } from '@alfalab/core-components/amount';
+import React from 'react';
+import { ButtonDesktop } from '@alfalab/core-components/button/desktop';
+import { Icon20Adapter } from '@alfalab/core-components/shared/icon-20-adapter';
+
+const imgBgImg1 = `${assetPathPrefix}/75144.png`;
+const imgBgImg2 = `${assetPathPrefix}/4c685.png`;
+const imgBgImg3 = `${assetPathPrefix}/ec6f5.png`;
+const imgBgImg4 = `${assetPathPrefix}/255e8.png`;
+const imgBgImg = `${assetPathPrefix}/8473e.svg`;
+const imgDotsHorizontal = `${assetPathPrefix}/da23c.svg`;
+
+type BorderLineProps = {
+  className?: string;
+  skeleton?: "false";
+};
+
+function BorderLine({ className, skeleton = "false" }: BorderLineProps) {
+  return (
+    <div className={className || "content-stretch flex flex-col items-start max-h-px min-h-px relative w-[60px]"} data-node-id="13:3253">
+      <div className="bg-[var(--neutral-translucent\/300,rgba(15,25,55,0.1))] h-px max-h-px min-h-px relative shrink-0 w-full" data-node-id="13:3254" data-name="Line" />
+    </div>
+  );
+}
+
+export default function Table() {
+  return (
+    <div className="bg-white content-stretch flex flex-col gap-[12px] items-center overflow-clip px-[16px] py-[22px] relative rounded-[16px] size-full" data-node-id="80:44685" data-name="Table">
+      <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="80:44686" data-name="Day">
+        <div className="content-stretch flex flex-col gap-[20px] items-center justify-center px-[16px] relative shrink-0 w-full" data-node-id="80:44687" data-name="Header">
+          <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[18px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--bold_letter_spacing\/18,0.38px)] w-full whitespace-nowrap" data-node-id="80:44688">
+            <p className="leading-[22px] overflow-hidden text-ellipsis">10 августа</p>
+          </div>
+          <BorderLine className="content-stretch flex flex-col items-start max-h-px min-h-px relative shrink-0 w-full" />
+        </div>
+        <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="80:44690" data-name="Body">
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="80:44691" data-name="[D] BodyRow :: Basic">
+            <div className="content-stretch flex flex-col gap-[16px] items-start px-[var(--16,16px)] py-[var(--24,24px)] relative shrink-0 w-full" data-node-id="80:44692" data-name="Row">
+              <div className="content-stretch flex gap-[20px] items-start relative shrink-0 w-full" data-node-id="80:44693" data-name="Content">
+                <CodeConnectSnippet data-node-id="80:44694" data-name="Checkbox_24" data-snippet-language="React">
+                  <Checkbox size={24} colors="default" />
+                </CodeConnectSnippet>
+                <div className="content-stretch flex flex-[1_0_0] gap-[var(--24,24px)] items-start min-w-px relative" data-node-id="80:44695" data-name="Info">
+                  <div className="content-stretch flex flex-[1_0_0] gap-[20px] items-center min-w-px relative" data-node-id="80:44696" data-name="Info">
+                    <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="80:44697" data-name="logo">
+                      <div className="col-1 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[52px_52px] ml-0 mt-0 relative row-1 size-[52px]" data-node-id="80:44699" style={{ maskImage: `url("${imgBgImg}")` }} data-name="BgImg">
+                        <div aria-hidden className="absolute inset-0 pointer-events-none">
+                          <img alt="" className="absolute max-w-none object-cover size-full" src={imgBgImg1} />
+                          <div className="absolute inset-0 overflow-hidden">
+                            <img alt="" className="absolute h-[119.1%] left-[-38.56%] max-w-none top-[-18.52%] w-[176.59%]" src={imgBgImg2} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start leading-[24px] min-w-px not-italic relative text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="80:44700">
+                      <p className="font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] relative shrink-0 tracking-[var(--bold_letter_spacing\/16,0.43px)] w-full" data-node-id="80:44701">
+                        ООО «Умные и свободные»
+                      </p>
+                      <p className="font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] relative shrink-0 tracking-[var(--regular_letter_spacing\/16,-0.24px)] w-full" data-node-id="80:44702">
+                        Аванс по договору №51/9-12 от 27.07.2023
+                      </p>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex gap-[var(--6,6px)] items-center py-[2px] relative shrink-0 w-[95px]" data-node-id="80:44703" data-name="Content">
+                    <div className="content-stretch flex items-start relative shrink-0" data-node-id="80:44704" data-name="StatusPreset">
+                      <CodeConnectSnippet data-node-id="I80:44704;60798:623837" data-name="Status" data-snippet-language="React">
+                        <Status size="20" shape="Rounded" leftAddon="False" rightAddon="False" />
+                      </CodeConnectSnippet>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-start justify-end relative shrink-0 w-[176px]" data-node-id="80:44707" data-name="Text">
+                    <div className="content-stretch flex items-start max-w-[2px] min-w-[2px] relative self-stretch shrink-0" data-node-id="I80:44707;115769:207847" data-name="Gap">
+                      <div className="h-full relative shrink-0 w-[2px]" data-node-id="I80:44707;115769:207848" data-name="Fixer" />
+                    </div>
+                    <div className="content-stretch flex items-start relative shrink-0" data-node-id="I80:44707;78541:162738" data-name="Operation">
+                      <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] leading-[24px] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] tracking-[var(--regular_letter_spacing\/16,0.43px)] whitespace-nowrap" data-node-id="I80:44707;78541:162738;57693:406">
+                        −
+                      </p>
+                    </div>
+                    <CodeConnectSnippet data-node-id="I80:44707;46222:12788" data-name="Amount" data-snippet-language="React">
+                      <Amount value={300000} minority={100} currency="RUB" codeFormat="symbolic" view="withZeroMinorPart" />
+                    </CodeConnectSnippet>
+                  </div>
+                </div>
+                <div className="relative shrink-0 size-[24px]" data-node-id="80:44708" data-name="dots-horizontal">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgDotsHorizontal} />
+                </div>
+              </div>
+              <div className="content-stretch flex items-center justify-center pl-[116px] relative shrink-0" data-node-id="80:44709" data-name="Number">
+                <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[24px] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] tracking-[var(--regular_letter_spacing\/16,-0.24px)] whitespace-nowrap" data-node-id="80:44710">
+                  №63677, Т-Банк, ·· 9909
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col items-start max-h-px min-h-px px-[16px] relative shrink-0 w-full" data-node-id="80:44711" data-name="BorderLine">
+              <div className="bg-[var(--neutral-translucent\/300,rgba(15,25,55,0.1))] h-px max-h-px min-h-px relative shrink-0 w-full" data-node-id="I80:44711;74661:67532" data-name="Line" />
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="80:44712" data-name="[D] BodyRow :: Basic">
+            <div className="content-stretch flex flex-col gap-[16px] items-start px-[var(--16,16px)] py-[var(--24,24px)] relative shrink-0 w-full" data-node-id="80:44713" data-name="Row">
+              <div className="content-stretch flex gap-[20px] items-start relative shrink-0 w-full" data-node-id="80:44714" data-name="Content">
+                <CodeConnectSnippet data-node-id="80:44715" data-name="Checkbox_24" data-snippet-language="React">
+                  <Checkbox size={24} colors="default" />
+                </CodeConnectSnippet>
+                <div className="content-stretch flex flex-[1_0_0] gap-[var(--24,24px)] items-start min-w-px relative" data-node-id="80:44716" data-name="Info">
+                  <div className="content-stretch flex flex-[1_0_0] gap-[20px] items-center min-w-px relative" data-node-id="80:44717" data-name="Info">
+                    <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="80:44718" data-name="logo">
+                      <div className="col-1 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[52px_52px] ml-0 mt-0 relative row-1 size-[52px]" data-node-id="80:44720" style={{ maskImage: `url("${imgBgImg}")` }} data-name="BgImg">
+                        <div aria-hidden className="absolute inset-0 pointer-events-none">
+                          <img alt="" className="absolute max-w-none object-cover size-full" src={imgBgImg1} />
+                          <div className="absolute inset-0 overflow-hidden">
+                            <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgBgImg3} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start leading-[24px] min-w-px not-italic relative text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="80:44721">
+                      <p className="font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] relative shrink-0 tracking-[var(--bold_letter_spacing\/16,0.43px)] w-full whitespace-pre-wrap" data-node-id="80:44722">{`ИП  «Костин Иван Федорович»`}</p>
+                      <p className="font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] relative shrink-0 tracking-[var(--regular_letter_spacing\/16,-0.24px)] w-full" data-node-id="80:44723">
+                        Перевод себе в Альфа-Банк
+                      </p>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex gap-[var(--6,6px)] items-center py-[2px] relative shrink-0 w-[95px]" data-node-id="80:44724" data-name="Content">
+                    <div className="content-stretch flex items-start relative shrink-0" data-node-id="80:44725" data-name="StatusPreset">
+                      <CodeConnectSnippet data-node-id="I80:44725;60798:623837" data-name="Status" data-snippet-language="React">
+                        <Status size="20" shape="Rounded" leftAddon="False" rightAddon="False" />
+                      </CodeConnectSnippet>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-start justify-end relative shrink-0 w-[176px]" data-node-id="80:44728" data-name="Text">
+                    <div className="content-stretch flex items-start max-w-[2px] min-w-[2px] relative self-stretch shrink-0" data-node-id="I80:44728;115769:207847" data-name="Gap">
+                      <div className="h-full relative shrink-0 w-[2px]" data-node-id="I80:44728;115769:207848" data-name="Fixer" />
+                    </div>
+                    <div className="content-stretch flex items-start relative shrink-0" data-node-id="I80:44728;78541:162738" data-name="Operation">
+                      <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] leading-[24px] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/positive,#0d9336)] tracking-[var(--regular_letter_spacing\/16,0.43px)] whitespace-nowrap" data-node-id="I80:44728;78541:162738;57693:406">
+                        +
+                      </p>
+                    </div>
+                    <CodeConnectSnippet data-node-id="I80:44728;46222:12788" data-name="Amount" data-snippet-language="React">
+                      <Amount value={123456700} minority={100} currency="RUB" codeFormat="symbolic" view="withZeroMinorPart" />
+                    </CodeConnectSnippet>
+                  </div>
+                </div>
+                <div className="relative shrink-0 size-[24px]" data-node-id="80:44729" data-name="dots-horizontal">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgDotsHorizontal} />
+                </div>
+              </div>
+              <div className="content-stretch flex items-center justify-center pl-[116px] relative shrink-0" data-node-id="80:44730" data-name="Number">
+                <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[24px] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] tracking-[var(--regular_letter_spacing\/16,-0.24px)] whitespace-nowrap" data-node-id="80:44731">
+                  №63677, Т-Банк, ·· 9909
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col items-start max-h-px min-h-px px-[16px] relative shrink-0 w-full" data-node-id="80:44732" data-name="BorderLine">
+              <div className="bg-[var(--neutral-translucent\/300,rgba(15,25,55,0.1))] h-px max-h-px min-h-px relative shrink-0 w-full" data-node-id="I80:44732;74661:67532" data-name="Line" />
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="80:44733" data-name="[D] BodyRow :: Basic">
+            <div className="content-stretch flex flex-col gap-[16px] items-start px-[var(--16,16px)] py-[var(--24,24px)] relative shrink-0 w-full" data-node-id="80:44734" data-name="Row">
+              <div className="content-stretch flex gap-[20px] items-start relative shrink-0 w-full" data-node-id="80:44735" data-name="Content">
+                <CodeConnectSnippet data-node-id="80:44736" data-name="Checkbox_24" data-snippet-language="React">
+                  <Checkbox size={24} colors="default" />
+                </CodeConnectSnippet>
+                <div className="content-stretch flex flex-[1_0_0] gap-[var(--24,24px)] items-start min-w-px relative" data-node-id="80:44737" data-name="Info">
+                  <div className="content-stretch flex flex-[1_0_0] gap-[20px] items-start min-w-px relative" data-node-id="80:44738" data-name="Info">
+                    <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="80:44739" data-name="logo">
+                      <div className="col-1 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[52px_52px] ml-0 mt-0 relative row-1 size-[52px]" data-node-id="80:44741" style={{ maskImage: `url("${imgBgImg}")` }} data-name="BgImg">
+                        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgBgImg4} />
+                      </div>
+                    </div>
+                    <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start min-w-px not-italic relative text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="80:44742">
+                      <p className="font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] leading-[24px] relative shrink-0 tracking-[var(--bold_letter_spacing\/16,0.43px)] w-full" data-node-id="80:44743">
+                        АО «Альфа-Банк»
+                      </p>
+                      <div className="font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[0] overflow-hidden relative shrink-0 text-ellipsis tracking-[var(--regular_letter_spacing\/16,-0.24px)] w-full" data-node-id="80:44744">
+                        <p className="leading-[24px] mb-0">Комиссия за SMS-оповещение за август 2025</p>
+                        <p className="leading-[24px]">Согласно тарифам Банка ИП Костин Иван Федорович</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex gap-[var(--6,6px)] items-center py-[2px] relative shrink-0 w-[95px]" data-node-id="80:44745" data-name="Content">
+                    <div className="content-stretch flex items-start relative shrink-0" data-node-id="80:44746" data-name="StatusPreset">
+                      <CodeConnectSnippet data-node-id="I80:44746;60798:623841" data-name="Status" data-snippet-language="React">
+                        <Status size="20" shape="Rounded" leftAddon="False" rightAddon="False" />
+                      </CodeConnectSnippet>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex items-start justify-end relative shrink-0 w-[176px]" data-node-id="80:44749" data-name="Text">
+                    <div className="content-stretch flex items-start max-w-[2px] min-w-[2px] relative self-stretch shrink-0" data-node-id="I80:44749;115769:207847" data-name="Gap">
+                      <div className="h-full relative shrink-0 w-[2px]" data-node-id="I80:44749;115769:207848" data-name="Fixer" />
+                    </div>
+                    <div className="content-stretch flex items-start relative shrink-0" data-node-id="I80:44749;78541:162738" data-name="Operation">
+                      <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] leading-[24px] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] tracking-[var(--regular_letter_spacing\/16,0.43px)] whitespace-nowrap" data-node-id="I80:44749;78541:162738;57693:402">
+                        −
+                      </p>
+                    </div>
+                    <CodeConnectSnippet data-node-id="I80:44749;46222:12788" data-name="Amount" data-snippet-language="React">
+                      <Amount value={100000} minority={100} currency="RUB" codeFormat="symbolic" view="withZeroMinorPart" />
+                    </CodeConnectSnippet>
+                  </div>
+                </div>
+                <div className="relative shrink-0 size-[24px]" data-node-id="80:44750" data-name="dots-horizontal">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgDotsHorizontal} />
+                </div>
+              </div>
+              <div className="content-stretch flex items-center justify-center pl-[116px] relative shrink-0" data-node-id="80:44751" data-name="Number">
+                <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[24px] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] tracking-[var(--regular_letter_spacing\/16,-0.24px)] whitespace-nowrap" data-node-id="80:44752">
+                  №87896
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-full" data-node-id="80:44754" data-name="Day">
+        <div className="content-stretch flex flex-col gap-[20px] items-center justify-center px-[16px] relative shrink-0 w-full" data-node-id="80:44755" data-name="Header">
+          <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[18px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--bold_letter_spacing\/18,0.38px)] w-full whitespace-nowrap" data-node-id="80:44756">
+            <p className="leading-[22px] overflow-hidden text-ellipsis">9 августа</p>
+          </div>
+          <BorderLine className="content-stretch flex flex-col items-start max-h-px min-h-px relative shrink-0 w-full" />
+        </div>
+        <div className="content-stretch flex flex-col h-[141px] items-start relative shrink-0 w-full" data-node-id="80:44758" data-name="[D] BodyRow :: Basic">
+          <div className="content-stretch flex flex-col gap-[16px] items-start px-[var(--16,16px)] py-[var(--24,24px)] relative shrink-0 w-full" data-node-id="80:44759" data-name="Row">
+            <div className="content-stretch flex gap-[20px] items-start relative shrink-0 w-full" data-node-id="80:44760" data-name="Content">
+              <CodeConnectSnippet data-node-id="80:44761" data-name="Checkbox_24" data-snippet-language="React">
+                <Checkbox size={24} colors="default" />
+              </CodeConnectSnippet>
+              <div className="content-stretch flex flex-[1_0_0] gap-[var(--24,24px)] items-start min-w-px relative" data-node-id="80:44762" data-name="Info">
+                <div className="content-stretch flex flex-[1_0_0] gap-[20px] items-center min-w-px relative" data-node-id="80:44763" data-name="Info">
+                  <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="80:44764" data-name="logo">
+                    <div className="col-1 mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-size-[52px_52px] ml-0 mt-0 relative row-1 size-[52px]" data-node-id="80:44766" style={{ maskImage: `url("${imgBgImg}")` }} data-name="BgImg">
+                      <div aria-hidden className="absolute inset-0 pointer-events-none">
+                        <img alt="" className="absolute max-w-none object-cover size-full" src={imgBgImg1} />
+                        <div className="absolute inset-0 overflow-hidden">
+                          <img alt="" className="absolute h-[119.1%] left-[-38.56%] max-w-none top-[-18.52%] w-[176.59%]" src={imgBgImg2} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start leading-[24px] min-w-px not-italic relative text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))]" data-node-id="80:44767">
+                    <p className="font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] relative shrink-0 tracking-[var(--bold_letter_spacing\/16,0.43px)] w-full" data-node-id="80:44768">
+                      ООО «Умные и свободные»
+                    </p>
+                    <p className="font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] relative shrink-0 tracking-[var(--regular_letter_spacing\/16,-0.24px)] w-full" data-node-id="80:44769">
+                      Аванс по договору №51/9-12 от 27.07.2023
+                    </p>
+                  </div>
+                </div>
+                <div className="content-stretch flex gap-[var(--6,6px)] items-center py-[2px] relative shrink-0 w-[95px]" data-node-id="80:44770" data-name="Content">
+                  <div className="content-stretch flex items-start relative shrink-0" data-node-id="80:44771" data-name="StatusPreset">
+                    <CodeConnectSnippet data-node-id="I80:44771;60798:623843" data-name="Status" data-snippet-language="React">
+                      <Status size="20" shape="Rounded" leftAddon="False" rightAddon="False" />
+                    </CodeConnectSnippet>
+                  </div>
+                </div>
+                <div className="content-stretch flex items-start justify-end relative shrink-0 w-[176px]" data-node-id="80:44774" data-name="Text">
+                  <div className="content-stretch flex items-start max-w-[2px] min-w-[2px] relative self-stretch shrink-0" data-node-id="I80:44774;115769:207847" data-name="Gap">
+                    <div className="h-full relative shrink-0 w-[2px]" data-node-id="I80:44774;115769:207848" data-name="Fixer" />
+                  </div>
+                  <div className="content-stretch flex items-start relative shrink-0" data-node-id="I80:44774;78541:162738" data-name="Operation">
+                    <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] leading-[24px] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] tracking-[var(--regular_letter_spacing\/16,0.43px)] whitespace-nowrap" data-node-id="I80:44774;78541:162738;57693:406">
+                      −
+                    </p>
+                  </div>
+                  <CodeConnectSnippet data-node-id="I80:44774;46222:12788" data-name="Amount" data-snippet-language="React">
+                    <Amount value={300000} minority={100} currency="RUB" codeFormat="symbolic" view="withZeroMinorPart" />
+                  </CodeConnectSnippet>
+                </div>
+              </div>
+              <div className="relative shrink-0 size-[24px]" data-node-id="80:44775" data-name="dots-horizontal">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgDotsHorizontal} />
+              </div>
+            </div>
+            <div className="content-stretch flex items-center justify-center pl-[116px] relative shrink-0" data-node-id="80:44776" data-name="Number">
+              <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[24px] not-italic relative shrink-0 text-[16px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] tracking-[var(--regular_letter_spacing\/16,-0.24px)] whitespace-nowrap" data-node-id="80:44777">
+                № 105, Т-Банк, ·· 9909
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <CodeConnectSnippet data-node-id="80:44779" data-name="[D] Button" data-snippet-language="React">
+        <ButtonDesktop view="secondary" size={56} shape="rectangular">
+          {"Показать ещё"}
+        </ButtonDesktop>
+      </CodeConnectSnippet>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Headline–System/18–22 xSmall (Typography.Title view='xsmall'): Font(family: "font_family/<20", style: Bold, size: 18, weight: 700, lineHeight: 22, letterSpacing: bold_letter_spacing/18), Accent/16–24 Primary Medium (Typography.Text view=”primary-medium” weight=”bold”): Font(family: "font_family/<20", style: Bold, size: 16, weight: 700, lineHeight: 24, letterSpacing: bold_letter_spacing/16), Paragraph/16–24 Primary Medium (Typography.Text view='primary-medium'): Font(family: "font_family/<20", style: Regular, size: 16, weight: 400, lineHeight: 24, letterSpacing: regular_letter_spacing/16), Action/16–20 Component Primary (Typography.Text view='component' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 16, weight: 500, lineHeight: 20, letterSpacing: medium_letter_spacing/16), ControlBlur: Effect(type: BACKGROUND_BLUR, radius: 80).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## 🔒 [D] StatusPreset
+**Node ID:** 10:265
+
+Вспомогательный компонент Figma, в коде существует только Status в core-components.
+
+## Size=m
+**Node ID:** 13:3363
+
+\[glyph\_dots-horizontal\_m\]
+
+## dots-horizontal
+**Node ID:** 13:3362
+
+ещё, многоточие, точки, additional, dots, meatball, more, больше, меню, dots
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAADUlEQVQIW2NgYGBgAAAABQABOz4IWwAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAAAAAElFTkSuQmCC", "mimeType": "image/png"}

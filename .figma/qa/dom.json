@@ -1,0 +1,640 @@
+{
+  "viewport": [
+    1600,
+    900
+  ],
+  "scroll": [
+    1600,
+    1847
+  ],
+  "boxes": [
+    {
+      "s": ".sidebar",
+      "x": 8,
+      "y": 8,
+      "w": 308,
+      "h": 818
+    },
+    {
+      "s": ".sidebar-logo",
+      "x": 9,
+      "y": 29,
+      "w": 306,
+      "h": 40
+    },
+    {
+      "s": ".amounts",
+      "x": 9,
+      "y": 97,
+      "w": 306,
+      "h": 108
+    },
+    {
+      "s": ".balance-cell",
+      "x": 29,
+      "y": 97,
+      "w": 266,
+      "h": 42
+    },
+    {
+      "s": ".menu-list",
+      "x": 9,
+      "y": 240,
+      "w": 306,
+      "h": 409
+    },
+    {
+      "s": ".topbar",
+      "x": 960,
+      "y": 28,
+      "w": 616,
+      "h": 40
+    },
+    {
+      "s": ".company-account",
+      "x": 1081.3,
+      "y": 28,
+      "w": 220.7,
+      "h": 40
+    },
+    {
+      "s": ".person-select",
+      "x": 1335,
+      "y": 28,
+      "w": 168,
+      "h": 40
+    },
+    {
+      "s": ".dashboard-content",
+      "x": 472,
+      "y": 0,
+      "w": 972,
+      "h": 1787
+    },
+    {
+      "s": ".tabs",
+      "x": 668,
+      "y": 120,
+      "w": 585,
+      "h": 52
+    },
+    {
+      "s": ".tab:nth-child(1)",
+      "x": 672,
+      "y": 124,
+      "w": 114,
+      "h": 44
+    },
+    {
+      "s": ".tab:nth-child(2)",
+      "x": 786,
+      "y": 124,
+      "w": 116,
+      "h": 44
+    },
+    {
+      "s": ".tab:nth-child(3)",
+      "x": 902,
+      "y": 124,
+      "w": 165,
+      "h": 44
+    },
+    {
+      "s": ".tab:nth-child(4)",
+      "x": 1067,
+      "y": 124,
+      "w": 182,
+      "h": 44
+    },
+    {
+      "s": ".hero",
+      "x": 477,
+      "y": 208,
+      "w": 967,
+      "h": 168
+    },
+    {
+      "s": ".hero-copy",
+      "x": 477,
+      "y": 208,
+      "w": 967,
+      "h": 88
+    },
+    {
+      "s": ".hero-heading",
+      "x": 794.2,
+      "y": 208,
+      "w": 332.59,
+      "h": 48
+    },
+    {
+      "s": ".hero-heading h1",
+      "x": 794.2,
+      "y": 208,
+      "w": 332.59,
+      "h": 48
+    },
+    {
+      "s": ".hero-dash",
+      "x": 743.43,
+      "y": 208,
+      "w": 34.55,
+      "h": 48
+    },
+    {
+      "s": ".hero-subtitle",
+      "x": 477,
+      "y": 272,
+      "w": 967,
+      "h": 24
+    },
+    {
+      "s": ".hero-actions",
+      "x": 505.5,
+      "y": 324,
+      "w": 910,
+      "h": 52
+    },
+    {
+      "s": ".work-dropdown",
+      "x": 505.5,
+      "y": 324,
+      "w": 207,
+      "h": 52
+    },
+    {
+      "s": ".hero-actions > .hero-chip:nth-child(2)",
+      "x": 724.5,
+      "y": 324,
+      "w": 174,
+      "h": 52
+    },
+    {
+      "s": ".hero-actions > .hero-chip:nth-child(3)",
+      "x": 910.5,
+      "y": 324,
+      "w": 201,
+      "h": 52
+    },
+    {
+      "s": ".hero-actions > .hero-chip:nth-child(4)",
+      "x": 1123.5,
+      "y": 324,
+      "w": 207,
+      "h": 52
+    },
+    {
+      "s": ".hero-actions > .hero-chip:nth-child(5)",
+      "x": 1342.5,
+      "y": 324,
+      "w": 73,
+      "h": 52
+    },
+    {
+      "s": ".tasks",
+      "x": 472,
+      "y": 438,
+      "w": 972,
+      "h": 262
+    },
+    {
+      "s": ".section-title",
+      "x": 472,
+      "y": 438,
+      "w": 972,
+      "h": 26
+    },
+    {
+      "s": ".tasks-viewport",
+      "x": 472,
+      "y": 488,
+      "w": 972,
+      "h": 260
+    },
+    {
+      "s": ".tasks-track",
+      "x": 472,
+      "y": 488,
+      "w": 1004,
+      "h": 212
+    },
+    {
+      "s": ".tasks-track > .task-card:nth-child(1)",
+      "x": 472,
+      "y": 488,
+      "w": 154,
+      "h": 212
+    },
+    {
+      "s": ".tasks-track > .task-card:nth-child(2)",
+      "x": 642,
+      "y": 488,
+      "w": 154,
+      "h": 212
+    },
+    {
+      "s": ".tasks-track > .task-card:nth-child(3)",
+      "x": 812,
+      "y": 488,
+      "w": 154,
+      "h": 212
+    },
+    {
+      "s": ".operations",
+      "x": 472,
+      "y": 756,
+      "w": 972,
+      "h": 1031
+    },
+    {
+      "s": ".operations-title",
+      "x": 472,
+      "y": 756,
+      "w": 972,
+      "h": 26
+    },
+    {
+      "s": ".filters",
+      "x": 472,
+      "y": 806,
+      "w": 972,
+      "h": 40
+    },
+    {
+      "s": ".date-filter",
+      "x": 472,
+      "y": 806,
+      "w": 253,
+      "h": 40
+    },
+    {
+      "s": ".search-field",
+      "x": 733,
+      "y": 806,
+      "w": 461,
+      "h": 40
+    },
+    {
+      "s": ".general-filter",
+      "x": 1202,
+      "y": 806,
+      "w": 40,
+      "h": 40
+    },
+    {
+      "s": ".download-button",
+      "x": 1330,
+      "y": 806,
+      "w": 114,
+      "h": 40
+    },
+    {
+      "s": ".analytics",
+      "x": 472,
+      "y": 870,
+      "w": 972,
+      "h": 76
+    },
+    {
+      "s": ".analytics-card:nth-child(1)",
+      "x": 472,
+      "y": 870,
+      "w": 225,
+      "h": 76
+    },
+    {
+      "s": ".analytics-card:nth-child(2)",
+      "x": 721,
+      "y": 870,
+      "w": 225,
+      "h": 76
+    },
+    {
+      "s": ".operations-table",
+      "x": 472,
+      "y": 970,
+      "w": 972,
+      "h": 817
+    },
+    {
+      "s": ".day-header",
+      "x": 488,
+      "y": 992,
+      "w": 940,
+      "h": 43
+    },
+    {
+      "s": ".operation-row",
+      "x": 488,
+      "y": 1035,
+      "w": 940,
+      "h": 141
+    },
+    {
+      "s": ".operation-main",
+      "x": 488,
+      "y": 1035,
+      "w": 940,
+      "h": 140
+    },
+    {
+      "s": ".operation-content",
+      "x": 504,
+      "y": 1059,
+      "w": 908,
+      "h": 52
+    },
+    {
+      "s": ".checkbox",
+      "x": 504,
+      "y": 1059,
+      "w": 24,
+      "h": 24
+    },
+    {
+      "s": ".operation-counterparty",
+      "x": 548,
+      "y": 1059,
+      "w": 501,
+      "h": 52
+    },
+    {
+      "s": ".company-logo",
+      "x": 548,
+      "y": 1059,
+      "w": 52,
+      "h": 52
+    },
+    {
+      "s": ".operation-title",
+      "x": 620,
+      "y": 1059,
+      "w": 429,
+      "h": 24
+    },
+    {
+      "s": ".operation-description",
+      "x": 620,
+      "y": 1087,
+      "w": 429,
+      "h": 24
+    },
+    {
+      "s": ".operation-status",
+      "x": 1073,
+      "y": 1059,
+      "w": 95,
+      "h": 24
+    },
+    {
+      "s": ".operation-amount",
+      "x": 1192,
+      "y": 1059,
+      "w": 176,
+      "h": 24
+    },
+    {
+      "s": ".operation-more",
+      "x": 1388,
+      "y": 1059,
+      "w": 24,
+      "h": 24
+    },
+    {
+      "s": ".operation-number",
+      "x": 504,
+      "y": 1127,
+      "w": 298.06,
+      "h": 24
+    },
+    {
+      "s": ".show-more",
+      "x": 488,
+      "y": 1709,
+      "w": 940,
+      "h": 56
+    },
+    {
+      "s": ".payment-copy",
+      "x": 488,
+      "y": 541.5,
+      "w": 122,
+      "h": 88
+    },
+    {
+      "s": ".payment-copy p:last-child",
+      "x": 514.33,
+      "y": 589.5,
+      "w": 69.34,
+      "h": 40
+    },
+    {
+      "s": ".date-clear",
+      "x": 685,
+      "y": 806,
+      "w": 40,
+      "h": 40
+    },
+    {
+      "s": ".calendar-icon",
+      "x": 484,
+      "y": 818,
+      "w": 16,
+      "h": 16
+    },
+    {
+      "s": ".support-button .indicator",
+      "x": 1579,
+      "y": 845,
+      "w": 16,
+      "h": 16
+    },
+    {
+      "s": ".tab.active .indicator",
+      "missing": true
+    },
+    {
+      "s": ".work-dropdown .indicator",
+      "x": 644,
+      "y": 340,
+      "w": 20,
+      "h": 20
+    },
+    {
+      "s": ".analytics-card:nth-child(2) strong",
+      "x": 737,
+      "y": 910,
+      "w": 193,
+      "h": 20
+    },
+    {
+      "s": ".spotlight",
+      "x": 0,
+      "y": 840,
+      "w": 1600,
+      "h": 60
+    },
+    {
+      "s": ".spotlight-logo",
+      "x": 0,
+      "y": 840,
+      "w": 248,
+      "h": 60
+    },
+    {
+      "s": ".assistant-input",
+      "x": 260,
+      "y": 846,
+      "w": 1113,
+      "h": 48
+    },
+    {
+      "s": ".support-button",
+      "x": 1397,
+      "y": 846,
+      "w": 197,
+      "h": 48
+    }
+  ],
+  "styles": [
+    {
+      "s": ".hero-heading h1",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "36px",
+      "weight": "700",
+      "lh": "48px",
+      "ls": "0.1px",
+      "color": "rgba(3, 3, 6, 0.88)",
+      "x": 794.2,
+      "y": 208,
+      "w": 332.59,
+      "h": 48
+    },
+    {
+      "s": ".hero-subtitle p",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "lh": "24px",
+      "ls": "-0.24px",
+      "color": "rgba(3, 3, 6, 0.88)",
+      "x": 688.34,
+      "y": 272,
+      "w": 370.02,
+      "h": 24
+    },
+    {
+      "s": ".tab.active",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lh": "20px",
+      "ls": "-0.05px",
+      "color": "rgba(3, 3, 6, 0.88)",
+      "x": 672,
+      "y": 124,
+      "w": 114,
+      "h": 44
+    },
+    {
+      "s": ".hero-chip",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lh": "20px",
+      "ls": "-0.05px",
+      "color": "rgb(0, 0, 0)",
+      "x": 505.5,
+      "y": 324,
+      "w": 207,
+      "h": 52
+    },
+    {
+      "s": ".payment-copy p:first-child",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "14px",
+      "weight": "500",
+      "lh": "20px",
+      "ls": "0.07px",
+      "color": "rgba(3, 3, 6, 0.88)",
+      "x": 488,
+      "y": 541.5,
+      "w": 122,
+      "h": 40
+    },
+    {
+      "s": ".operation-title",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "16px",
+      "weight": "700",
+      "lh": "24px",
+      "ls": "0.43px",
+      "color": "rgba(3, 3, 6, 0.88)",
+      "x": 620,
+      "y": 1059,
+      "w": 429,
+      "h": 24
+    },
+    {
+      "s": ".operation-amount",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "16px",
+      "weight": "700",
+      "lh": "24px",
+      "ls": "0.43px",
+      "color": "rgba(3, 3, 6, 0.88)",
+      "x": 1192,
+      "y": 1059,
+      "w": 176,
+      "h": 24
+    },
+    {
+      "s": ".analytics-card > strong",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "14px",
+      "weight": "700",
+      "lh": "20px",
+      "ls": "0.47px",
+      "color": "rgba(3, 3, 6, 0.88)",
+      "x": 488,
+      "y": 910,
+      "w": 193,
+      "h": 20
+    },
+    {
+      "s": ".date-filter",
+      "font": "\"Alfa Interface Sans\", -apple-system, \"SF Pro Text\", system-ui, \"Segoe UI\", Roboto, sans-serif",
+      "size": "14px",
+      "weight": "400",
+      "lh": "20px",
+      "ls": "-0.08px",
+      "color": "rgba(255, 255, 255, 0.94)",
+      "x": 472,
+      "y": 806,
+      "w": 253,
+      "h": 40
+    }
+  ],
+  "ranges": [
+    {
+      "text": "1 234 567,00 ₽",
+      "boxW": 193,
+      "textW": 100.25
+    },
+    {
+      "text": "+1 234 567,00 ₽",
+      "boxW": 193,
+      "textW": 109.27
+    },
+    {
+      "text": "−1 234 567,00 ₽",
+      "boxW": 193,
+      "textW": 109.27
+    },
+    {
+      "text": "1 234 567,00 ₽",
+      "boxW": 193,
+      "textW": 100.25
+    }
+  ]
+}

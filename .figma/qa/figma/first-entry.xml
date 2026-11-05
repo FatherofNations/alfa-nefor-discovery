@@ -1,0 +1,85 @@
+<section id="125:17512" name="Section 1" x="-2021" y="-1922" width="5642" height="1239">
+  <frame id="1:4660" name="Данные не введены" x="129" y="184" width="1600" height="900">
+    <frame id="1:4661" name="Main" x="600" y="72" width="400" height="828">
+      <instance id="1:4662" name="↕ SpacingVertical" x="0" y="0" width="400" height="130" />
+      <frame id="1:4663" name="Input Area" x="0" y="130" width="400" height="384">
+        <instance id="1:4664" name="[D] TitleView" x="0" y="0" width="400" height="48" />
+        <instance id="1:4665" name="↕ SpacingVertical" x="0" y="48" width="400" height="16" />
+        <instance id="1:4666" name="Text" x="0" y="64" width="400" height="24" />
+        <instance id="1:4667" name="↕ SpacingVertical" x="0" y="88" width="400" height="20" />
+        <instance id="1:4668" name="[D] Input" x="0" y="108" width="400" height="56" />
+        <instance id="1:4669" name="↕ SpacingVertical" x="0" y="164" width="400" height="16" />
+        <instance id="1:4670" name="[D] Input" x="0" y="180" width="400" height="56" />
+        <instance id="1:4671" name="↕ SpacingVertical" x="0" y="236" width="400" height="32" />
+        <instance id="1:4672" name="[D] Button" x="0" y="268" width="400" height="56" />
+        <instance id="1:4673" name="↕ SpacingVertical" x="0" y="324" width="400" height="12" />
+        <instance id="1:4674" name="[D] Button" x="0" y="336" width="400" height="48" />
+      </frame>
+      <instance id="1:4675" name="↕ SpacingVertical" x="0" y="514" width="400" height="202" />
+      <frame id="1:4676" name="Other Buttons" x="1.5" y="716" width="397" height="80">
+        <instance id="1:4677" name="ActionButton" x="0" y="0" width="97" height="80" />
+        <instance id="1:4678" name="↔ SpacingHorizontal" x="97" y="0" width="20" height="80" />
+        <instance id="1:4679" name="ActionButton" x="117" y="0" width="80" height="80" />
+        <instance id="1:4680" name="↔ SpacingHorizontal" x="197" y="0" width="20" height="80" />
+        <instance id="1:4681" name="ActionButton" x="217" y="0" width="80" height="80" />
+        <instance id="1:4682" name="↔ SpacingHorizontal" x="297" y="0" width="20" height="80" />
+        <instance id="1:4683" name="ActionButton" x="317" y="0" width="80" height="80" />
+        <instance id="1:4684" name="ActionButton" x="244" y="0" width="80" height="80" hidden="true" />
+      </frame>
+      <instance id="1:4685" name="↕ SpacingVertical" x="0" y="796" width="400" height="32" />
+    </frame>
+    <instance id="78:20914" name="Header" x="0" y="0" width="1600" height="72" />
+  </frame>
+  <frame id="1:4709" name="Появляется импут" x="1984" y="184" width="1600" height="900">
+    <frame id="1:4710" name="Появляется импут" x="0" y="0" width="1600" height="900">
+      <instance id="1:4711" name="Background" x="0" y="1" width="1600" height="899" />
+      <instance id="1:4712" name="Header" x="0" y="0" width="1600" height="72" />
+      <frame id="1:4719" name="TextBlock" x="494" y="345" width="612" height="232">
+        <instance id="1:4720" name="Markdown" x="-46" y="0" width="658" height="64" />
+        <instance id="1:4721" name="2" x="0" y="64" width="612" height="84" />
+        <instance id="1:4722" name="3" x="0" y="148" width="612" height="84" />
+      </frame>
+      <frame id="1:4723" name="Container" x="494" y="577" width="612" height="323">
+        <frame id="1:4724" name="Frame 2147237619" x="0" y="67" width="612" height="216">
+          <frame id="1:4725" name="Card" x="0" y="0" width="302" height="216">
+            <instance id="1:4726" name="[D] Style Level 1" x="0" y="0" width="302" height="216" />
+            <frame id="1:4727" name="Content" x="20" y="20" width="262" height="70">
+              <instance id="1:4728" name="Markdown" x="0" y="0" width="262" height="30" />
+              <instance id="1:4729" name="Markdown" x="0" y="30" width="262" height="40" />
+            </frame>
+            <frame id="1:4730" name="Img" x="302" y="0" width="140" height="216" />
+          </frame>
+          <instance id="1:4731" name="connector" x="302" y="52" width="8" height="112" />
+          <frame id="1:4732" name="Card" x="310" y="0" width="302" height="216">
+            <instance id="1:4733" name="[D] Style Level 2" x="0" y="0" width="302" height="216" />
+            <frame id="1:4734" name="Img" x="302" y="0" width="140" height="216" />
+            <frame id="1:4735" name="Content" x="20" y="20" width="262" height="70">
+              <instance id="1:4736" name="Markdown" x="0" y="0" width="262" height="30" />
+              <instance id="1:4737" name="Markdown" x="0" y="30" width="262" height="40" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <frame id="78:20983" name="Item_Statable" x="211" y="765" width="168" height="168">
+        <frame id="78:20984" name="Glass Effect" x="0" y="0" width="168" height="168" />
+        <frame id="78:20985" name="Fill + Shadow" x="0" y="0" width="168" height="168" />
+        <frame id="78:20986" name="TabBarButtons" x="0" y="0" width="168" height="168">
+          <instance id="78:20987" name="ButtonSearch" x="0" y="0" width="168" height="168" />
+        </frame>
+      </frame>
+    </frame>
+    <instance id="1:4739" name="ActionButton" x="1512" y="812" width="80" height="80" />
+  </frame>
+  <frame id="1:4763" name="Настраиваю главный экран..." x="3839" y="184" width="1600" height="900">
+    <instance id="1:4764" name="Анимация фона по центру" x="0" y="0" width="1600" height="900" />
+    <instance id="1:4765" name="Анимация фона при выборе" x="0" y="0" width="1600" height="900" />
+    <text id="1:4766" name="Title" x="443" y="569" width="691" height="72" />
+    <frame id="78:21000" name="Item_Statable" x="692" y="267" width="216" height="216">
+      <frame id="78:21001" name="Glass Effect" x="0" y="0" width="216" height="216" />
+      <frame id="78:21002" name="Fill + Shadow" x="0" y="0" width="216" height="216" />
+      <frame id="78:21003" name="TabBarButtons" x="0" y="0" width="216" height="216">
+        <instance id="78:21004" name="ButtonSearch" x="0" y="0" width="216" height="216" />
+      </frame>
+    </frame>
+  </frame>
+</section>

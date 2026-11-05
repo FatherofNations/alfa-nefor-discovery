@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="8" height="112" viewBox="0 0 8 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="connector" clip-path="url(#clip0_0_601)">
+<path id="top-right" d="M11.9999 50V56.0007H8C8 55.4484 8.45539 55.0142 8.9884 54.8696C10.5865 54.436 11.9999 52.9081 11.9999 50Z" fill="white" fill-opacity="0.72"/>
+<path id="top-right_2" d="M11.9999 62.001V56.0002H8C8 56.5525 8.45539 56.9868 8.9884 57.1314C10.5865 57.565 11.9999 59.0929 11.9999 62.001Z" fill="white" fill-opacity="0.72"/>
+<path id="top-left" d="M-3.99995 50V56.0007H0C0 55.4484 -0.455387 55.0142 -0.988402 54.8696C-2.58652 54.436 -3.99995 52.9081 -3.99995 50Z" fill="white" fill-opacity="0.72"/>
+<path id="top-left_2" d="M-3.99995 62.001V56.0002H0C0 56.5525 -0.455387 56.9868 -0.988402 57.1314C-2.58652 57.565 -3.99995 59.0929 -3.99995 62.001Z" fill="white" fill-opacity="0.72"/>
+<rect id="middle-left" x="-4" y="56" width="4" height="0.0001" fill="white" fill-opacity="0.72"/>
+<rect id="middle-right" x="8" y="56" width="4" height="0.0001" fill="white" fill-opacity="0.72"/>
+</g>
+<defs>
+<clipPath id="clip0_0_601">
+<rect width="8" height="112" fill="white"/>
+</clipPath>
+</defs>
+</svg>

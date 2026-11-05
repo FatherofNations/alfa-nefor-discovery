@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "alfa": {
+      "url": "https://alfa-mcp.leggit.ru/mcp"
+    },
+    "figma": {
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}

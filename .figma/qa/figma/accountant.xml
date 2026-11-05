@@ -1,0 +1,119 @@
+<frame id="59:42949" name="Дашборд" x="1649" y="7839" width="1600" height="900">
+  <frame id="59:42950" name="📍sideMenu" x="0" y="0" width="248" height="900">
+    <frame id="59:42951" name="footer" x="0" y="816" width="248" height="84">
+      <frame id="59:42952" name="bg" x="0" y="0" width="248" height="32" />
+      <frame id="59:42955" name="cell" x="0" y="32" width="248" height="52">
+        <frame id="59:42956" name="color correct box" x="22" y="10" width="20" height="20">
+          <frame id="59:42957" name="gear" x="0" y="0" width="20" height="20" />
+        </frame>
+        <text id="59:42965" name="name" x="56" y="10" width="135" height="20" />
+      </frame>
+    </frame>
+    <instance id="59:42966" name="LogoCell" x="0" y="0" width="248" height="64" />
+    <frame id="59:42967" name="cells" x="0" y="0" width="248" height="410">
+      <frame id="59:42968" name="cell" x="0" y="72" width="248" height="48">
+        <instance id="59:42969" name="all-services-products-sign-box" x="22" y="14" width="20" height="20" />
+        <text id="59:42970" name="name" x="56" y="14" width="104" height="20" />
+      </frame>
+      <frame id="59:42971" name="cell" x="0" y="120" width="248" height="48">
+        <instance id="59:42972" name="bonuses-sign-box" x="22" y="14" width="20" height="20" />
+        <text id="59:42973" name="name" x="56" y="14" width="129" height="20" />
+      </frame>
+      <instance id="59:42974" name="DividerHorizontal" x="0" y="168" width="248" height="25" />
+      <frame id="59:42975" name="cell" x="0" y="193" width="248" height="48">
+        <frame id="59:42976" name="color correct box" x="22" y="14" width="20" height="20">
+          <instance id="59:42977" name="new-payment-sign-box" x="0" y="0" width="20" height="20" />
+        </frame>
+        <text id="59:42978" name="name" x="56" y="14" width="117" height="20" />
+      </frame>
+      <frame id="59:42979" name="cell" x="0" y="241" width="248" height="48">
+        <frame id="59:42980" name="color correct box" x="22" y="14" width="20" height="20">
+          <instance id="59:42981" name="transaction-feed-sign-box" x="0" y="0" width="20" height="20" />
+        </frame>
+        <text id="59:42982" name="name" x="56" y="14" width="131" height="20" />
+      </frame>
+      <frame id="59:42983" name="cell" x="0" y="289" width="248" height="48">
+        <instance id="59:42984" name="file-arrows-circle" x="22" y="14" width="20" height="20" />
+        <text id="59:42985" name="name" x="56" y="14" width="131" height="20" />
+      </frame>
+      <instance id="59:42986" name="DividerHorizontal" x="0" y="337" width="248" height="25" />
+      <frame id="59:42987" name="cell" x="0" y="362" width="248" height="48">
+        <frame id="59:42988" name="color correct box" x="22" y="14" width="20" height="20">
+          <frame id="59:42989" name="safe-deposit" x="0" y="0" width="20" height="20" />
+        </frame>
+        <text id="59:42991" name="name" x="56" y="14" width="80" height="20" />
+        <vector id="59:42992" name="border" x="16" y="8" width="32" height="32" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="59:42993" name="[D] CorporateContent" x="248" y="56" width="1352" height="844">
+    <frame id="59:42994" name="[D] Body" x="52" y="16" width="1248" height="764">
+      <instance id="59:42996" name="↕ SpacingVertical" x="0" y="0" width="1248" height="12" />
+      <instance id="59:42997" name="📍quickActions _ mmb" x="0" y="12" width="1161" height="48" />
+      <instance id="59:42998" name="↕ SpacingVertical" x="0" y="60" width="1248" height="24" />
+      <frame id="59:42999" name="1st line" x="0" y="84" width="1248" height="384">
+        <instance id="59:43000" name="📍balance _ single account _ mmb" x="0" y="0" width="612" height="384" />
+        <instance id="59:43001" name="📍inWork" x="636" y="0" width="294" height="384" />
+        <frame id="59:43002" name="banners" x="954" y="0" width="294" height="384.00018310546875">
+          <instance id="59:43003" name="Banners :: Dashboard 5.1" x="0" y="0" width="294" height="120.00006103515625" />
+          <instance id="59:43004" name="Banners :: Dashboard 5.1" x="0" y="132.00006103515625" width="294" height="120.00006103515625" />
+          <instance id="59:43005" name="Banners :: Dashboard 5.1" x="0" y="264.0001220703125" width="294" height="120.00006103515625" />
+          <frame id="59:43006" name="Banners :: Dashboard" x="0" y="340.0000915527344" width="294" height="44.000091552734375" hidden="true">
+            <frame id="59:43007" name="text" x="20" y="18" width="166" height="64">
+              <text id="59:43008" name="title" x="0" y="0" width="166" height="20" />
+              <text id="59:43009" name="subtitle" x="0" y="24" width="166" height="40" />
+            </frame>
+            <frame id="59:43010" name="Frame 1948754533" x="202" y="0" width="92" height="110">
+              <instance id="59:43011" name="Торговый эквайринг : Лендинг" x="-3" y="-5" width="120" height="120" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <instance id="59:43012" name="↕ SpacingVertical" x="0" y="468" width="1248" height="48" />
+      <frame id="59:43013" name="Frame 2147224593" x="0" y="516" width="1248" height="456">
+        <frame id="59:43014" name="📍tablo" x="0" y="0" width="1248" height="48">
+          <frame id="59:43015" name="tabloNames" x="0" y="11" width="423" height="26">
+            <text id="59:43016" name="name" x="0" y="0" width="79" height="26" />
+            <text id="59:43017" name="name" x="111" y="0" width="148" height="26" />
+            <text id="59:43018" name="name" x="291" y="0" width="132" height="26" />
+          </frame>
+          <instance id="59:43019" name="RightControl" x="1112" y="0" width="136" height="48" />
+        </frame>
+        <instance id="59:43020" name="↕ SpacingVertical" x="0" y="48" width="1248" height="24" />
+        <frame id="59:43021" name="2nd line" x="0" y="72" width="1248" height="384">
+          <instance id="59:43022" name="📍conversion" x="0" y="0" width="294" height="384" />
+          <instance id="59:43023" name="📍turnover" x="318" y="0" width="294" height="384" />
+          <instance id="59:43024" name="📍conversion" x="636" y="0" width="294" height="384" />
+          <instance id="59:43025" name="📍turnover" x="954" y="0" width="294" height="384" />
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <frame id="59:43026" name="[D] Header" x="248" y="0" width="1352" height="56">
+    <frame id="59:43027" name="Left" x="24" y="8" width="111" height="40" hidden="true">
+      <instance id="59:43028" name="Button" x="0" y="0" width="111" height="40" />
+    </frame>
+    <frame id="59:43029" name="Right" x="24" y="8" width="1304" height="40">
+      <instance id="59:43030" name="IconButton" x="576" y="0" width="40" height="40" />
+      <frame id="59:43031" name="divider" x="636" y="0" width="1" height="40">
+        <rounded-rectangle id="59:43032" name="divider" x="0" y="8" width="1" height="24" />
+      </frame>
+      <frame id="59:43033" name="ButtonsGroup" x="657" y="0" width="88" height="40">
+        <instance id="59:43034" name="IconButton" x="0" y="0" width="40" height="40" />
+        <instance id="59:43035" name="IconButton" x="48" y="0" width="40" height="40" />
+      </frame>
+      <frame id="59:43036" name="divider" x="765" y="0" width="1" height="40">
+        <rounded-rectangle id="59:43037" name="divider" x="0" y="8" width="1" height="24" />
+      </frame>
+      <instance id="59:43038" name="SingleAccount" x="786" y="0" width="228" height="40" />
+      <frame id="59:43039" name="divider" x="1034" y="0" width="1" height="40">
+        <rounded-rectangle id="59:43040" name="divider" x="0" y="8" width="1" height="24" />
+      </frame>
+      <instance id="59:43041" name="Tag" x="1055" y="0" width="168" height="40" />
+      <frame id="59:43042" name="divider" x="1243" y="0" width="1" height="40">
+        <rounded-rectangle id="59:43043" name="divider" x="0" y="8" width="1" height="24" />
+      </frame>
+      <instance id="59:43044" name="IconButton" x="1264" y="0" width="40" height="40" />
+    </frame>
+  </frame>
+</frame>

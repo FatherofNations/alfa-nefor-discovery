@@ -1,0 +1,671 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "source": {
+    "frame": "59:16843",
+    "frameName": "Дашборд",
+    "dumps": [
+      {
+        "file": "frame.xml",
+        "root": "59:16843",
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "file": "spotlight.xml",
+        "root": "59:17107",
+        "offset": {
+          "x": 0,
+          "y": 840
+        }
+      }
+    ],
+    "generatedAt": "2026-11-05T09:04:41.462Z"
+  },
+  "elements": [
+    {
+      "selector": ".sidebar",
+      "node": "59:17108",
+      "name": "Menu",
+      "figma": {
+        "x": 8,
+        "y": 8,
+        "w": 308,
+        "h": 818
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".sidebar-logo",
+      "node": "59:17109",
+      "name": "Logo_content",
+      "figma": {
+        "x": 9,
+        "y": 29,
+        "w": 306,
+        "h": 40
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".amounts",
+      "node": "59:17112",
+      "name": "Amounts",
+      "figma": {
+        "x": 9,
+        "y": 97,
+        "w": 306,
+        "h": 108
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".menu-list",
+      "node": "59:17117",
+      "name": "menu",
+      "figma": {
+        "x": 9,
+        "y": 240,
+        "w": 306,
+        "h": 409
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".topbar",
+      "node": "59:16848",
+      "name": "Right",
+      "figma": {
+        "x": 960,
+        "y": 28,
+        "w": 616,
+        "h": 40
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-account",
+      "node": "59:16853",
+      "name": "CompanyAccount",
+      "figma": {
+        "x": 1081,
+        "y": 28,
+        "w": 221,
+        "h": 40
+      },
+      "tol": {
+        "x": 1,
+        "w": 1
+      },
+      "note": "ширина блока задаётся текстом: 221 в макете, 220.7 в Chrome — метрики шрифта"
+    },
+    {
+      "selector": ".person-select",
+      "node": "59:16855",
+      "name": "PersonSelect",
+      "figma": {
+        "x": 1335,
+        "y": 28,
+        "w": 168,
+        "h": 40
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".tabs",
+      "node": "59:16858",
+      "name": "tabs",
+      "figma": {
+        "x": 668,
+        "y": 120,
+        "w": 585,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".tab:nth-child(1)",
+      "node": "59:16859",
+      "name": "tab",
+      "figma": {
+        "x": 672,
+        "y": 124,
+        "w": 114,
+        "h": 44
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".tab:nth-child(2)",
+      "node": "59:16861",
+      "name": "tab",
+      "figma": {
+        "x": 786,
+        "y": 124,
+        "w": 116,
+        "h": 44
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".tab:nth-child(3)",
+      "node": "59:16864",
+      "name": "tab",
+      "figma": {
+        "x": 902,
+        "y": 124,
+        "w": 165,
+        "h": 44
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".tab:nth-child(4)",
+      "node": "59:16866",
+      "name": "tab",
+      "figma": {
+        "x": 1067,
+        "y": 124,
+        "w": 182,
+        "h": 44
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".hero",
+      "node": "59:16868",
+      "name": "Frame 2147238837",
+      "figma": {
+        "x": 477,
+        "y": 208,
+        "w": 967,
+        "h": 168
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".hero-heading",
+      "node": "59:16870",
+      "name": "Заголовок",
+      "figma": {
+        "x": 794,
+        "y": 208,
+        "w": 333,
+        "h": 48
+      },
+      "tol": {
+        "x": 1,
+        "w": 1
+      },
+      "note": "ширина заголовка 333 в макете, 332.59 в Chrome — метрики шрифта"
+    },
+    {
+      "selector": ".hero-heading h1",
+      "node": "59:16871",
+      "name": "text",
+      "figma": {
+        "x": 794,
+        "y": 208,
+        "w": 333,
+        "h": 48
+      },
+      "tol": {
+        "x": 1,
+        "w": 1
+      },
+      "note": "то же: 333 vs 332.59 — метрики шрифта"
+    },
+    {
+      "selector": ".hero-subtitle",
+      "node": "59:16873",
+      "name": "Frame 2147238835",
+      "figma": {
+        "x": 477,
+        "y": 272,
+        "w": 967,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".hero-actions",
+      "node": "59:16880",
+      "name": "Frame 2147238833",
+      "figma": {
+        "x": 505.5,
+        "y": 324,
+        "w": 910,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".work-dropdown",
+      "node": "59:16881",
+      "name": "chips",
+      "figma": {
+        "x": 505.5,
+        "y": 324,
+        "w": 207,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".hero-actions > .hero-chip:nth-child(2)",
+      "node": "59:16882",
+      "name": "Frame 2147237878",
+      "figma": {
+        "x": 724.5,
+        "y": 324,
+        "w": 174,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".hero-actions > .hero-chip:nth-child(3)",
+      "node": "59:16886",
+      "name": "Frame 2147237874",
+      "figma": {
+        "x": 910.5,
+        "y": 324,
+        "w": 201,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".hero-actions > .hero-chip:nth-child(4)",
+      "node": "59:16890",
+      "name": "Frame 2147237877",
+      "figma": {
+        "x": 1123.5,
+        "y": 324,
+        "w": 207,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".hero-actions > .hero-chip:nth-child(5)",
+      "node": "59:16894",
+      "name": "Frame 2147237875",
+      "figma": {
+        "x": 1342.5,
+        "y": 324,
+        "w": 73,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".tasks",
+      "node": "80:46299",
+      "name": "Frame 2147239861",
+      "figma": {
+        "x": 471.97314453125,
+        "y": 438,
+        "w": 972,
+        "h": 262
+      },
+      "tol": {
+        "x": 0.05
+      },
+      "note": "координата макета 471.973 — субпиксель исходного фрейма"
+    },
+    {
+      "selector": ".section-title",
+      "node": "80:46300",
+      "name": "Заголовок",
+      "figma": {
+        "x": 471.97314453125,
+        "y": 438,
+        "w": 972,
+        "h": 26
+      },
+      "tol": {
+        "x": 0.05
+      },
+      "note": "координата макета 471.973 — субпиксель исходного фрейма"
+    },
+    {
+      "selector": ".tasks-track > .task-card:nth-child(1)",
+      "node": "80:46325",
+      "name": "[D] BackgroundPlateSlot",
+      "figma": {
+        "x": 471.97314453125,
+        "y": 488,
+        "w": 154,
+        "h": 212
+      },
+      "tol": {
+        "x": 0.05
+      },
+      "note": "то же: x=471.973 в макете"
+    },
+    {
+      "selector": ".tasks-track > .task-card:nth-child(2)",
+      "node": "80:46365",
+      "name": "[D] BackgroundPlateSlot",
+      "figma": {
+        "x": 641.97314453125,
+        "y": 488,
+        "w": 154,
+        "h": 212
+      },
+      "tol": {
+        "x": 0.05
+      },
+      "note": "то же: x=641.973 в макете"
+    },
+    {
+      "selector": ".operations",
+      "node": "80:44602",
+      "name": "Frame 2147238491",
+      "figma": {
+        "x": 472,
+        "y": 756,
+        "w": 972,
+        "h": 1031
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-title",
+      "node": "80:46924",
+      "name": "Заголовок",
+      "figma": {
+        "x": 472,
+        "y": 756,
+        "w": 972,
+        "h": 26
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".filters",
+      "node": "80:44607",
+      "name": "[D] FiltersBlock",
+      "figma": {
+        "x": 472,
+        "y": 806,
+        "w": 972,
+        "h": 40
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".date-filter",
+      "node": "80:44613",
+      "name": "[D] FilterTag_Filled",
+      "figma": {
+        "x": 472,
+        "y": 806,
+        "w": 253,
+        "h": 40
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".search-field",
+      "node": "80:44614",
+      "name": "Search",
+      "figma": {
+        "x": 733,
+        "y": 806,
+        "w": 461,
+        "h": 40
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".general-filter",
+      "node": "80:44615",
+      "name": "🔄 [D] GeneralFilterTag",
+      "figma": {
+        "x": 1202,
+        "y": 806,
+        "w": 40,
+        "h": 40
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".download-button",
+      "node": "80:44623",
+      "name": "[D] Button",
+      "figma": {
+        "x": 1330,
+        "y": 806,
+        "w": 114,
+        "h": 40
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".analytics",
+      "node": "80:44633",
+      "name": "Frame 346235",
+      "figma": {
+        "x": 472,
+        "y": 870,
+        "w": 972,
+        "h": 76
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".analytics-card:nth-child(1)",
+      "node": "80:44636",
+      "name": "Card",
+      "figma": {
+        "x": 472,
+        "y": 870,
+        "w": 224.999755859375,
+        "h": 76
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table",
+      "node": "80:44685",
+      "name": "Table",
+      "figma": {
+        "x": 472,
+        "y": 970,
+        "w": 972,
+        "h": 817
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".day-header",
+      "node": "80:44687",
+      "name": "Header",
+      "figma": {
+        "x": 488,
+        "y": 992,
+        "w": 940,
+        "h": 43
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operation-row",
+      "node": "80:44691",
+      "name": "[D] BodyRow :: Basic",
+      "figma": {
+        "x": 488,
+        "y": 1035,
+        "w": 940,
+        "h": 141
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operation-content",
+      "node": "80:44693",
+      "name": "Content",
+      "figma": {
+        "x": 504,
+        "y": 1059,
+        "w": 908,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".checkbox",
+      "node": "80:44694",
+      "name": "Checkbox_24",
+      "figma": {
+        "x": 504,
+        "y": 1059,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-logo",
+      "node": "80:44697",
+      "name": "logo",
+      "figma": {
+        "x": 548,
+        "y": 1059,
+        "w": 52,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operation-title",
+      "node": "80:44701",
+      "name": "ООО «Умные и свободные»",
+      "figma": {
+        "x": 620,
+        "y": 1059,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operation-description",
+      "node": "80:44702",
+      "name": "Аванс по договору №51/9-12 от 27.07.2023",
+      "figma": {
+        "x": 620,
+        "y": 1087,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operation-status",
+      "node": "80:44703",
+      "name": "Content",
+      "figma": {
+        "x": 1073,
+        "y": 1059,
+        "w": 95,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operation-amount",
+      "node": "80:44707",
+      "name": "Text",
+      "figma": {
+        "x": 1192,
+        "y": 1059,
+        "w": 176,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operation-more",
+      "node": "80:44708",
+      "name": "dots-horizontal",
+      "figma": {
+        "x": 1388,
+        "y": 1059,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operation-number",
+      "node": "80:44709",
+      "name": "Number",
+      "figma": {
+        "x": 504,
+        "y": 1127,
+        "w": 299,
+        "h": 24
+      },
+      "tol": {
+        "w": 1
+      },
+      "note": "ширина текста 183 в макете, 182.06 в Chrome — метрики шрифта"
+    },
+    {
+      "selector": ".show-more",
+      "node": "80:44779",
+      "name": "[D] Button",
+      "figma": {
+        "x": 488,
+        "y": 1709,
+        "w": 940,
+        "h": 56
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".spotlight",
+      "node": "59:17107",
+      "name": "Spotlight-bar",
+      "figma": {
+        "x": 0,
+        "y": 840,
+        "w": 1600,
+        "h": 60
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".assistant-input",
+      "node": "I59:17107;807:37661",
+      "name": "[D][Corporate] Input",
+      "figma": {
+        "x": 260,
+        "y": 846,
+        "w": 1113,
+        "h": 48
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".support-button",
+      "node": "I59:17107;809:19074",
+      "name": "SupportButton",
+      "figma": {
+        "x": 1397,
+        "y": 846,
+        "w": 197,
+        "h": 48
+      },
+      "tol": 0
+    }
+  ]
+}

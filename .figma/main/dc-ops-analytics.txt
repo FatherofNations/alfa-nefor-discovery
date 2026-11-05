@@ -1,0 +1,295 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/393f4c94-3cdf-4cbf-b49b-793b4fb8eb16";
+import { Amount } from '@alfalab/core-components/amount';
+
+const imgCompactFalse = `${assetPathPrefix}/30c69.svg`;
+const imgSizeM = `${assetPathPrefix}/f8977.svg`;
+const imgWrapper = `${assetPathPrefix}/3cf1a.svg`;
+const imgArrowUp = `${assetPathPrefix}/54a31.svg`;
+const imgArrowDown = `${assetPathPrefix}/bb78f.svg`;
+
+type GridProps = {
+  className?: string;
+  compact?: "false";
+};
+
+function Grid({ className, compact = "false" }: GridProps) {
+  return (
+    <div className={className || "relative size-[48px]"} data-node-id="8:34">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgCompactFalse} />
+    </div>
+  );
+}
+
+type TemplateProps = {
+  className?: string;
+  size?: "xxl";
+};
+
+function Template({ className, size = "xxl" }: TemplateProps) {
+  return (
+    <div className={className || "overflow-clip relative size-[48px]"} data-node-id="8:49">
+      <Grid className="absolute left-0 size-[48px] top-0" />
+    </div>
+  );
+}
+
+type ExclamationCircleProps = {
+  className?: string;
+  size?: "m";
+};
+
+function ExclamationCircle({ className, size = "m" }: ExclamationCircleProps) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="13:3099">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSizeM} />
+    </div>
+  );
+}
+
+export default function nalytics() {
+  return (
+    <div className="content-stretch flex flex-col gap-[16px] items-start py-[var(--0,0px)] relative size-full" data-node-id="80:44624" data-name="Аnalytics">
+      <div className="content-stretch flex flex-col items-start overflow-clip py-[var(--0,0px)] relative shrink-0 w-full" data-node-id="80:44628" data-name="Аnalytics">
+        <div className="content-stretch flex flex-col gap-[16px] items-start overflow-clip pb-[var(--0,0px)] pt-[var(--24,24px)] relative shrink-0 w-full" data-node-id="80:44629" data-name="Аnalytics">
+          <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full" data-node-id="80:44633">
+            <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44634">
+              <div className="bg-[var(--base-bg-alt\/secondary,white)] border-0 border-[var(--neutral\/500,#babbc2)] border-solid content-stretch flex flex-[1_0_0] flex-col h-[76px] items-start min-w-px px-[16px] relative rounded-[16px]" data-node-id="80:44636" data-name="Card">
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44637" data-name="🔄 ↕ SpacingVertical">
+                  <div className="h-[16px] relative shrink-0 w-[160px]" data-node-id="I80:44637;62730:74861" data-name="Fixer" />
+                </div>
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44638">
+                  <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-w-px relative" data-node-id="80:44639">
+                    <div className="content-stretch flex h-[16px] items-center relative shrink-0 w-full" data-node-id="80:44640" data-name="Headline">
+                      <div className="content-stretch flex flex-col items-center justify-center relative shrink-0" data-node-id="80:44643" data-name="IconWrapper">
+                        <div className="relative shrink-0 size-[16px]" data-node-id="I80:44643;92650:27809" data-name="Wrapper">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgWrapper} />
+                        </div>
+                      </div>
+                      <div className="content-stretch flex h-full items-start relative shrink-0 w-[4px]" data-node-id="80:44644" data-name="🔄 ↔ SpacingHorizontal">
+                        <div className="h-[160px] relative shrink-0 w-[4px]" data-node-id="I80:44644;62730:75104" data-name="Fixer" />
+                      </div>
+                      <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[16px] not-italic relative shrink-0 text-[13px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] tracking-[var(--regular_letter_spacing\/13,0px)] whitespace-nowrap" data-node-id="80:44645">
+                        Входящий остаток
+                      </p>
+                      <div className="content-stretch flex h-full items-start relative shrink-0 w-[4px]" data-node-id="80:44646" data-name="🔄 ↔ SpacingHorizontal">
+                        <div className="h-[160px] relative shrink-0 w-[4px]" data-node-id="I80:44646;62730:75104" data-name="Fixer" />
+                      </div>
+                    </div>
+                    <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44647" data-name="🔄 ↕ SpacingVertical">
+                      <div className="h-[8px] relative shrink-0 w-[160px]" data-node-id="I80:44647;62730:74006" data-name="Fixer" />
+                    </div>
+                    <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="80:44648" data-name="Sum">
+                      <CodeConnectSnippet data-node-id="80:44649" data-name="Amount" data-snippet-language="React">
+                        <Amount value={123456700} minority={100} currency="RUB" codeFormat="symbolic" view="withZeroMinorPart" />
+                      </CodeConnectSnippet>
+                    </div>
+                  </div>
+                </div>
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44651" data-name="🔄 ↕ SpacingVertical">
+                  <div className="h-[16px] relative shrink-0 w-[160px]" data-node-id="I80:44651;62730:74861" data-name="Fixer" />
+                </div>
+              </div>
+              <div className="content-stretch flex h-[76px] items-start relative shrink-0 w-[24px]" data-node-id="80:44652" data-name="🔄 ↔ SpacingHorizontal">
+                <div className="h-[160px] relative shrink-0 w-[24px]" data-node-id="I80:44652;62730:75114" data-name="Fixer" />
+              </div>
+              <div className="bg-[var(--base-bg-alt\/secondary,white)] border-0 border-[var(--neutral\/500,#babbc2)] border-solid content-stretch flex flex-[1_0_0] flex-col h-[76px] items-start min-w-px px-[16px] relative rounded-[16px]" data-node-id="80:44653" data-name="Card">
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="I80:44653;100304:10663" data-name="👑Spaces / Vertical (↔ resizes)">
+                  <div className="h-[16px] relative shrink-0 w-[120px]" data-node-id="I80:44653;100304:10663;62730:74861" data-name="Fixer" />
+                </div>
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="I80:44653;100304:10664">
+                  <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-w-px relative" data-node-id="I80:44653;100304:10665">
+                    <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="I80:44653;100304:10666" data-name="Headline">
+                      <div className="relative shrink-0 size-[16px]" data-node-id="I80:44653;100304:10670" data-name="arrow-up">
+                        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgArrowUp} />
+                      </div>
+                      <div className="content-stretch flex h-[16px] items-start relative shrink-0" data-node-id="I80:44653;100304:10672" data-name="🔄 ↔ SpacingHorizontal">
+                        <div className="h-[160px] relative shrink-0 w-[4px]" data-node-id="I80:44653;100304:10672;62730:75104" data-name="Fixer" />
+                      </div>
+                      <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[16px] not-italic relative shrink-0 text-[13px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] whitespace-nowrap" data-node-id="I80:44653;100304:10667">
+                        Поступления
+                      </p>
+                      <div className="flex flex-row items-center self-stretch" data-node-id="I80:44653;100304:10668">
+                        <div className="content-stretch flex h-full items-start relative shrink-0 w-[4px]" data-name="👑Spaces / Horizontal (↕ resizes)">
+                          <div className="h-[120px] relative shrink-0 w-[4px]" data-node-id="I80:44653;100304:10668;62730:75104" data-name="Fixer" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="I80:44653;100304:10673" data-name="👑Spaces / Vertical (↔ resizes)">
+                      <div className="h-[8px] relative shrink-0 w-[120px]" data-node-id="I80:44653;100304:10673;62730:74006" data-name="Fixer" />
+                    </div>
+                    <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="I80:44653;100304:10674" data-name="Sum">
+                      <CodeConnectSnippet data-node-id="I80:44653;100304:10675" data-name="Amount" data-snippet-language="React">
+                        <Amount value={123456700} minority={100} currency="RUB" codeFormat="symbolic" view="withZeroMinorPart" showPlus />
+                      </CodeConnectSnippet>
+                    </div>
+                  </div>
+                </div>
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="I80:44653;100304:10677" data-name="👑Spaces / Vertical (↔ resizes)">
+                  <div className="h-[16px] relative shrink-0 w-[120px]" data-node-id="I80:44653;100304:10677;62730:74861" data-name="Fixer" />
+                </div>
+              </div>
+              <div className="content-stretch flex h-[76px] items-start relative shrink-0 w-[24px]" data-node-id="80:44654" data-name="🔄 ↔ SpacingHorizontal">
+                <div className="h-[160px] relative shrink-0 w-[24px]" data-node-id="I80:44654;62730:75114" data-name="Fixer" />
+              </div>
+              <div className="bg-[var(--base-bg-alt\/secondary,white)] border-0 border-[var(--neutral\/500,#babbc2)] border-solid content-stretch flex flex-[1_0_0] flex-col h-[76px] items-start min-w-px px-[16px] relative rounded-[16px]" data-node-id="80:44655" data-name="Card">
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="I80:44655;100304:10663" data-name="👑Spaces / Vertical (↔ resizes)">
+                  <div className="h-[16px] relative shrink-0 w-[120px]" data-node-id="I80:44655;100304:10663;62730:74861" data-name="Fixer" />
+                </div>
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="I80:44655;100304:10664">
+                  <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-w-px relative" data-node-id="I80:44655;100304:10665">
+                    <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="I80:44655;100304:10666" data-name="Headline">
+                      <div className="relative shrink-0 size-[16px]" data-node-id="I80:44655;100304:10671" data-name="arrow-down">
+                        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgArrowDown} />
+                      </div>
+                      <div className="content-stretch flex h-[16px] items-start relative shrink-0" data-node-id="I80:44655;100304:10672" data-name="🔄 ↔ SpacingHorizontal">
+                        <div className="h-[160px] relative shrink-0 w-[4px]" data-node-id="I80:44655;100304:10672;62730:75104" data-name="Fixer" />
+                      </div>
+                      <p className="[word-break:break-word] font-['SF_Pro_Text:Regular'] leading-[16px] not-italic relative shrink-0 text-[13px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] whitespace-nowrap" data-node-id="I80:44655;100304:10667">
+                        Списания
+                      </p>
+                      <div className="flex flex-row items-center self-stretch" data-node-id="I80:44655;100304:10668">
+                        <div className="content-stretch flex h-full items-start relative shrink-0 w-[4px]" data-name="👑Spaces / Horizontal (↕ resizes)">
+                          <div className="h-[120px] relative shrink-0 w-[4px]" data-node-id="I80:44655;100304:10668;62730:75104" data-name="Fixer" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="I80:44655;100304:10673" data-name="👑Spaces / Vertical (↔ resizes)">
+                      <div className="h-[8px] relative shrink-0 w-[120px]" data-node-id="I80:44655;100304:10673;62730:74006" data-name="Fixer" />
+                    </div>
+                    <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="I80:44655;100304:10674" data-name="Sum">
+                      <CodeConnectSnippet data-node-id="I80:44655;100304:10675" data-name="Amount" data-snippet-language="React">
+                        <Amount value={-123456700} minority={100} currency="RUB" codeFormat="symbolic" view="withZeroMinorPart" />
+                      </CodeConnectSnippet>
+                    </div>
+                  </div>
+                </div>
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="I80:44655;100304:10677" data-name="👑Spaces / Vertical (↔ resizes)">
+                  <div className="h-[16px] relative shrink-0 w-[120px]" data-node-id="I80:44655;100304:10677;62730:74861" data-name="Fixer" />
+                </div>
+              </div>
+              <div className="content-stretch flex h-[76px] items-start relative shrink-0 w-[24px]" data-node-id="80:44656" data-name="🔄 ↔ SpacingHorizontal">
+                <div className="h-[160px] relative shrink-0 w-[24px]" data-node-id="I80:44656;62730:75114" data-name="Fixer" />
+              </div>
+              <div className="bg-[var(--base-bg-alt\/secondary,white)] border-0 border-[var(--neutral\/500,#babbc2)] border-solid content-stretch flex flex-[1_0_0] flex-col h-[76px] items-start min-w-px px-[16px] relative rounded-[16px]" data-node-id="80:44657" data-name="Card">
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44658" data-name="🔄 ↕ SpacingVertical">
+                  <div className="h-[16px] relative shrink-0 w-[160px]" data-node-id="I80:44658;62730:74861" data-name="Fixer" />
+                </div>
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44659">
+                  <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-w-px relative" data-node-id="80:44660">
+                    <div className="content-stretch flex h-[16px] items-center relative shrink-0 w-full" data-node-id="80:44661" data-name="Headline">
+                      <div className="content-stretch flex flex-col items-center justify-center relative shrink-0" data-node-id="80:44664" data-name="IconWrapper">
+                        <div className="relative shrink-0 size-[16px]" data-node-id="I80:44664;92650:27809" data-name="Wrapper">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgWrapper} />
+                        </div>
+                      </div>
+                      <div className="content-stretch flex h-full items-start relative shrink-0 w-[4px]" data-node-id="80:44665" data-name="🔄 ↔ SpacingHorizontal">
+                        <div className="h-[160px] relative shrink-0 w-[4px]" data-node-id="I80:44665;62730:75104" data-name="Fixer" />
+                      </div>
+                      <p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[16px] not-italic relative shrink-0 text-[13px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] tracking-[var(--regular_letter_spacing\/13,0px)] whitespace-nowrap" data-node-id="80:44666">
+                        Исходящий остаток
+                      </p>
+                      <div className="content-stretch flex h-full items-start relative shrink-0 w-[4px]" data-node-id="80:44667" data-name="🔄 ↔ SpacingHorizontal">
+                        <div className="h-[160px] relative shrink-0 w-[4px]" data-node-id="I80:44667;62730:75104" data-name="Fixer" />
+                      </div>
+                    </div>
+                    <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44668" data-name="🔄 ↕ SpacingVertical">
+                      <div className="h-[8px] relative shrink-0 w-[160px]" data-node-id="I80:44668;62730:74006" data-name="Fixer" />
+                    </div>
+                    <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="80:44669" data-name="Sum">
+                      <CodeConnectSnippet data-node-id="80:44670" data-name="Amount" data-snippet-language="React">
+                        <Amount value={123456700} minority={100} currency="RUB" codeFormat="symbolic" view="withZeroMinorPart" />
+                      </CodeConnectSnippet>
+                    </div>
+                  </div>
+                </div>
+                <div className="content-stretch flex items-start relative shrink-0 w-full" data-node-id="80:44672" data-name="🔄 ↕ SpacingVertical">
+                  <div className="h-[16px] relative shrink-0 w-[160px]" data-node-id="I80:44672;62730:74861" data-name="Fixer" />
+                </div>
+              </div>
+              <div className="content-stretch flex h-[76px] items-start relative shrink-0 w-[0.001px]" data-node-id="80:44673" data-name="🔄 ↔ SpacingHorizontal">
+                <div className="h-[160px] relative shrink-0 w-[0.001px]" data-node-id="I80:44673;68778:84589" data-name="Fixer" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Paragraph/13–16 Secondary Large (Typography.Text view='secondary-large'): Font(family: "font_family/<20", style: Regular, size: 13, weight: 400, lineHeight: 16, letterSpacing: regular_letter_spacing/13), Accent/14–20 Primary Small (Typography.Text view=”primary-small” weight=”bold”): Font(family: "font_family/<20", style: Bold, size: 14, weight: 700, lineHeight: 20, letterSpacing: bold_letter_spacing/14), Accent/14–20 Primary Small (Typography.Text view='primary-small' weight='bold'): Font(family: "SF Pro Text", style: Bold, size: 14, weight: 700, lineHeight: 20, letterSpacing: 0).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## 🔄 ↕ SpacingVertical
+**Node ID:** 13:3075
+
+🔄 Замени на актуальный
+
+  
+
+Shift+ctrl+4 чтобы увидеть заливку. Можно тянуть влево и вправо.
+
+**Documentation:**
+- [https://www.figma.com/file/jwnALtzlec2G32sbfjJiMp/Spacing?type=design&node-id=6%3A779&mode=design&t=KfVg539pBVZyoQpa-1](https://www.figma.com/file/jwnALtzlec2G32sbfjJiMp/Spacing?type=design&node-id=6%3A779&mode=design&t=KfVg539pBVZyoQpa-1)
+
+## Size=m
+**Node ID:** 13:3099
+
+\[glyph\_exclamation-circle\_m\]
+
+## exclamation-circle
+**Node ID:** 13:3098
+
+алерт, восклицательный знак, внимание, alert, attention
+
+## 🔄 ↔ SpacingHorizontal
+**Node ID:** 13:3066
+
+🔄 Замени на актуальный
+
+  
+
+Shift+ctrl+4 чтобы увидеть заливку. Можно тянуть вверх и вниз.
+
+**Documentation:**
+- [https://www.figma.com/file/jwnALtzlec2G32sbfjJiMp/Spacing?type=design&node-id=6%3A779&mode=design&t=KfVg539pBVZyoQpa-1](https://www.figma.com/file/jwnALtzlec2G32sbfjJiMp/Spacing?type=design&node-id=6%3A779&mode=design&t=KfVg539pBVZyoQpa-1)
+
+## 👑Spaces / Vertical (↔ resizes)
+**Node ID:** 13:3135
+
+Shift+ctrl+4 чтобы увидеть заливку. Можно тянуть влево и вправо.
+
+## Size=s
+**Node ID:** 13:3133
+
+\[glyph\_arrow-up\_s\]
+
+## arrow-up
+**Node ID:** 13:3132
+
+стрелка, вверх, наверх, стрелка наверх, стрелка вверх
+
+## 👑Spaces / Horizontal (↕ resizes)
+**Node ID:** 13:3142
+
+Shift+ctrl+4 чтобы увидеть заливку. Можно тянуть вверх и вниз.
+
+## Size=s
+**Node ID:** 13:3096
+
+\[glyph\_arrow-down\_s\]
+
+## arrow-down
+**Node ID:** 13:3095
+
+стрелка вниз, стрелочка вниз
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAADUlEQVQIW2NgYGBgAAAABQABOz4IWwAAAA50RVh0U29mdHdhcmUARmlnbWGesZZjAAAAAElFTkSuQmCC", "mimeType": "image/png"}

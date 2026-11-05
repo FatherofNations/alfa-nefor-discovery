@@ -1,0 +1,545 @@
+<frame id="59:17859" name="Дашборд" x="-37" y="-506" width="1600" height="900">
+  <frame id="59:17860" name="тело" x="0" y="0" width="1600" height="834">
+    <frame id="59:17861" name="footer_gradient_overlay" x="0" y="784" width="248" height="64" />
+    <frame id="59:17864" name="Right" x="960" y="28" width="616" height="40">
+      <frame id="59:17865" name="ButtonsGroup" x="0" y="0" width="88" height="40">
+        <instance id="59:17866" name="IconButton" x="0" y="0" width="40" height="40" />
+        <instance id="59:17867" name="IconButton" x="48" y="0" width="40" height="40" />
+      </frame>
+      <instance id="59:17868" name="DividerVertical" x="104" y="0" width="1" height="40" />
+      <instance id="59:17869" name="CompanyAccount" x="121" y="0" width="221" height="40" />
+      <instance id="59:17870" name="DividerVertical" x="358" y="0" width="1" height="40" />
+      <instance id="59:17871" name="PersonSelect" x="375" y="0" width="168" height="40" />
+      <instance id="59:17872" name="DividerVertical" x="559" y="0" width="1" height="40" />
+      <instance id="59:17873" name="IconButton" x="576" y="0" width="40" height="40" />
+    </frame>
+    <frame id="59:17874" name="tabs" x="668" y="120" width="585" height="52">
+      <frame id="59:17875" name="tab" x="4" y="4" width="114" height="44">
+        <text id="59:17876" name="Major" x="16" y="12" width="82" height="20" />
+      </frame>
+      <frame id="59:17877" name="tab" x="118" y="4" width="116" height="44">
+        <text id="59:17878" name="Major" x="16" y="12" width="56" height="20" />
+        <instance id="59:17879" name="Indicator" x="80" y="12" width="20" height="20" />
+      </frame>
+      <frame id="59:17880" name="tab" x="234" y="4" width="165" height="44">
+        <text id="59:17881" name="Major" x="16" y="12" width="133" height="20" />
+      </frame>
+      <frame id="59:17882" name="tab" x="399" y="4" width="182" height="44">
+        <text id="59:17883" name="Major" x="16" y="12" width="150" height="20" />
+      </frame>
+    </frame>
+    <frame id="80:46563" name="Frame 2147239861" x="471.97314453125" y="438" width="972" height="262">
+      <frame id="80:46564" name="Заголовок" x="0" y="0" width="972" height="26">
+        <text id="80:46565" name="Title" x="0" y="0" width="95" height="26" />
+        <instance id="80:46566" name="chevron-right" x="103" y="4" width="20" height="20" />
+      </frame>
+      <frame id="80:46567" name="Content" x="0" y="50" width="972" height="212">
+        <frame id="80:46568" name="Tasks" x="0" y="0" width="972" height="212">
+          <instance id="80:46589" name="[D] BackgroundPlateSlot" x="0" y="0" width="154" height="212">
+            <slot id="I80:46589;136846:8891" name="Slot" x="0" y="0" width="154" height="212">
+              <instance id="I80:46589;136846:8891;80:46584" name="[D] BackgroundPlateSlot" x="0" y="0" width="154" height="212">
+                <slot id="I80:46589;136846:8891;80:46584;136846:8891" name="Slot" x="16" y="16" width="122" height="180">
+                  <instance id="I80:46589;136846:8891;80:46584;136846:8891;80:46571" name="🔒 [M] StatusPreset" x="16" y="0" width="90" height="20" />
+                  <frame id="I80:46589;136846:8891;80:46584;136846:8891;80:46572" name="Content" x="0" y="37.5" width="122" height="88">
+                    <instance id="I80:46589;136846:8891;80:46584;136846:8891;80:46573" name="Text" x="0" y="0" width="122" height="40" />
+                    <instance id="I80:46589;136846:8891;80:46584;136846:8891;80:46574" name="Text" x="0" y="48" width="122" height="40" />
+                  </frame>
+                  <frame id="I80:46589;136846:8891;80:46584;136846:8891;80:46575" name="Navigation" x="0" y="143" width="122" height="37">
+                    <instance id="I80:46589;136846:8891;80:46584;136846:8891;80:46576" name="Divider" x="0" y="0" width="122" height="1" />
+                    <frame id="I80:46589;136846:8891;80:46584;136846:8891;80:46577" name="conrols" x="0" y="17" width="122" height="20">
+                      <instance id="I80:46589;136846:8891;80:46584;136846:8891;80:46578" name="chevron-right" x="20" y="20.000001907348633" width="20.00000174845553" height="20.00000174845553" />
+                      <frame id="I80:46589;136846:8891;80:46584;136846:8891;80:46579" name="Slider Handle" x="46" y="8.000000953674316" width="30" height="4">
+                        <frame id="I80:46589;136846:8891;80:46584;136846:8891;80:46580" name="Dot" x="0" y="0" width="14" height="4" />
+                        <frame id="I80:46589;136846:8891;80:46584;136846:8891;80:46581" name="Dot" x="18" y="0" width="4" height="4" />
+                        <frame id="I80:46589;136846:8891;80:46584;136846:8891;80:46582" name="Dot" x="26" y="0" width="4" height="4" />
+                      </frame>
+                      <instance id="I80:46589;136846:8891;80:46584;136846:8891;80:46583" name="chevron-right" x="102" y="8.74227794156468e-7" width="20" height="20" />
+                    </frame>
+                  </frame>
+                </slot>
+              </instance>
+              <frame id="I80:46589;136846:8891;80:46585" name="Light" x="0" y="0" width="154" height="212" />
+              <frame id="I80:46589;136846:8891;80:46587" name="Stack" x="0" y="212" width="154" height="8">
+                <instance id="I80:46589;136846:8891;80:46588" name="[D] BackgroundPlate" x="16" y="-42" width="122" height="50" />
+              </frame>
+            </slot>
+          </instance>
+          <instance id="80:46629" name="[D] BackgroundPlateSlot" x="170" y="0" width="154" height="212">
+            <slot id="I80:46629;136846:8891" name="Slot" x="0" y="0" width="154" height="212">
+              <instance id="I80:46629;136846:8891;80:46626" name="[D] BackgroundPlateSlot" x="0" y="0" width="154" height="212">
+                <slot id="I80:46629;136846:8891;80:46626;136846:8891" name="Slot" x="16" y="16" width="122" height="180">
+                  <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46592" name="Img" x="0" y="0" width="122" height="143">
+                    <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46593" name="Group 2136143091" x="-1.40673828125" y="-1.177734375" width="124.62513732910156" height="109.96538543701172">
+                      <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46594" name="A4 - 4" x="-1.4066889360547066" y="25.248882293701172" width="71.58684462355859" height="82.35900765505176">
+                        <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46595" name="Frame 2136141794" x="6.381699085235596" y="6.381656646728516" width="55.26033272246673" height="66.03283070074349">
+                          <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46596" name="Frame 2147239850" x="0" y="0" width="46.40327985590852" height="41.37395655258558">
+                            <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46597" name="Frame 2147239849" x="0" y="0" width="39.15190080260368" height="21.185430394954608">
+                              <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46598" name="Frame 2147239848" x="0" y="0" width="26.40502368590694" height="16.60661690217688">
+                                <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46599" name="Rectangle 1815088985" x="0" y="0" width="24.39726723810429" height="11.016832770544397" />
+                                <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46600" name="Rectangle 1815088986" x="0" y="5.939424514770508" width="16.114399308497923" height="8.041538736737493" />
+                              </frame>
+                              <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46601" name="Rectangle 1815088988" x="35.28980255126953" y="0" width="4.081530353180938" height="4.081629391117275" />
+                            </frame>
+                            <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46602" name="Frame 2147238514" x="0" y="21.45119857788086" width="29.913428591344882" height="17.866974008485613">
+                              <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46603" name="Rectangle 1815088987" x="0.0000018353748600929976" y="0.000012343254638835788" width="18.956040229942914" height="9.062300604217853" />
+                              <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46604" name="Rectangle 1815088989" x="-8.975621312856674e-8" y="5.939548492431641" width="27.905591327221373" height="12.277165522491487" />
+                            </frame>
+                          </frame>
+                          <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46605" name="Rectangle 1815088993" x="0" y="53.14989471435547" width="16.26385999345598" height="8.457651441042913" />
+                        </frame>
+                      </frame>
+                      <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46606" name="A4 - 2" x="52.701171875" y="-1.177734375" width="88.53871093558541" height="109.9653830090624">
+                        <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46607" name="Frame 2136141794" x="8.795845985412598" y="8.79578685760498" width="68.02639713784083" height="89.4526134827538">
+                          <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46608" name="Frame 2147239850" x="0.0000019073486328125" y="0" width="60.46415243167553" height="48.81559808301972">
+                            <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46609" name="Frame 2147239849" x="0" y="0" width="55.234288530161166" height="20.712029875145163">
+                              <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46610" name="Frame 2147239848" x="0" y="0" width="35.800974314647874" height="17.09612431126243">
+                                <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46611" name="Rectangle 1815088985" x="2.4156179279088974e-8" y="4.90166712552309e-7" width="34.39294231655822" height="9.52982275885563" />
+                                <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46612" name="Rectangle 1815088986" x="2.4156179279088974e-8" y="7.696197986602783" width="22.467234325647837" height="7.310837881307378" />
+                              </frame>
+                              <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46613" name="Rectangle 1815088988" x="49.73846435546875" y="3.2213481659937315e-8" width="5.128210068875092" height="5.128085545026629" />
+                            </frame>
+                            <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46614" name="Frame 2147238514" x="8.055940270423889e-8" y="28.58587646484375" width="45.21593739423258" height="18.84810210534522">
+                              <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46615" name="Rectangle 1815088987" x="0.0000019802027964033186" y="0.00001644191797822714" width="26.558661313885864" height="8.07210137376768" />
+                              <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46616" name="Rectangle 1815088989" x="-1.1347583495080471e-7" y="7.696385383605957" width="43.761596345903286" height="11.272857548028782" />
+                            </frame>
+                          </frame>
+                          <rounded-rectangle id="I80:46629;136846:8891;80:46626;136846:8891;80:46617" name="Rectangle 1815088993" x="3.2188836485147476e-8" y="76.5174560546875" width="22.668381665187553" height="8.391737427187508" />
+                        </frame>
+                      </frame>
+                    </frame>
+                    <vector id="I80:46629;136846:8891;80:46626;136846:8891;80:46618" name="Modify this" x="-0.000087738037109375" y="52" width="122.00009155273438" height="91" />
+                  </frame>
+                  <instance id="I80:46629;136846:8891;80:46626;136846:8891;80:46619" name="Text" x="0" y="80" width="122" height="40" />
+                  <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46620" name="Navigation" x="0" y="143" width="122" height="37">
+                    <instance id="I80:46629;136846:8891;80:46626;136846:8891;80:46621" name="Divider" x="0" y="0" width="122" height="1" />
+                    <instance id="I80:46629;136846:8891;80:46626;136846:8891;80:46622" name="Content" x="49" y="17" width="20" height="20" hidden="true" />
+                    <frame id="I80:46629;136846:8891;80:46626;136846:8891;80:46623" name="Ind" x="13.5" y="17" width="95" height="20">
+                      <instance id="I80:46629;136846:8891;80:46626;136846:8891;80:46624" name="Indicator" x="0" y="2" width="16" height="16" />
+                      <instance id="I80:46629;136846:8891;80:46626;136846:8891;80:46625" name="Text" x="24" y="0" width="71" height="20" />
+                    </frame>
+                  </frame>
+                </slot>
+              </instance>
+              <frame id="I80:46629;136846:8891;80:46627" name="Stack" x="0" y="212" width="154" height="8">
+                <instance id="I80:46629;136846:8891;80:46628" name="[D] BackgroundPlate" x="16" y="-42" width="122" height="50" />
+              </frame>
+            </slot>
+          </instance>
+          <instance id="80:46638" name="[D] BackgroundPlateSlot" x="340" y="0" width="154" height="212">
+            <slot id="I80:46638;136846:8891" name="Slot" x="16" y="16" width="122" height="180">
+              <frame id="I80:46638;136846:8891;80:46631" name="Content" x="0" y="0" width="122" height="120">
+                <instance id="I80:46638;136846:8891;80:46632" name="onboardingCardImage" x="29" y="0" width="64" height="64" />
+                <instance id="I80:46638;136846:8891;80:46633" name="Text" x="0" y="80" width="122" height="40" />
+              </frame>
+              <frame id="I80:46638;136846:8891;80:46634" name="Navigation" x="0" y="143" width="122" height="37">
+                <instance id="I80:46638;136846:8891;80:46635" name="Divider" x="0" y="0" width="122" height="1" />
+                <instance id="I80:46638;136846:8891;80:46636" name="Content" x="49" y="17" width="20" height="20" hidden="true" />
+                <instance id="I80:46638;136846:8891;80:46637" name="Amount" x="32.5" y="17" width="57" height="20" />
+              </frame>
+            </slot>
+          </instance>
+          <instance id="80:46647" name="[D] BackgroundPlateSlot" x="510" y="0" width="154" height="212">
+            <slot id="I80:46647;136846:8891" name="Slot" x="16" y="16" width="122" height="180">
+              <frame id="I80:46647;136846:8891;80:46640" name="Content" x="0" y="0" width="122" height="120">
+                <instance id="I80:46647;136846:8891;80:46641" name="onboardingCardImage" x="29" y="0" width="64" height="64" />
+                <instance id="I80:46647;136846:8891;80:46642" name="Text" x="0" y="80" width="122" height="40" />
+              </frame>
+              <frame id="I80:46647;136846:8891;80:46643" name="Navigation" x="0" y="143" width="122" height="37">
+                <instance id="I80:46647;136846:8891;80:46644" name="Divider" x="0" y="0" width="122" height="1" />
+                <instance id="I80:46647;136846:8891;80:46645" name="Content" x="49" y="17" width="20" height="20" hidden="true" />
+                <instance id="I80:46647;136846:8891;80:46646" name="Amount" x="32.5" y="17" width="57" height="20" />
+              </frame>
+            </slot>
+          </instance>
+          <instance id="80:46656" name="[D] BackgroundPlateSlot" x="680" y="0" width="154" height="212">
+            <slot id="I80:46656;136846:8891" name="Slot" x="16" y="16" width="122" height="180">
+              <frame id="I80:46656;136846:8891;80:46649" name="Content" x="0" y="0" width="122" height="120">
+                <instance id="I80:46656;136846:8891;80:46650" name="onboardingCardImage" x="29" y="0" width="64" height="64" />
+                <instance id="I80:46656;136846:8891;80:46651" name="Text" x="0" y="80" width="122" height="40" />
+              </frame>
+              <frame id="I80:46656;136846:8891;80:46652" name="Navigation" x="0" y="143" width="122" height="37">
+                <instance id="I80:46656;136846:8891;80:46653" name="Divider" x="0" y="0" width="122" height="1" />
+                <instance id="I80:46656;136846:8891;80:46654" name="Content" x="49" y="17" width="20" height="20" hidden="true" />
+                <instance id="I80:46656;136846:8891;80:46655" name="Amount" x="32.5" y="17" width="57" height="20" />
+              </frame>
+            </slot>
+          </instance>
+          <instance id="80:46665" name="[D] BackgroundPlateSlot" x="850" y="0" width="154" height="212">
+            <slot id="I80:46665;136846:8891" name="Slot" x="16" y="16" width="122" height="180">
+              <frame id="I80:46665;136846:8891;80:46658" name="Content" x="0" y="0" width="122" height="120">
+                <instance id="I80:46665;136846:8891;80:46659" name="onboardingCardImage" x="29" y="0" width="64" height="64" />
+                <instance id="I80:46665;136846:8891;80:46660" name="Text" x="0" y="80" width="122" height="40" />
+              </frame>
+              <frame id="I80:46665;136846:8891;80:46661" name="Navigation" x="0" y="143" width="122" height="37">
+                <instance id="I80:46665;136846:8891;80:46662" name="Divider" x="0" y="0" width="122" height="1" />
+                <instance id="I80:46665;136846:8891;80:46663" name="Content" x="49" y="17" width="20" height="20" hidden="true" />
+                <instance id="I80:46665;136846:8891;80:46664" name="Amount" x="32.5" y="17" width="57" height="20" />
+              </frame>
+            </slot>
+          </instance>
+        </frame>
+        <rounded-rectangle id="80:46666" name="Rectangle 1815089069" x="844" y="0" width="128" height="212" />
+        <instance id="80:46667" name="CustomButton" x="940" y="122" width="32.00000139876465" height="32.00000521346169" />
+      </frame>
+    </frame>
+    <frame id="80:45018" name="Frame 2147238491" x="472" y="756" width="972" height="1031">
+      <frame id="80:46934" name="Заголовок" x="0" y="0" width="972" height="26">
+        <frame id="80:46935" name="Frame 2147239741" x="0" y="0" width="201" height="26">
+          <text id="80:46936" name="Title" x="0" y="0" width="178" height="26" />
+          <instance id="80:46937" name="chevron-right" x="181" y="4" width="20" height="20" />
+        </frame>
+        <frame id="80:46938" name="Frame 2147239740" x="213" y="2" width="289" height="22">
+          <instance id="80:46939" name="neuro-assistant-sign-box" x="0" y="0" width="22" height="22" />
+          <text id="80:46940" name="Label" x="31" y="1" width="258" height="20" />
+        </frame>
+      </frame>
+      <instance id="80:45022" name="↕ SpacingVertical" x="0" y="26" width="972" height="24" />
+      <frame id="80:45023" name="[D] FiltersBlock" x="0" y="50" width="972" height="40">
+        <instance id="80:45024" name="[D] Button" x="0" y="136" width="119" height="20" hidden="true" />
+        <vector id="80:45025" name="Border" x="0" y="176" width="800" height="1" hidden="true" />
+        <frame id="80:45026" name="Tag group" x="0" y="0" width="972" height="40">
+          <frame id="80:45027" name="Filtets" x="0" y="0" width="834" height="40">
+            <frame id="80:45028" name="First group" x="0" y="0" width="834" height="40">
+              <instance id="80:45029" name="[D] FilterTag_Filled" x="0" y="0" width="253" height="40" />
+              <instance id="80:45030" name="Search" x="261" y="0" width="461" height="40" />
+              <instance id="80:45031" name="🔄 [D] GeneralFilterTag" x="730" y="0" width="40" height="40" />
+              <instance id="80:45035" name="Control" x="778" y="4" width="32" height="32">
+                <slot id="I80:45035;148264:17907" name="Content" x="0" y="0" width="32" height="32">
+                  <frame id="I80:45035;148264:17907;80:45033" name="SwapMe" x="0" y="0" width="32" height="1" hidden="true" />
+                  <instance id="I80:45035;148264:17907;80:45034" name="[Local] CloseButton" x="0" y="32" width="32" height="32" hidden="true" />
+                </slot>
+              </instance>
+              <frame id="80:45036" name="LeftAddon" x="818" y="12" width="16" height="16" />
+            </frame>
+          </frame>
+          <frame id="80:45037" name="Frame 2147224468" x="858" y="0" width="114" height="40">
+            <frame id="80:45038" name="Search&amp;Button" x="0" y="0" width="114" height="40">
+              <instance id="80:45039" name="[D] Button" x="0" y="0" width="114" height="40" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <frame id="80:45040" name="Аnalytics" x="0" y="90" width="972" height="100">
+        <frame id="80:45041" name="Button Group" x="0" y="24" width="1092" height="32" hidden="true">
+          <instance id="80:45042" name="🔄 [D][Corporate] Button" x="796" y="0" width="148" height="32" />
+          <instance id="80:45043" name="[D] Settings" x="958" y="0" width="125" height="32" />
+        </frame>
+        <frame id="80:45044" name="Аnalytics" x="0" y="0" width="972" height="100">
+          <frame id="80:45045" name="Аnalytics" x="0" y="0" width="972" height="100">
+            <frame id="80:45046" name="Button Group" x="0" y="24" width="1092" height="32" hidden="true">
+              <instance id="80:45047" name="🔄 [D][Corporate] Button" x="796" y="0" width="148" height="32" />
+              <instance id="80:45048" name="[D] Settings" x="958" y="0" width="125" height="32" />
+            </frame>
+            <frame id="80:45049" name="Frame 346235" x="0" y="24" width="972" height="76">
+              <frame id="80:45050" name="Frame 346234" x="0" y="0" width="972" height="76">
+                <instance id="80:45051" name="🔄 ↔ SpacingHorizontal" x="0" y="0" width="0.0010000000474974513" height="76" hidden="true" />
+                <frame id="80:45052" name="Card" x="0" y="0" width="224.999755859375" height="76">
+                  <instance id="80:45053" name="🔄 ↕ SpacingVertical" x="16" y="0" width="192.999755859375" height="16" />
+                  <frame id="80:45054" name="Frame 346223" x="16" y="16" width="192.999755859375" height="44">
+                    <frame id="80:45055" name="Frame 346222" x="0.0001220703125" y="0" width="192.999755859375" height="44">
+                      <frame id="80:45056" name="Headline" x="0" y="0" width="192.999755859375" height="16">
+                        <instance id="80:45057" name="arrow-up" x="16" y="1" width="16" height="16" hidden="true" />
+                        <instance id="80:45058" name="arrow-down" x="32" y="1" width="16" height="16" hidden="true" />
+                        <instance id="80:45059" name="IconWrapper" x="0" y="0" width="16" height="16" />
+                        <instance id="80:45060" name="🔄 ↔ SpacingHorizontal" x="16" y="0" width="4" height="16" />
+                        <text id="80:45061" name="Входящий остаток" x="20" y="0" width="117" height="16" />
+                        <instance id="80:45062" name="🔄 ↔ SpacingHorizontal" x="137" y="0" width="4" height="16" />
+                      </frame>
+                      <instance id="80:45063" name="🔄 ↕ SpacingVertical" x="0" y="16" width="192.999755859375" height="8" />
+                      <frame id="80:45064" name="Sum" x="0" y="24" width="98" height="20">
+                        <instance id="80:45065" name="Amount" x="0" y="1.2434497875801753e-14" width="98" height="20" />
+                      </frame>
+                    </frame>
+                    <instance id="80:45066" name="Сhart Draft" x="151" y="0" width="62" height="44" hidden="true" />
+                  </frame>
+                  <instance id="80:45067" name="🔄 ↕ SpacingVertical" x="16" y="60" width="192.999755859375" height="16" />
+                </frame>
+                <instance id="80:45068" name="🔄 ↔ SpacingHorizontal" x="224.999755859375" y="0" width="24" height="76" />
+                <instance id="80:45069" name="Card" x="248.999755859375" y="0" width="224.999755859375" height="76" />
+                <instance id="80:45070" name="🔄 ↔ SpacingHorizontal" x="473.99951171875" y="0" width="24" height="76" />
+                <instance id="80:45071" name="Card" x="497.99951171875" y="0" width="224.999755859375" height="76" />
+                <instance id="80:45072" name="🔄 ↔ SpacingHorizontal" x="722.999267578125" y="0" width="24" height="76" />
+                <frame id="80:45073" name="Card" x="746.999267578125" y="0" width="224.999755859375" height="76">
+                  <instance id="80:45074" name="🔄 ↕ SpacingVertical" x="16" y="0" width="192.999755859375" height="16" />
+                  <frame id="80:45075" name="Frame 346223" x="16" y="16" width="192.999755859375" height="44">
+                    <frame id="80:45076" name="Frame 346222" x="0.0001220703125" y="0" width="192.999755859375" height="44">
+                      <frame id="80:45077" name="Headline" x="0" y="0" width="192.999755859375" height="16">
+                        <instance id="80:45078" name="arrow-up" x="16" y="1" width="16" height="16" hidden="true" />
+                        <instance id="80:45079" name="arrow-down" x="32" y="1" width="16" height="16" hidden="true" />
+                        <instance id="80:45080" name="IconWrapper" x="0" y="0" width="16" height="16" />
+                        <instance id="80:45081" name="🔄 ↔ SpacingHorizontal" x="16" y="0" width="4" height="16" />
+                        <text id="80:45082" name="Исходящий остаток" x="20" y="0" width="125" height="16" />
+                        <instance id="80:45083" name="🔄 ↔ SpacingHorizontal" x="145" y="0" width="4" height="16" />
+                      </frame>
+                      <instance id="80:45084" name="🔄 ↕ SpacingVertical" x="0" y="16" width="192.999755859375" height="8" />
+                      <frame id="80:45085" name="Sum" x="0" y="24" width="98" height="20">
+                        <instance id="80:45086" name="Amount" x="0" y="1.2434497875801753e-14" width="98" height="20" />
+                      </frame>
+                    </frame>
+                    <instance id="80:45087" name="Сhart Draft" x="151" y="0" width="62" height="44" hidden="true" />
+                  </frame>
+                  <instance id="80:45088" name="🔄 ↕ SpacingVertical" x="16" y="60" width="192.999755859375" height="16" />
+                </frame>
+                <instance id="80:45089" name="🔄 ↔ SpacingHorizontal" x="971.9990234375" y="0" width="0.0010000000474974513" height="76" />
+                <instance id="80:45090" name="🔄 ↔ SpacingHorizontal" x="1061" y="0" width="8" height="76" hidden="true" />
+                <frame id="80:45091" name="Frame 346225" x="1070" y="0" width="32" height="76" hidden="true">
+                  <instance id="80:45092" name="🔄 Button" x="0" y="5.329070518200751e-15" width="32" height="32" />
+                  <instance id="80:45093" name="🔄 Button" x="-3.552713678800501e-15" y="44" width="32" height="32" />
+                </frame>
+                <instance id="80:45094" name="🔄 Button" x="1044.00048828125" y="-12" width="32" height="32" hidden="true" />
+                <instance id="80:45095" name="🔄 ↔ SpacingHorizontal" x="1076.00048828125" y="-12" width="16" height="76" hidden="true" />
+              </frame>
+              <frame id="80:45096" name="Frame 346232" x="0" y="84" width="1092" height="16" hidden="true">
+                <text id="80:45097" name="Информация по оборотам и остаткам зависит от фильтров: период, компания и счёт" x="6" y="0" width="1092" height="16" />
+              </frame>
+            </frame>
+            <frame id="80:45098" name="BottomPadding" x="0" y="188" width="1092" height="4" hidden="true">
+              <vector id="80:45099" name="Border" x="0" y="3" width="1092" height="1" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <instance id="80:45100" name="↕ SpacingVertical" x="0" y="190" width="972" height="24" />
+      <frame id="80:45101" name="Table" x="0" y="214" width="972" height="817">
+        <frame id="80:45102" name="Day" x="16" y="22" width="940" height="489">
+          <frame id="80:45103" name="Header" x="0" y="0" width="940" height="43">
+            <text id="80:45104" name="Title" x="16" y="0" width="908" height="22" />
+            <instance id="80:45105" name="BorderLine" x="16" y="42" width="908" height="1" />
+          </frame>
+          <frame id="80:45106" name="Body" x="0" y="43" width="940" height="446">
+            <frame id="80:45107" name="[D] BodyRow :: Basic" x="0" y="0" width="940" height="141">
+              <frame id="80:45108" name="Row" x="0" y="0" width="940" height="140">
+                <frame id="80:45109" name="Content" x="16" y="24" width="908" height="52">
+                  <instance id="80:45110" name="Checkbox_24" x="0" y="0" width="24" height="24" />
+                  <frame id="80:45111" name="Info" x="44" y="0" width="820" height="52">
+                    <frame id="80:45112" name="Info" x="0" y="0" width="501" height="52">
+                      <frame id="80:45113" name="logo" x="0" y="0" width="52" height="52">
+                        <vector id="80:45114" name="bg" x="0" y="0" width="52" height="52" />
+                        <rounded-rectangle id="80:45115" name="BgImg" x="0" y="0" width="52" height="52" />
+                      </frame>
+                      <frame id="80:45116" name="Frame 2147224462" x="72" y="0" width="429" height="52">
+                        <text id="80:45117" name="ООО «Умные и свободные»" x="0" y="0" width="429" height="24" />
+                        <text id="80:45118" name="Аванс по договору №51/9-12 от 27.07.2023" x="0" y="28" width="429" height="24" />
+                      </frame>
+                    </frame>
+                    <frame id="80:45119" name="Content" x="525" y="0" width="95" height="24">
+                      <instance id="80:45120" name="StatusPreset" x="0" y="2" width="88" height="20" />
+                      <frame id="80:45121" name="Addon" x="58" y="4" width="16" height="16" hidden="true">
+                        <instance id="80:45122" name="IconView" x="0" y="0" width="16" height="16" />
+                      </frame>
+                    </frame>
+                    <instance id="80:45123" name="Text" x="644" y="0" width="176" height="24" />
+                  </frame>
+                  <instance id="80:45124" name="dots-horizontal" x="884" y="0" width="24" height="24" />
+                </frame>
+                <frame id="80:45125" name="Number" x="16" y="92" width="299" height="24">
+                  <text id="80:45126" name="№63677, Т-Банк, ·· 9909" x="116" y="0" width="183" height="24" />
+                </frame>
+              </frame>
+              <instance id="80:45127" name="BorderLine" x="0" y="140" width="940" height="1" />
+            </frame>
+            <frame id="80:45128" name="[D] BodyRow :: Basic" x="0" y="141" width="940" height="141">
+              <frame id="80:45129" name="Row" x="0" y="0" width="940" height="140">
+                <frame id="80:45130" name="Content" x="16" y="24" width="908" height="52">
+                  <instance id="80:45131" name="Checkbox_24" x="0" y="0" width="24" height="24" />
+                  <frame id="80:45132" name="Info" x="44" y="0" width="820" height="52">
+                    <frame id="80:45133" name="Info" x="0" y="0" width="501" height="52">
+                      <frame id="80:45134" name="logo" x="0" y="0" width="52" height="52">
+                        <vector id="80:45135" name="bg" x="0" y="0" width="52" height="52" />
+                        <rounded-rectangle id="80:45136" name="BgImg" x="0" y="0" width="52" height="52" />
+                      </frame>
+                      <frame id="80:45137" name="Frame 2147224462" x="72" y="0" width="429" height="52">
+                        <text id="80:45138" name="ИП «Костин Иван Федорович»" x="0" y="0" width="429" height="24" />
+                        <text id="80:45139" name="Перевод себе в Альфа-Банк" x="0" y="28" width="429" height="24" />
+                      </frame>
+                    </frame>
+                    <frame id="80:45140" name="Content" x="525" y="0" width="95" height="24">
+                      <instance id="80:45141" name="StatusPreset" x="0" y="2" width="88" height="20" />
+                      <frame id="80:45142" name="Addon" x="58" y="4" width="16" height="16" hidden="true">
+                        <instance id="80:45143" name="IconView" x="0" y="0" width="16" height="16" />
+                      </frame>
+                    </frame>
+                    <instance id="80:45144" name="Text" x="644" y="0" width="176" height="24" />
+                  </frame>
+                  <instance id="80:45145" name="dots-horizontal" x="884" y="0" width="24" height="24" />
+                </frame>
+                <frame id="80:45146" name="Number" x="16" y="92" width="299" height="24">
+                  <text id="80:45147" name="№63677, Т-Банк, ·· 9909" x="116" y="0" width="183" height="24" />
+                </frame>
+              </frame>
+              <instance id="80:45148" name="BorderLine" x="0" y="140" width="940" height="1" />
+            </frame>
+            <frame id="80:45149" name="[D] BodyRow :: Basic" x="0" y="282" width="940" height="164">
+              <frame id="80:45150" name="Row" x="0" y="0" width="940" height="164">
+                <frame id="80:45151" name="Content" x="16" y="24" width="908" height="76">
+                  <instance id="80:45152" name="Checkbox_24" x="0" y="0" width="24" height="24" />
+                  <frame id="80:45153" name="Info" x="44" y="0" width="820" height="76">
+                    <frame id="80:45154" name="Info" x="0" y="0" width="501" height="76">
+                      <frame id="80:45155" name="logo" x="0" y="0" width="52" height="52">
+                        <vector id="80:45156" name="bg" x="0" y="0" width="52" height="52" />
+                        <rounded-rectangle id="80:45157" name="BgImg" x="0" y="0" width="52" height="52" />
+                      </frame>
+                      <frame id="80:45158" name="Frame 2147224462" x="72" y="0" width="429" height="76">
+                        <text id="80:45159" name="АО «Альфа-Банк»" x="0" y="0" width="429" height="24" />
+                        <text id="80:45160" name="Комиссия за SMS-оповещение за август 2025 Согласно тарифам Банка ИП Костин Иван Федорович" x="0" y="28" width="429" height="48" />
+                      </frame>
+                    </frame>
+                    <frame id="80:45161" name="Content" x="525" y="0" width="95" height="24">
+                      <instance id="80:45162" name="StatusPreset" x="0" y="2" width="86" height="20" />
+                      <frame id="80:45163" name="Addon" x="58" y="4" width="16" height="16" hidden="true">
+                        <instance id="80:45164" name="IconView" x="0" y="0" width="16" height="16" />
+                      </frame>
+                    </frame>
+                    <instance id="80:45165" name="Text" x="644" y="0" width="176" height="24" />
+                  </frame>
+                  <instance id="80:45166" name="dots-horizontal" x="884" y="0" width="24" height="24" />
+                </frame>
+                <frame id="80:45167" name="Number" x="16" y="116" width="181" height="24">
+                  <text id="80:45168" name="№87896" x="116" y="0" width="65" height="24" />
+                </frame>
+              </frame>
+              <instance id="80:45169" name="BorderLine" x="0" y="164" width="1208" height="1" hidden="true" />
+            </frame>
+          </frame>
+        </frame>
+        <frame id="80:45170" name="Day" x="16" y="523" width="940" height="204">
+          <frame id="80:45171" name="Header" x="0" y="0" width="940" height="43">
+            <text id="80:45172" name="Title" x="16" y="0" width="908" height="22" />
+            <instance id="80:45173" name="BorderLine" x="16" y="42" width="908" height="1" />
+          </frame>
+          <frame id="80:45174" name="[D] BodyRow :: Basic" x="0" y="63" width="940" height="141">
+            <frame id="80:45175" name="Row" x="0" y="0" width="940" height="140">
+              <frame id="80:45176" name="Content" x="16" y="24" width="908" height="52">
+                <instance id="80:45177" name="Checkbox_24" x="0" y="0" width="24" height="24" />
+                <frame id="80:45178" name="Info" x="44" y="0" width="820" height="52">
+                  <frame id="80:45179" name="Info" x="0" y="0" width="501" height="52">
+                    <frame id="80:45180" name="logo" x="0" y="0" width="52" height="52">
+                      <vector id="80:45181" name="bg" x="0" y="0" width="52" height="52" />
+                      <rounded-rectangle id="80:45182" name="BgImg" x="0" y="0" width="52" height="52" />
+                    </frame>
+                    <frame id="80:45183" name="Frame 2147224462" x="72" y="0" width="429" height="52">
+                      <text id="80:45184" name="ООО «Умные и свободные»" x="0" y="0" width="429" height="24" />
+                      <text id="80:45185" name="Аванс по договору №51/9-12 от 27.07.2023" x="0" y="28" width="429" height="24" />
+                    </frame>
+                  </frame>
+                  <frame id="80:45186" name="Content" x="525" y="0" width="95" height="24">
+                    <instance id="80:45187" name="StatusPreset" x="0" y="2" width="90" height="20" />
+                    <frame id="80:45188" name="Addon" x="58" y="4" width="16" height="16" hidden="true">
+                      <instance id="80:45189" name="IconView" x="0" y="0" width="16" height="16" />
+                    </frame>
+                  </frame>
+                  <instance id="80:45190" name="Text" x="644" y="0" width="176" height="24" />
+                </frame>
+                <instance id="80:45191" name="dots-horizontal" x="884" y="0" width="24" height="24" />
+              </frame>
+              <frame id="80:45192" name="Number" x="16" y="92" width="284" height="24">
+                <text id="80:45193" name="№ 105, Т-Банк, ·· 9909" x="116" y="0" width="168" height="24" />
+              </frame>
+            </frame>
+            <instance id="80:45194" name="BorderLine" x="0" y="140" width="1208" height="1" hidden="true" />
+          </frame>
+        </frame>
+        <instance id="80:45195" name="[D] Button" x="16" y="739" width="940" height="56" />
+      </frame>
+    </frame>
+    <frame id="80:45434" name="Frame 2147238837" x="477" y="208" width="967" height="168">
+      <frame id="80:45435" name="Frame 2147238836" x="0" y="0" width="967" height="88">
+        <frame id="80:45436" name="Заголовок" x="317" y="0" width="333" height="48">
+          <text id="80:45437" name="text" x="0" y="0" width="333" height="48" />
+          <text id="80:45438" name="text" x="-51" y="0" width="35" height="48" />
+        </frame>
+        <frame id="80:45439" name="Frame 2147238835" x="0" y="64" width="967" height="24">
+          <frame id="80:45440" name="Frame 2147238834" x="210.5" y="0" width="546" height="24">
+            <text id="80:45441" name="Title" x="0" y="0" width="371" height="24" />
+            <frame id="80:45442" name="больше" x="379" y="0" width="167" height="24">
+              <instance id="80:45443" name="neuro-assistant-sign-box" x="0" y="2" width="20" height="20" />
+              <text id="80:45444" name="Title" x="24" y="0" width="143" height="24" />
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <frame id="80:45445" name="Frame 2147239163" x="0" y="116" width="967" height="52">
+        <frame id="80:45446" name="Frame 2147238833" x="28.5" y="0" width="910" height="52">
+          <instance id="80:45447" name="chips" x="0" y="0" width="207" height="52" />
+          <frame id="80:45448" name="Frame 2147237878" x="219" y="0" width="174" height="52">
+            <frame id="80:45449" name="Frame 2147238838" x="20" y="16" width="134" height="20">
+              <instance id="80:45450" name="personal-transfer-sign-box" x="0" y="0" width="20" height="20" />
+              <text id="80:45451" name="Себе в Альфу" x="28" y="0" width="106" height="20" />
+            </frame>
+          </frame>
+          <frame id="80:45452" name="Frame 2147237874" x="405" y="0" width="201" height="52">
+            <frame id="80:45453" name="Frame 2147238838" x="20" y="16" width="161" height="20">
+              <instance id="80:45454" name="Content" x="0" y="0" width="20" height="20" />
+              <text id="80:45455" name="Скачать выписку" x="28" y="0" width="133" height="20" />
+            </frame>
+          </frame>
+          <frame id="80:45456" name="Frame 2147237877" x="618" y="0" width="207" height="52">
+            <frame id="80:45457" name="Frame 2147238838" x="20" y="16" width="167" height="20">
+              <instance id="80:45458" name="document-lines" x="0" y="0" width="20" height="20" />
+              <text id="80:45459" name="Импорт платежей" x="28" y="0" width="139" height="20" />
+            </frame>
+          </frame>
+          <frame id="80:45460" name="Frame 2147237875" x="837" y="0" width="73" height="52">
+            <text id="80:45461" name="Ещё" x="20" y="16" width="33" height="20" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <instance id="59:18118" name="Company Details" x="467" y="388.0009765625" width="1092" height="348.0010070800781" hidden="true" />
+  <instance id="59:18119" name="🔄 ↕ SpacingVertical" x="467" y="2236.00390625" width="1254" height="72" />
+  <instance id="59:18120" name="Spotlight-bar" x="0" y="840" width="1600" height="60" />
+  <frame id="59:18121" name="Menu" x="8" y="8" width="308" height="818">
+    <frame id="59:18122" name="Logo_content" x="1" y="21" width="306" height="40">
+      <instance id="59:18123" name="Logo" x="20" y="0" width="266" height="40" />
+    </frame>
+    <frame id="59:18124" name="Content" x="1" y="89" width="306" height="552">
+      <instance id="59:18125" name="Amounts" x="0" y="0" width="306" height="108" />
+      <instance id="59:18126" name="DividerHorizontal" x="0" y="116" width="306" height="25" hidden="true" />
+      <instance id="59:18127" name="Quick Actions" x="0" y="149" width="306" height="80" hidden="true" />
+      <frame id="59:18128" name="Frame 2147239738" x="0" y="116" width="306" height="436">
+        <instance id="59:18129" name="DividerHorizontal" x="0" y="0" width="306" height="25" />
+        <instance id="59:18130" name="menu" x="0" y="27" width="306" height="409" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="59:18874" name="сайдпанель" x="324" y="8" width="480" height="818">
+    <frame id="59:18875" name="[D] UniversalModalBody" x="28" y="84" width="424" height="557">
+      <instance id="59:18876" name="↕ SpacingVertical" x="0" y="0" width="500" height="16" hidden="true" />
+      <instance id="59:18877" name="currencyListHeader" x="0" y="16" width="500" height="72" hidden="true" />
+      <instance id="59:18878" name="↕ SpacingVertical" x="0" y="0" width="424" height="8" />
+      <frame id="59:18879" name="BodyContent" x="0" y="8" width="424" height="479">
+        <instance id="59:18880" name="list" x="0" y="0" width="424" height="24" />
+        <instance id="59:18881" name="listDivider" x="0" y="44" width="424" height="17" />
+        <instance id="59:18882" name="list" x="0" y="81" width="424" height="24" />
+        <instance id="59:18883" name="list" x="0" y="125" width="424" height="24" />
+        <instance id="59:18884" name="list" x="0" y="169" width="424" height="24" />
+        <frame id="59:18885" name="list" x="0" y="213" width="424" height="24">
+          <frame id="59:18886" name="cell" x="0" y="0" width="424" height="24">
+            <frame id="59:18887" name="subtitle" x="0" y="2" width="375" height="20">
+              <text id="59:18888" name="subtitle" x="0" y="0" width="119" height="20" />
+              <instance id="59:18889" name="info-circle" x="63" y="2" width="20" height="20" hidden="true" />
+              <instance id="59:18890" name="exclamation-circle" x="87" y="2" width="20" height="20" hidden="true" />
+            </frame>
+            <instance id="59:18891" name="🔒 AmountParagraph" x="375" y="0" width="49" height="24" />
+          </frame>
+          <frame id="59:18892" name="caption" x="0" y="32" width="436" height="48" hidden="true">
+            <text id="59:18893" name="caption" x="0" y="0" width="436" height="20" />
+            <instance id="59:18894" name="Link" x="0" y="28" width="150" height="20" />
+          </frame>
+        </frame>
+        <instance id="59:18895" name="listDivider" x="0" y="257" width="424" height="53" />
+        <instance id="59:18896" name="list" x="0" y="330" width="424" height="24" />
+        <instance id="59:18897" name="list" x="0" y="374" width="424" height="24" />
+        <instance id="59:18898" name="listDivider" x="0" y="418" width="424" height="17" />
+        <instance id="59:18899" name="list" x="0" y="455" width="424" height="24" />
+        <instance id="59:18900" name="Scrollbar" x="360" y="0" width="10" height="479" hidden="true" />
+      </frame>
+    </frame>
+    <instance id="59:18901" name="Presets" x="28" y="742" width="424" height="48" />
+    <frame id="59:18902" name="Frame 2147238820" x="20" y="20" width="440" height="32">
+      <text id="59:18903" name="Детализация остатка" x="8" y="3" width="234" height="26" />
+      <instance id="59:18904" name="IconView" x="408" y="0" width="32" height="32" />
+    </frame>
+  </frame>
+</frame>

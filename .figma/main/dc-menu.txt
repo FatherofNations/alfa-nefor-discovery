@@ -1,0 +1,213 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/d0ccab3d-bd32-43af-b223-4f42920ee41a";
+import { SuperEllipse } from '@alfalab/core-components/icon-view';
+import IconView from "packages/icon-view/src/components/index.ts"
+import { Amount } from '@alfalab/core-components/amount';
+import Amount from "packages/amount/src/index.ts"
+
+const imgBonusesSignBox = `${assetPathPrefix}/a8252.svg`;
+const imgGear = `${assetPathPrefix}/a0ccc.svg`;
+const imgCover = `${assetPathPrefix}/44ff6.png`;
+const imgCover1 = `${assetPathPrefix}/1ba6e.png`;
+const imgCover2 = `${assetPathPrefix}/94750.png`;
+const imgBorder = `${assetPathPrefix}/00517.png`;
+const img = `${assetPathPrefix}/2926e.svg`;
+const imgIcon = `${assetPathPrefix}/af619.svg`;
+const imgCross = `${assetPathPrefix}/ed006.svg`;
+const imgAllServicesProductsSignBox = `${assetPathPrefix}/889b6.svg`;
+const imgBonusesSignBox1 = `${assetPathPrefix}/a27d9.svg`;
+const imgNewPaymentSignBox = `${assetPathPrefix}/6f742.svg`;
+const imgTransactionFeedSignBox = `${assetPathPrefix}/34800.svg`;
+const imgPaymentsInProgressSignBox = `${assetPathPrefix}/7ff07.svg`;
+const imgChevronDownInc = `${assetPathPrefix}/331ba.svg`;
+const imgProcurementSignBox = `${assetPathPrefix}/52c45.svg`;
+const imgSafeBox = `${assetPathPrefix}/353cb.svg`;
+
+
+  type LoyaltyProps = {
+className?: string;
+error?: "False";
+loading?: "False"
+}
+  
+function Loyalty({className, error = "False", loading = "False"}: LoyaltyProps) {
+    return (<div className={className || "bg-[var(--decorative-muted\\/indigo,#eeedff)] content-stretch flex gap-[2px] items-center pl-[8px] pr-[6px] py-[6px] relative rounded-[99px]"} data-node-id="13:11324"><div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] justify-center leading-[0] not-italic relative shrink-0 text-[13px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] tracking-[var(--bold_letter_spacing\/13,0.54px)] whitespace-nowrap" data-node-id="13:11325"><p className="leading-[16px]">100</p></div><div className="relative shrink-0 size-[20px]" data-node-id="13:11326" data-name="bonuses-sign-box"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBonusesSignBox} /></div></div>);
+}
+    
+
+
+  type HideCategorySettingProps = {
+className?: string;
+property1?: "Default"
+}
+  
+function HideCategorySetting({className, property1 = "Default"}: HideCategorySettingProps) {
+    return (<div className={className || "content-stretch flex items-center relative"} data-node-id="13:11308"><div className="relative shrink-0 size-[20px]" data-node-id="13:11309" data-name="gear"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGear} /></div></div>);
+}
+    
+
+
+  
+  
+export default function Menu() {
+    return (<div className="bg-[var(--monochrome-white\/48,rgba(255,255,255,0.48))] border border-[var(--neutral\/0,white)] border-solid content-stretch flex flex-col gap-[28px] items-center overflow-clip pt-[20px] relative rounded-[16px] size-full" data-node-id="59:17108" data-name="Menu"><div className="content-stretch flex flex-col items-start px-[20px] relative shrink-0 w-full" data-node-id="59:17109" data-name="Logo_content"><div className="content-stretch flex gap-[12px] items-center relative shrink-0 w-full" data-node-id="59:17110" data-name="Logo"><div className="content-stretch flex items-center relative shrink-0" data-node-id="I59:17110;2291:376395" data-name="Logo"><CodeConnectSnippet data-node-id="I59:17110;2291:376395;138068:26788" data-name="IconView" data-snippet-language="React">function Example({ backgroundColor }: { backgroundColor: string }) { return (<SuperEllipse size={40}
+        border={false}
+        backgroundColor={backgroundColor}
+         
+        mainSize={24}
+         
+        
+    >{/* Code Connect Logic Instance */}</SuperEllipse>); }</CodeConnectSnippet></div><div className="h-[16px] relative shrink-0 w-[123px]" data-node-id="I59:17110;2291:376396" data-name="Альфа-Бизнес"><img alt="" className="absolute block inset-0 max-w-none size-full" src={img} /></div></div></div><div className="content-stretch flex flex-col gap-[8px] items-center relative shrink-0 w-full" data-node-id="59:17111" data-name="Content"><a className="content-stretch cursor-pointer flex flex-col gap-[20px] items-start pb-[4px] px-[20px] relative shrink-0 w-full" data-node-id="59:17112" data-name="Amounts"><div className="content-stretch flex flex-col isolate items-start justify-center relative shrink-0 w-full" data-node-id="I59:17112;2519:71226" data-name="Cell"><div className="content-stretch flex gap-[12px] items-center relative shrink-0 w-full z-[1]" data-node-id="I59:17112;2519:71226;2517:79070" data-name="Content"><div className="content-stretch flex flex-[1_0_0] gap-[12px] items-center min-w-px relative" data-node-id="I59:17112;2519:71226;2517:70934" data-name="Left"><div className="mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_-1px] mask-size-[222px_42px] relative shrink-0 size-[40px]" data-node-id="I59:17112;2519:71226;2517:78194" style={{ maskImage: `url("${imgIcon}")` }} data-name="Icon"><CodeConnectSnippet data-node-id="I59:17112;2519:71226;2517:78194;2291:371731" data-name="IconView" data-snippet-language="React"><IconView text={false} bgImg={false} bgColor={true} border={false} bottomAddon={false} topAddon={false} indicator={false} shape={true} content={true} ✎Text="ЙО" size="40" /></CodeConnectSnippet></div><div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-52px_0px] mask-size-[222px_42px] min-w-px relative" data-node-id="I59:17112;2519:71226;2517:70936" style={{ maskImage: `url("${imgIcon}")` }} data-name="text"><CodeConnectSnippet data-node-id="I59:17112;2519:71226;2517:78519" data-name="Amount" data-snippet-language="React"><Amount value={57088095} minority={100}
+         currency="RUB" codeFormat="symbolic"
+        view="withZeroMinorPart"
+         
+         /></CodeConnectSnippet><div className="content-stretch flex items-center justify-center relative shrink-0" data-node-id="I59:17112;2519:71226;2517:78588" data-name="Subtitle"><p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[18px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-left tracking-[var(--regular_letter_spacing\/14,-0.08px)] whitespace-nowrap" data-node-id="I59:17112;2519:71226;2517:78588;2517:78541">1 счёт</p></div></div></div><div className="content-stretch flex flex-[1_0_0] items-center justify-center max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative" data-node-id="I59:17112;2519:71226;2517:70939" data-name="Addon"><div className="h-[20px] relative shrink-0 w-[28px]" data-node-id="I59:17112;2519:71226;2517:70939;2517:75172" data-name="CardImage"><div className="absolute h-[16px] left-[4px] top-[4px] w-[24px]" data-node-id="I59:17112;2519:71226;2517:70939;2517:75172;20005:49516" data-name="CardItem"><div className="absolute bg-[var(--static_accent\/primary,#ef3124)] content-stretch flex h-[16px] items-center justify-center left-0 overflow-clip rounded-[3px] top-0 w-[24px]" data-node-id="I59:17112;2519:71226;2517:70939;2517:75172;20005:49516;20005:49739" data-name="Cover"><div className="flex-[1_0_0] h-full min-w-px relative" data-node-id="I59:17112;2519:71226;2517:70939;2517:75172;20005:49516;20005:49739;20005:49855" data-name="Image Container"><div aria-hidden className="absolute inset-0 pointer-events-none"><img alt="" className="absolute max-w-none object-cover size-full" src={imgCover} /><img alt="" className="absolute max-w-none object-cover size-full" src={imgCover1} /><img alt="" className="absolute max-w-none object-cover size-full" src={imgCover2} /></div></div></div></div><div className="absolute h-[16px] left-0 top-0 w-[24px]" data-node-id="I59:17112;2519:71226;2517:70939;2517:75172;20005:49517" data-name="🔩 CardItem"><div className="absolute bg-[var(--static_accent\/primary,#ef3124)] content-stretch flex h-[16px] items-center justify-center left-0 overflow-clip rounded-[3px] top-0 w-[24px]" data-node-id="I59:17112;2519:71226;2517:70939;2517:75172;20005:49517;20005:49739" data-name="Cover"><div className="flex-[1_0_0] h-full min-w-px relative" data-node-id="I59:17112;2519:71226;2517:70939;2517:75172;20005:49517;20005:49739;20005:49855" data-name="Image Container"><div aria-hidden className="absolute inset-0 pointer-events-none"><img alt="" className="absolute max-w-none object-cover size-full" src={imgCover} /><img alt="" className="absolute max-w-none object-cover size-full" src={imgCover1} /><img alt="" className="absolute max-w-none object-cover size-full" src={imgCover2} /></div></div></div></div></div></div></div></div><div className="content-stretch flex flex-col isolate items-start justify-center relative shrink-0 w-full" data-node-id="I59:17112;2519:71285" data-name="Cell"><div className="content-stretch flex gap-[12px] items-center relative shrink-0 w-full z-[1]" data-node-id="I59:17112;2519:71285;2519:69069" data-name="Content"><div className="content-stretch flex flex-[1_0_0] gap-[12px] items-center min-w-px relative" data-node-id="I59:17112;2519:71285;2519:69070" data-name="Left"><div className="mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[0px_-1px] mask-size-[222px_42px] relative shrink-0 size-[40px]" data-node-id="I59:17112;2519:71285;2519:69126" style={{ maskImage: `url("${imgIcon}")` }} data-name="Icon"><CodeConnectSnippet data-node-id="I59:17112;2519:71285;2519:69126;2291:371761" data-name="IconView" data-snippet-language="React"><IconView text={false} bgImg={false} bgColor={true} border={false} bottomAddon={false} topAddon={false} indicator={false} shape={true} content={true} ✎Text="ЙО" size="40" /></CodeConnectSnippet></div><div className="content-stretch flex flex-[1_0_0] flex-col gap-[4px] items-start mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-52px_0px] mask-size-[222px_42px] min-w-px relative" data-node-id="I59:17112;2519:71285;2519:69073" style={{ maskImage: `url("${imgIcon}")` }} data-name="text"><CodeConnectSnippet data-node-id="I59:17112;2519:71285;2519:69074" data-name="Amount" data-snippet-language="React"><Amount addon={false} currency={false} minor={false} /></CodeConnectSnippet><div className="content-stretch flex items-center justify-center relative shrink-0" data-node-id="I59:17112;2519:71285;2519:69075" data-name="Subtitle"><p className="[word-break:break-word] font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] leading-[18px] not-italic relative shrink-0 text-[14px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] text-left tracking-[var(--regular_letter_spacing\/14,-0.08px)] whitespace-nowrap" data-node-id="I59:17112;2519:71285;2519:69075;2517:78541">Кредит наличными</p></div></div></div><div className="content-stretch flex flex-[1_0_0] items-center justify-center max-h-[32px] max-w-[32px] min-h-[32px] min-w-[32px] relative" data-node-id="I59:17112;2519:71285;2519:69076" data-name="Addon"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17112;2519:71285;2519:69076;2291:371724" data-name="cross"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgCross} /></div></div></div></div></a><div className="content-stretch flex flex-col gap-[2px] items-start relative shrink-0 w-full" data-node-id="59:17115"><div className="content-stretch flex flex-col items-start px-[24px] py-[12px] relative shrink-0 w-full" data-node-id="59:17116" data-name="DividerHorizontal"><div className="bg-[var(--neutral-translucent\/200,rgba(30,43,68,0.08))] h-px relative shrink-0 w-full" data-node-id="I59:17116;1:34277" data-name="Divider" /></div><div className="h-[409px] relative shrink-0 w-full" data-node-id="59:17117" data-name="menu"><div className="absolute content-stretch flex flex-col items-start left-0 px-[8px] right-0 top-0" data-node-id="I59:17117;2291:375608" data-name="content"><div className="content-stretch flex gap-[22px] items-center pl-[22px] pr-[16px] py-[14px] relative shrink-0 w-full" data-node-id="I59:17117;2679:100085" data-name="MenuItemCell_New"><div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--neutral\/300,#e7e8eb)] h-[40px] left-1/2 opacity-0 rounded-[12px] top-1/2 w-[268px]" data-node-id="I59:17117;2679:100086" data-name="hover_bg" /><div className="content-stretch flex items-center relative shrink-0" data-node-id="I59:17117;2679:100087" data-name="color correct box"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17117;2679:100088" data-name="all-services-products-sign-box"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgAllServicesProductsSignBox} /></div></div><div className="[word-break:break-word] flex flex-[1_0_0] flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] h-[20px] justify-center leading-[0] min-w-px not-italic overflow-hidden relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I59:17117;2679:100089"><p className="leading-[20px] overflow-hidden text-ellipsis">Все сервисы</p></div></div><div className="content-stretch flex gap-[22px] items-center pl-[22px] pr-[16px] py-[14px] relative shrink-0 w-full" data-node-id="I59:17117;2679:100095" data-name="MenuItemCell_New"><div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--neutral\/300,#e7e8eb)] h-[40px] left-1/2 opacity-0 rounded-[12px] top-1/2 w-[268px]" data-node-id="I59:17117;2679:100096" data-name="hover_bg" /><div className="content-stretch flex items-center relative shrink-0" data-node-id="I59:17117;2679:100097" data-name="color correct box"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17117;2679:100098" data-name="bonuses-sign-box"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgBonusesSignBox1} /></div></div><div className="[word-break:break-word] flex flex-[1_0_0] flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] h-[20px] justify-center leading-[0] min-w-px not-italic overflow-hidden relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I59:17117;2679:100099"><p className="leading-[20px] overflow-hidden text-ellipsis">Альфа-Выгодно</p></div></div><div className="content-stretch flex gap-[22px] items-center pl-[22px] pr-[16px] py-[14px] relative shrink-0 w-full" data-node-id="I59:17117;2679:100103" data-name="MenuItemCell_New"><div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--neutral\/300,#e7e8eb)] h-[40px] left-1/2 opacity-0 rounded-[12px] top-1/2 w-[268px]" data-node-id="I59:17117;2679:100104" data-name="hover_bg" /><div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="I59:17117;2679:100105" data-name="color correct box"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17117;2679:100106" data-name="new-payment-sign-box"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgNewPaymentSignBox} /></div></div><div className="[word-break:break-word] flex flex-[1_0_0] flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] h-[20px] justify-center leading-[0] min-w-px not-italic overflow-hidden relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I59:17117;2679:100107"><p className="leading-[20px] overflow-hidden text-ellipsis">Новый платёж</p></div></div><div className="content-stretch flex gap-[22px] items-center pl-[22px] pr-[16px] py-[14px] relative shrink-0 w-full" data-node-id="I59:17117;2679:100108" data-name="MenuItemCell_New"><div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--neutral\/300,#e7e8eb)] h-[40px] left-1/2 opacity-0 rounded-[12px] top-1/2 w-[268px]" data-node-id="I59:17117;2679:100109" data-name="hover_bg" /><div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="I59:17117;2679:100110" data-name="color correct box"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17117;2679:100111" data-name="transaction-feed-sign-box"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTransactionFeedSignBox} /></div></div><div className="[word-break:break-word] flex flex-[1_0_0] flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] h-[20px] justify-center leading-[0] min-w-px not-italic overflow-hidden relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I59:17117;2679:100112"><p className="leading-[20px] overflow-hidden text-ellipsis">Лента операций</p></div></div><div className="content-stretch flex gap-[22px] items-center pl-[22px] pr-[16px] py-[14px] relative shrink-0 w-full" data-node-id="I59:17117;2679:100090" data-name="MenuItemCell_New"><div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--neutral\/300,#e7e8eb)] h-[40px] left-1/2 opacity-0 rounded-[12px] top-1/2 w-[268px]" data-node-id="I59:17117;2679:100091" data-name="hover_bg" /><div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="I59:17117;2679:100092" data-name="color correct box"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17117;2679:100093" data-name="payments-in-progress-sign-box"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgPaymentsInProgressSignBox} /></div></div><div className="[word-break:break-word] flex flex-[1_0_0] flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] h-[20px] justify-center leading-[0] min-w-px not-italic overflow-hidden relative text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I59:17117;2679:100094"><p className="leading-[20px] overflow-hidden text-ellipsis">Платежи в работе</p></div></div><div className="content-stretch flex items-center justify-between pl-[22px] pr-[16px] py-[14px] relative shrink-0 w-full" data-node-id="I59:17117;2679:100113" data-name="MenuCategoryCell"><div className="content-stretch flex gap-[22px] items-center relative shrink-0" data-node-id="I59:17117;2679:100114"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17117;2679:100115" data-name="chevron-down-inc"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronDownInc} /></div><div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I59:17117;2679:100116"><p className="leading-[20px] overflow-hidden text-ellipsis">Ещё</p></div></div><HideCategorySetting className="content-stretch flex items-center opacity-0 relative shrink-0" /></div><div className="content-stretch flex flex-col items-start px-[24px] py-[12px] relative shrink-0 w-full" data-node-id="I59:17117;2291:375615" data-name="DividerHorizontal"><div className="bg-[var(--neutral-translucent\/200,rgba(30,43,68,0.08))] h-px relative shrink-0 w-full" data-node-id="I59:17117;2291:375615;1:34277" data-name="Divider" /></div><div className="content-stretch flex gap-[22px] items-center px-[22px] py-[14px] relative shrink-0 w-full" data-node-id="I59:17117;2291:375616" data-name="cell"><div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="I59:17117;2291:375617" data-name="color correct box"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17117;2291:375618" data-name="procurement-sign-box"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgProcurementSignBox} /></div></div><div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I59:17117;2291:375619"><p className="leading-[20px] overflow-hidden text-ellipsis">Госзакупки</p></div><div className="absolute left-[16px] size-[32px] top-[8px]" data-node-id="I59:17117;2291:375620" data-name="border"><img alt="" className="absolute block inset-0 max-w-none size-full" height="32" src={imgBorder} width="32" /></div></div><div className="content-stretch flex gap-[22px] items-center px-[22px] py-[14px] relative shrink-0 w-full" data-node-id="I59:17117;2291:375621" data-name="cell"><div className="content-stretch flex items-center opacity-60 relative shrink-0" data-node-id="I59:17117;2291:375622" data-name="color correct box"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17117;2291:375623" data-name="safe-box"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSafeBox} /></div></div><div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] text-ellipsis tracking-[var(--medium_letter_spacing\/14,0.07px)] whitespace-nowrap" data-node-id="I59:17117;2291:375624"><p className="leading-[20px] overflow-hidden text-ellipsis">Депозиты</p></div><div className="absolute left-[16px] size-[32px] top-[8px]" data-node-id="I59:17117;2291:375625" data-name="border"><img alt="" className="absolute block inset-0 max-w-none size-full" height="32" src={imgBorder} width="32" /></div></div></div><Loyalty className="absolute bg-[var(--decorative-muted\/indigo,#eeedff)] content-stretch flex gap-[2px] items-center pl-[8px] pr-[6px] py-[6px] right-[23px] rounded-[99px] top-[56px]" /></div></div></div></div>);
+}
+    
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: 💊Placeholder/Solid/2: #3778FB, Accent/16–20 Component Primary (Typography.Text view=”component” weight=”bold”): Font(family: "font_family/<20", style: Bold, size: 16, weight: 700, lineHeight: 20, letterSpacing: bold_letter_spacing/16), Paragraph/14–18 Component Secondary (Typography.Text view='component-secondary'): Font(family: "font_family/<20", style: Regular, size: 14, weight: 400, lineHeight: 18, letterSpacing: regular_letter_spacing/14), Action/14–20 Primary Small (Typography.Text view='primary-small' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: medium_letter_spacing/14), Accent/13–16 Secondary Large (Typography.Text view=”secondary-large” weight=”bold”): Font(family: "font_family/<20", style: Bold, size: 13, weight: 700, lineHeight: 16, letterSpacing: bold_letter_spacing/13).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## 🔩 Shape
+**Node ID:** 1:3388
+
+40
+
+## alfa-bank-sign-box_m_white
+**Node ID:** 1:385
+
+\[logo\_alfa-bank-sign-box\_m\_white\]
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6684
+
+\[glyph-26\_rub-line\_20\]
+
+## rub
+**Node ID:** 13:6683
+
+рубль, валюта \[Валюта\]
+
+## 🔩 Cover
+**Node ID:** 13:6558
+
+Технический компонент для отображения рубашки карты
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6690
+
+\[glyph-26\_percent-line\_20\]
+
+## percent
+**Node ID:** 13:6689
+
+процент \[Математика\]
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6738
+
+\[glyph-26\_cross-line\_20\]
+
+## cross
+**Node ID:** 13:6737
+
+закрыть, крестик, cross, remove \[Индикаторы\]
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6766
+
+\[logo-corp\_all-services-products-sign-box-line\_20\]
+
+## all-services-products-sign-box
+**Node ID:** 13:6765
+
+Все сервисы и продукты
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6711
+
+\[logo-corp\_bonuses-sign-box-line\_20\]
+
+## bonuses-sign-box
+**Node ID:** 13:6710
+
+Продукт: Бонусы
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 1:127
+
+\[logo-corp\_new-payment-sign-box-line\_20\]
+
+## new-payment-sign-box
+**Node ID:** 1:126
+
+Верхнее меню: Новый платёж
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6769
+
+\[logo-corp\_transaction-feed-sign-box-line\_20\]
+
+## transaction-feed-sign-box
+**Node ID:** 13:6768
+
+Продукт: Лента операций
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6772
+
+\[logo-corp\_payments-in-progress-sign-box-line\_20\]
+
+## payments-in-progress-sign-box
+**Node ID:** 13:6771
+
+Верхнее меню: Платежи в работе
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6775
+
+\[glyph-26\_chevron-down-inc-line\_20\]
+
+## chevron-down-inc
+**Node ID:** 13:6774
+
+большой шеврон вниз, шеврон, стрелка вниз, arrow, стрелка
+
+## Size=24, Style=Line, Color=False
+**Node ID:** 13:6778
+
+\[glyph-26\_gear-line\_24\]
+
+## gear
+**Node ID:** 13:6777
+
+настройки, шестерёнки, settings, механизм
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:6781
+
+\[logo-corp\_procurement-sign-box-line\_20\]
+
+## procurement-sign-box
+**Node ID:** 13:6780
+
+Госзакупки
+
+## Size=24, Style=Line, Color=False
+**Node ID:** 13:6784
+
+\[glyph-26\_safe-box-line\_24\]
+
+## safe-box
+**Node ID:** 13:6783
+
+сейф, сберегательный счёт, депозит, safe-deposit, разместить депозит, place-deposit \[Безопасность / Закон\] \[Финансы\]
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAAATQAAAMyCAYAAADjRz2rAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAgAElEQVR4Xuy9C3gb1Z3//ZUsXwKWE9rdJZZpIbRECv8WQiIFKF2IzbZNuNgpJXS3dlqwaWuHpyQsG6fPWzvdjdPn3zjtkrRb22yxabFMl6SFSC0ktI1E2HJJpEBI9yWS6bvALpZDS0timcRX6X1+RzrjkayLb7Llye/DM2g0c86cM+Ocr36XMzO63lN/CmMC6HV65BfkIi83DwaDAQaDHjqdTtkfDoeV7+r1RCTaH1+fSHT8ibQTvz3V8dLtT9WGus5Ej5Hu2qQiVd1E7aerk6zMROqoSXatUl3jRN9TXat0f69EbSbalupvMZnzln0gUp1zqrYS1U/FRPsXTtBusrrJ/g6JjpWKVOeaqmyibaFwGKMjIYyMDGNoeBiDA8MIhUOYCIZ0BXJyc

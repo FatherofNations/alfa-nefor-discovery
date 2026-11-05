@@ -1,0 +1,249 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "comment": "Геометрия главной: фикстур собирается из нативного get_metadata (frame.xml) и этой карты. Числа не набраны руками; tol 0, пока расхождение не объяснено.",
+  "elements": [
+    {
+      "selector": ".sidebar",
+      "node": "59:17108"
+    },
+    {
+      "selector": ".sidebar-logo",
+      "node": "59:17109"
+    },
+    {
+      "selector": ".amounts",
+      "node": "59:17112"
+    },
+    {
+      "selector": ".menu-list",
+      "node": "59:17117"
+    },
+    {
+      "selector": ".topbar",
+      "node": "59:16848"
+    },
+    {
+      "selector": ".company-account",
+      "node": "59:16853",
+      "tol": {
+        "x": 1,
+        "w": 1
+      },
+      "note": "ширина блока задаётся текстом: 221 в макете, 220.7 в Chrome — метрики шрифта"
+    },
+    {
+      "selector": ".person-select",
+      "node": "59:16855"
+    },
+    {
+      "selector": ".tabs",
+      "node": "59:16858"
+    },
+    {
+      "selector": ".tab:nth-child(1)",
+      "node": "59:16859"
+    },
+    {
+      "selector": ".tab:nth-child(2)",
+      "node": "59:16861"
+    },
+    {
+      "selector": ".tab:nth-child(3)",
+      "node": "59:16864"
+    },
+    {
+      "selector": ".tab:nth-child(4)",
+      "node": "59:16866"
+    },
+    {
+      "selector": ".hero",
+      "node": "59:16868"
+    },
+    {
+      "selector": ".hero-heading",
+      "node": "59:16870",
+      "tol": {
+        "x": 1,
+        "w": 1
+      },
+      "note": "ширина заголовка 333 в макете, 332.59 в Chrome — метрики шрифта"
+    },
+    {
+      "selector": ".hero-heading h1",
+      "node": "59:16871",
+      "tol": {
+        "x": 1,
+        "w": 1
+      },
+      "note": "то же: 333 vs 332.59 — метрики шрифта"
+    },
+    {
+      "selector": ".hero-subtitle",
+      "node": "59:16873"
+    },
+    {
+      "selector": ".hero-actions",
+      "node": "59:16880"
+    },
+    {
+      "selector": ".work-dropdown",
+      "node": "59:16881"
+    },
+    {
+      "selector": ".hero-actions > .hero-chip:nth-child(2)",
+      "node": "59:16882"
+    },
+    {
+      "selector": ".hero-actions > .hero-chip:nth-child(3)",
+      "node": "59:16886"
+    },
+    {
+      "selector": ".hero-actions > .hero-chip:nth-child(4)",
+      "node": "59:16890"
+    },
+    {
+      "selector": ".hero-actions > .hero-chip:nth-child(5)",
+      "node": "59:16894"
+    },
+    {
+      "selector": ".tasks",
+      "node": "80:46299",
+      "tol": {
+        "x": 0.05
+      },
+      "note": "координата макета 471.973 — субпиксель исходного фрейма"
+    },
+    {
+      "selector": ".section-title",
+      "node": "80:46300",
+      "tol": {
+        "x": 0.05
+      },
+      "note": "координата макета 471.973 — субпиксель исходного фрейма"
+    },
+    {
+      "selector": ".tasks-track > .task-card:nth-child(1)",
+      "node": "80:46325",
+      "tol": {
+        "x": 0.05
+      },
+      "note": "то же: x=471.973 в макете"
+    },
+    {
+      "selector": ".tasks-track > .task-card:nth-child(2)",
+      "node": "80:46365",
+      "tol": {
+        "x": 0.05
+      },
+      "note": "то же: x=641.973 в макете"
+    },
+    {
+      "selector": ".operations",
+      "node": "80:44602"
+    },
+    {
+      "selector": ".operations-title",
+      "node": "80:46924"
+    },
+    {
+      "selector": ".filters",
+      "node": "80:44607"
+    },
+    {
+      "selector": ".date-filter",
+      "node": "80:44613"
+    },
+    {
+      "selector": ".search-field",
+      "node": "80:44614"
+    },
+    {
+      "selector": ".general-filter",
+      "node": "80:44615"
+    },
+    {
+      "selector": ".download-button",
+      "node": "80:44623"
+    },
+    {
+      "selector": ".analytics",
+      "node": "80:44633"
+    },
+    {
+      "selector": ".analytics-card:nth-child(1)",
+      "node": "80:44636"
+    },
+    {
+      "selector": ".operations-table",
+      "node": "80:44685"
+    },
+    {
+      "selector": ".day-header",
+      "node": "80:44687"
+    },
+    {
+      "selector": ".operation-row",
+      "node": "80:44691"
+    },
+    {
+      "selector": ".operation-content",
+      "node": "80:44693"
+    },
+    {
+      "selector": ".checkbox",
+      "node": "80:44694"
+    },
+    {
+      "selector": ".company-logo",
+      "node": "80:44697"
+    },
+    {
+      "selector": ".operation-title",
+      "node": "80:44701"
+    },
+    {
+      "selector": ".operation-description",
+      "node": "80:44702"
+    },
+    {
+      "selector": ".operation-status",
+      "node": "80:44703"
+    },
+    {
+      "selector": ".operation-amount",
+      "node": "80:44707"
+    },
+    {
+      "selector": ".operation-more",
+      "node": "80:44708"
+    },
+    {
+      "selector": ".operation-number",
+      "node": "80:44709",
+      "tol": {
+        "w": 1
+      },
+      "note": "ширина текста 183 в макете, 182.06 в Chrome — метрики шрифта"
+    },
+    {
+      "selector": ".show-more",
+      "node": "80:44779"
+    },
+    {
+      "selector": ".spotlight",
+      "node": "59:17107"
+    },
+    {
+      "selector": ".assistant-input",
+      "node": "I59:17107;807:37661"
+    },
+    {
+      "selector": ".support-button",
+      "node": "I59:17107;809:19074"
+    }
+  ]
+}

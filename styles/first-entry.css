@@ -1,0 +1,91 @@
+/* ═══ Первый вход: логин → выбор вида главной → настройка ═══
+   Геометрия и типографика — из design context секции 125:17512
+   (фреймы 1:4660, 1:4709, 1:4763). */
+
+.entry-page { position: fixed; inset: 0; min-width: 1600px; overflow: hidden; background: #fff; color: var(--text-primary); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+.entry-header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; height: 72px; align-items: center; justify-content: space-between; padding: 0 24px 0 12px; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) both; }
+.entry-logo { display: flex; align-items: center; }
+.entry-logo .logo-sign { width: 40px; height: 40px; }
+.entry-help { height: 64px; padding: 0 16px; font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; color: var(--text-primary); }
+
+/* ── Логин ── */
+.entry-login-main { position: absolute; top: 72px; left: 50%; display: flex; width: 400px; height: 828px; flex-direction: column; align-items: center; transform: translateX(-50%); }
+.entry-login-top { height: 130px; flex: none; }
+.entry-login-area { display: flex; width: 100%; flex-direction: column; align-items: center; }
+.entry-login-area > * { animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) backwards; }
+.entry-login-area > *:nth-child(1) { animation-delay: .02s, .02s; }
+.entry-login-area > *:nth-child(2) { animation-delay: .05s, .05s; }
+.entry-login-area > *:nth-child(3) { animation-delay: .09s, .09s; }
+.entry-login-area > *:nth-child(4) { animation-delay: .13s, .13s; }
+.entry-login-area > *:nth-child(5) { animation-delay: .17s, .17s; }
+.entry-login-area > *:nth-child(6) { animation-delay: .21s, .21s; }
+.entry-title { font-size: 40px; font-weight: 700; line-height: 48px; letter-spacing: .1px; text-align: center; }
+.entry-subtitle { margin-top: 16px; font-size: 16px; line-height: 24px; letter-spacing: -.24px; text-align: center; }
+.entry-input { width: 100%; height: 56px; border: 0; border-radius: 12px; background: #f2f3f5; padding: 0 16px; font-family: var(--font); font-size: 16px; line-height: 24px; letter-spacing: -.24px; color: var(--text-primary); }
+.entry-input::placeholder { color: #898991; }
+.entry-input-login { margin-top: 20px; }
+.entry-input-wrap { position: relative; width: 100%; margin-top: 16px; }
+.entry-input-wrap .entry-input { padding-right: 56px; }
+.entry-eye { position: absolute; top: 16px; right: 16px; display: flex; width: 24px; height: 24px; align-items: center; justify-content: center; }
+.entry-eye img { width: 24px; height: 24px; }
+.entry-submit { width: 100%; height: 56px; margin-top: 32px; border-radius: 12px; background: #212124; color: rgb(255 255 255 / 94%); font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; transition: background .22s ease-in; }
+.entry-submit:hover { background: #17171a; }
+.entry-forgot { width: 100%; height: 48px; margin-top: 12px; font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; color: var(--text-primary); }
+.entry-login-flex { flex: 1; min-height: 0; }
+.entry-alt { display: flex; flex: none; align-items: flex-start; gap: 20px; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) .24s both, entry-rise .55s cubic-bezier(.32, .72, 0, 1) .24s both; }
+.entry-alt-btn { display: flex; width: 80px; flex-direction: column; align-items: center; gap: 8px; }
+.entry-alt-btn:first-child { width: 97px; }
+.entry-alt-icon { display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 50%; background: #f2f3f5; transition: background .22s ease-in; }
+.entry-alt-btn:hover .entry-alt-icon { background: #e7e8eb; }
+.entry-alt-icon img { width: 24px; height: 24px; }
+.entry-alt-label { font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: .07px; color: var(--text-primary); white-space: nowrap; }
+.entry-login-bottom { height: 32px; flex: none; }
+
+/* ── Выбор вида главной ── */
+.entry-role { background: #f6f1f7; }
+.entry-role-bg { position: absolute; inset: 0; background: url(/assets/figma/role-bg.png) center / cover no-repeat; animation: entry-fade .6s cubic-bezier(.25, .1, .25, 1) both; }
+.entry-role-heading { position: absolute; top: 345px; left: 448px; width: 658px; font-size: 40px; font-weight: 700; line-height: 48px; letter-spacing: .1px; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) .05s backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) .05s backwards; }
+.entry-bubble { position: absolute; left: 494px; padding: 12px 16px; border: 1px solid rgb(255 255 255 / 90%); border-radius: 16px; background: rgb(255 255 255 / 72%); font-size: 16px; line-height: 24px; letter-spacing: -.24px; white-space: nowrap; backdrop-filter: blur(20px); animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) backwards; }
+.entry-bubble-1 { top: 414px; animation-delay: .16s, .16s; }
+.entry-bubble-2 { top: 497px; animation-delay: .70s, .70s; }
+.entry-line { display: block; }
+.entry-word { display: inline; opacity: 1; filter: none; animation: entry-word-in .38s cubic-bezier(.25, .1, .25, 1) backwards; }
+.entry-role-cards { position: absolute; top: 632px; left: 494px; display: flex; align-items: center; }
+.entry-role-card { position: relative; display: flex; width: 302px; height: 216px; flex-direction: column; gap: 10px; padding: 20px; overflow: hidden; border: 1px solid rgb(255 255 255 / 90%); border-radius: 16px; background: rgb(255 255 255 / 72%); text-align: left; backdrop-filter: blur(30px); transition: transform .22s ease-in, box-shadow .22s ease-in; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) backwards; }
+.entry-role-card-pred { animation-delay: 1.36s, 1.36s; }
+.entry-role-card-buh { animation-delay: 1.42s, 1.42s; }
+.entry-role-card:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgb(0 0 0 / 8%); }
+.entry-role-card-text { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 4px; }
+.entry-role-card-text strong { font-size: 18px; font-weight: 700; line-height: 22px; letter-spacing: .38px; }
+.entry-role-card-text span { font-size: 14px; line-height: 20px; letter-spacing: -.08px; color: var(--text-secondary); }
+.entry-role-photo { position: absolute; top: 0; right: 0; z-index: 1; width: 140px; height: 216px; object-fit: cover; object-position: 50% 14%; }
+.entry-role-connector { width: 8px; height: 112px; flex: none; }
+.entry-role-sphere { position: absolute; top: 765px; left: 211px; width: 168px; height: 168px; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) .2s backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) .2s backwards; }
+.entry-role-sound { position: absolute; right: 24px; bottom: 24px; display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 50%; background: rgb(255 255 255 / 50%); backdrop-filter: blur(20px); animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) .3s both; }
+.entry-role-sound img { width: 24px; height: 24px; }
+
+/* ── Настраиваю главный экран ── */
+.entry-setup { background: #e3e1f9; }
+.entry-setup-bg { position: absolute; inset: 0; animation: entry-fade .6s cubic-bezier(.25, .1, .25, 1) both; background: radial-gradient(40% 38% at 51% 26%, rgb(210 55 100 / 56%), transparent 70%), radial-gradient(45% 50% at 93% 28%, rgb(232 135 160 / 50%), transparent 72%), radial-gradient(45% 50% at 88% 55%, rgb(230 140 165 / 40%), transparent 72%), radial-gradient(45% 45% at 28% 55%, rgb(150 120 220 / 35%), transparent 75%), radial-gradient(55% 45% at 45% 105%, rgb(190 170 230 / 45%), transparent 75%), linear-gradient(100deg, #ddd6f4 0%, #e6ddf2 38%, #ecc9d8 70%, #eccbdb 100%); }
+.entry-setup::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 4px 250px rgb(255 255 255 / 35%); pointer-events: none; }
+.entry-setup-orb { position: absolute; top: calc(50% - 75px); left: 50%; width: 216px; height: 216px; transform: translate(-50%, -50%); animation: entry-orb-in .8s cubic-bezier(.32, .72, 0, 1) both; }
+.entry-setup-orb-inner { display: block; width: 100%; height: 100%; animation: entry-orb-pulse 3s ease-in-out .9s infinite; }
+.entry-setup-orb img { width: 216px; height: 216px; }
+.entry-setup-text { position: absolute; top: calc(50% + 119px); left: calc(50% - 357px); font-size: 49px; font-weight: 700; line-height: 72px; letter-spacing: 0; color: rgb(13 8 22 / 80%); white-space: nowrap; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) .18s backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) .18s backwards; }
+.entry-page.is-leaving { animation: entry-out .22s ease-in both; }
+
+@keyframes entry-fade { from { opacity: 0; filter: blur(12px); } to { opacity: 1; filter: blur(0); } }
+@keyframes entry-rise { from { transform: translateY(8px); } to { transform: translateY(0); } }
+@keyframes entry-orb-in { from { opacity: 0; filter: blur(10px); transform: translate(-50%, -50%) scale(.94); } to { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) scale(1); } }
+@keyframes entry-orb-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
+@keyframes entry-out { from { opacity: 1; filter: blur(0); } to { opacity: 0; filter: blur(12px); } }
+@keyframes entry-word-in { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: blur(0); } }
+@keyframes entry-fade-only { from { opacity: 0; } to { opacity: 1; } }
+
+/* Вход в дашборд после настройки — без filter: он создал бы containing block
+   для fixed-хрома; только плавная прозрачность. */
+.dashboard-page, .chrome-side, .chrome-header, .cur-main { animation: entry-fade-only .5s cubic-bezier(.25, .1, .25, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-header, .entry-login-area > *, .entry-alt, .entry-role-bg, .entry-role-heading, .entry-bubble, .entry-word, .entry-role-card, .entry-role-sphere, .entry-role-sound, .entry-setup-bg, .entry-setup-orb, .entry-setup-orb-inner, .entry-setup-text, .entry-page.is-leaving, .dashboard-page, .chrome-side, .chrome-header, .cur-main { animation: none !important; }
+}

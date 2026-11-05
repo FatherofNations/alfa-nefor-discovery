@@ -1,0 +1,79 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/0b08f00b-f2f4-4be5-8500-f46415735fb0";
+import IconView from "packages/icon-view/src/components/index.ts"
+import { SuperEllipse } from '@alfalab/core-components/icon-view';
+
+
+  
+  
+function DividerVertical({className}: {className?: string}) {
+    return (<div className={className || "content-stretch flex h-[48px] items-start py-[8px] relative"} data-node-id="13:6891" data-name="DividerVertical"><div className="bg-[var(--neutral-translucent\/300,rgba(15,25,55,0.1))] h-full relative shrink-0 w-px" data-node-id="13:6892" data-name="Divider" /></div>);
+}
+    
+
+
+  
+  
+export default function Right() {
+    return (<div className="content-stretch flex gap-[16px] items-start justify-end relative size-full" data-node-id="59:16848" data-name="Right"><div className="content-stretch flex gap-[8px] items-start relative shrink-0" data-node-id="59:16849" data-name="ButtonsGroup"><div className="content-stretch flex items-start relative shrink-0" data-node-id="59:16850" data-name="IconButton"><CodeConnectSnippet data-node-id="I59:16850;46640:78531" data-name="IconView" data-snippet-language="React"><IconView text={false} bgImg={false} bgColor={false} border={false} bottomAddon={false} topAddon={false} indicator={false} shape={false} content={true} ✎Text="ЙО" size="40" /></CodeConnectSnippet></div><div className="content-stretch flex items-start relative shrink-0" data-node-id="59:16851" data-name="IconButton"><CodeConnectSnippet data-node-id="I59:16851;46640:78533" data-name="IconView" data-snippet-language="React"><IconView text={false} bgImg={false} bgColor={false} border={false} bottomAddon={false} topAddon={false} indicator={false} shape={false} content={true} ✎Text="ЙО" size="40" /></CodeConnectSnippet></div></div><DividerVertical className="content-stretch flex items-start py-[8px] relative self-stretch shrink-0" /><div className="content-stretch flex gap-[12px] items-center pl-[8px] relative shrink-0" data-node-id="59:16853" data-name="CompanyAccount"><CodeConnectSnippet data-node-id="I59:16853;97401:16432" data-name="IconView" data-snippet-language="React">function Example({ backgroundColor, imageUrl }: { backgroundColor: string; imageUrl: string }) { return (<SuperEllipse size={40}
+        border={false}
+        backgroundColor={backgroundColor}
+        imageUrl={imageUrl} 
+        
+         
+        
+    ></SuperEllipse>); }</CodeConnectSnippet><div className="[word-break:break-word] content-stretch flex flex-col items-start leading-[0] not-italic relative shrink-0 whitespace-nowrap" data-node-id="I59:16853;46640:78516" data-name="Info"><div className="flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center relative shrink-0 text-[14px] text-[color:var(--text\/primary,rgba(3,3,6,0.88))] tracking-[var(--medium_letter_spacing\/14,0.07px)]" data-node-id="I59:16853;46640:78517"><p className="leading-[20px]">ООО «Город Нагатино»</p></div><div className="flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] justify-center relative shrink-0 text-[12px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] tracking-[var(--regular_letter_spacing\/12,0.06px)]" data-node-id="I59:16853;46640:78518"><p className="leading-[16px]">Набокова А.Д.</p></div></div></div><div className="content-stretch flex items-start py-[8px] relative self-stretch shrink-0" data-node-id="59:16854" data-name="DividerVertical"><div className="bg-[var(--neutral-translucent\/300,rgba(15,25,55,0.1))] h-full relative shrink-0 w-px" data-node-id="I59:16854;46640:78522" data-name="Divider" /></div><a className="bg-[var(--accent\/secondary,#212124)] content-stretch cursor-pointer flex gap-[8px] items-center overflow-clip pl-[8px] pr-[16px] py-[8px] relative rounded-[999px] shrink-0" data-node-id="59:16855" data-name="PersonSelect"><CodeConnectSnippet data-node-id="I59:16855;141656:17430" data-name="IconView" data-snippet-language="React"><IconView bottomAddon={false} text={false} shape={true} bgImg={false} bgColor={true} topAddon={false} ✎Text="ЙО" content={false} border={false} indicator={false} size="24" /></CodeConnectSnippet><div className="[word-break:break-word] flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Medium')] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[12px] text-[color:var(--text_inverted\/primary,rgba(255,255,255,0.94))] text-ellipsis text-left tracking-[var(--medium_letter_spacing\/12,0.19px)] w-[112px] whitespace-nowrap" data-node-id="I59:16855;141656:17431"><p className="leading-[16px] overflow-hidden text-ellipsis">Предприниматель</p></div></a><DividerVertical className="content-stretch flex items-start py-[8px] relative self-stretch shrink-0" /><div className="content-stretch flex items-start relative shrink-0" data-node-id="59:16857" data-name="IconButton"><CodeConnectSnippet data-node-id="I59:16857;46640:78537" data-name="IconView" data-snippet-language="React"><IconView text={false} bgImg={false} bgColor={false} border={false} bottomAddon={false} topAddon={false} indicator={false} shape={false} content={true} ✎Text="ЙО" size="40" /></CodeConnectSnippet></div></div>);
+}
+    
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: 💊Placeholder/Solid/2: #3778FB, Action/14–20 Primary Small (Typography.Text view='primary-small' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: medium_letter_spacing/14), Paragraph/12–16 Secondary Medium (Typography.Text view='secondary-medium'): Font(family: "font_family/<20", style: Regular, size: 12, weight: 400, lineHeight: 16, letterSpacing: regular_letter_spacing/12), 💊Placeholder/Solid/1: #CF70FF, Action/12–16 Secondary Medium (Typography.Text view='secondary-medium' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 12, weight: 500, lineHeight: 16, letterSpacing: medium_letter_spacing/12).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:2825
+
+\[logo-corp\_letter-sign-box-line\_20\]
+
+## letter-sign-box
+**Node ID:** 13:2824
+
+Верхнее меню: Письма
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:2831
+
+\[logo-corp\_notifications-sign-box-line\_20\]
+
+## notifications-sign-box
+**Node ID:** 13:2830
+
+Верхнее меню: Уведомление, Колокольчик
+
+## 🔩 Shape
+**Node ID:** 1:3890
+
+40
+
+## 🔩 Shape
+**Node ID:** 1:228
+
+24
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 13:2844
+
+\[logo-corp\_logout-sign-box-line\_20\]
+
+## logout-sign-box
+**Node ID:** 13:2843
+
+Верхнее меню: Логаут, Выйти
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAAAmgAAAAoCAYAAABKKAYMAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAgAElEQVR4Xu2dCXhU1d3/v3cSsk8StoRMQFk0iVCRJVHElagVXiXBivjUhLYkVhOsilWh7yu0ltj2JVRFqwSrwf8LifUFFxKrWFsSqC+LJIBAhYSyRCWThASy78nc//M79547dyYzmSwTCOF8HoaZuefcc5fMvfOd33akuvpGGQKBC5oNxWiSitAqlaIVZnQY6tFGz3I9a2+TzAD4R4meDeyVl2xiz96gZxnecji8ZRO8MZY9B1iinW5TIBBcfAoLC1FcXITCggMoKipCXV09GhqU61xwZRMQYET4WBPCTSZERkYhJiYaM6PFPXygkIRAEzijVTKjwrAZ5w256JT4DVrW/pds/mcfJ62FLZdlSPRaknXLZahLGR4wIlieg/DOVHhZwp3siUAgG

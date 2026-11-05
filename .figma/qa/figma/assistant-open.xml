@@ -1,0 +1,181 @@
+<frame id="59:23885" name="Spotlight overlay" x="-89" y="5015" width="1600" height="900">
+  <frame id="59:23886" name="Bank" x="0" y="0" width="1600" height="64">
+    <instance id="59:23887" name="LogoCell" x="0" y="0" width="248" height="72" />
+    <frame id="59:23888" name="Body" x="248" y="0" width="1352" height="950">
+      <instance id="59:23889" name="[D] Header" x="0" y="0" width="1352" height="56" />
+      <frame id="59:23890" name="[D] Content" x="0" y="56" width="1352" height="757">
+        <frame id="59:23891" name="[D] Body" x="52" y="24" width="1248" height="1639.0009765625">
+          <instance id="59:23892" name="quickActions" x="0" y="0" width="1248" height="48" />
+          <instance id="59:23893" name="↕ SpacingVertical" x="0" y="48" width="1248" height="24" />
+          <frame id="59:23894" name="1st" x="0" y="72" width="1248" height="384">
+            <instance id="59:23895" name="balance" x="0" y="0" width="612" height="384" />
+            <instance id="59:23896" name="inWork _ 5.1" x="636" y="0" width="294" height="384" />
+            <instance id="59:23897" name="banners" x="954" y="0" width="294" height="384" />
+          </frame>
+          <instance id="59:23898" name="↕ SpacingVertical" x="0" y="456" width="1248" height="48" />
+          <instance id="59:23899" name="[D] TitleView" x="0" y="504" width="240" height="36" />
+          <instance id="59:23900" name="↕ SpacingVertical" x="0" y="540" width="1248" height="32" />
+          <instance id="59:23901" name="[D] FiltersBlock" x="0" y="572" width="1248" height="137" />
+          <instance id="59:23902" name="[D] TopBar/false" x="0" y="709" width="1248" height="72.0009994506836" />
+          <frame id="59:23903" name="Table" x="0" y="781.0009765625" width="1248" height="858">
+            <instance id="59:23904" name="[D] BackgroundPlate" x="0" y="0.9710134267807007" width="1248" height="858" />
+            <frame id="59:23905" name="[D] HeadRow :: Universal" x="16" y="0" width="1216" height="73">
+              <frame id="59:23906" name="Cells" x="0" y="0" width="1216" height="72">
+                <instance id="59:23907" name="[D] HeadControlCell" x="0" y="0" width="52" height="72" />
+                <instance id="59:23908" name="[D] HeadCell" x="52" y="0" width="480" height="72" />
+                <instance id="59:23909" name="[D] HeadCell" x="532" y="0" width="168" height="72" />
+                <instance id="59:23910" name="[D] HeadCell" x="700" y="0" width="132" height="72" />
+                <instance id="59:23911" name="[D] HeadCell" x="832" y="0" width="200" height="72" />
+                <instance id="59:23912" name="[D] HeadCell" x="1032" y="0" width="132" height="72" />
+                <instance id="59:23913" name="[D] HeadActionCell" x="1164" y="0" width="52" height="72" />
+              </frame>
+              <instance id="59:23914" name="BorderLine" x="0" y="72" width="1216" height="1" />
+            </frame>
+            <frame id="59:23915" name="[D] BodyRow :: Basic" x="16" y="73" width="1216" height="133">
+              <frame id="59:23916" name="Cells" x="0" y="0" width="1216" height="92">
+                <instance id="59:23917" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+                <instance id="59:23918" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+                <instance id="59:23919" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+                <instance id="59:23920" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+                <instance id="59:23921" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+                <instance id="59:23922" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+                <instance id="59:23923" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+              </frame>
+              <frame id="59:23924" name="Cells" x="0" y="92" width="1216" height="40">
+                <instance id="59:23925" name="[D] BodyCell :: Basic" x="96" y="0" width="656" height="40" />
+              </frame>
+              <instance id="59:23926" name="BorderLine" x="0" y="132" width="1216" height="1" />
+            </frame>
+            <frame id="59:23927" name="[D] BodyRow :: Basic" x="16" y="206" width="1216" height="133">
+              <frame id="59:23928" name="Cells" x="0" y="0" width="1216" height="92">
+                <instance id="59:23929" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+                <instance id="59:23930" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+                <instance id="59:23931" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+                <instance id="59:23932" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+                <instance id="59:23933" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+                <instance id="59:23934" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+                <instance id="59:23935" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+              </frame>
+              <frame id="59:23936" name="Cells" x="0" y="92" width="1216" height="40">
+                <instance id="59:23937" name="[D] BodyCell :: Basic" x="96" y="0" width="656" height="40" />
+              </frame>
+              <instance id="59:23938" name="BorderLine" x="0" y="132" width="1216" height="1" />
+            </frame>
+            <frame id="59:23939" name="[D] BodyRow :: Basic" x="16" y="339" width="1216" height="153">
+              <frame id="59:23940" name="Cells" x="0" y="0" width="1216" height="92">
+                <instance id="59:23941" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+                <instance id="59:23942" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+                <instance id="59:23943" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+                <instance id="59:23944" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+                <instance id="59:23945" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+                <instance id="59:23946" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+                <instance id="59:23947" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+              </frame>
+              <frame id="59:23948" name="Cells" x="0" y="92" width="1216" height="60">
+                <instance id="59:23949" name="[D] BodyCell :: Basic" x="96" y="0" width="656" height="60" />
+              </frame>
+              <instance id="59:23950" name="BorderLine" x="0" y="152" width="1216" height="1" />
+            </frame>
+            <frame id="59:23951" name="[D] BodyRow :: Basic" x="16" y="492" width="1216" height="153">
+              <frame id="59:23952" name="Cells" x="0" y="0" width="1216" height="92">
+                <instance id="59:23953" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+                <instance id="59:23954" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+                <instance id="59:23955" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+                <instance id="59:23956" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+                <instance id="59:23957" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+                <instance id="59:23958" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+                <instance id="59:23959" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+              </frame>
+              <frame id="59:23960" name="Cells" x="0" y="92" width="1216" height="60">
+                <instance id="59:23961" name="[D] BodyCell :: Basic" x="96" y="0" width="656" height="60" />
+              </frame>
+              <instance id="59:23962" name="BorderLine" x="0" y="152" width="1216" height="1" />
+            </frame>
+            <frame id="59:23963" name="[D] BodyRow :: Basic" x="16" y="645" width="1216" height="133">
+              <frame id="59:23964" name="Cells" x="0" y="0" width="1216" height="92">
+                <instance id="59:23965" name="[D] BodyControlCell :: Basic" x="0" y="0" width="52" height="92" />
+                <instance id="59:23966" name="[D] BodyCell :: Basic" x="52" y="0" width="480" height="92" />
+                <instance id="59:23967" name="[D] BodyCell :: Basic" x="532" y="0" width="168" height="92" />
+                <instance id="59:23968" name="[D] BodyCell :: Basic" x="700" y="0" width="132" height="92" />
+                <instance id="59:23969" name="[D] BodyCell :: Basic" x="832" y="0" width="200" height="92" />
+                <instance id="59:23970" name="[D] BodyCell :: Basic" x="1032" y="0" width="132" height="92" />
+                <instance id="59:23971" name="[D] BodyActionCell :: Basic" x="1164" y="0" width="52" height="92" />
+              </frame>
+              <frame id="59:23972" name="Cells" x="0" y="92" width="1216" height="40">
+                <instance id="59:23973" name="[D] BodyCell :: Basic" x="96" y="0" width="656" height="40" />
+              </frame>
+              <instance id="59:23974" name="BorderLine" x="0" y="132" width="1216" height="1" />
+            </frame>
+            <instance id="59:23975" name="[D] BodyRow :: Basic" x="16" y="538" width="1060" height="93" hidden="true" />
+            <instance id="59:23976" name="[D] BodyRow :: Basic" x="16" y="631" width="1060" height="93" hidden="true" />
+            <instance id="59:23977" name="[D] BodyRow :: Basic" x="16" y="724" width="1060" height="93" hidden="true" />
+            <instance id="59:23978" name="[D] BodyRow :: Basic" x="16" y="817" width="1060" height="93" hidden="true" />
+            <instance id="59:23979" name="[D] BodyRow :: Basic" x="16" y="910" width="1060" height="93" hidden="true" />
+            <instance id="59:23980" name="[D] StickyPagination" x="0" y="778" width="1248" height="76" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <frame id="59:23981" name="Spotlight-full" x="0" y="72" width="1600" height="1950">
+    <instance id="59:23982" name="SideMenu" x="0" y="0" width="248" height="1950" />
+    <frame id="59:23983" name="⚙️ UniversalModalBody/Chat" x="248" y="0" width="1352" height="1950">
+      <instance id="59:23984" name="[D] UniversalModalHeader" x="0" y="0" width="1352" height="68.0009994506836" />
+      <frame id="59:23985" name="Body" x="0" y="68.0009994506836" width="1352" height="1721.9990234375">
+        <instance id="59:23986" name="Text Message" x="263" y="-10.0009765625" width="826" height="48" />
+        <instance id="59:23987" name="Loader" x="264" y="92" width="824" height="160" hidden="true" />
+        <frame id="59:23988" name="Text Message" x="256" y="77.9990234375" width="840" height="380">
+          <frame id="59:23989" name="Divider" x="0" y="0" width="824" height="25" hidden="true">
+            <instance id="59:23990" name="Divider" x="0" y="0" width="824" height="1" />
+          </frame>
+          <frame id="59:23991" name="MessageListWidget" x="0" y="0" width="840" height="348">
+            <frame id="59:23992" name="Main" x="0" y="0" width="840" height="348">
+              <frame id="59:23993" name="LeftAddon" x="0" y="72" width="48" height="50" hidden="true">
+                <instance id="59:23994" name="Avatar" x="0" y="0" width="48" height="48" />
+              </frame>
+              <frame id="59:23995" name="List" x="0" y="0" width="840" height="348">
+                <instance id="59:23996" name="Title" x="0" y="0" width="232" height="18" hidden="true" />
+                <frame id="59:23997" name="Bubble" x="0" y="0" width="840" height="348">
+                  <frame id="59:23998" name="Content" x="0" y="0" width="840" height="348">
+                    <instance id="59:23999" name="Markdown" x="0" y="0" width="826" height="50" hidden="true" />
+                    <instance id="59:24000" name="Markdown" x="0" y="50" width="826" height="84" hidden="true" />
+                    <instance id="59:24001" name="Markdown" x="0" y="0" width="840" height="48" />
+                    <instance id="59:24002" name="Markdown" x="0" y="48" width="840" height="36" />
+                    <instance id="59:24003" name="Markdown" x="0" y="84" width="840" height="36" />
+                    <instance id="59:24004" name="Markdown" x="0" y="120" width="840" height="36" />
+                    <instance id="59:24005" name="Markdown" x="0" y="156" width="840" height="36" />
+                    <instance id="59:24006" name="Markdown" x="0" y="192" width="840" height="36" />
+                    <instance id="59:24007" name="Markdown" x="0" y="228" width="840" height="36" />
+                    <instance id="59:24008" name="Markdown" x="0" y="264" width="840" height="48" />
+                    <instance id="59:24009" name="Markdown" x="0" y="312" width="840" height="36" />
+                  </frame>
+                  <instance id="59:24010" name="Button" x="240" y="26" width="24" height="24" hidden="true" />
+                </frame>
+                <frame id="59:24011" name="Bubble" x="0" y="70" width="232" height="52" hidden="true">
+                  <frame id="59:24012" name="Content" x="0" y="2" width="239" height="40">
+                    <instance id="59:24013" name="TextBubble" x="0" y="0" width="239" height="40" />
+                    <instance id="59:24014" name="ReactionButtonStack" x="0" y="48" width="232" height="102" hidden="true" />
+                  </frame>
+                  <instance id="59:24015" name="Button" x="240" y="26" width="24" height="24" hidden="true" />
+                </frame>
+              </frame>
+            </frame>
+            <instance id="59:24016" name="BottomAddon" x="0" y="122" width="288" height="40" hidden="true" />
+          </frame>
+          <instance id="59:24017" name="Attachments" x="0" y="350" width="826" height="96" hidden="true" />
+          <instance id="59:24018" name="Actions" x="0" y="348" width="84" height="32" />
+          <frame id="59:24019" name="Divider" x="0" y="407" width="824" height="41" hidden="true">
+            <instance id="59:24020" name="Divider" x="0" y="40" width="824" height="1" />
+          </frame>
+        </frame>
+        <instance id="59:24056" name="Tag" x="631" y="2057" width="90" height="40" hidden="true" />
+        <instance id="59:24057" name="MessageListWidget" x="264" y="2137" width="824" height="52" hidden="true" />
+        <instance id="59:24058" name="Loader" x="264" y="2229" width="824" height="160" hidden="true" />
+        <instance id="59:24059" name="Incoming Message" x="264" y="2429" width="824" height="1745" hidden="true" />
+      </frame>
+      <frame id="59:24060" name="[D] UniversalModalFooter" x="0" y="1790" width="1352" height="160">
+        <instance id="59:24061" name="FooterContent" x="256" y="64" width="840" height="72" />
+      </frame>
+    </frame>
+  </frame>
+</frame>

@@ -1,0 +1,40 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/eafae23c-50f1-47d5-a21d-b8832e99bbb8";
+import { Typography } from '@alfalab/core-components/typography';
+import type { ComponentProps } from 'react';
+import { Divider } from 'arui-private/divider';
+import Amount from "packages/amount/src/index.ts"
+
+const imgOnboardingCardImage = `${assetPathPrefix}/82477.png`;
+
+
+  
+  
+export default function Slot() {
+    return (<div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-between min-h-px relative rounded-[var(--\[d\]-cornerradius,12px)] w-full" data-node-id="I80:46392;136846:8891" data-name="Slot"><div className="content-stretch flex flex-col gap-[16px] items-center relative shrink-0 w-full" data-node-id="I80:46392;136846:8891;80:46385" data-name="Content"><div className="overflow-clip relative shrink-0 size-[64px]" data-node-id="I80:46392;136846:8891;80:46386" data-name="onboardingCardImage"><div className="absolute inset-0 overflow-hidden pointer-events-none"><img alt="" className="absolute h-[103.33%] left-[-18.47%] max-w-none top-[-3.33%] w-[122.66%]" src={imgOnboardingCardImage} /></div></div><CodeConnectSnippet data-node-id="I80:46392;136846:8891;80:46387" data-name="Text" data-snippet-language="React">function Example({ textProps }: { textProps: ComponentProps<typeof Typography.Text> }) {
+        return <Typography.Text {...textProps}>{"Добавить нового пользователя"}</Typography.Text>;
+    }</CodeConnectSnippet></div><div className="content-stretch flex flex-col gap-[16px] items-center relative shrink-0 w-full" data-node-id="I80:46392;136846:8891;80:46388" data-name="Navigation"><CodeConnectSnippet data-node-id="I80:46392;136846:8891;80:46389" data-name="Divider" data-snippet-language="React"><Divider /></CodeConnectSnippet><CodeConnectSnippet data-node-id="I80:46392;136846:8891;80:46391" data-name="Amount" data-snippet-language="React"><Amount addon={true} currency={false} minor={false} /></CodeConnectSnippet></div></div>);
+}
+    
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Action/14–20 Primary Small (Typography.Text view='primary-small' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: medium_letter_spacing/14).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Size=m
+**Node ID:** 59:40535
+
+\[glyph\_a-scores-circle\_m\]
+
+## a-scores-circle
+**Node ID:** 59:40534
+
+альфа баллы, кешбэк, сантики, cashback, a scrore
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAAAHoAAAC0CAYAAABbuzggAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAfr0lEQVR4Xu1dCXQV13n+Zt572hcWC7AkhE1tQDiB4BThnBi7x+A0dtMG0bipc2LhtLG7gNvG3Szapss5Bbe1m5wE9/Q0XYJ8kjRtE0jbJG2KnBOTpkY0tetNyDaLAYnNAqSn7S0z0/P99973Rk9PSNi1mcfMxxnevJk7V3Pnu/9y7//Pu9ZEKu0hwlUPe6YCEa4ORESHBBHRIUFEdEgQx1WE06cn8NT3XkP/ifNIZzPw4CHmb6Jlwclm4XgObMuG61lw3CzisTgSdgxw6Jcq39S1WNxGLGahfm4t3v++63DTynlgsVKEdbV43f/7XBKf+PQuNH74LsxpXgjHJc2WPmvB5YcHeJbik412XcDRx13PQ5bEeywNOFke9qTM+OBFDH/ja/j9++7Bv

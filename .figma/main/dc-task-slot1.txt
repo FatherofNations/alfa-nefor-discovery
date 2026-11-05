@@ -1,0 +1,50 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/1db9d9ab-9299-4f50-9662-e79db6e6a650";
+import { Status, type StatusProps } from '@alfalab/core-components/status';
+import { Typography } from '@alfalab/core-components/typography';
+import type { ComponentProps } from 'react';
+import { Divider } from 'arui-private/divider';
+
+const imgChevronRight = `${assetPathPrefix}/7a2e0.svg`;
+const imgChevronRight1 = `${assetPathPrefix}/3037f.svg`;
+
+
+  
+  
+export default function Slot() {
+    return (<div className="content-stretch flex flex-[1_0_0] flex-col items-center justify-between min-h-px relative rounded-[var(--\[d\]-cornerradius,12px)] w-full" data-node-id="I80:46325;136846:8891;80:46320;136846:8891" data-name="Slot"><div className="content-stretch flex items-start relative shrink-0" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46307" data-name="🔒 [M] StatusPreset"><CodeConnectSnippet data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46307;60800:625480" data-name="Status" data-snippet-language="React">function Example({ view, color }: { view: NonNullable<StatusProps['view']>; color: NonNullable<StatusProps['color']> }) {
+        return <Status size={20} shape="rounded" view={view} color={color} uppercase={false}  >{"Просрочено"}</Status>;
+    }</CodeConnectSnippet></div><div className="content-stretch flex flex-col gap-[8px] items-center relative shrink-0 w-full" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46308" data-name="Content"><CodeConnectSnippet data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46309" data-name="Text" data-snippet-language="React">function Example({ textProps }: { textProps: ComponentProps<typeof Typography.Text> }) {
+        return <Typography.Text {...textProps}>{"Платёж по кредиту"}</Typography.Text>;
+    }</CodeConnectSnippet><CodeConnectSnippet data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46310" data-name="Text" data-snippet-language="React">function Example({ textProps }: { textProps: ComponentProps<typeof Typography.Text> }) {
+        return <Typography.Text {...textProps}>{"от 04.06.26\n32 000,00 ₽"}</Typography.Text>;
+    }</CodeConnectSnippet></div><div className="content-stretch flex flex-col gap-[16px] items-center relative shrink-0 w-full" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46311" data-name="Navigation"><CodeConnectSnippet data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46312" data-name="Divider" data-snippet-language="React"><Divider /></CodeConnectSnippet><div className="content-stretch flex items-center justify-between overflow-clip relative shrink-0 w-full" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46313" data-name="conrols"><div className="flex items-center justify-center relative shrink-0" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46314"><div className="flex-none rotate-180"><div className="relative size-[20px]" data-name="chevron-right"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronRight} /></div></div></div><div className="content-stretch flex gap-[4px] items-center justify-center relative shrink-0" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46315" data-name="Slider Handle"><div className="bg-black h-[4px] relative rounded-[30px] shrink-0 w-[14px]" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46316" data-name="Dot" /><div className="bg-[#dcdcdd] relative rounded-[30px] shrink-0 size-[4px]" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46317" data-name="Dot" /><div className="bg-[#dcdcdd] relative rounded-[30px] shrink-0 size-[4px]" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46318" data-name="Dot" /></div><div className="relative shrink-0 size-[20px]" data-node-id="I80:46325;136846:8891;80:46320;136846:8891;80:46319" data-name="chevron-right"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgChevronRight1} /></div></div></div></div>);
+}
+    
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Action/12–16 Secondary Medium (Typography.Text view='secondary-medium' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 12, weight: 500, lineHeight: 16, letterSpacing: medium_letter_spacing/12), Action/14–20 Primary Small (Typography.Text view='primary-small' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: medium_letter_spacing/14), Paragraph/12–16 Secondary Medium (Typography.Text view='secondary-medium'): Font(family: "font_family/<20", style: Regular, size: 12, weight: 400, lineHeight: 16, letterSpacing: regular_letter_spacing/12), light/border/key: #000000, light/border/primary (?borderColorPrimary): #DCDCDD.
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## 🔒 [M] StatusPreset
+**Node ID:** 59:40519
+
+Вспомогательный компонент Figma, в коде существует только Status в core-components.
+
+## Size=20, Style=Line, Color=False
+**Node ID:** 59:40526
+
+\[glyph-26\_chevron-right-line\_20\]
+
+## chevron-right
+**Node ID:** 59:40525
+
+шеврон вправо \[Стрелки\]
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAAAHoAAAC0CAYAAABbuzggAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAdbklEQVR4Xu1dC3QV1bn+5+SQhCQEEEEgtAKhLQQsARXwhY8S7UO8JayrAlXArrvAVgKVgn2o9Ra0oq0SaC/cLtsEq3hBgwpWK0FoUTCAXo0CsVRel/BWQpKT5BCSM3d9/8yes2fOzDknaE4eM99iODP7vff3///es/99TpRQbUAllcLgeylAlSOtUCPuFEUhalaJzjUQNdQTNTYSNTWby9RSmstBPq0ASzpLmH6vkKo1zXjWEK0WWyC/Kg+Bov1D4YpCqlaJiEGtWjJVezJBPIazkOPY+nz62CpEXboQ+ZOIuqYRpafH6IRTjxRjmDTK9EIQiH+h2jrRcqOYMLfRSHZAQwPR559xIeayNCEwSZWJ1PDIsLDwWCrS4Ip7uxyxCY8XRn4hRHo/O

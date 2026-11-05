@@ -1,0 +1,393 @@
+/* ═══════════ chrome.css — базовый хром страницы ═══════════
+   Сайдбар 248 (fixed слева) + шапка 56 (fixed сверху). Перенесено 1:1 из
+   проверенного дашборда (nefor-dash /current), классы cur-* → chrome-*.
+   Ячейка меню пересобрана по эталонному компоненту core-ds
+   ([D] SideMenu 138079:83013, [D] Header 137517:83456 в файле
+   NrzEFUSTXgzOUmsfYym0xD) — эталоны лежат в .figma/.
+   Контент страницы кладут в <main> своей страницы (.cur-main / .crd-main). */
+
+/* ── Боковое меню ── */
+.chrome-side {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 248px;
+  /* Высота за вычетом плашки: в макете `SideMenu` — 248×844, потому что низ
+     900-го фрейма занимает `Spotlight-bar`. При 100vh подвал сайдбара
+     («Настроить меню») уезжал на 56 px вниз и прятался под плашку. */
+  height: calc(100vh - 56px);
+  background: var(--page-bg);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+}
+/* LogoCell эталона — 64 (12 + лого 40 + 12), а градиент 8px лежит ПОВЕРХ
+   списка (64→72), не раздвигая его. Раньше блок был 76 и сдвигал всё меню
+   вниз на 4px. display:block у img убирает зазор от inline-бейзлайна. */
+.chrome-logo { position: relative; flex: none; height: 64px; z-index: 2; }
+/* ссылка на дашборд: display:block, чтобы бокс остался ровно 64 и логоблок
+   не начал участвовать во флексе как строка */
+a.chrome-logo { display: block; cursor: pointer; }
+a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124); outline-offset: -2px; }
+.chrome-logo img { display: block; }
+.chrome-logo-grad {
+  position: absolute;
+  left: 0;
+  top: 64px;
+  width: 248px;
+  height: 8px;
+}
+
+.chrome-nav {
+  padding-top: 8px; /* первый пункт на y=72: 64 логоблок + 8 (эталон) */
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.chrome-nav::-webkit-scrollbar { display: none; }
+
+/* Ячейка меню по эталону: внешняя обёртка 248×48 с полями 12/4, внутри
+   строка 224×40 с радиусом 12 — это и есть поверхность hover/active/focus.
+   Иконка — бокс 32×32 с глифом 20 по центру; текст начинается на 56px от
+   левого края сайдбара (12 + 4 + 32 + 8). */
+.chrome-cell {
+  display: block;
+  padding: 4px 12px;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+}
+.chrome-cell-in {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 4px 8px 4px 4px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.chrome-ico {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chrome-ico.dim { opacity: 0.6; }
+.chrome-ico img { width: 20px; height: 20px; }
+/* Action/14–20 Primary Small: 14/20 medium, ls medium_letter_spacing/14 */
+.chrome-cell-t {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: var(--ls-14-medium, 0.07px);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chrome-div { padding: 12px 16px; }
+.chrome-div i { display: block; height: 1px; background: var(--nt-300, rgba(15, 25, 55, 0.1)); }
+
+/* ── Активный пункт меню ──
+   Перенесено из макета «Карты» (Figma 129417:52083, ProductCell со
+   state=active): пилюля neutral/300 с инсетом 12px по бокам и 4px по
+   вертикали + красная полоса 2×36 у самого левого края сайдбара.
+   Класс ставит ChromeNavActive по текущему роуту. */
+/* Hover пункта меню — вариант компонента ProductCell «Hover=true,
+   Active=false» (Figma 46640:78250 в файле NrzEFUSTXgzOUmsfYym0xD).
+   Отличий от active ровно два: фон тот же neutral/300 и иконка тоже
+   выходит на полную непрозрачность, но красной полосы нет — она только у
+   active (узел 46640:78262). Ховер ставится на всех пунктах, включая
+   ещё не свёрстанные: в макете это состояние самой ячейки, а инертность
+   пунктов — наше отступление, а не свойство компонента. */
+.chrome-cell:hover .chrome-cell-in,
+.chrome-cell.is-active .chrome-cell-in { background: var(--neutral-300, #e7e8eb); }
+.chrome-cell:hover .chrome-ico.dim { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .chrome-cell-in { transition: background-color 0.22s ease-in; }
+  .chrome-ico { transition: opacity 0.22s ease-in; }
+}
+.chrome-cell.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 36px;
+  border-radius: 0 2px 2px 0;
+  background: var(--accent-primary, #ef3124);
+}
+/* в макете opacity-60 стоит только у неактивных ячеек */
+.chrome-cell.is-active .chrome-ico.dim { opacity: 1; }
+
+/* пунктирная обводка вокруг иконки «Госзакупки» */
+.chrome-cell-proc .chrome-ico { position: relative; overflow: visible; }
+/* специфичнее, чем `.chrome-ico img{width:20}`, иначе рамка сжимается до 20 */
+.chrome-cell-proc .chrome-ico .chrome-proc-border {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.chrome-footer { flex: none; position: relative; background: var(--page-bg); }
+.chrome-footer-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 32px;
+  background: linear-gradient(to bottom, rgba(242, 243, 245, 0), var(--page-bg));
+  pointer-events: none;
+}
+.chrome-footer-cell { padding: 4px 12px 12px; }
+.chrome-footer-cell .chrome-cell-t { color: var(--text-secondary); }
+
+/* ── Шапка ── */
+.chrome-header {
+  position: fixed;
+  top: 0;
+  left: 248px;
+  right: 0;
+  height: 56px;
+  background: var(--page-bg);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 0 24px;
+  z-index: 40;
+}
+.chrome-header button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.chrome-hbtns { display: flex; gap: 8px; }
+.chrome-hbtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chrome-hbtn img { width: 20px; height: 20px; }
+/* эталон: контейнер во всю высоту ряда (40) с py8 → видимая линия 24 */
+.chrome-hdiv { flex: none; width: 1px; height: 24px; background: var(--nt-300, rgba(15, 25, 55, 0.1)); }
+
+.chrome-company { display: flex; align-items: center; gap: 12px; padding-left: 8px; }
+.chrome-co-logo {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  background: #e9edf3 center/cover no-repeat;
+  background-image: url(/assets/chrome/hdr-company.webp);
+  -webkit-mask: url(/assets/chrome/squircle-40.svg) center/contain no-repeat;
+          mask: url(/assets/chrome/squircle-40.svg) center/contain no-repeat;
+}
+.chrome-co-info { display: flex; flex-direction: column; }
+.chrome-co-info b {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: var(--ls-14-medium, 0.07px);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.chrome-co-info i {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: var(--ls-12-regular, 0.06px);
+  color: var(--text-secondary);
+}
+
+/* специфичность выше сброса .chrome-header button (иначе padding обнулится) */
+.chrome-header .chrome-person {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-secondary);
+  border-radius: 999px;
+  padding: 8px 16px 8px 8px;
+}
+.chrome-person-av {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background: url(/assets/chrome/hdr-avatar.webp) center/cover no-repeat,
+    linear-gradient(128.66deg, #f2b9ec 3%, #edc6c8 92%);
+  -webkit-mask: url(/assets/chrome/squircle-24.svg) center/contain no-repeat;
+          mask: url(/assets/chrome/squircle-24.svg) center/contain no-repeat;
+}
+.chrome-person-t {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: var(--ls-12-medium, 0.19px);
+  color: var(--text-inverted-primary, rgba(255, 255, 255, 0.94));
+  white-space: nowrap;
+  /* в эталоне ширина текста фиксирована: без этого пилюля уже на 1.9px и
+     весь левый край шапки уезжает вправо */
+  width: 112px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Контент под хромом ──
+   margin слева под сайдбар, паддинг сверху под шапку (56 + 24 зазор).
+   Зона правее сайдбара занимает всю ширину до правого края; сам контент
+   внутри — центрировать (margin: 0 auto) с max-width 1248, чтобы на
+   широких экранах он стоял по центру между меню и правым краем браузера. */
+
+/* ── Нижняя плашка SpotlightBar ──
+   Перенесено 1:1 из макета «Карты» (Figma 129417:51743, [D] SpotlightBar
+   1600×60): градиентный фон со скруглением сверху, внутренняя белая тень,
+   слева логотип «Нейропомощник» с градиентным текстом, справа инпут-пилюля
+   и accent-кнопка «Связь с банком». Fixed: видна на всех роутах. */
+.spot {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 1600px;
+  /* 56, а не 60: в макете `Spotlight-bar` — 1600×56 @ y=844. Из-за 60 плашка
+     поднималась на 4 px и перекрывала подвал сайдбара. Найдено geomdiff. */
+  height: 56px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(
+    -75.13deg,
+    #f2f3f5 87.714%,
+    #e3e6fe 96.192%,
+    #f1e2fc 102.82%
+  );
+  box-shadow: inset 1px 1px 2px 0 #fff;
+  z-index: 60;
+}
+
+.spot-left {
+  flex: none;
+  width: 248px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px 12px 14px 14px;
+}
+.spot-logo { display: flex; align-items: center; gap: 12px; width: 222px; }
+
+.spot-ico {
+  position: relative;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* тень 44px растянута в 3.2727 раза (inset:-113.64% в макете) */
+.spot-ico-shadow {
+  position: absolute;
+  left: calc(50% + 2px);
+  top: calc(50% + 2px);
+  width: 144px;
+  height: 144px;
+  transform: translate(-50%, -50%);
+}
+.spot-ico-shape { position: relative; display: block; }
+.spot-ico-neural {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 1px);
+  transform: translate(-50%, -50%);
+}
+.spot-label {
+  padding: 2px 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: 0.43px;
+  background-image: linear-gradient(to right, #7a63f1, #9933ff);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.spot-right {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 6px 6px 6px 12px;
+}
+.spot-input {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: var(--neutral-0, #fff);
+}
+.spot-ph {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: var(--ls-16-regular, -0.24px);
+  color: var(--text-secondary);
+}
+.spot-expand { flex: none; display: flex; }
+
+.spot-cta {
+  flex: none;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  /* 197×48 из макета (`SupportButton` 1397/4 197×48): ширина задана, потому
+     что текст в alfa-sans на 1 px уже макетного; радиус — пилюля, а не 10:
+     в макете кнопка `shape="rounded"` при высоте 48, то есть скругление во
+     всю высоту. Из-за радиуса 10 кнопка читалась прямоугольником. */
+  width: 197px;
+  padding: 4px 20px;
+  border-radius: 24px;
+  background: var(--accent-secondary, #212124);
+}
+.spot-cta-i { flex: none; display: flex; }
+.spot-cta-t {
+  padding: 0 4px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: var(--ls-16-medium, -0.05px);
+  color: var(--text-inverted-primary, rgba(255, 255, 255, 0.94));
+  white-space: nowrap;
+}
+
+/* Фокус пункта меню ложится на строку 224×40, а не на всю ячейку 248×48:
+   контейнер для этого и появился при переборке по эталону. */
+.chrome-cell:focus-visible { outline: none; }
+.chrome-cell:focus-visible .chrome-cell-in {
+  outline: 2px solid var(--accent-primary, #ef3124);
+  outline-offset: -2px;
+}

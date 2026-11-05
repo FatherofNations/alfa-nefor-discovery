@@ -1,0 +1,38 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/2c4fb2db-ec81-4d87-ab21-567ecb540845";
+import { BackgroundPlateDesktop } from 'arui-private/background-plate/desktop';
+import { BackgroundPlateView } from 'arui-private/background-plate';
+import type { ComponentProps, ReactNode } from 'react';
+
+
+  
+  
+export default function DBackgroundPlateSlot() {
+    return (<CodeConnectSnippet data-node-id="80:46365" data-name="[D] BackgroundPlateSlot" data-snippet-language="React">type Props = ComponentProps<typeof BackgroundPlateDesktop>;
+// layoutProps: передай фактические padding, axis, gap и alignment выбранной композиции; параметры не угадываются.
+
+function Example({ children, layoutProps }: { children: ReactNode; layoutProps: { paddings?: Props['paddings']; style: Pick<NonNullable<Props['style']>, 'padding' | 'paddingTop' | 'paddingRight' | 'paddingBottom' | 'paddingLeft' | 'display' | 'flexDirection' | 'gap' | 'alignItems' | 'justifyContent'> } }) {
+    return <BackgroundPlateDesktop
+        {...layoutProps}
+        view={BackgroundPlateView.Primary}
+        level="outer"
+        promo={false}
+        
+        showSkeleton={false}
+        
+        
+    >{children}</BackgroundPlateDesktop>;
+}</CodeConnectSnippet>);
+}
+    
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Action/14–20 Primary Small (Typography.Text view='primary-small' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: medium_letter_spacing/14), Accent/11–16 Secondary Small (Typography.Text view=”secondary-small” weight=”bold”): Font(family: "font_family/<20", style: Bold, size: 11, weight: 700, lineHeight: 16, letterSpacing: bold_letter_spacing/11), Paragraph/14–20 Primary Small (Typography.Text view='primary-small'): Font(family: "font_family/<20", style: Regular, size: 14, weight: 400, lineHeight: 20, letterSpacing: regular_letter_spacing/14).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAAAJoAAADUCAYAAABkrToLAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAgAElEQVR4Xu19C7Ac1Xnm3zNzr+7VEykbG0lQa2TWekARCFg4KYhtPTaLyzwke8FJjCSSdXjE2Fb8KMC1W7UYhF27a7ARkNRihFAqa7PLe8ux0QNikhgksXYK0CMO4MJcCWe39LpX9zUz3Vvf6f57/jlz+jk9fefe2x+0pvu8+vQ53/n///zndF/r1OBph2LAsojK5QqVyyV1lCyLLAQWmDZwHIdsHHWbbNumWq1Gdiz2EFWiElgli3orFerpqRTEmuawLIvKOEoldT1jRi9VqzWqVsepbqckGoTVjN4e6unpCUpSoABBAOEYH6/S2Hg1GdEgxWb19xUSrEBs9Pb2UKVSptHRUaN0K7UElAuSFUiHUqlEfX19VC5Z4USDJJvZV0iyAu2SbQaVN

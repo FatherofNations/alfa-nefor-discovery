@@ -1,0 +1,7 @@
+<instance id="59:17107" name="Spotlight-bar" x="0" y="840" width="1600" height="60">
+  <instance id="I59:17107;654:40665" name="LogoCell" x="0" y="8" width="248" height="44" />
+  <frame id="I59:17107;425:21487" name="Body" x="248" y="0" width="1352" height="60">
+    <instance id="I59:17107;807:37661" name="[D][Corporate] Input" x="12" y="6" width="1113" height="48" />
+    <instance id="I59:17107;809:19074" name="SupportButton" x="1149" y="6" width="197" height="48" />
+  </frame>
+</instance>

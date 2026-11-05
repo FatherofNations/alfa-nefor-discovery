@@ -1,0 +1,71 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/34cf0597-0a88-46a0-93e2-4d23d4550399";
+import React from 'react';
+import { Icon20Adapter } from '@alfalab/core-components/shared/icon-20-adapter';
+import { FilterTagDesktop } from '@alfalab/core-components/filter-tag/desktop';
+
+export default function Calendar() {
+  return (
+    <div className="relative size-full" data-name="calendar">
+      <svg className="absolute block inset-0 size-full" fill="none" height="16" preserveAspectRatio="none" viewBox="0 0 16 16" width="16">
+        <g id="calendar">
+          <g id="Icon">
+            <path d="M4 10V8H6V10H4Z" fill="#747474" />
+            <path d="M7 8H9V10H7V8Z" fill="#747474" />
+            <path d="M12 10V8H10V10H12Z" fill="#747474" />
+            <path d="M7 11H9V13H7V11Z" fill="#747474" />
+            <path d="M6 13V11H4V13H6Z" fill="#747474" />
+            <path d="M5 0H3V2H1V13.25C1 14.7688 2.23122 16 3.75 16H12.25C13.7688 16 15 14.7688 15 13.25V2H13V0H11V2H5V0ZM2.5 6H13.5V13.25C13.5 13.9404 12.9404 14.5 12.25 14.5H3.75C3.05964 14.5 2.5 13.9404 2.5 13.25V6Z" fill="#747474" />
+          </g>
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+export default function DFilterTagFilled() {
+  return (
+    <CodeConnectSnippet data-node-id="80:44613" data-name="[D] FilterTag_Filled" data-snippet-language="React">
+      <FilterTagDesktop view="filled" size={40} shape="rectangular" checked showClear={true} showArrow={true} leftAddons={<Calendar />}>
+        {"16.05.2024 – 28.05.2024"}
+      </FilterTagDesktop>
+    </CodeConnectSnippet>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Paragraph/14–20 Primary Small (Typography.Text view='primary-small'): Font(family: "font_family/<20", style: Regular, size: 14, weight: 400, lineHeight: 20, letterSpacing: regular_letter_spacing/14).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## 🔩 Addon
+**Node ID:** 13:2926
+
+Size 16
+
+## Size=s
+**Node ID:** 13:2935
+
+\[glyph\_calendar\_s\]
+
+## calendar
+**Node ID:** 13:2934
+
+календарь, выбор даты, дата, date
+
+## Size=s
+**Node ID:** 8:1023
+
+\[glyph\_cross-circle\_s\]
+
+## cross-circle
+**Node ID:** 8:1021
+
+ошибка, remove, close, error
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAAAP0AAAAcCAYAAACqLbnbAAAACXBIWXMAAAPoAAAD6AG1e1JrAAALbUlEQVR4Xu1cX0xUVxr/UFK2wrABo8KAm2i2DE21NQu0L83WoS+wK0NNWnX50wewMtAHK9XaRMEK9kFAhYeVUYE+MFRjmxSG7taXZdhN+1AZmm3cFEbTNW6Yoa7FusxAoLFh8zuXc7lz515mGEb+6PklN8zcc+853/3O+X3/zmVixn0TM6SC3+cjp9NJfX1OGh4eJq/Xq75EQEBgBcKUaaI0o5HMuWayWAo1r4lRk97p7KPjx2rJ7/dp3iAgILA6kGo0UlWVNYj8AaRvbGwke6dd634BAYFVCmuVlSqtlfL3NfyD7UKrILyAwGMI23kbNTQ2BJLe4eih1j/b5rtPQEBgFaOrs4v6nc658D4/7w/k9XpC3ScgILCKYUg00Bdf/JXWwMsLwgsIP

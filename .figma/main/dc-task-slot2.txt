@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/tmp/mcp_call.py", line 75, in <module>
+    r = res.get("result", res)
+AttributeError: 'NoneType' object has no attribute 'get'

@@ -1,0 +1,87 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/3c159eb2-a24a-47d8-b4a5-c603bcf9a0a6";
+import IconView from "packages/icon-view/src/components/index.ts"
+import React from 'react';
+import { ButtonDesktop } from '@alfalab/core-components/button/desktop';
+import { Icon20Adapter } from '@alfalab/core-components/shared/icon-20-adapter';
+import { Indicator } from '@alfalab/core-components/indicator';
+
+const imgShadow = `${assetPathPrefix}/d6d2f.svg`;
+const imgNeuralAssistantSignCircleMColor = `${assetPathPrefix}/dbc5c.svg`;
+const imgFixer = `${assetPathPrefix}/69a3f.svg`;
+
+
+  
+  
+export default function SpotlightBar() {
+    return (<div className="content-stretch flex items-center overflow-clip relative rounded-tl-[var(--20,20px)] rounded-tr-[var(--20,20px)] size-full" data-node-id="59:17107" data-name="Spotlight-bar"><div aria-hidden className="absolute bg-[var(--neutral\/100,#f2f3f5)] inset-0 pointer-events-none rounded-tl-[var(--20,20px)] rounded-tr-[var(--20,20px)]" /><div className="content-stretch flex flex-col items-start pl-[14px] pr-[var(--12,12px)] py-[var(--8,8px)] relative shrink-0 w-[248px]" data-node-id="I59:17107;654:40665" data-name="LogoCell"><div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="I59:17107;654:40665;3909:50945" data-name="NeuroLogo"><div className="content-stretch flex items-center justify-center max-h-[28px] max-w-[28px] min-h-[28px] min-w-[28px] relative shrink-0 size-[28px]" data-node-id="I59:17107;654:40665;3909:50945;990:3780" data-name="Icon 28"><div className="-translate-x-1/2 -translate-y-1/2 absolute left-[calc(50%+2px)] size-[44px] top-[calc(50%+2px)]" data-node-id="I59:17107;654:40665;3909:50945;990:3780;973:2258" data-name="🔩 Shadow"><div className="absolute inset-[-113.64%]"><img alt="" className="block max-w-none size-full" src={imgShadow} /></div></div><div className="flex-[1_0_0] h-full min-w-px relative" data-node-id="I59:17107;654:40665;3909:50945;990:3780;973:2238" data-name="neural-assistant-sign-circle_m_color"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgNeuralAssistantSignCircleMColor} /></div></div><div className="content-stretch flex items-center py-[2px] relative shrink-0" data-node-id="I59:17107;654:40665;3909:50945;990:3781" data-name="Label"><div className="[word-break:break-word] bg-clip-text bg-gradient-to-r flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Bold')] from-[var(--decorative-text\/indigo,#7a63f1)] justify-center leading-[0] not-italic overflow-hidden relative shrink-0 text-[16px] text-[transparent] text-ellipsis to-[var(--promo-vibrant\/oasis,#93f)] tracking-[var(--bold_letter_spacing\/16,0.43px)] whitespace-nowrap" data-node-id="I59:17107;654:40665;3909:50945;990:3782"><p className="leading-[24px] overflow-hidden text-ellipsis">Альфа-Интеллект</p></div></div></div></div><div className="content-stretch flex flex-[1_0_0] gap-[24px] items-center min-w-px pl-[var(--12,12px)] pr-[var(--6,6px)] py-[var(--6,6px)] relative" data-node-id="I59:17107;425:21487" data-name="Body"><div className="content-stretch flex flex-[1_0_0] flex-col gap-[10px] h-[48px] items-start min-w-px relative" data-node-id="I59:17107;807:37661" data-name="[D][Corporate] Input"><div className="bg-[var(--neutral-translucent\/0,white)] content-stretch flex flex-[1_0_0] items-center min-h-px relative rounded-[var(--max,999px)] w-full" data-node-id="I59:17107;807:37661;425:19256" data-name="Field"><div className="content-stretch flex h-full items-center pl-[var(--8,8px)] py-[8px] relative shrink-0" data-node-id="I59:17107;807:37661;2688:21070" data-name="LeftAddons"><CodeConnectSnippet data-node-id="I59:17107;807:37661;2688:21071" data-name="IconView" data-snippet-language="React"><IconView topAddon={false} text={false} shape={false} bgImg={false} bottomAddon={false} bgColor={false} content={true} indicator={false} border={false} ✎Text="ЙО" size="32" /></CodeConnectSnippet></div><div className="content-stretch flex flex-[1_0_0] flex-col h-full items-start justify-center min-w-px pl-[var(--8,8px)] pr-[var(--20,20px)] relative" data-node-id="I59:17107;807:37661;425:19260" data-name="Content"><div className="h-[20px] overflow-clip relative shrink-0 w-full" data-node-id="I59:17107;807:37661;425:19261" data-name="[D] Placeholder :: Local"><div className="absolute content-stretch flex items-center left-0 overflow-clip top-0 w-[209px]" data-node-id="I59:17107;807:37661;425:19261;31:17304" data-name="Анимация подсказок"><div className="h-[20px] overflow-clip relative shrink-0 w-[169px]" data-node-id="I59:17107;807:37661;425:19261;31:17304;31:16710" data-name="Value"><div className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-[family-name:var(--font_family\/\<20,'Alfa_Interface_Sans:Regular')] justify-center leading-[0] left-0 not-italic text-[16px] text-[color:var(--text\/secondary,rgba(4,4,19,0.55))] top-[10px] tracking-[var(--regular_letter_spacing\/16,-0.24px)] whitespace-nowrap" data-node-id="I59:17107;807:37661;425:19261;31:17304;31:16711"><p className="leading-[20px]">Как открыть депозит</p></div></div></div></div></div><div className="content-stretch flex gap-[4px] h-full items-center justify-end pl-[var(--0,0px)] pr-[var(--20,20px)] py-[var(--8,8px)] relative shrink-0" data-node-id="I59:17107;807:37661;1209:29759" data-name="RightAddons"><div className="content-stretch flex items-center justify-center max-h-[19.999998092651367px] max-w-[19.999998092651367px] min-h-[19.999998092651367px] min-w-[19.999998092651367px] relative shrink-0" data-node-id="I59:17107;807:37661;1209:29761" data-name="RightAddon1"><div className="relative shrink-0 size-[20px]" data-node-id="I59:17107;807:37661;1209:29761;485:52922" data-name="Fixer"><img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFixer} /></div></div></div></div></div><div className="content-stretch flex items-start relative shrink-0" data-node-id="I59:17107;809:19074" data-name="SupportButton"><CodeConnectSnippet data-node-id="I59:17107;809:19074;807:45832" data-name="[D] Button" data-snippet-language="React"><ButtonDesktop view="primary" size={48} shape="rounded"
+         
+        leftAddons={{/* Code Connect Logic Instance */}}
+        
+         hint="Hint"
+        
+    >{"Связь с банком"}</ButtonDesktop></CodeConnectSnippet><CodeConnectSnippet data-node-id="I59:17107;809:19074;809:18678" data-name="Indicator" data-snippet-language="React"><Indicator size={16} view="red" border={false} value={1} /></CodeConnectSnippet><CodeConnectSnippet data-node-id="I59:17107;809:19074;2147:53908" data-name="Indicator" data-snippet-language="React"><Indicator size={16} view="red" border={false} value={1} /></CodeConnectSnippet></div></div><div className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_1px_1px_2px_0px_white]" /></div>);
+}
+    
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Spotlight/logo-shadow: , Spotlight/logo-label: , Accent/16–24 Primary Medium (Typography.Text view=”primary-medium” weight=”bold”): Font(family: "font_family/<20", style: Bold, size: 16, weight: 700, lineHeight: 24, letterSpacing: bold_letter_spacing/16), Paragraph/16–20 Component Primary (Typography.Text view='component'): Font(family: "font_family/<20", style: Regular, size: 16, weight: 400, lineHeight: 20, letterSpacing: regular_letter_spacing/16), Action/16–20 Component Primary (Typography.Text view='component' weight='medium'): Font(family: "font_family/<20", style: Medium, size: 16, weight: 500, lineHeight: 20, letterSpacing: medium_letter_spacing/16), Accent/11–16 Secondary Small (Typography.Text view=”secondary-small” weight=”bold”): Font(family: "font_family/<20", style: Bold, size: 11, weight: 700, lineHeight: 16, letterSpacing: bold_letter_spacing/11), Spotlight inner shadow: Effect(type: INNER_SHADOW, color: #FFFFFF, offset: (1, 1), radius: 2, spread: 0).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Size=M
+**Node ID:** 13:6629
+
+Используется для экранов с разрешением 768-1600
+
+## neural-assistant-sign-circle_m_color
+**Node ID:** 13:10541
+
+Нейропомощник \[logo\_neural-assistant-sign-circle\_m\_color\]
+
+## Size=24, Style=Line, Color=False
+**Node ID:** 13:6656
+
+\[glyph-26\_paperclip-line\_24\]
+
+## paperclip
+**Node ID:** 13:6655
+
+скрепка, добавить, прикрепить, paperclip
+
+## 🔩 Addon
+**Node ID:** 8:2071
+
+Inverted=False, 24
+
+## Size=20, Style=Thinline, Color=False
+**Node ID:** 13:6665
+
+\[glyph-26\_arrows-out-thinline\_20\]
+
+## arrows-out
+**Node ID:** 13:6664
+
+раздвинуть, развернуть
+
+## 🔩 Addon
+**Node ID:** 10:3710
+
+SIze 24
+
+## Size=24, Style=Line, Color=False
+**Node ID:** 13:6668
+
+\[glyph-26\_bubble-lines-line\_24\]
+
+## bubble-lines
+**Node ID:** 13:6667
+
+бабл, баббл, чат, комменты
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
+{"type": "image", "data": "iVBORw0KGgoAAAANSUhEUgAABAAAAAAnCAYAAACR+zoeAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAgAElEQVR4Xu2dC3hU1bn3/2vvmUkCCSAikCC0AnIR0GISbL30EWytWAlilVpEW8VP0D5tPbVCv1Or56jnVj3qOc9Xg23RtqKiUGtAxWvwAlpJoiAXE67KJQQQkGRymZnM3t/zrr3XnrUnM+RCkCS+v3Yze6+91tprhgnm/96W2Fdz0MYxCAWDCAQMmIaJgBEAYIEGmMKAbR9zaNsR3h+Ja3GsvskN6Tq7GIBcdCctl2EYhmEYhmEYhmFOFpZlyde4+xprjiHeHEcs1nzMcaToU5IRCiErKwOmBTmRFbURsxth0/y2jRipaduW0ttyNbaCdDa1O3cTr8LV6cI7cQckX6sTI7mfduE8INFHH6qEvrylr4xhGIZhGIZhGIZhehACCAaDyAgF5UVTY

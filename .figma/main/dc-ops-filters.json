@@ -1,0 +1,21 @@
+{
+ "_meta": {
+  "mcpRequestId": "8c472ce2-c2c9-4d27-a2bd-e66d79ba429f"
+ },
+ "content": [
+  {
+   "type": "text",
+   "text": "An unexpected error occurred."
+  },
+  {
+   "type": "text",
+   "text": "Figma Debug UUID: 8c472ce2-c2c9-4d27-a2bd-e66d79ba429f"
+  }
+ ],
+ "isError": true,
+ "metadata": {
+  "_meta": {
+   "mcpRequestId": "8c472ce2-c2c9-4d27-a2bd-e66d79ba429f"
+  }
+ }
+}

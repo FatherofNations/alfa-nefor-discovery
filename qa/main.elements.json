@@ -1,0 +1,55 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "dir": ".figma/elements",
+  "frame": ".figma/qa/shots/ref.png",
+  "fixture": "qa/main.geometry.json",
+  "align": 0,
+  "comment": "Поэлементная сверка 1:1. Эталоны — поштучные get_screenshot узлов (нативный размер ≤1024); для плашки спотлайта шире 1024 — вырезка из нативного фрейма 1×.",
+  "elements": [
+    {
+      "name": "tab-active",
+      "node": "59:16859",
+      "selector": ".tab.active"
+    },
+    {
+      "name": "chip-work",
+      "node": "59:16881",
+      "selector": ".work-dropdown > .hero-chip"
+    },
+    {
+      "name": "chip-self",
+      "node": "59:16882",
+      "selector": ".hero-actions > .hero-chip:nth-child(2)"
+    },
+    {
+      "name": "task1",
+      "node": "80:46325",
+      "selector": ".tasks-track > .task-card:nth-child(1)"
+    },
+    {
+      "name": "spotlight",
+      "node": "59:17107",
+      "selector": ".spotlight",
+      "ref": "frame",
+      "align": 1
+    },
+    {
+      "name": "assistant-input",
+      "node": "I59:17107;807:37661",
+      "selector": ".assistant-input",
+      "ref": "frame",
+      "align": 1
+    },
+    {
+      "name": "support",
+      "node": "I59:17107;809:19074",
+      "selector": ".support-button",
+      "ref": "frame",
+      "align": 1
+    }
+  ]
+}
