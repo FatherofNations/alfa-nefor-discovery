@@ -46,11 +46,49 @@ img { display: block; }
 .menu-secondary::after { content: ""; position: absolute; left: 16px; top: 8px; width: 32px; height: 32px; background: url(/assets/figma/menu-secondary-border.png) center / 32px 32px no-repeat; }
 .menu-secondary::before, .menu-category::before { content: none; }
 
-.topbar { position: absolute; z-index: 4; top: 28px; right: 24px; width: 616px; height: 40px; display: flex; align-items: flex-start; justify-content: flex-end; gap: 16px; }
+/* Sticky collapse: --tb-p 0→1 от scroll (см. Glavnaya).
+   Expanded (0): absolute-эквивалент top:28 right:24 w:616 h:40, без подложки.
+   Collapsed (1): как .chrome-header бухгалтера — top:0 h:56 pad 0 24,
+   full-bleed слева (сайдбар z:5 выше), blur-подложка (предложение; эталон бухгалтера solid).
+   z-index:4 — ниже сайдбара (5), выше контента; .work-dropdown без z, иначе chip
+   «Дела в работе» перекрывал шапку при скролле. */
+.topbar {
+  --tb-p: 0;
+  position: fixed;
+  z-index: 4;
+  top: calc(28px * (1 - var(--tb-p)));
+  right: calc(24px * (1 - var(--tb-p)));
+  left: calc((100vw - 640px) * (1 - var(--tb-p))); /* 640 = 616 + 24; at p=1 → 0 */
+  width: auto;
+  height: calc(40px + 16px * var(--tb-p)); /* 40 → 56 эталон бухгалтера */
+  padding: 0 calc(24px * var(--tb-p));
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  box-sizing: border-box;
+  background: rgb(242 243 245 / var(--tb-bg-a, 0)); /* предложение: 96% page-bg × p */
+  -webkit-backdrop-filter: blur(var(--tb-blur, 0px)); /* предложение: 60px × p */
+  backdrop-filter: blur(var(--tb-blur, 0px));
+  pointer-events: none; /* полоса full-bleed не перехватывает клики слева */
+}
+.topbar > * { pointer-events: auto; }
 .topbar-buttons { display: flex; gap: 8px; }
 .icon-button { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; }
 .icon-button img { width: 20px; height: 20px; }
-.vertical-divider { width: 1px; height: 40px; padding: 8px 0; flex: none; background-clip: content-box; background-color: rgb(15 25 55 / 10%); }
+/* divider: expanded 40 + py8 → линия 24; collapsed height 24 как .chrome-hdiv */
+.vertical-divider {
+  width: 1px;
+  height: calc(40px - 16px * var(--tb-p, 0));
+  padding: calc(8px * (1 - var(--tb-p, 0))) 0;
+  flex: none;
+  background-clip: content-box;
+  background-color: rgb(15 25 55 / 10%);
+}
+.topbar .vertical-divider {
+  height: calc(40px - 16px * var(--tb-p));
+  padding: calc(8px * (1 - var(--tb-p))) 0;
+}
 .company-account { display: flex; height: 40px; align-items: center; gap: 12px; padding-left: 8px; text-align: left; }
 .company-account > span { display: flex; flex-direction: column; white-space: nowrap; }
 .account-avatar { position: relative; display: block; width: 40px; height: 40px; flex: none; overflow: hidden; -webkit-mask: url("/assets/figma/avatar-shape.svg") 0 0 / 40px 40px no-repeat; mask: url("/assets/figma/avatar-shape.svg") 0 0 / 40px 40px no-repeat; }
@@ -62,20 +100,92 @@ img { display: block; }
 .person-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .person-select > span:not(.person-avatar) { width: 112px; overflow: hidden; font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: .19px; color: rgb(255 255 255 / 94%); text-align: left; text-overflow: ellipsis; white-space: nowrap; }
 
-.dashboard-content { position: relative; width: 972px; margin-left: max(336px, calc(50vw - 328px)); padding-top: 120px; }
+/* Keep every scrolling widget in one layer below .topbar (4) / .sidebar (5).
+   Descendant transforms, filters and local z-indices cannot escape it. */
+.dashboard-content { position: relative; z-index: 0; width: 972px; margin-left: max(336px, calc(50vw - 328px)); padding-top: 120px; }
 .tabs { position: relative; display: flex; width: 585px; height: 52px; min-height: 52px; max-height: 52px; flex: none; margin-left: 196px; align-items: center; justify-content: center; padding: 4px; overflow: hidden; border-radius: 999px; background: rgb(38 55 88 / 6%); backdrop-filter: blur(37.5px); transition: width .55s cubic-bezier(.32, .72, 0, 1), margin-left .55s cubic-bezier(.32, .72, 0, 1), transform .55s cubic-bezier(.32, .72, 0, 1); }
-.tab { position: relative; z-index: 1; display: flex; width: 114px; transition: width .55s cubic-bezier(.32, .72, 0, 1); height: 44px; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; border-radius: 999px; font-size: 16px; font-weight: 400; line-height: 20px; color: var(--text-secondary); letter-spacing: -.24px; white-space: nowrap; }
+.tab { position: relative; z-index: 1; display: flex; width: 114px; transition: width .55s cubic-bezier(.32, .72, 0, 1), gap .55s cubic-bezier(.32, .72, 0, 1); height: 44px; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; border-radius: 999px; font-size: 16px; font-weight: 400; line-height: 20px; color: var(--text-secondary); letter-spacing: -.24px; white-space: nowrap; overflow: visible; }
 .tab:nth-of-type(2) { width: 116px; }
 .tabs-summary { width: 556px; margin-left: 208px; }
 .tabs-accounts { width: 558px; margin-left: 207px; }
 .tabs-tariffs { width: 559px; margin-left: 206.5px; }
 .tabs-compact .tab:nth-of-type(2) { width: 87px; }
+/* Во время ухода каунтера ширина едет с задержкой — сначала fade бейджа, потом layout */
+.tabs.tabs-counter-dismiss {
+  transition:
+    width .4s cubic-bezier(.32, .72, 0, 1) .22s,
+    margin-left .4s cubic-bezier(.32, .72, 0, 1) .22s,
+    transform .55s cubic-bezier(.32, .72, 0, 1);
+}
+.tabs.tabs-counter-dismiss .tab {
+  transition:
+    width .4s cubic-bezier(.32, .72, 0, 1) .22s,
+    gap .4s cubic-bezier(.32, .72, 0, 1) .22s;
+}
 .tab:nth-of-type(3) { width: 165px; }
 .tab:nth-of-type(4) { width: 182px; }
 .tab.active { background: transparent; color: var(--text-primary); font-weight: 500; letter-spacing: -.05px; }
-.tab-capsule { position: absolute; top: 4px; z-index: 0; height: 44px; border-radius: 999px; background: #fff; pointer-events: none; transition: left .55s cubic-bezier(.32, .72, 0, 1), width .55s cubic-bezier(.32, .72, 0, 1); }
-.tab-counter { display: flex; transition: opacity .22s ease-in, transform .22s ease-in; }
-.tab-counter.hiding { opacity: 0; transform: scale(.9); }
+.tab-capsule {
+  position: absolute;
+  top: 4px;
+  z-index: 0;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff;
+  pointer-events: none;
+  /* Позиция ставится мгновенно; анимация — только появление из scale+opacity
+     (одна логика до и после ухода каунтера, без «езды» по ширине). */
+  transform: scale(1);
+  opacity: 1;
+  transform-origin: center center;
+}
+.tab-capsule.pop {
+  animation: tab-capsule-pop .42s cubic-bezier(.32, .72, 0, 1) both;
+}
+.tab-capsule.syncing {
+  animation: none !important;
+  transition: none !important;
+}
+@keyframes tab-capsule-pop {
+  from { opacity: 0; transform: scale(.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+.tab > span:first-child { flex: none; }
+/* Слот резервирует место под бейдж; сам бейдж никогда не clip'ится overflow. */
+.tab-counter-slot {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+  transition: width .4s cubic-bezier(.32, .72, 0, 1) .22s;
+}
+.tab-counter-slot.hiding { width: 0; }
+.tab-counter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  transform: scale(1);
+  transform-origin: center center;
+  transition:
+    opacity .28s cubic-bezier(.32, .72, 0, 1),
+    transform .28s cubic-bezier(.32, .72, 0, 1);
+}
+.tab-counter.hiding {
+  opacity: 0;
+  transform: scale(.55);
+  pointer-events: none;
+}
+/* gap уезжает после того, как бейдж уже прозрачен — без обрезки кружка */
+.tab:has(.tab-counter-slot) { transition: width .55s cubic-bezier(.32, .72, 0, 1), gap .4s cubic-bezier(.32, .72, 0, 1) .22s; }
+.tab:has(.tab-counter-slot.hiding) { gap: 0; }
 
 /* Смена вкладки: скрываем быстро (0.22s), меняем контент в полной
    прозрачности, показываем медленно (0.5/0.55s) — канон alfa-animation. */
@@ -83,10 +193,10 @@ img { display: block; }
    появлением нового виджета), без отдельной анимации высоты: иначе текст уже
    новый, а контейнер ещё едет за ним. Анимируются только opacity/filter/
    transform самого контента. */
-.tab-stage { position: relative; display: flow-root; }
-.tab-stage.phase-out { opacity: 0; filter: blur(12px); transform: translateY(10px); pointer-events: none; transition: opacity .22s ease-in, filter .22s ease-in, transform .22s ease-in; }
+.tab-stage { position: relative; display: flow-root; transition: height .52s cubic-bezier(.32, .72, 0, 1); }
+.tab-stage.phase-out { opacity: 0; filter: blur(12px); transform: translateY(10px); pointer-events: none; transition: height .52s cubic-bezier(.32, .72, 0, 1), opacity .22s ease-in, filter .22s ease-in, transform .22s ease-in; }
 .tab-stage.phase-in-prep { opacity: 0; filter: blur(12px); transform: translateY(8px); }
-.tab-stage.phase-in { opacity: 1; filter: blur(0); transform: none; transition: opacity .5s cubic-bezier(.25, .1, .25, 1), filter .5s cubic-bezier(.25, .1, .25, 1), transform .55s cubic-bezier(.32, .72, 0, 1); }
+.tab-stage.phase-in { opacity: 1; filter: blur(0); transform: none; transition: height .52s cubic-bezier(.32, .72, 0, 1), opacity .5s cubic-bezier(.25, .1, .25, 1), filter .5s cubic-bezier(.25, .1, .25, 1), transform .55s cubic-bezier(.32, .72, 0, 1); }
 .tasks { transition: margin-top .55s cubic-bezier(.32, .72, 0, 1); }
 @keyframes tab-card-in { from { opacity: 0; filter: blur(8px); transform: translateY(8px); } to { opacity: 1; filter: blur(0); transform: none; } }
 .tab-stage.phase-in .summary-card, .tab-stage.phase-in .accounts-card, .tab-stage.phase-in .tariffs-card { animation: tab-card-in .5s cubic-bezier(.25, .1, .25, 1) both; }
@@ -112,7 +222,7 @@ img { display: block; }
 .hero-chip { position: relative; display: flex; height: 52px; align-items: center; justify-content: center; gap: 8px; padding: 16px 20px; border-radius: 16px; background: #fff; font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; white-space: nowrap; }
 .hero-chip:hover { background: rgb(255 255 255 / 70%); }
 .hero-chip-more { color: #000; background: rgb(38 55 88 / 6%); }
-.work-dropdown { position: relative; z-index: 10; width: 207px; flex: none; }
+.work-dropdown { position: relative; width: 207px; flex: none; } /* z-index убран: дропдауна нет; z:10 перекрывал sticky-шапку */
 .work-dropdown > .hero-chip { width: 100%; color: #000; }
 .hero-chip-static { cursor: default; }
 .hero-chip-static:hover { background: #fff; }
@@ -251,7 +361,7 @@ img { display: block; }
 .operation-title { width: 100%; font-weight: 700; letter-spacing: .43px; white-space: pre-wrap; }
 .operation-description { width: 100%; overflow: hidden; font-weight: 400; letter-spacing: -.24px; text-overflow: ellipsis; }
 .operation-status { display: flex; width: 95px; padding: 2px 0; align-items: center; gap: 6px; flex: none; }
-.operation-status span { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 8px; border-radius: 6px; background: rgb(30 43 68 / 8%); font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: .19px; color: var(--text-secondary); white-space: nowrap; }
+.operation-status span { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 8px; border-radius: 99px; background: var(--decorative-muted-alt-green); font-size: 11px; font-weight: 700; line-height: 16px; color: var(--decorative-text-green); text-transform: uppercase; white-space: nowrap; }
 .operation-amount { display: flex; width: 176px; flex: none; align-items: flex-start; justify-content: flex-end; font-size: 16px; font-weight: 700; line-height: 24px; letter-spacing: .43px; white-space: nowrap; }
 .operation-amount.positive { color: #0d9336; }
 .operation-more, .operation-more img { width: 24px; height: 24px; }
@@ -474,7 +584,43 @@ img { display: block; }
 .tariff-copy-sub { font-size: 14px; line-height: 20px; letter-spacing: -.08px; color: var(--text-secondary); }
 
 /* ── Нейропомощник: поднятие нижней строки в чат ─────────────── */
-.assistant { position: fixed; inset: 0; z-index: 40; background: #fff; animation: assistant-rise .55s cubic-bezier(.32, .72, 0, 1) both; }
+.assistant {
+  position: fixed;
+  inset: 0;
+  z-index: 70; /* выше .spotlight (60), иначе плашка перекрывает чат */
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  transform: translateY(0);
+  animation: assistant-rise .58s cubic-bezier(.32, .72, 0, 1) both;
+  will-change: transform;
+}
+.assistant.is-closing {
+  animation: assistant-sink .48s cubic-bezier(.32, .72, 0, 1) both;
+}
+/* Главная страница чуть уезжает вверх, шапка «садится» ровно с подъёмом строки. */
+.dashboard-page.assistant-shift > .sidebar,
+.dashboard-page.assistant-shift > .topbar,
+.dashboard-page.assistant-shift > .dashboard-content,
+.dashboard-page.assistant-shift > .spotlight,
+.dashboard-page.assistant-shift > .spotlight-corner,
+.dashboard-page.assistant-shift > .footer-fade,
+.dashboard-page.assistant-shift > .viewport-strip {
+  transition: transform .58s cubic-bezier(.32, .72, 0, 1), opacity .42s cubic-bezier(.32, .72, 0, 1);
+  transform: translateY(24px);
+  opacity: 0;
+  pointer-events: none;
+}
+.dashboard-page.assistant-shift.is-closing > .sidebar,
+.dashboard-page.assistant-shift.is-closing > .topbar,
+.dashboard-page.assistant-shift.is-closing > .dashboard-content,
+.dashboard-page.assistant-shift.is-closing > .spotlight,
+.dashboard-page.assistant-shift.is-closing > .spotlight-corner,
+.dashboard-page.assistant-shift.is-closing > .footer-fade,
+.dashboard-page.assistant-shift.is-closing > .viewport-strip {
+  transform: none;
+  opacity: 1;
+  transition-duration: .48s;
+}
 .assistant-topbar { position: absolute; z-index: 2; top: 0; left: 0; right: 0; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 0 8px; background: #fff; }
 .assistant-brand { display: flex; align-items: center; gap: 12px; }
 .assistant-topbar-right { display: flex; align-items: center; gap: 16px; }
@@ -505,7 +651,37 @@ img { display: block; }
 .assistant-answer > *:nth-child(8) { animation-delay: .99s; }
 .assistant-answer > *:nth-child(9) { animation-delay: 1.06s; }
 .assistant-answer-title, .assistant-answer-total { font-weight: 700; }
+/* ── Spotlight-full по Figma 59:23885 (06.11): банк-хром 64 (низ r20) остаётся,
+   зазор 8, панель с верхним r24 поднимается снизу; SideMenu 248; чат: header 68,
+   footer 160 с инпутом 840×72 r20. Подъём/закрытие — на .assistant-panel. */
+.assistant { background: #f2f3f5; border-radius: 0; animation: assistant-bg-in .36s cubic-bezier(.32,.72,0,1) both; will-change: auto; }
+.assistant.is-closing { animation: assistant-bg-out .48s cubic-bezier(.32,.72,0,1) both; }
+.assistant .assistant-topbar { height: 64px; border-radius: 0 0 20px 20px; padding: 0 24px 0 12px; }
+.assistant-panel { position: absolute; top: 72px; left: 0; right: 0; bottom: 0; display: flex; overflow: clip; border-radius: 24px 24px 0 0; background: #fff; animation: assistant-rise .58s cubic-bezier(.32,.72,0,1) both; }
+.assistant.is-closing .assistant-panel { animation: assistant-sink .48s cubic-bezier(.32,.72,0,1) both; }
+.assistant-panel .assistant-nav { position: relative; top: 0; width: 248px; flex: none; border-top: 0; padding-top: 12px; }
+.assistant-panel .assistant-chat { position: relative; top: 0; left: 0; flex: 1; border: 1px solid rgb(30 43 68 / 8%); border-top: 0; border-bottom: 0; }
+.assistant-panel .assistant-close { top: 18px; right: 24px; }
+.assistant-panel .assistant-user { top: 58px; right: 263px; }
+.assistant-panel .assistant-answer { top: 146px; left: 256px; width: 840px; gap: 0; line-height: 36px; }
+.assistant-footer { position: absolute; left: 0; right: 0; bottom: 0; height: 160px; padding: 64px 256px 24px; background: linear-gradient(to bottom, rgb(255 255 255 / 0), #fff 40%); }
+.assistant-footer-glow { position: absolute; left: 50%; top: calc(64px + 36px); width: 1058px; height: 306px; transform: translate(-50%, -50%); pointer-events: none; }
+.assistant-ask { position: relative; display: flex; width: 840px; max-width: 100%; height: 72px; margin: 0 auto; align-items: center; gap: 12px; padding: 0 20px 0 16px; border-radius: 20px; background: #fff; box-shadow: 0 0 20px rgb(73 0 255 / 5%), inset 1px 1px 2px #fff; filter: drop-shadow(0 0 10px rgb(73 0 255 / 5%)); }
+.assistant-ask-clip img { width: 24px; height: 24px; display: block; }
+.assistant-ask input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font-size: 16px; line-height: 20px; color: var(--text-primary); }
+.assistant-ask input::placeholder { color: var(--text-secondary); opacity: 1; }
+@keyframes assistant-bg-in { from { background-color: rgb(242 243 245 / 0); } to { background-color: #f2f3f5; } }
+@keyframes assistant-bg-out { from { background-color: #f2f3f5; } to { background-color: rgb(242 243 245 / 0); } }
+/* 06.11 feed-link: keyframes → transitions (реверс без скачка с середины). */
+.assistant, .assistant.is-closing { animation: none; background-color: rgb(242 243 245 / 0); transition: background-color .36s cubic-bezier(.32,.72,0,1); }
+.assistant.is-shown { background-color: #f2f3f5; }
+.assistant.is-closing { pointer-events: none; transition-duration: .48s; }
+.assistant-panel, .assistant.is-closing .assistant-panel { animation: none; transform: translateY(100%); transition: transform .58s cubic-bezier(.32,.72,0,1); }
+.assistant.is-shown .assistant-panel { transform: none; }
+.assistant.is-closing .assistant-panel { transition-duration: .48s; }
+@media (prefers-reduced-motion: reduce) { .assistant, .assistant-panel, .assistant.is-closing .assistant-panel { animation: none !important; transition: none !important; } }
 @keyframes assistant-rise { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes assistant-sink { from { transform: translateY(0); } to { transform: translateY(100%); } }
 @keyframes assistant-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes assistant-line { from { opacity: 0; filter: blur(12px); transform: translateY(8px); } to { opacity: 1; filter: blur(0); transform: translateY(0); } }
 
@@ -517,7 +693,58 @@ img { display: block; }
   *, *::before, *::after { transition: none !important; }
   .assistant, .assistant-user, .assistant-answer > *, .role-menu { animation: none; }
   .tab-stage.phase-in .summary-card, .tab-stage.phase-in .accounts-card, .tab-stage.phase-in .tariffs-card { animation: none !important; }
-  .tab-counter { transition: none !important; }
+  .tab-capsule, .tab-capsule.pop { animation: none !important; transition: none !important; }
+  .assistant, .assistant.is-closing { animation: none !important; }
+  .dashboard-page.assistant-shift > .sidebar,
+  .dashboard-page.assistant-shift > .topbar,
+  .dashboard-page.assistant-shift > .dashboard-content,
+  .dashboard-page.assistant-shift > .spotlight,
+  .dashboard-page.assistant-shift > .spotlight-corner,
+  .dashboard-page.assistant-shift > .footer-fade,
+  .dashboard-page.assistant-shift > .viewport-strip { transition: none !important; transform: none !important; opacity: 1 !important; }
+  .balance-cell.credit-guest { transition: none !important; }
+  .name-modal-backdrop, .name-modal { animation: name-modal-backdrop-in .15s ease-out both !important; }
+  .name-modal-backdrop.is-closing, .name-modal-backdrop.is-closing .name-modal { animation: name-modal-backdrop-out .15s ease-in both !important; }
+  .tab-counter, .tab-counter-slot { transition: none !important; animation: none !important; }
+  .tab-stage, .tasks { transition: none !important; }
+}
+
+
+/* Схлопывание карточки «5 млн кредит наличными» (session-only). */
+.balance-cell.credit-guest {
+  overflow: hidden;
+  max-height: 42px;
+  opacity: 1;
+  transform: scaleY(1);
+  transform-origin: top center;
+  transition:
+    max-height .48s cubic-bezier(.32, .72, 0, 1),
+    opacity .36s cubic-bezier(.32, .72, 0, 1),
+    transform .48s cubic-bezier(.32, .72, 0, 1),
+    margin .48s cubic-bezier(.32, .72, 0, 1),
+    padding .48s cubic-bezier(.32, .72, 0, 1);
+}
+.balance-cell.credit-guest.is-dismissing {
+  max-height: 0;
+  opacity: 0;
+  transform: scaleY(.92);
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+.balance-cell.credit-guest .balance-dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  margin-left: auto;
+  border-radius: 999px;
+}
+.balance-cell.credit-guest .balance-dismiss:hover {
+  background: rgb(38 55 88 / 6%);
 }
 
 /* ═══════════ Модалка «Имя клиента» ═══════════
@@ -539,6 +766,11 @@ body.name-modal-open { overflow: hidden; }
   justify-content: center;
   background: rgb(0 0 0 / 4%);
   backdrop-filter: blur(8px);
+  animation: name-modal-backdrop-in .22s cubic-bezier(.33, 1, .68, 1) both;
+}
+.name-modal-backdrop.is-closing {
+  pointer-events: none;
+  animation: name-modal-backdrop-out .16s cubic-bezier(.4, 0, .7, .2) both;
 }
 
 .name-modal {
@@ -551,6 +783,28 @@ body.name-modal-open { overflow: hidden; }
   border: 1px solid #fff;
   border-radius: 29px;
   background: linear-gradient(to bottom, #000, #666);
+  transform-origin: center center;
+  animation: name-modal-pop .42s linear both;
+}
+.name-modal-backdrop.is-closing .name-modal {
+  animation: name-modal-sink .16s cubic-bezier(.4, 0, .7, .2) both;
+}
+@keyframes name-modal-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes name-modal-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+/* Аниматор: появление в духе macOS — из малого скейла с лёгким перелётом.
+   Пик 1.012 в точке нулевой скорости (62%), затем мягкий откат и встаём в 1;
+   сегменты стыкуются с нулевой скоростью — без излома. Opacity доходит до 1
+   к 30% (~125 мс). Закрытие 160 мс без отскока. Тайминги свои, не Apple. */
+@keyframes name-modal-pop {
+  0%   { opacity: 0; transform: scale(.94); animation-timing-function: cubic-bezier(.33, 1, .68, 1); }
+  30%  { opacity: 1; }
+  62%  { transform: scale(1.012); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  84%  { transform: scale(.998); animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes name-modal-sink {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(.97); }
 }
 
 .name-modal-fields { display: flex; flex-direction: column; gap: 8px; }
@@ -607,3 +861,329 @@ body.name-modal-open { overflow: hidden; }
 
 /* focus-состояние кнопки в макете не задано — оставляем без кольца */
 .name-modal-save:focus-visible { outline: none; }
+/* во время закрытия ассистента страница снова кликабельна (повторный клик по триггеру разворачивает панель) */
+.dashboard-page.assistant-shift.is-closing > .dashboard-content { pointer-events: auto; }
+
+/* ═══ Морф дашборд → Spotlight-full (спека 59:16843 → 59:23885, 06.11) ═══
+   Один DOM-переход, обе стороны — CSS transitions (реверс с текущей точки):
+   • серое «тело» #F2F3F5 h834 r0 0 16 16 сжимается clip-path до 64, r→20;
+   • кластер кнопок шапки FLIP с y дашборда на y8 (Поиск, Почта, Уведомления, |, SingleAccount, |, Выход);
+   • карточка меню уходит, LogoCell 248×64 проявляется;
+   • белая панель вырастает из Spotlight-bar (y840 h60 #F2F3F5 r20) до y72 (#FFF r24). */
+.assistant, .assistant.is-shown, .assistant.is-closing { background-color: transparent; }
+.assistant .assistant-topbar {
+  height: 834px; padding: 0; background: #f2f3f5; border-radius: 0;
+  box-shadow: inset -1px -1px 1px rgb(255 255 255 / 80%);
+  background: transparent; box-shadow: none;
+  clip-path: inset(0 0 0 0 round 0 0 16px 16px);
+  transition: clip-path .58s cubic-bezier(.32,.72,0,1);
+}
+/* подложка тела отдельным слоем: проявляется, пока уходит контент; кнопки на ней видны сразу */
+.assistant .assistant-topbar::before { content: ""; position: absolute; inset: 0; background: #f2f3f5; box-shadow: inset -1px -1px 1px rgb(255 255 255 / 80%); opacity: 0; transition: opacity .26s cubic-bezier(.32,.72,0,1); }
+.assistant.is-shown .assistant-topbar { clip-path: inset(0 0 770px 0 round 0 0 20px 20px); }
+.assistant.is-shown .assistant-topbar::before { opacity: 1; }
+.assistant.is-closing .assistant-topbar { transition-duration: .48s; }
+.assistant.is-closing .assistant-topbar::before { transition-delay: .2s; }
+@media (prefers-reduced-motion: reduce) { .assistant .assistant-topbar::before { transition: none !important; } }
+.assistant .assistant-brand { position: absolute; left: 12px; top: 12px; height: 40px; opacity: 0; transition: opacity .3s cubic-bezier(.32,.72,0,1) .1s; }
+.assistant.is-shown .assistant-brand { opacity: 1; }
+.assistant .assistant-topbar-right {
+  position: absolute; top: 8px; right: 24px; height: 40px; display: flex; align-items: center; gap: 16px;
+  transform: translateY(var(--flip-dy, 20px)); transition: transform .58s cubic-bezier(.32,.72,0,1);
+}
+.assistant.is-shown .assistant-topbar-right { transform: none; }
+.assistant.is-closing .assistant-topbar-right { transition-duration: .48s; }
+.single-avatar { display: flex; width: 40px; height: 40px; flex: none; align-items: center; justify-content: center; border-radius: 12px; background: #e7e8eb; font-size: 16px; font-weight: 500; color: var(--text-primary); }
+/* панель стартует как Spotlight-bar: y840, видно 60px, #F2F3F5, r20 */
+.assistant .assistant-panel, .assistant.is-closing .assistant-panel {
+  transform: translateY(768px); background: #f2f3f5; border-radius: 20px 20px 0 0;
+  box-shadow: inset 1px 1px 2px #fff;
+  transition: transform .58s cubic-bezier(.32,.72,0,1), background-color .4s cubic-bezier(.32,.72,0,1), border-radius .58s cubic-bezier(.32,.72,0,1);
+}
+.assistant.is-shown .assistant-panel { transform: none; background: #fff; border-radius: 24px 24px 0 0; }
+.assistant.is-closing .assistant-panel { transition-duration: .48s; }
+.assistant .assistant-panel > * { opacity: 0; transition: opacity .3s cubic-bezier(.32,.72,0,1); }
+.assistant.is-shown .assistant-panel > * { opacity: 1; transition-delay: .18s; }
+/* дашборд: шапка и Spotlight-bar переходят в оверлей (не кроссфейд), меню/контент уходят */
+.dashboard-page.assistant-shift > .topbar,
+.dashboard-page.assistant-shift > .spotlight,
+.dashboard-page.assistant-shift > .spotlight-corner { visibility: hidden; transition: none; transform: none; opacity: 1; }
+.dashboard-page.assistant-shift > .sidebar,
+.dashboard-page.assistant-shift > .dashboard-content { transform: none; opacity: 0; transition: opacity .3s cubic-bezier(.32,.72,0,1); }
+.dashboard-page.assistant-shift.is-closing > .sidebar,
+.dashboard-page.assistant-shift.is-closing > .dashboard-content { opacity: 1; transition-delay: .12s; }
+@media (prefers-reduced-motion: reduce) {
+  .assistant .assistant-topbar, .assistant .assistant-brand, .assistant .assistant-topbar-right, .assistant .assistant-panel, .assistant .assistant-panel > *,
+  .dashboard-page.assistant-shift > .sidebar, .dashboard-page.assistant-shift > .dashboard-content { transition: none !important; }
+}
+
+/* ── Детали шапки чата и ответа (59:23984 / 59:24018) ──
+   Header: padding 20, кнопки 40×40 круг neutral/100 #F2F3F5, иконка 24, gap 16.
+   Actions: 3 IconView 20×20, gap 12, pt 12. hover/pressed в макете не заданы — предложено. */
+.assistant-head-actions { position: absolute; z-index: 1; top: 24px; right: 20px; display: flex; gap: 16px; }
+.assistant-panel .assistant-round { position: static; display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 50%; background: #f2f3f5; transition: background-color .2s cubic-bezier(.32,.72,0,1), transform .2s cubic-bezier(.32,.72,0,1); }
+.assistant-panel .assistant-round img { width: 24px; height: 24px; }
+.assistant-panel .assistant-round:hover { background: #e7e8eb; }
+.assistant-panel .assistant-round:active { background: #dcdee1; transform: scale(.96); }
+.assistant-panel .assistant-answer { top: 146px; }
+.assistant-panel .assistant-answer-title, .assistant-panel .assistant-answer-total { line-height: 48px; }
+.assistant-answer-actions { display: flex; gap: 12px; padding-top: 12px; }
+.assistant-answer > .assistant-answer-actions { animation-delay: 1.13s; }
+.assistant-answer-actions button { display: flex; width: 20px; height: 20px; align-items: center; justify-content: center; border-radius: 6px; transition: background-color .2s cubic-bezier(.32,.72,0,1), box-shadow .2s cubic-bezier(.32,.72,0,1); }
+.assistant-answer-actions button:hover { background: #f2f3f5; box-shadow: 0 0 0 4px #f2f3f5; }
+.assistant-answer-actions button:active { background: #e7e8eb; box-shadow: 0 0 0 4px #e7e8eb; }
+.assistant-answer-actions img { width: 20px; height: 20px; }
+
+/* ── Шапка открытого ассистента = [D] Header 59:23889 + морф аккаунта ──
+   px24 py8, gap16: [слот 40, пустой] [Почта Уведомления gap8] | SingleAccount | Выход.
+   Divider 1×32 (py4) rgba(15,25,55,.1). SingleAccount: pl8 gap12, лого 40 superellipse,
+   14/20 medium .07 primary, 12/16 regular .06 secondary. */
+.assistant .assistant-topbar-right { top: 8px; right: 24px; gap: 16px; align-items: center; transform: none !important; transition: none; }
+.ai-slot-spacer { width: 40px; height: 40px; flex: none; }
+.ai-btn-group { display: flex; gap: 8px; }
+.ai-divider { display: block; width: 1px; height: 32px; margin: 4px 0; flex: none; background: rgb(15 25 55 / 10%); }
+.ai-account { position: relative; display: flex; height: 40px; flex: none; align-items: center; padding-left: 8px; }
+.ai-account-to { display: flex; align-items: center; gap: 12px; }
+.ai-account-from { position: absolute; left: 8px; top: 0; display: flex; height: 40px; align-items: center; gap: 12px; white-space: nowrap; }
+.ai-account-copy { display: flex; flex-direction: column; white-space: nowrap; text-align: left; }
+.ai-account-copy strong { font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: .07px; color: rgb(3 3 6 / 88%); }
+.ai-account-copy small { font-size: 12px; font-weight: 400; line-height: 16px; letter-spacing: .06px; color: rgb(4 4 19 / 55%); }
+.ai-company-logo { width: 40px; height: 40px; flex: none; background: rgb(30 43 68 / 8%) url("/assets/figma/ai-company-logo.png") center / cover no-repeat; -webkit-mask: url("/assets/figma/ai-company-mask.svg") 0 0 / 40px 40px no-repeat; mask: url("/assets/figma/ai-company-mask.svg") 0 0 / 40px 40px no-repeat; }
+/* призрак переключателя роли: стоит там, где был на дашборде, и гаснет — в раскладке места не занимает */
+.ai-role-ghost { position: absolute; right: 56px; top: 0; display: flex; height: 40px; align-items: center; gap: 16px; pointer-events: none; }
+.ai-role-ghost-chip { display: flex; }
+/* FLIP-движение и кроссфейды (обе стороны — transitions) */
+.assistant [data-flip] { transform: translate(var(--fx, 0px), var(--fy, 0px)); transition: transform .58s cubic-bezier(.32,.72,0,1), opacity .24s cubic-bezier(.32,.72,0,1); }
+.assistant.is-shown [data-flip] { transform: none; }
+.assistant.is-closing [data-flip] { transition-duration: .48s, .24s; }
+.ai-account-from, .ai-account-to { transition: opacity .22s cubic-bezier(.32,.72,0,1); }
+.ai-account-to { opacity: 0; }
+.assistant.is-shown .ai-account-to { opacity: 1; transition-delay: .12s; }
+.assistant.is-shown .ai-account-from { opacity: 0; }
+.assistant.is-closing .ai-account-from { transition-delay: .14s; }
+.assistant [data-flip="role"] { opacity: 1; }
+.assistant.is-shown [data-flip="role"] { opacity: 0; }
+.assistant.is-closing [data-flip="role"] { transition-delay: 0s, .16s; }
+@media (prefers-reduced-motion: reduce) {
+  .assistant [data-flip], .ai-account-from, .ai-account-to { transition: none !important; }
+}
+
+/* ── final: футер = [D] UniversalModalFooter 59:24060 (низ модалки, фиксирован) ──
+   h160, pt64 px256 pb24, фон-картинка; поле 824×72 у левого края контента (items-start),
+   свечение 045cf по центру FooterContent (840×72); Field r20 #fff, drop-shadow 0 0 10 rgba(73,0,255,.05);
+   LeftAddon pl12 py20 (32 / иконка 24), Content pl12 pr20 py26, 16/20 secondary. */
+.assistant-footer { padding: 64px 256px 24px; background: url("/assets/figma/ai-footer-bg.png") center / 100% 100% no-repeat; }
+.assistant-footer-glow { left: calc(256px + 420px); top: calc(64px + 36px); width: 1057.7px; height: 305.6px; }
+.assistant-ask { width: 824px; height: 72px; margin: 0; gap: 0; padding: 0 20px 0 12px; border-radius: 20px; background: #fff; box-shadow: none; -webkit-filter: drop-shadow(0 0 10px rgb(73 0 255 / 5%)); filter: drop-shadow(0 0 10px rgb(73 0 255 / 5%)); }
+.assistant-ask-clip { display: flex; width: 32px; height: 32px; flex: none; align-items: center; justify-content: center; }
+.assistant-ask input { height: 72px; padding: 26px 0 26px 12px; font-size: 16px; line-height: 20px; letter-spacing: 0; }
+/* ── hover / pressed / focus кнопок шапки ассистента ── */
+.assistant-topbar-right .icon-button, .ai-account { border: 0; border-radius: 12px; background-color: transparent; cursor: pointer; font: inherit; color: inherit; transition: background-color .2s cubic-bezier(.32,.72,0,1), transform .58s cubic-bezier(.32,.72,0,1), opacity .24s cubic-bezier(.32,.72,0,1); }
+.assistant-topbar-right .icon-button { border-radius: 999px; }
+.ai-account { padding-right: 8px; text-align: left; }
+.assistant.is-shown:not(.is-closing) .assistant-topbar-right .icon-button:hover, .assistant.is-shown:not(.is-closing) .ai-account:hover { background-color: #e7e8eb; }
+.assistant.is-shown:not(.is-closing) .assistant-topbar-right .icon-button:active, .assistant.is-shown:not(.is-closing) .ai-account:active { background-color: #dcdee1; }
+.assistant.is-closing .assistant-topbar-right .icon-button, .assistant.is-closing .ai-account { transition-duration: .2s, .48s, .24s; }
+@media (prefers-reduced-motion: reduce) { .assistant-topbar-right .icon-button, .ai-account { transition: none !important; } }
+/* чат-колонка имеет рамку 1px — футер по ширине кадра 1352, как в 59:24060; SingleAccount без правого паддинга (pl8 по макету) */
+.assistant-panel .assistant-footer { left: -1px; right: -1px; }
+.ai-account { padding-right: 0; }
+/* ── side menu = SideMenu 59:23982: LogoCell h52 pt12 px12 (логотип 40 на y12), Cells py16, ProductCell h64 ──
+   было: padding-top панели 12 + head 52 с центрированием → логотип/пункты ниже на 12px. */
+.assistant-panel .assistant-nav { padding-top: 0; }
+.assistant-panel .assistant-nav-head { height: 52px; padding: 12px 12px 0; align-items: center; }
+.assistant-panel .assistant-neural { width: 40px; height: 40px; }
+.assistant-panel .assistant-neural > img:not(.neural-shadow) { width: 40px; height: 40px; }
+.assistant-panel .assistant-neural > .neural-shadow { left: -43px; top: -43px; width: 126px; height: 126px; }
+/* логотип LogoCell: ассет Neural-assistant 40×40, круг r20, без свечения */
+.assistant-panel .ai-nav-logo { display: block; width: 40px; height: 40px; flex: none; border-radius: 20px; overflow: hidden; -webkit-clip-path: circle(20px at 50% 50%); clip-path: circle(20px at 50% 50%); }
+
+/* ═══ Морф ассистента v3 (рework по покадровому аудиту) ═══
+   Схема в две фазы, ничего не едет поверх видимого:
+   открытие  0–120 мс  дашборд (карточка меню, контент, полоса, фейд) гаснет linear, серое тело проявляется на месте;
+             120–620   одно движение, одна кривая, одна длительность: ряд шапки по Y (x не меняется),
+                       LogoCell с места логотипа дашборда, тело шапки clip 834→64, панель 768→0;
+   закрытие  0–500     то же движение назад; 500–640 тело гаснет, дашборд проявляется на месте.
+   Аккаунт: меняются только аватар и вторая строка, кроссфейдом в одной точке. */
+:root { --m-dur: .5s; --m-ease: cubic-bezier(.4,0,.2,1); --m-delay: .12s; --m-fade: .12s; --m-fade-back: .14s; }
+/* дашборд: гаснет/проявляется только opacity, без сдвигов; логотип и шапка подменены оверлеем 1:1 */
+.dashboard-page.assistant-shift > .sidebar,
+.dashboard-page.assistant-shift > .dashboard-content,
+.dashboard-page.assistant-shift > .footer-fade,
+.dashboard-page.assistant-shift > .viewport-strip { transform: none !important; opacity: 1; transition: opacity var(--m-fade-back) linear var(--m-dur) !important; }
+.dashboard-page.assistant-shift.assistant-shown > .sidebar,
+.dashboard-page.assistant-shift.assistant-shown > .dashboard-content,
+.dashboard-page.assistant-shift.assistant-shown > .footer-fade,
+.dashboard-page.assistant-shift.assistant-shown > .viewport-strip { opacity: 0; transition: opacity var(--m-fade) linear 0s !important; }
+.dashboard-page.assistant-shift > .sidebar .sidebar-logo .logo-sign,
+.dashboard-page.assistant-shift > .sidebar .sidebar-logo .logo-wordmark { visibility: hidden; }
+/* тело шапки */
+.assistant .assistant-topbar, .assistant.is-closing .assistant-topbar { transition: clip-path var(--m-dur) var(--m-ease) 0s; }
+.assistant.is-shown .assistant-topbar { transition: clip-path var(--m-dur) var(--m-ease) var(--m-delay); }
+.assistant .assistant-topbar::before, .assistant.is-closing .assistant-topbar::before { transition: opacity var(--m-fade-back) linear var(--m-dur); }
+.assistant.is-shown .assistant-topbar::before { transition: opacity var(--m-fade) linear 0s; }
+/* LogoCell «Альфа-Бизнес»: видна всегда, едет с места логотипа дашборда */
+.assistant .assistant-brand, .assistant.is-closing .assistant-brand { opacity: 1; transform: translate(var(--brand-dx, 17px), var(--brand-dy, 17px)); transition: transform var(--m-dur) var(--m-ease) 0s; }
+.assistant.is-shown .assistant-brand { transform: none; transition: transform var(--m-dur) var(--m-ease) var(--m-delay); }
+/* ряд шапки: только Y, весь ряд одной траекторией */
+.assistant .assistant-topbar-right, .assistant.is-closing .assistant-topbar-right { transform: translateY(var(--flip-dy, 20px)) !important; transition: transform var(--m-dur) var(--m-ease) 0s !important; }
+.assistant.is-shown .assistant-topbar-right { transform: none !important; transition: transform var(--m-dur) var(--m-ease) var(--m-delay) !important; }
+.assistant .assistant-topbar-right [data-flip], .assistant.is-shown .assistant-topbar-right [data-flip], .assistant.is-closing .assistant-topbar-right [data-flip] { transform: none; opacity: 1; }
+.assistant .assistant-topbar-right .icon-button, .assistant .ai-account,
+.assistant.is-closing .assistant-topbar-right .icon-button, .assistant.is-closing .ai-account { transition: background-color .2s var(--m-ease); }
+.ai-role { display: flex; flex: none; }
+.ai-av { position: relative; display: block; width: 40px; height: 40px; flex: none; }
+.ai-av > * { position: absolute; left: 0; top: 0; }
+.ai-sub { display: grid; }
+.ai-sub > * { grid-area: 1 / 1; }
+.ai-account { gap: 12px; }
+.ai-av-from, .ai-sub-from, .assistant.is-closing .ai-av-from, .assistant.is-closing .ai-sub-from { opacity: 1; transition: opacity .2s linear 0s; }
+.ai-av-to, .ai-sub-to, .assistant.is-closing .ai-av-to, .assistant.is-closing .ai-sub-to { opacity: 0; transition: opacity .2s linear 0s; }
+.assistant.is-shown .ai-av-from, .assistant.is-shown .ai-sub-from { opacity: 0; transition: opacity .2s linear var(--m-delay); }
+.assistant.is-shown .ai-av-to, .assistant.is-shown .ai-sub-to { opacity: 1; transition: opacity .2s linear var(--m-delay); }
+/* панель */
+.assistant .assistant-panel, .assistant.is-closing .assistant-panel { transform: translateY(768px); background-color: #f2f3f5; border-radius: 20px 20px 0 0; transition: transform var(--m-dur) var(--m-ease) 0s, background-color var(--m-dur) var(--m-ease) 0s, border-radius var(--m-dur) var(--m-ease) 0s; }
+.assistant.is-shown .assistant-panel { transform: none; background-color: #fff; border-radius: 24px 24px 0 0; transition: transform var(--m-dur) var(--m-ease) var(--m-delay), background-color var(--m-dur) var(--m-ease) var(--m-delay), border-radius var(--m-dur) var(--m-ease) var(--m-delay); }
+.assistant .assistant-panel > *, .assistant.is-closing .assistant-panel > * { opacity: 0; transition: opacity .2s linear 0s; }
+.assistant.is-shown .assistant-panel > * { opacity: 1; transition: opacity .3s var(--m-ease) .2s; }
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-page.assistant-shift > *, .dashboard-page.assistant-shift.assistant-shown > *,
+  .assistant *, .assistant *::before, .assistant .assistant-topbar-right, .assistant.is-shown .assistant-topbar-right { transition: none !important; }
+}
+/* Spotlight-bar дашборда не пропадает мгновенно: лежит над панелью (которая стоит ровно на его месте)
+   и гаснет вместе с дашбордом 0–120 мс; при закрытии проявляется после возврата панели. */
+.dashboard-page.assistant-shift > .spotlight,
+.dashboard-page.assistant-shift > .spotlight-corner { visibility: visible !important; z-index: 75; pointer-events: none; opacity: 1; transition: opacity var(--m-fade-back) linear var(--m-dur) !important; }
+.dashboard-page.assistant-shift.assistant-shown > .spotlight,
+.dashboard-page.assistant-shift.assistant-shown > .spotlight-corner { opacity: 0; transition: opacity var(--m-fade) linear 0s !important; }
+@media (prefers-reduced-motion: reduce) { .dashboard-page.assistant-shift > .spotlight, .dashboard-page.assistant-shift > .spotlight-corner { transition: none !important; } }
+.assistant.is-quick { --m-delay: 0s; }
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-page.assistant-shift.assistant-shown > .sidebar, .dashboard-page.assistant-shift.assistant-shown > .dashboard-content,
+  .dashboard-page.assistant-shift.assistant-shown > .footer-fade, .dashboard-page.assistant-shift.assistant-shown > .viewport-strip,
+  .dashboard-page.assistant-shift.assistant-shown > .spotlight, .dashboard-page.assistant-shift.assistant-shown > .spotlight-corner { opacity: 0 !important; }
+  .dashboard-page.assistant-shift > .sidebar, .dashboard-page.assistant-shift > .dashboard-content, .dashboard-page.assistant-shift > .footer-fade, .dashboard-page.assistant-shift > .viewport-strip,
+  .dashboard-page.assistant-shift.assistant-shown > .sidebar, .dashboard-page.assistant-shift.assistant-shown > .dashboard-content,
+  .dashboard-page.assistant-shift.assistant-shown > .footer-fade, .dashboard-page.assistant-shift.assistant-shown > .viewport-strip,
+  .dashboard-page.assistant-shift.assistant-shown > .spotlight, .dashboard-page.assistant-shift.assistant-shown > .spotlight-corner,
+  .assistant .assistant-topbar, .assistant.is-shown .assistant-topbar, .assistant .assistant-topbar::before, .assistant.is-shown .assistant-topbar::before,
+  .assistant .assistant-brand, .assistant.is-shown .assistant-brand, .assistant .assistant-panel, .assistant.is-shown .assistant-panel,
+  .assistant .assistant-panel > *, .assistant.is-shown .assistant-panel > *, .ai-av-from, .ai-av-to, .ai-sub-from, .ai-sub-to,
+  .assistant.is-shown .ai-av-from, .assistant.is-shown .ai-av-to, .assistant.is-shown .ai-sub-from, .assistant.is-shown .ai-sub-to { transition: none !important; }
+}
+
+/* ═══ v4 «выезд снизу» (запрос Ильи): дашборд не прячется и не двигается, непрозрачная панель
+   сразу выезжает снизу и перекрывает его; закрытие — обратно, конец по transitionend панели.
+   Линия меню/окна (59:23885: x248, 1px neutral-translucent/200) — отдельный статичный слой над панелью:
+   не двигается, а открывается краем панели (clip-path той же кривой и длительности). */
+.assistant { --m-delay: 0s; }
+.dashboard-page.assistant-shift > .sidebar, .dashboard-page.assistant-shift > .dashboard-content,
+.dashboard-page.assistant-shift > .footer-fade, .dashboard-page.assistant-shift > .viewport-strip,
+.dashboard-page.assistant-shift.assistant-shown > .sidebar, .dashboard-page.assistant-shift.assistant-shown > .dashboard-content,
+.dashboard-page.assistant-shift.assistant-shown > .footer-fade, .dashboard-page.assistant-shift.assistant-shown > .viewport-strip,
+.dashboard-page.assistant-shift > .spotlight, .dashboard-page.assistant-shift > .spotlight-corner,
+.dashboard-page.assistant-shift.assistant-shown > .spotlight, .dashboard-page.assistant-shift.assistant-shown > .spotlight-corner { opacity: 1 !important; transform: none !important; transition: none !important; visibility: visible !important; z-index: auto; }
+.dashboard-page.assistant-shift > .sidebar { z-index: 5; }
+.dashboard-page.assistant-shift > .spotlight { z-index: 60; }
+.dashboard-page.assistant-shift > .spotlight-corner, .dashboard-page.assistant-shift > .viewport-strip { z-index: 59; }
+.dashboard-page.assistant-shift > .footer-fade { z-index: 6; }
+/* панель стартует целиком за нижним краем окна (не на месте Spotlight), белая, r24 */
+.assistant .assistant-panel, .assistant.is-closing .assistant-panel { transform: translateY(100%); background-color: #fff; border-radius: 24px 24px 0 0; box-shadow: none; transition: transform var(--m-dur) var(--m-ease) 0s; }
+.assistant.is-shown .assistant-panel { transform: none; background-color: #fff; border-radius: 24px 24px 0 0; transition: transform var(--m-dur) var(--m-ease) 0s; }
+/* шапка: серое тело сразу в размер 64 (не накрывает дашборд), проявляется на месте вместе с выездом */
+.assistant .assistant-topbar, .assistant.is-shown .assistant-topbar, .assistant.is-closing .assistant-topbar { clip-path: inset(0 0 738px 0); transition: none; } /* серое тело 0–96: закрывает и зазор 64–72, и углы r24 панели */
+.assistant .assistant-topbar::before, .assistant.is-closing .assistant-topbar::before { opacity: 0; transition: opacity var(--m-dur) var(--m-ease) 0s; }
+.assistant.is-shown .assistant-topbar::before { opacity: 1; transition: opacity var(--m-dur) var(--m-ease) 0s; }
+/* линия меню/окна */
+.assistant .assistant-panel > .ai-window-line, .assistant.is-shown .assistant-panel > .ai-window-line, .assistant.is-closing .assistant-panel > .ai-window-line { position: absolute; z-index: 4; left: 248px; top: 0; bottom: 0; width: 1px; background: var(--neutral-translucent-200, rgb(30 43 68 / 8%)); pointer-events: none; opacity: 1; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .assistant .assistant-panel, .assistant.is-shown .assistant-panel, .assistant .assistant-topbar::before, .assistant.is-shown .assistant-topbar::before, .ai-window-line, .assistant.is-shown .ai-window-line { transition: none !important; }
+}
+.assistant-panel .assistant-chat { border-left: 0; border-right: 0; } /* линию даёт .ai-window-line, иначе две полупрозрачные линии складываются */
+/* ═══ v5: (1) карточка меню и логотип «Альфа-Бизнес» — одно целое: карточка едет тем же вектором и кривой,
+   что и логотип (−brand-dx, −brand-dy), логотип не скользит по карточке; уходит под шапку/панель.
+   (2) зазор 64–72 и фон за скруглениями шапки (r20) и окна (r24) — фон фрейма 59:23885 #E7E8EB;
+   сама шапка Bank 59:23886 — BackgroundColor #F2F3F5. Один слой ::before, проявляется синхронно с выездом. */
+.dashboard-page.assistant-shift > .sidebar { transition: transform var(--m-dur) var(--m-ease) 0s !important; }
+.dashboard-page.assistant-shift.assistant-shown > .sidebar { transform: translate(calc(-1 * var(--brand-dx, 17px)), calc(-1 * var(--brand-dy, 17px))) !important; transition: transform var(--m-dur) var(--m-ease) 0s !important; }
+.assistant .assistant-topbar::before {
+  box-shadow: none;
+  background:
+    linear-gradient(var(--background-color, #f2f3f5), var(--background-color, #f2f3f5)) 0 0 / 100% 44px no-repeat,
+    linear-gradient(var(--background-color, #f2f3f5), var(--background-color, #f2f3f5)) 20px 44px / calc(100% - 40px) 20px no-repeat,
+    radial-gradient(circle at 20px 0, var(--background-color, #f2f3f5) 19.5px, transparent 20.5px) 0 44px / 40px 20px no-repeat,
+    radial-gradient(circle at 20px 0, var(--background-color, #f2f3f5) 19.5px, transparent 20.5px) 100% 44px / 40px 20px no-repeat,
+    #e7e8eb;
+}
+@media (prefers-reduced-motion: reduce) { .dashboard-page.assistant-shift > .sidebar, .dashboard-page.assistant-shift.assistant-shown > .sidebar { transition: none !important; } }
+.assistant .assistant-panel, .assistant.is-shown .assistant-panel, .assistant.is-closing .assistant-panel { z-index: 3; } /* окно над телом шапки: верх окна с y72 белый, тело #E7E8EB видно только в зазоре и за углами r24 */
+/* v6: transform панели ведёт Web Animations (Glavnaya.tsx), CSS-transition панели выключен; при reduced motion — без выезда */
+.assistant .assistant-panel, .assistant.is-shown .assistant-panel, .assistant.is-closing .assistant-panel { transition: none; }
+@media (prefers-reduced-motion: reduce) { .assistant.is-shown .assistant-panel { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .dashboard-page.assistant-shift.assistant-shown > .sidebar { transform: none !important; } }
+/* v7: кроссфейд аккаунта и проявление содержимого окна ведут Web Animations (Glavnaya.tsx); CSS-переходы выключены */
+.ai-av-from, .ai-sub-from, .ai-av-to, .ai-sub-to, .assistant .ai-av-from, .assistant .ai-sub-from, .assistant .ai-av-to, .assistant .ai-sub-to,
+.assistant.is-shown .ai-av-from, .assistant.is-shown .ai-sub-from, .assistant.is-shown .ai-av-to, .assistant.is-shown .ai-sub-to,
+.assistant.is-closing .ai-av-from, .assistant.is-closing .ai-sub-from, .assistant.is-closing .ai-av-to, .assistant.is-closing .ai-sub-to,
+.assistant .assistant-panel > *, .assistant.is-shown .assistant-panel > *, .assistant.is-closing .assistant-panel > * { transition: none; }
+/* v8: проявление тела шапки ведут Web Animations (Glavnaya.tsx); CSS-переход ::before выключен */
+.assistant .assistant-topbar::before, .assistant.is-shown .assistant-topbar::before, .assistant.is-closing .assistant-topbar::before { transition: none; }
+/* ═══ v9 «зазор едет» (Илья): отдельного проявления тела шапки нет; над окном — воротник: полоса 8 px #E7E8EB
+   и уголки r20 низа дашборда; за скруглениями r24 окна — тоже #E7E8EB. Воротник и окно ведёт одна кривая (Glavnaya.tsx). */
+.assistant .assistant-topbar::before, .assistant.is-shown .assistant-topbar::before, .assistant.is-closing .assistant-topbar::before { opacity: 0 !important; }
+.assistant .assistant-panel, .assistant.is-shown .assistant-panel, .assistant.is-closing .assistant-panel { z-index: 4; }
+.assistant .assistant-panel, .assistant.is-closing .assistant-panel { transform: translateY(calc(100% + 28px)); }
+.assistant .ai-gap-collar { position: absolute; z-index: 3; left: 0; right: 0; top: 44px; height: 56px; pointer-events: none; transform: translateY(calc(100vh - 44px));
+  background:
+    radial-gradient(circle at 20px 0, transparent 19.5px, #e7e8eb 20.5px) 0 0 / 20px 20px no-repeat,
+    radial-gradient(circle at 0 0, transparent 19.5px, #e7e8eb 20.5px) 100% 0 / 20px 20px no-repeat,
+    linear-gradient(#e7e8eb, #e7e8eb) 0 20px / 100% 36px no-repeat; }
+.assistant.is-shown .ai-gap-collar { transform: none; }
+@media (prefers-reduced-motion: reduce) { .assistant.is-shown .assistant-panel { transform: none; } .dashboard-page.assistant-shift.assistant-shown > .sidebar { background-color: transparent !important; border-color: transparent !important; } }
+/* v10: содержимое окна без fade — видно сразу, едет с окном (Илья) */
+.assistant .assistant-panel > *, .assistant.is-shown .assistant-panel > *, .assistant.is-closing .assistant-panel > * { opacity: 1; transition: none; }
+.assistant .assistant-user, .assistant .assistant-answer > * { animation: none; } /* сообщения тоже видны с первого кадра, без поочерёдного проявления */
+/* v11: аккаунт в шапке ассистента не меняется — всегда как в шапке дашборда, без кроссфейда */
+.ai-av-from, .ai-sub-from, .assistant .ai-av-from, .assistant .ai-sub-from, .assistant.is-shown .ai-av-from, .assistant.is-shown .ai-sub-from, .assistant.is-closing .ai-av-from, .assistant.is-closing .ai-sub-from { opacity: 1 !important; transition: none !important; }
+/* ═══ v12 «толчок»: логотип, ряд шапки и карточка меню двигаются свойством translate из Web Animations (Glavnaya.tsx);
+   прежние transform-переходы выключены. Базовые значения — стартовые/финальные положения, на случай кадра до старта анимации. */
+.assistant .assistant-topbar-right, .assistant.is-shown .assistant-topbar-right, .assistant.is-closing .assistant-topbar-right { transform: none !important; transition: none !important; translate: 0 var(--flip-dy, 20px); }
+.assistant.is-shown .assistant-topbar-right { translate: 0 0; }
+.assistant .assistant-brand, .assistant.is-shown .assistant-brand, .assistant.is-closing .assistant-brand { transform: none; transition: none; translate: var(--brand-dx, 17px) var(--brand-dy, 17px); }
+.assistant.is-shown .assistant-brand { translate: 0 0; }
+.dashboard-page.assistant-shift > .sidebar, .dashboard-page.assistant-shift.assistant-shown > .sidebar { transform: none !important; transition: none !important; }
+.dashboard-page.assistant-shift.assistant-shown > .sidebar { translate: calc(-1 * var(--brand-dx, 17px)) calc(-1 * var(--brand-dy, 17px)); background-color: transparent; border-color: transparent; }
+@media (prefers-reduced-motion: reduce) { .dashboard-page.assistant-shift.assistant-shown > .sidebar { translate: none !important; } }
+
+/* Scrolled assistant header: the dashboard's sticky backdrop is hidden during
+   the hand-off. Keep a solid page-colour backing behind its replacement, for
+   the whole mounted lifetime (including reverse/closing/reduced motion).
+   Use the live scroll flag, not a stale sticky-collapse snapshot. At scrollY=0
+   this rule is inactive: logo/card push and all WAAPI tracks stay intact.
+   The moving collar still owns the 8px gap and the corner geometry. */
+.dashboard-page > .assistant[data-scrolled] .assistant-topbar::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: max(64px, calc(48px + var(--flip-dy, 20px)));
+  background: var(--page-bg, #f2f3f5);
+  pointer-events: none;
+}
+
+/* ═══ главная Альфа-Интеллекта по макету 169:26226 ═══
+   меню 169:26287: без заливки, backdrop-blur 50, border-r neutral-translucent-200 (HubMenu 169:26379);
+   под ним — белое окно и градиент главной (Gradi на всю ширину). Шапка меню 72 (MenuHeader). */
+.assistant-panel .assistant-nav { z-index: 1; background: transparent; -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px); } /* линию x248 даёт .ai-window-line: border-right давал вторую на x247 */
+.assistant-panel .assistant-nav-head { height: 72px; padding: 12px 12px 20px; }
+.assistant-panel .assistant-nav-head strong { font-size: 18px; line-height: 24px; letter-spacing: .38px; }
+/* кнопки окна 169:26286: 40×40, круг, белый 40 % — без серой подложки */
+.assistant-panel .assistant-round { background: rgb(255 255 255 / 40%); }
+.assistant-panel .assistant-round:hover { background: rgb(255 255 255 / 60%); }
+.assistant-panel .assistant-round:active { background: rgb(255 255 255 / 70%); }
+.assistant-ask input { letter-spacing: -.24px; }
+
+/* Обводка окна Main Page 169:26243 сверху и справа: 1px внутрь, neutral-translucent/200 (видна на рендере узла; левую даёт .ai-window-line) */
+.assistant-panel::after { content: ""; position: absolute; z-index: 4; inset: 0; border-top: 1px solid var(--neutral-translucent-200); border-right: 1px solid var(--neutral-translucent-200); border-radius: inherit; pointer-events: none; }

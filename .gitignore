@@ -13,3 +13,8 @@ next-env.d.ts
 # статическая сборка прототипа (npm run build:static)
 static-dist/
 .vercel
+
+# локальные бэкапы правок и артефакты случайного pnpm install
+.backups/
+pnpm-lock.yaml
+pnpm-workspace.yaml

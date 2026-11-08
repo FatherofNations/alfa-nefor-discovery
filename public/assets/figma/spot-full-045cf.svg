@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1057.62" height="305.615" viewBox="0 0 1057.62 305.615" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Input Gradi" opacity="0.35">
+<g id="Union" filter="url(#filter0_f_0_13726)">
+<path d="M904.308 116.808C924.466 116.808 940.808 132.925 940.808 152.808C940.808 172.69 924.466 188.808 904.308 188.808H153.308C133.149 188.808 116.808 172.69 116.808 152.808C116.808 132.925 133.149 116.808 153.308 116.808H904.308Z" fill="url(#paint0_linear_0_13726)"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_0_13726" x="0" y="0" width="1057.62" height="305.615" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="58.4038" result="effect1_foregroundBlur_0_13726"/>
+</filter>
+<linearGradient id="paint0_linear_0_13726" x1="403.246" y1="152.808" x2="1385.31" y2="152.807" gradientUnits="userSpaceOnUse">
+<stop stop-color="#B1A3FF"/>
+<stop offset="1" stop-color="#FF3737" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

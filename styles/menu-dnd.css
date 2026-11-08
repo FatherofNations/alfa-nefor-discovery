@@ -1,0 +1,35 @@
+/* Перетаскивание пунктов левого меню — только базовая функциональная
+   разметка, без движения. Движение (подъём, расступание, пружина,
+   раскрытие «Ещё») — Аниматор, в своём файле поверх этих правил.
+   Визуал состояний уточняется по разбору Figma (W | Навигация АБ 36176:48319). */
+
+[data-menu-root] { position: relative; }
+[data-menu-id]:not([data-menu-fixed]) { touch-action: pan-y; -webkit-user-drag: none; }
+[data-menu-id] img { -webkit-user-drag: none; }
+[data-menu-root][data-menu-dragging], [data-menu-root][data-menu-dragging] * { cursor: grabbing !important; }
+
+/* Перетаскивание по примеру Figma 36176:48319: исходный пункт остаётся на
+   месте с прозрачностью 50%, за курсором идёт плавающая копия. */
+[data-menu-id].is-dragging { opacity: .5; }
+[data-menu-ghost] { z-index: 1000; pointer-events: none; box-sizing: border-box; border-radius: 16px; background: var(--base-bg-primary, #fff); box-shadow: 0 0 1px rgb(0 0 0 / 4%), 0 4px 8px rgb(0 0 0 / 4%); transform: translate3d(var(--menu-drag-x, 0), var(--menu-drag-y, 0), 0); cursor: grabbing; }
+[data-menu-ghost]::before { opacity: 0 !important; }
+[data-menu-ghost] .chrome-cell-in { background: none !important; }
+
+/* Папка «Ещё»: закрыта — 0 высоты, открыта — по содержимому. Сетка 0fr/1fr,
+   чтобы Аниматор мог анимировать высоту без замера. Переходов здесь нет. */
+[data-menu-folder-body] { display: grid; grid-template-rows: 0fr; }
+[data-menu-folder-body][data-open="true"] { grid-template-rows: 1fr; }
+[data-menu-folder-body] > [data-menu-zone] { min-height: 0; overflow: hidden; }
+
+/* Метка места вставки (_DragDropLine): поля 22/16, полоса 2px, r16, status/info. */
+[data-menu-drop-line] { position: absolute; z-index: 11; left: 22px; right: 16px; height: 2px; margin-top: -1px; border-radius: 16px; background: var(--status-info, #2288fa); pointer-events: none; }
+[data-menu-drop-line][hidden] { display: none; }
+
+/* Пустая папка «Ещё»: ячейка 54, поля 0/16/14/24, Paragraph 14/20 −0.08, text/secondary. */
+.menu-folder-empty { box-sizing: border-box; height: 54px; padding: 0 16px 14px 24px; font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: -.08px; color: var(--text-secondary, #60606c); }
+
+.menu-dnd-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+
+/* Взятый с клавиатуры пункт подсвечен как при наведении — без обводки фокуса. */
+.menu-item.is-grabbed::before { opacity: 1; }
+.chrome-cell.is-grabbed .chrome-cell-in { background: var(--neutral-300, #e7e8eb); }

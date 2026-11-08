@@ -5,8 +5,10 @@ import "@/styles/fonts.css";
 import "@/styles/canon.css";
 import "@/styles/app.css";
 import "@/styles/first-entry.css";
+import "@/styles/assistant-home.css";
 import "@/styles/wide.css";
 import "@/styles/skeleton.css";
+import "@/styles/focus-reset.css";
 import ClientNameModal from "@/components/client-name/ClientNameModal";
 
 export const metadata: Metadata = {

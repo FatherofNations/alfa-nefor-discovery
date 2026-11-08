@@ -3,6 +3,32 @@
    styles/accountant.css; геометрия сверена с get_metadata 136:18900/….
    Правки контента — прямо в этой разметке. */
 
+import { payments, shortDate, signed } from "@/data/payments";
+
+const DOTS = '<svg class="cur-dots" width="20" height="20" viewBox="0 0 20 20"><circle cx="4" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/></svg>';
+
+/* Строки таблицы — из общего data/payments.ts (те же платежи, что у предпринимателя). */
+const PAYMENT_ROWS = payments.map((p) => `  <div class="cur-tr${p.purpose.length > 80 ? " cur-tr-tall" : ""}">
+    <div class="cur-tr-main">
+      <div class="cur-td cur-td-ctrl"><span class="cur-cb"></span></div>
+      <div class="cur-td cur-td-name">
+        <span class="cur-tlogo"><img src="/assets/accountant/curTblRub.svg" width="24" height="24" alt=""></span>
+        <div class="cur-tname">
+          <span class="cur-tname-1">${p.title}</span>
+          <span class="cur-tname-2">${p.bank === "Альфа-Банк" ? "АО «Альфа-Банк»" : p.bank} ··${p.account} (RUR)</span>
+        </div>
+      </div>
+      <div class="cur-td cur-td-num">${p.docNumber}</div>
+      <div class="cur-td cur-td-status"><span class="cur-status">Исполнен</span></div>
+      <div class="cur-td cur-td-sum"><span class="cur-sum${p.amount > 0 ? " cur-sum-pos" : ""}">${signed(p.amount, " ", " ")}</span></div>
+      <div class="cur-td cur-td-date">${shortDate(p.date)}</div>
+      <div class="cur-td cur-td-act">${DOTS}</div>
+    </div>
+    <div class="cur-tr-purpose">${p.purpose}</div>
+    <div class="cur-tr-border"></div>
+  </div>
+`).join("\n");
+
 export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfect из nefor-dash /current, Figma 132:34615) -->
 <section class="cur-qa">
   <a class="cur-qa-btn">
@@ -205,7 +231,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
       <span class="cur-df-chev">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 7l-5 5 5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
-      <span class="cur-df-label">Апрель</span>
+      <span class="cur-df-label">Декабрь</span>
       <span class="cur-df-chev">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M10 7l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
@@ -236,7 +262,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
 <div class="cur-topbar">
   <div class="cur-topbar-count">
     <span class="cur-tb-lbl">Всего</span>
-    <span class="cur-tb-num">19</span>
+    <span class="cur-tb-num">${payments.length}</span>
   </div>
   <button class="cur-topbar-set">
     <img src="/assets/accountant/curSetGear.svg" width="16" height="16" alt="">
@@ -256,106 +282,7 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
   </div>
   <div class="cur-thead-border"></div>
 
-  <div class="cur-tr">
-    <div class="cur-tr-main">
-      <div class="cur-td cur-td-ctrl"><span class="cur-cb"></span></div>
-      <div class="cur-td cur-td-name">
-        <span class="cur-tlogo"><img src="/assets/accountant/curTblRub.svg" width="24" height="24" alt=""></span>
-        <div class="cur-tname">
-          <span class="cur-tname-1">ООО «Моулин Роз»</span>
-          <span class="cur-tname-2">АО «Альфа-Банк» ··5370 (RUR)</span>
-        </div>
-      </div>
-      <div class="cur-td cur-td-num">101</div>
-      <div class="cur-td cur-td-status"><span class="cur-status">Исполнен</span></div>
-      <div class="cur-td cur-td-sum"><span class="cur-sum">−24 500,00 ₽</span></div>
-      <div class="cur-td cur-td-date">27.04.2025</div>
-      <div class="cur-td cur-td-act"><svg class="cur-dots" width="20" height="20" viewBox="0 0 20 20"><circle cx="4" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/></svg></div>
-    </div>
-    <div class="cur-tr-purpose">Оплата услуг по подготовке флористических композиций. НДС 20%</div>
-    <div class="cur-tr-border"></div>
-  </div>
-
-  <div class="cur-tr">
-    <div class="cur-tr-main">
-      <div class="cur-td cur-td-ctrl"><span class="cur-cb"></span></div>
-      <div class="cur-td cur-td-name">
-        <span class="cur-tlogo"><img src="/assets/accountant/curTblRub.svg" width="24" height="24" alt=""></span>
-        <div class="cur-tname">
-          <span class="cur-tname-1">ООО «Юнион Плей»</span>
-          <span class="cur-tname-2">АО «Альфа-Банк» ··5370 (RUR)</span>
-        </div>
-      </div>
-      <div class="cur-td cur-td-num">20796</div>
-      <div class="cur-td cur-td-status"><span class="cur-status">Исполнен</span></div>
-      <div class="cur-td cur-td-sum"><span class="cur-sum cur-sum-pos">+32 000,00 ₽</span></div>
-      <div class="cur-td cur-td-date">27.04.2025</div>
-      <div class="cur-td cur-td-act"><svg class="cur-dots" width="20" height="20" viewBox="0 0 20 20"><circle cx="4" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/></svg></div>
-    </div>
-    <div class="cur-tr-purpose">Оплата по счёту №875 от 25.02.25. НДС 20%</div>
-    <div class="cur-tr-border"></div>
-  </div>
-
-  <div class="cur-tr cur-tr-tall">
-    <div class="cur-tr-main">
-      <div class="cur-td cur-td-ctrl"><span class="cur-cb"></span></div>
-      <div class="cur-td cur-td-name">
-        <span class="cur-tlogo"><img src="/assets/accountant/curTblRub.svg" width="24" height="24" alt=""></span>
-        <div class="cur-tname">
-          <span class="cur-tname-1">ООО «Курьер Сервис»</span>
-          <span class="cur-tname-2">АО «Альфа-Банк» ··5370 (RUR)</span>
-        </div>
-      </div>
-      <div class="cur-td cur-td-num">100</div>
-      <div class="cur-td cur-td-status"><span class="cur-status">Исполнен</span></div>
-      <div class="cur-td cur-td-sum"><span class="cur-sum">−4 000,00 ₽</span></div>
-      <div class="cur-td cur-td-date">27.04.2025</div>
-      <div class="cur-td cur-td-act"><svg class="cur-dots" width="20" height="20" viewBox="0 0 20 20"><circle cx="4" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/></svg></div>
-    </div>
-    <div class="cur-tr-purpose">Платёж по счёту №554 от 28.02.2025 за предоставленные услуги по доставке согласно договору №15 от 1 декабря 2022 года. НДС 20%</div>
-    <div class="cur-tr-border"></div>
-  </div>
-
-  <div class="cur-tr cur-tr-tall">
-    <div class="cur-tr-main">
-      <div class="cur-td cur-td-ctrl"><span class="cur-cb"></span></div>
-      <div class="cur-td cur-td-name">
-        <span class="cur-tlogo"><img src="/assets/accountant/curTblRub.svg" width="24" height="24" alt=""></span>
-        <div class="cur-tname">
-          <span class="cur-tname-1">ПАО «Ростелеком»</span>
-          <span class="cur-tname-2">АО «Альфа-Банк» ··5370 (RUR)</span>
-        </div>
-      </div>
-      <div class="cur-td cur-td-num">99</div>
-      <div class="cur-td cur-td-status"><span class="cur-status">Исполнен</span></div>
-      <div class="cur-td cur-td-sum"><span class="cur-sum">−8 990,00 ₽</span></div>
-      <div class="cur-td cur-td-date">27.04.2025</div>
-      <div class="cur-td cur-td-act"><svg class="cur-dots" width="20" height="20" viewBox="0 0 20 20"><circle cx="4" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/></svg></div>
-    </div>
-    <div class="cur-tr-purpose">Оплата услуг по проведению скоростного интернета в филиале №2 по договору № 123 от 03.02.2025 года. НДС 20%</div>
-    <div class="cur-tr-border"></div>
-  </div>
-
-  <div class="cur-tr">
-    <div class="cur-tr-main">
-      <div class="cur-td cur-td-ctrl"><span class="cur-cb"></span></div>
-      <div class="cur-td cur-td-name">
-        <span class="cur-tlogo"><img src="/assets/accountant/curTblRub.svg" width="24" height="24" alt=""></span>
-        <div class="cur-tname">
-          <span class="cur-tname-1">ООО «Абсолют»</span>
-          <span class="cur-tname-2">АО «Альфа-Банк» ··5370 (RUR)</span>
-        </div>
-      </div>
-      <div class="cur-td cur-td-num">98</div>
-      <div class="cur-td cur-td-status"><span class="cur-status">Исполнен</span></div>
-      <div class="cur-td cur-td-sum"><span class="cur-sum">−64 900,00 ₽</span></div>
-      <div class="cur-td cur-td-date">27.04.2025</div>
-      <div class="cur-td cur-td-act"><svg class="cur-dots" width="20" height="20" viewBox="0 0 20 20"><circle cx="4" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/></svg></div>
-    </div>
-    <div class="cur-tr-purpose">Платёж за поставку оборудования по договору №8451 от 17.01.2025 г.. НДС 20%</div>
-    <div class="cur-tr-border"></div>
-  </div>
-
+${PAYMENT_ROWS}
   <div class="cur-pagination"></div>
 </div>
 `;

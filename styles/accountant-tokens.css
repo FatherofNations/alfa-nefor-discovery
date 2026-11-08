@@ -58,6 +58,5 @@
   /* сетка хрома (Grid/SideMenu W в макете) */
   --grid-sidemenu-w: 248px;
 
-  --font: 'Alfa Interface Sans', -apple-system, 'SF Pro Text', system-ui,
-    'Segoe UI', Roboto, sans-serif;
+  --font: 'Alfa Interface Sans', sans-serif;
 }

@@ -12,31 +12,34 @@
 import ChromeNavActive from "./NavActive";
 import Link from "next/link";
 import { useClientName } from "@/lib/client-name";
+import { useMenuDnd } from "@/lib/menuOrder";
 
 const A = "/assets/chrome/";
 
 /* href есть только у свёрстанных страниц: пункт со ссылкой ведёт на роут и
    получает активное состояние, без href — инертен (см. NavActive). */
-type NavItem = { icon: string; label: string; href?: string; dim?: boolean };
+type NavItem = { id: string; icon: string; label: string; href?: string; dim?: boolean; proc?: boolean };
 
 /* Порядок и состав — из инстанса [D] SideMenu 136:18896 (MCP get_metadata). */
 const NAV_TOP: readonly NavItem[] = [
-  { icon: "nav-all.svg", label: "Все сервисы" },
-  { icon: "nav-bonus.svg", label: "Альфа-Выгодно" },
+  { id: "all", icon: "nav-all.svg", label: "Все сервисы" },
+  { id: "bonus", icon: "nav-bonus.svg", label: "Альфа-Выгодно" },
 ];
 
-const NAV_MAIN: readonly NavItem[] = [
-  { icon: "nav-pay.svg", label: "Новый платёж", dim: true },
-  { icon: "nav-feed.svg", label: "Лента операций", dim: true },
-  { icon: "nav-progress.svg", label: "Платежи в работе", dim: true },
-  { icon: "nav-import.svg", label: "Импорт реестров", dim: true },
-  { icon: "nav-statement.svg", label: "Выписка", dim: true },
-  { icon: "nav-accounts.svg", label: "Счета", dim: true },
-  { icon: "nav-contragents.svg", label: "Контрагенты", dim: true },
-  { icon: "nav-certificates.svg", label: "Справки", dim: true },
-  { icon: "nav-invoices.svg", label: "Счета на оплату", dim: true },
-  { icon: "nav-cards.svg", label: "Карты", dim: true },
-];
+/* Перетаскиваемые пункты по id; порядок и зоны — в lib/menuOrder.ts (INITIAL.accountant). */
+const NAV_ITEMS: Record<string, NavItem> = Object.fromEntries(([
+  { id: "pay", icon: "nav-pay.svg", label: "Новый платёж", dim: true },
+  { id: "feed", icon: "nav-feed.svg", label: "Лента операций", dim: true },
+  { id: "progress", icon: "nav-progress.svg", label: "Платежи в работе", dim: true },
+  { id: "import", icon: "nav-import.svg", label: "Импорт реестров", dim: true },
+  { id: "statement", icon: "nav-statement.svg", label: "Выписка", dim: true },
+  { id: "accounts", icon: "nav-accounts.svg", label: "Счета", dim: true },
+  { id: "contragents", icon: "nav-contragents.svg", label: "Контрагенты", dim: true },
+  { id: "certificates", icon: "nav-certificates.svg", label: "Справки", dim: true },
+  { id: "invoices", icon: "nav-invoices.svg", label: "Счета на оплату", dim: true },
+  { id: "cards", icon: "nav-cards.svg", label: "Карты", dim: true },
+  { id: "procurement", icon: "nav-procurement.svg", label: "Госзакупки", dim: true, proc: true },
+] as NavItem[]).map((n) => [n.id, n]));
 
 /* Внутренность ячейки — одна на все места, чтобы структура строки не
    разъезжалась между списком, «Госзакупками» и футером. */
@@ -52,20 +55,27 @@ function CellBody({ n, children }: { n: NavItem; children?: React.ReactNode }) {
   );
 }
 
-function Cell({ n }: { n: NavItem }) {
+function Cell({ n, fixed }: { n: NavItem; fixed?: "top" | "bottom" }) {
+  const dnd = fixed ? { "data-menu-id": n.id, "data-menu-fixed": fixed === "bottom" ? "bottom" : "" } : { "data-menu-id": n.id };
+  const cls = n.proc ? "chrome-cell chrome-cell-proc" : "chrome-cell";
+  const body = (
+    <CellBody n={n}>{n.proc && <span className="chrome-proc-border" />}</CellBody>
+  );
   return n.href ? (
-    <Link className="chrome-cell" href={n.href} data-nav={n.href}>
-      <CellBody n={n} />
+    <Link className={cls} href={n.href} data-nav={n.href} draggable={false} {...dnd}>
+      {body}
     </Link>
   ) : (
-    <a className="chrome-cell" aria-disabled="true">
-      <CellBody n={n} />
+    /* tabIndex: без href ссылка не фокусируется, а пункт должен переставляться с клавиатуры */
+    <a className={cls} aria-disabled="true" tabIndex={fixed ? undefined : 0} draggable={false} {...dnd}>
+      {body}
     </a>
   );
 }
 
 export default function AppChrome({ personLabel = "Предприниматель" }: { personLabel?: string }) {
   const clientName = useClientName();
+  const menu = useMenuDnd("accountant");
   return (
     <>
       {/* ═══ Боковое меню ═══ */}
@@ -78,32 +88,49 @@ export default function AppChrome({ personLabel = "Предпринимател�
           <img className="chrome-logo-grad" src={`${A}logo-grad.webp`} width="248" height="8" alt="" />
         </Link>
 
-        <nav className="chrome-nav" aria-label="Основное меню">
+        <nav className="chrome-nav" aria-label="Основное меню" ref={menu.rootRef as React.Ref<HTMLElement>} data-menu-root="accountant">
           {NAV_TOP.map((n) => (
-            <Cell n={n} key={n.label} />
+            <Cell n={n} fixed="top" key={n.id} />
           ))}
           <div className="chrome-div">
             <i />
           </div>
-          {NAV_MAIN.map((n) => (
-            <Cell n={n} key={n.label} />
-          ))}
+          <div data-menu-zone="main">
+            {menu.state.main.map((id) => <Cell n={NAV_ITEMS[id]} key={id} />)}
+          </div>
+          <div className="chrome-folder">
+            <a
+              className="chrome-cell chrome-folder-cell"
+              role="button"
+              tabIndex={0}
+              data-menu-folder=""
+              aria-expanded={menu.state.folderOpen}
+              aria-controls="chrome-folder-body"
+              onClick={menu.toggleFolder}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); menu.toggleFolder(); } }}
+            >
+              <CellBody n={{ id: "more", icon: menu.state.folderOpen ? "nav-more-up.svg" : "nav-more.svg", label: "Ещё" }} />
+            </a>
+            <div className="chrome-folder-body" id="chrome-folder-body" data-menu-folder-body="" data-open={menu.state.folderOpen ? "true" : "false"} inert={!menu.state.folderOpen}>
+              <div data-menu-zone="folder">
+                {menu.state.folder.map((id) => <Cell n={NAV_ITEMS[id]} key={id} />)}
+                {menu.state.folder.length === 0 && <p className="menu-folder-empty">Перетащите разделы сюда, чтобы скрыть их из меню</p>}
+              </div>
+            </div>
+          </div>
           <div className="chrome-div">
             <i />
           </div>
-          {/* «Госзакупки» — слот Reccomended эталона: та же ячейка плюс
-              пунктирная обводка вокруг иконки */}
-          <a className="chrome-cell chrome-cell-proc" aria-disabled="true">
-            <CellBody n={{ icon: "nav-procurement.svg", label: "Госзакупки", dim: true }}>
-              <span className="chrome-proc-border" />
-            </CellBody>
-          </a>
+          {/* Госзакупки с пунктирной обводкой: всегда под «Ещё», не двигается и не скрывается */}
+          <Cell n={NAV_ITEMS.procurement} fixed="bottom" />
+          <span data-menu-drop-line="" hidden />
+          <span className="menu-dnd-live" data-menu-live="" aria-live="polite" />
         </nav>
 
         <div className="chrome-footer">
           <div className="chrome-footer-fade" />
           <a className="chrome-cell chrome-footer-cell" aria-disabled="true">
-            <CellBody n={{ icon: "nav-gear.svg", label: "Настроить меню", dim: true }} />
+            <CellBody n={{ id: "settings", icon: "nav-gear.svg", label: "Настроить меню", dim: true }} />
           </a>
         </div>
       </aside>

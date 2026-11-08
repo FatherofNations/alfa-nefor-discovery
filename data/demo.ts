@@ -1,3 +1,5 @@
+import { CLOSING_BALANCE, OPENING_BALANCE, OPS_PERIOD, dayLabel, income, money, outcome, payments, shortDate, signed } from "./payments";
+
 export const menuItems = [
   { label: "Все сервисы", icon: "menu-889b6.svg" },
   { label: "Альфа-Выгодно", icon: "menu-a27d9.svg", loyalty: true },
@@ -13,12 +15,16 @@ export const taskCards = [
   { title: "Принять платёж онлайн", image: "task-action-online.png", className: "online" },
 ] as const;
 
+const G = "\u205f", R = "\u2009";
+
 export const analytics = [
-  { label: "Входящий остаток", amount: "1\u205f234\u205f567,00\u2009₽", icon: "ops-analytics-3cf1a.svg" },
-  { label: "Поступления", amount: "+1\u205f234\u205f567,00\u2009₽", icon: "ops-analytics-54a31.svg" },
-  { label: "Списания", amount: "−1\u205f234\u205f567,00\u2009₽", icon: "ops-analytics-bb78f.svg" },
-  { label: "Исходящий остаток", amount: "1\u205f234\u205f567,00\u2009₽", icon: "ops-analytics-3cf1a.svg" },
+  { label: "Входящий остаток", amount: `${money(OPENING_BALANCE, G)}${R}₽`, icon: "ops-analytics-3cf1a.svg" },
+  { label: "Поступления", amount: `+${money(income, G)}${R}₽`, icon: "ops-analytics-54a31.svg" },
+  { label: "Списания", amount: `−${money(outcome, G)}${R}₽`, icon: "ops-analytics-bb78f.svg" },
+  { label: "Исходящий остаток", amount: `${money(CLOSING_BALANCE, G)}${R}₽`, icon: "ops-analytics-3cf1a.svg" },
 ] as const;
+
+export const opsPeriodLabel = `${shortDate(OPS_PERIOD.from)} – ${shortDate(OPS_PERIOD.to)}`;
 
 export type Operation = {
   id: string;
@@ -32,53 +38,17 @@ export type Operation = {
   logo: "company" | "person" | "bank";
 };
 
-export const operationDays: { date: string; rows: Operation[] }[] = [
-  {
-    date: "10 августа",
-    rows: [
-      {
-        id: "63677",
-        title: "ООО «Умные и свободные»",
-        description: "Аванс по договору №51/9-12 от 27.07.2023",
-        amount: "−3\u205f000,00\u2009₽",
-        number: "№63677, Т-Банк, ··\u20099909",
-        status: "Исполнено",
-        logo: "company",
-      },
-      {
-        id: "transfer",
-        title: "ИП  «Костин Иван Федорович»",
-        description: "Перевод себе в Альфа-Банк",
-        amount: "+1\u205f234\u205f567,00\u2009₽",
-        positive: true,
-        number: "№63677, Т-Банк, ··\u20099909",
-        status: "Исполнено",
-        logo: "person",
-      },
-      {
-        id: "87896",
-        title: "АО «Альфа-Банк»",
-        description: "Комиссия за SMS-оповещение за август 2025",
-        details: "Согласно тарифам Банка ИП Костин Иван Федорович",
-        amount: "−1\u205f000,00\u2009₽",
-        number: "№87896",
-        status: "Исполнено",
-        logo: "bank",
-      },
-    ],
-  },
-  {
-    date: "9 августа",
-    rows: [
-      {
-        id: "105",
-        title: "ООО «Умные и свободные»",
-        description: "Аванс по договору №51/9-12 от 27.07.2023",
-        amount: "−3\u205f000,00\u2009₽",
-        number: "№ 105, Т-Банк, ··\u20099909",
-        status: "Исполнено",
-        logo: "company",
-      },
-    ],
-  },
-];
+export const operationDays: { date: string; rows: Operation[] }[] = [...new Set(payments.map((p) => p.date))].map((date) => ({
+  date: dayLabel(date),
+  rows: payments.filter((p) => p.date === date).map((p) => ({
+    id: p.id,
+    title: p.title,
+    description: p.purpose,
+    details: p.details,
+    amount: signed(p.amount, G, R),
+    positive: p.amount > 0,
+    number: `№${p.docNumber}, ${p.bank}, ··${R}${p.account}`,
+    status: "Исполнено",
+    logo: p.logo,
+  })),
+}));

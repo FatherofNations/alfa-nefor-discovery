@@ -1,0 +1,7 @@
+/* Глобально убираем браузерные кольца фокуса (синий outline Chrome/Safari,
+   -webkit-focus-ring-color при outline:auto, подсветку тапа в Safari).
+   Подключается последним в app/layout.tsx; !important перекрывает
+   точечные :focus-visible правила компонентов. */
+*, *::before, *::after { -webkit-tap-highlight-color: transparent !important; }
+*:focus, *:focus-visible { outline: none !important; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0 !important; }

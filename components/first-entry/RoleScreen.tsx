@@ -1,38 +1,30 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import EntryHeader from "./EntryHeader";
 import { setEntryRole } from "@/lib/entry-session";
 
-/* Ответ нейросети: текст приходит не целиком, а словами — каждое слово
-   проявляется из блюра со своей задержкой (канон stream-reveal). Линии
-   остаются блочными, поэтому ширина пузыря не скачет. */
-function StreamedText({ lines, start }: { lines: string[]; start: number }) {
-  let index = 0;
-  return (
-    <>
-      {lines.map((line, lineIndex) => (
-        <span className="entry-line" key={lineIndex}>
-          {line.split(" ").map((word, wordIndex, words) => {
-            const delay = start + index * 22;
-            index += 1;
-            return (
-              <span className="entry-word" style={{ animationDelay: `${delay}ms` }} key={wordIndex}>
-                {word}{wordIndex < words.length - 1 ? " " : ""}
-              </span>
-            );
-          })}
-        </span>
-      ))}
-    </>
-  );
+/* Text stays static inside one animated bubble; line breaks preserve geometry. */
+function BubbleText({ lines }: { lines: string[] }) {
+  return <>{lines.map((line, i) => <span className="entry-line" key={i}>{line}</span>)}</>;
 }
 
 export default function RoleScreen() {
   const router = useRouter();
   const picked = useRef(false);
   const [leaving, setLeaving] = useState(false);
+  const pageRef = useRef<HTMLDivElement>(null);
+  const leaveTimer = useRef(0);
+  const exitAnimations = useRef<Animation[]>([]);
+  useEffect(() => {
+    router.prefetch("/setup");
+    return () => {
+      window.clearTimeout(leaveTimer.current);
+      exitAnimations.current.forEach((a) => a.cancel());
+    };
+  }, [router]);
+
 
   const choose = (role: "entrepreneur" | "accountant") => {
     if (picked.current) return;
@@ -42,19 +34,28 @@ export default function RoleScreen() {
       router.push("/setup");
       return;
     }
+    const page = pageRef.current;
+    /* Preserve in-flight entrance values when a role is chosen very early. */
+    page?.getAnimations({ subtree: true }).forEach((a) => { if (a.playState === "running") a.pause(); });
+    exitAnimations.current = Array.from(page?.querySelectorAll(".entry-role-bg, .entry-header, .entry-role-heading, .entry-bubble, .entry-role-cards, .entry-role-sphere, .entry-role-sound") ?? []).map((el) => {
+      const c = getComputedStyle(el);
+      const frames = el.matches(".entry-role-bg")
+        ? [{ opacity: c.opacity }, { opacity: 0 }]
+        : [{ opacity: c.opacity, transform: c.transform, filter: c.filter }, { opacity: 0, transform: "translateY(-6px)", filter: "blur(2px)" }];
+      return el.animate(frames, { duration: 240, easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" });
+    });
     setLeaving(true);
-    window.setTimeout(() => router.push("/setup"), 240);
+    leaveTimer.current = window.setTimeout(() => router.push("/setup"), 260);
   };
 
   return (
-    <div className={`entry-page entry-role${leaving ? " is-leaving" : ""}`}>
+    <div ref={pageRef} className={`entry-page entry-role${leaving ? " is-leaving" : ""}`}>
       <div className="entry-role-bg" aria-hidden="true" />
       <EntryHeader />
       <div className="entry-role-stage">
       <h1 className="entry-role-heading">— Выберите вид главной</h1>
       <div className="entry-bubble entry-bubble-1">
-        <StreamedText
-          start={280}
+        <BubbleText
           lines={[
             "Меняется только набор виджетов — остальные",
             "возможности банка будут доступны как обычно",
@@ -62,8 +63,7 @@ export default function RoleScreen() {
         />
       </div>
       <div className="entry-bubble entry-bubble-2">
-        <StreamedText
-          start={760}
+        <BubbleText
           lines={[
             "Вид главной можно изменить в любой",
             "момент на главной странице",

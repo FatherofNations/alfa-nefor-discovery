@@ -1,0 +1,23 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="265.667" height="216" viewBox="0 0 265.667 216" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<foreignObject x="-64" y="-64" width="393.667" height="344"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(32px);clip-path:url(#bgblur_0_0_243_clip_path);height:100%;width:100%"></div></foreignObject><g id="Subtract" filter="url(#filter0_i_0_243)" data-figma-bg-blur-radius="64">
+<use xlink:href="#stroke0_0_243" fill="white" fill-opacity="0.3"/>
+<mask id="stroke1_0_243" fill="white">
+<use xlink:href="#stroke0_0_243"/>
+</mask>
+<path d="M241.667 0C254.922 0 265.667 10.7452 265.667 24V136.876C265.667 147.512 250.137 155 239.5 155C219.342 155 203 171.342 203 191.5C203 201.83 195.912 216 185.582 216H24C10.7452 216 9.66448e-08 205.255 0 192V24C0 10.7452 10.7452 7.89148e-07 24 0H241.667Z" stroke-width="3" stroke="white" mask="url(#stroke1_0_243)"/>
+</g>
+<defs>
+<filter id="filter0_i_0_243" x="-64" y="-64" width="393.667" height="344" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="37"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_0_243"/>
+</filter>
+<clipPath id="bgblur_0_0_243_clip_path" transform="translate(64 64)"><path d="M241.667 0C254.922 0 265.667 10.7452 265.667 24V136.876C265.667 147.512 250.137 155 239.5 155C219.342 155 203 171.342 203 191.5C203 201.83 195.912 216 185.582 216H24C10.7452 216 9.66448e-08 205.255 0 192V24C0 10.7452 10.7452 7.89148e-07 24 0H241.667Z"/>
+</clipPath><path id="stroke0_0_243" d="M241.667 0C254.922 0 265.667 10.7452 265.667 24V136.876C265.667 147.512 250.137 155 239.5 155C219.342 155 203 171.342 203 191.5C203 201.83 195.912 216 185.582 216H24C10.7452 216 9.66448e-08 205.255 0 192V24C0 10.7452 10.7452 7.89148e-07 24 0H241.667Z"/>
+</defs>
+</svg>

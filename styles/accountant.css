@@ -276,7 +276,7 @@ body.cur { min-width: 1600px; }
 .cur-td-num > *, .cur-td-date > * { padding-top: 2px; }
 .cur-td-num, .cur-td-date { padding-top: 26px; }
 
-.cur-status { margin-top: 2px; display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 6px; background: #dff8e5; color: var(--text-positive); font: 500 12px/16px var(--font); white-space: nowrap; }
+.cur-status { margin-top: 2px; display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 99px; background: var(--decorative-muted-green); color: var(--decorative-text-green); font: 700 11px/16px var(--font); text-transform: uppercase; white-space: nowrap; }
 
 .cur-sum { padding-top: 2px; font: 700 14px/20px var(--font); color: var(--text-primary); letter-spacing: 0.47px; white-space: nowrap; }
 .cur-sum-pos { color: var(--text-positive); }

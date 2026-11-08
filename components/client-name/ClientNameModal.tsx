@@ -8,8 +8,7 @@
 
    Открытие — клавиша «/» (как просил пользователь) на дашбордах. Esc —
    закрыть, Enter в поле — сохранить, клик по фону — закрыть.
-   Фон под модалкой размыт: параметр блюра не пришёл в MCP (слой оформлен
-   эффектом Figma), подобран по эталон-скриншоту — см. HANDOFF. */
+   Появление/скрытие — scale .92→1 + opacity в стиле самой тёмной панели. */
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -19,11 +18,16 @@ const DASHBOARD_ROUTES = new Set(["/", "/accountant"]);
 
 export default function ClientNameModal() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [phase, setPhase] = useState<"closed" | "open" | "closing">("closed");
   const [value, setValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const open = phase !== "closed";
 
   const canOpen = pathname !== null && DASHBOARD_ROUTES.has(pathname);
+
+  const requestClose = useCallback(() => {
+    setPhase("closing");
+  }, []);
 
   /* «/» открывает модалку, если фокус не в поле ввода/редакторе */
   useEffect(() => {
@@ -35,46 +39,56 @@ export default function ClientNameModal() {
       if (target?.closest("input, textarea, select, [contenteditable='true']")) return;
       event.preventDefault();
       setValue(getClientFullName());
-      setOpen(true);
+      setPhase("open");
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [canOpen, open]);
 
-  /* фокус в поле, Esc, блокировка скролла страницы */
+  /* Esc и повторное «/» закрывают (если фокус не в поле — тогда «/» печатается),
+     блокировка скролла страницы; closing → unmount. Автофокуса нет (просьба Ильи). */
   useEffect(() => {
-    if (!open) return;
-    const input = inputRef.current;
-    input?.focus();
-    input?.setSelectionRange(input.value.length, input.value.length);
+    if (phase === "closed") return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        setOpen(false);
+        requestClose();
+        return;
       }
+      const isSlash = event.key === "/" || event.code === "Slash";
+      if (phase !== "open" || !isSlash || event.metaKey || event.ctrlKey || event.altKey) return;
+      const target = event.target as Element | null;
+      if (target?.closest("input, textarea, select, [contenteditable='true']")) return;
+      event.preventDefault();
+      requestClose();
     };
     document.addEventListener("keydown", onKeyDown);
     document.body.classList.add("name-modal-open");
+    let closeId = 0;
+    if (phase === "closing") {
+      closeId = window.setTimeout(() => setPhase("closed"), 160); /* = длительность закрытия у Аниматора */
+    }
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.classList.remove("name-modal-open");
+      if (closeId) window.clearTimeout(closeId);
     };
-  }, [open]);
+  }, [phase, requestClose]);
 
   const save = useCallback(() => {
     const next = value.trim();
     if (!next) return;
     setClientFullName(next);
-    setOpen(false);
-  }, [value]);
+    requestClose();
+  }, [value, requestClose]);
 
   if (!open) return null;
 
   return (
     <div
-      className="name-modal-backdrop"
+      className={`name-modal-backdrop${phase === "closing" ? " is-closing" : ""}`}
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) setOpen(false);
+        if (event.target === event.currentTarget) requestClose();
       }}
     >
       <div className="name-modal" role="dialog" aria-modal="true" aria-labelledby="client-name-title">

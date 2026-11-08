@@ -82,7 +82,7 @@
   --regular-letter-spacing-13: 0;
   --paragraph-1316-secondary-large-typography-text-viewsecondary-large: Font(family: "font_family/<20", style: Regular, size: 13, weight: 400, lineHeight: 16, letterSpacing: regular_letter_spacing/13);
   --bold-letter-spacing-14: 0.4699999988079071;
-  --accent-1420-primary-small-typography-text-viewprimary-small-weightbold: Font(family: "SF Pro Text", style: Bold, size: 14, weight: 700, lineHeight: 20, letterSpacing: 0);
+  --accent-1420-primary-small-typography-text-viewprimary-small-weightbold: Font(family: "Alfa Interface Sans", style: Bold, size: 14, weight: 700, lineHeight: 20, letterSpacing: 0);
   --base-bg-alt-secondary: #ffffff;
   --neutral-500: #babbc2;
   --status-positive: #0cc44d;
@@ -121,7 +121,6 @@
   --accent-1316-secondary-large-typography-text-viewsecondary-large-weightbold: Font(family: "font_family/<20", style: Bold, size: 13, weight: 700, lineHeight: 16, letterSpacing: bold_letter_spacing/13);
   --decorative-muted-indigo: #eeedff;
 
-  --font: 'Alfa Interface Sans', -apple-system, 'SF Pro Text', system-ui,
-    'Segoe UI', Roboto, sans-serif;
+  --font: 'Alfa Interface Sans', sans-serif;
 }
 

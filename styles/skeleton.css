@@ -108,11 +108,26 @@
   padding-bottom: 4px;
 }
 
-.sk-balance {
+.sk-amounts .sk-balance {
   display: flex;
   height: 42px;
   align-items: center;
   gap: 12px;
+}
+
+/* Плитка баланса бухгалтера — 612×384 как .cur-balance; не наследует
+   сайдбарный .sk-balance 42px (иначе ряд прыгает при подмене). */
+.sk-acc .sk-balance,
+.sk-acc .sk-inwork,
+.sk-acc .sk-banners {
+  display: block;
+  width: 612px;
+  height: 384px;
+  overflow: hidden;
+}
+.sk-acc .sk-inwork,
+.sk-acc .sk-banners {
+  width: 294px;
 }
 
 .sk-balance-copy {
@@ -428,6 +443,49 @@ body.sk-loaded-cards .gate-skeleton .sk-acc .sk-cards,
 body.sk-loaded-feed .gate-skeleton .sk-acc .sk-feed {
   visibility: hidden;
 }
+
+/* Плавная подмена плиток бухгалтера (особенно баланс с крупной суммой):
+   контент проявляется opacity, скелетон уходит — без кадра-скачка. */
+.gate-content .cur-main .cur-qa,
+.gate-content .cur-main .cur-balance,
+.gate-content .cur-main .cur-inwork,
+.gate-content .cur-main .cur-banners,
+.gate-content .cur-main .cur-tablo,
+.gate-content .cur-main .cur-cards,
+.gate-content .cur-main .cur-title,
+.gate-content .cur-main .cur-filters,
+.gate-content .cur-main .cur-topbar,
+.gate-content .cur-main .cur-table {
+  opacity: 0;
+  transition: opacity .28s cubic-bezier(.32, .72, 0, 1);
+}
+body.sk-loaded-qa .gate-content .cur-main .cur-qa,
+body.sk-loaded-balance .gate-content .cur-main .cur-balance,
+body.sk-loaded-inwork .gate-content .cur-main .cur-inwork,
+body.sk-loaded-banners .gate-content .cur-main .cur-banners,
+body.sk-loaded-tablo .gate-content .cur-main .cur-tablo,
+body.sk-loaded-cards .gate-content .cur-main .cur-cards,
+body.sk-loaded-feed .gate-content .cur-main .cur-title,
+body.sk-loaded-feed .gate-content .cur-main .cur-filters,
+body.sk-loaded-feed .gate-content .cur-main .cur-topbar,
+body.sk-loaded-feed .gate-content .cur-main .cur-table {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gate-content .cur-main .cur-qa,
+  .gate-content .cur-main .cur-balance,
+  .gate-content .cur-main .cur-inwork,
+  .gate-content .cur-main .cur-banners,
+  .gate-content .cur-main .cur-tablo,
+  .gate-content .cur-main .cur-cards,
+  .gate-content .cur-main .cur-title,
+  .gate-content .cur-main .cur-filters,
+  .gate-content .cur-main .cur-topbar,
+  .gate-content .cur-main .cur-table {
+    transition: none;
+  }
+}
+
 
 /* ряд бухгалтера: обёртки-плитки фиксированной ширины */
 .sk-row1 > div {

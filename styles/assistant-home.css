@@ -1,0 +1,30 @@
+/* ── Главная «Альфа-Интеллекта» (Figma 169:26226). Отсчёт — от внешнего края окна (x248, y72). ── */
+.ai-home { position: absolute; inset: 0 -1px 0 -1px; overflow-x: visible; overflow-y: clip; } /* фон уходит влево под прозрачное меню (Gradi 169:26244 — на всю ширину 1600) */
+.ai-home-bg { position: absolute; top: -1px; right: 0; width: 1600px; height: 828px; max-width: none; pointer-events: none; user-select: none; }
+.ai-home-body { position: relative; display: flex; flex-direction: column; gap: 32px; padding: 200px 264px 0 265px; }
+.ai-home-head { display: flex; height: 92px; flex-direction: column; gap: 16px; padding-left: 6px; }
+.ai-home-title { position: relative; top: 3px; left: 1px; font-size: 48px; font-weight: 700; line-height: 52px; letter-spacing: .1px; color: var(--text-primary); white-space: nowrap; }
+.ai-home-dash { position: absolute; left: -67px; top: 0; font-family: inherit; }
+.ai-home-sub { margin-left: -2px; font-size: 18px; line-height: 24px; letter-spacing: -.36px; color: var(--text-secondary); }
+.ai-home-cards { display: grid; width: 824px; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ai-home-card { position: relative; height: 217px; }
+.ai-home-card-glass, .ai-home-card-shape { position: absolute; left: 0; top: 0; width: 265.667px; height: 216px; max-width: none; }
+.ai-home-card-glass { -webkit-backdrop-filter: blur(32px); backdrop-filter: blur(32px); -webkit-clip-path: path("M241.667 0C254.922 0 265.667 10.7452 265.667 24V136.876C265.667 147.512 250.137 155 239.5 155C219.342 155 203 171.342 203 191.5C203 201.83 195.912 216 185.582 216H24C10.7452 216 0 205.255 0 192V24C0 10.7452 10.7452 0 24 0H241.667Z"); clip-path: path("M241.667 0C254.922 0 265.667 10.7452 265.667 24V136.876C265.667 147.512 250.137 155 239.5 155C219.342 155 203 171.342 203 191.5C203 201.83 195.912 216 185.582 216H24C10.7452 216 0 205.255 0 192V24C0 10.7452 10.7452 0 24 0H241.667Z"); }
+.ai-home-card-icon { position: absolute; left: 20px; top: 20px; display: flex; width: 48px; height: 48px; align-items: center; justify-content: center; background: color-mix(in srgb, var(--neutral-translucent-0) 80%, transparent); -webkit-mask: url("/assets/figma/squircle-48.svg") center / 48px 48px no-repeat; mask: url("/assets/figma/squircle-48.svg") center / 48px 48px no-repeat; }
+.ai-home-card-icon img { width: 24px; height: 24px; }
+.ai-home-card-copy { position: absolute; left: 20px; bottom: 21px; display: flex; width: 162px; flex-direction: column; gap: 4px; }
+.ai-home-card-copy strong { font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.05px; color: var(--text-primary); }
+.ai-home-card-copy span { font-size: 14px; line-height: 18px; letter-spacing: -.08px; color: var(--text-secondary); }
+.ai-home-card-go { position: absolute; left: 215px; top: 166px; display: flex; width: 51px; height: 51px; align-items: flex-start; justify-content: flex-start; padding: 13px 0 0 12px; border: 1px solid var(--neutral-translucent-0); border-radius: 24px; background: rgb(255 255 255 / 30%); -webkit-backdrop-filter: blur(32px); backdrop-filter: blur(32px); overflow: clip; }
+.ai-home-card-go img { width: 24px; height: 24px; }
+.ai-home-search { position: absolute; top: 732px; left: 265px; right: 264px; display: flex; flex-direction: column; }
+.ai-home-search .assistant-ask { width: 100%; }
+/* как в макете: третья карточка переносится «3 платежа / ожидают оплаты», «Оплатите квитанции / до 26 октября 2026» */
+.ai-home-card-copy.is-balanced { text-wrap: balance; }
+.ai-home-search .assistant-ask input::placeholder { color: var(--text-tertiary); }
+
+/* Motion-only presence. At rest display:contents removes the extra paint box,
+   preserving the developer's exact containing blocks and Chromium AA/glass pixels. */
+.assistant-view-layer { display: none; opacity: 0; pointer-events: none; }
+.assistant-view-layer[data-active="true"] { display: contents; opacity: 1; pointer-events: auto; }
+.assistant-view-layer[data-switching="true"] { display: block; position: absolute; inset: 0; }

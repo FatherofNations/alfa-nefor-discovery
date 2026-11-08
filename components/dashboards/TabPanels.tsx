@@ -2,6 +2,8 @@
    Геометрия и типографика — из design context фреймов 59:27766/59:32554/59:33713;
    глифы — из библиотеки @alfalab/icons-glyph (точные имена из Figma). */
 
+import { income, money, outcome } from "@/data/payments";
+
 const asset = (name: string) => `/assets/figma/${name}`;
 
 export function SummaryPanel() {
@@ -10,17 +12,17 @@ export function SummaryPanel() {
       <section className="summary-card turnover-card">
         <span className="widget-badge widget-badge-new">Новое</span>
         <div className="widget-head">
-          <h3>В сентябре</h3>
+          <h3>В декабре</h3>
           <img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" />
         </div>
         <div className="turnover-body">
           <div className="turnover-amounts">
             <div className="turnover-money">
-              <strong>50 000,00&nbsp;₽</strong>
+              <strong>{money(income, " ")}&nbsp;₽</strong>
               <span><em>Поступления</em><i className="dot dot-green" /></span>
             </div>
             <div className="turnover-money">
-              <strong>10 000,00&nbsp;₽</strong>
+              <strong>{money(outcome, " ")}&nbsp;₽</strong>
               <span><em>Списания</em><i className="dot dot-red" /></span>
             </div>
           </div>

@@ -48,11 +48,10 @@
    полноэкранного фона: без масштаба, без полос и без обрезки. */
 .entry-role-stage { position: absolute; top: 50%; left: 50%; width: 1600px; height: 900px; transform: translate(-50%, -50%); }
 .entry-role-heading { position: absolute; top: 345px; left: 448px; width: 658px; font-size: 40px; font-weight: 700; line-height: 48px; letter-spacing: .1px; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) .05s backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) .05s backwards; }
-.entry-bubble { position: absolute; left: 494px; padding: 12px 16px; border: 1px solid rgb(255 255 255 / 90%); border-radius: 16px; background: rgb(255 255 255 / 72%); font-size: 16px; line-height: 24px; letter-spacing: -.24px; white-space: nowrap; backdrop-filter: blur(20px); animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) backwards; }
-.entry-bubble-1 { top: 414px; animation-delay: .16s, .16s; }
-.entry-bubble-2 { top: 497px; animation-delay: .70s, .70s; }
+.entry-bubble { position: absolute; left: 494px; padding: 12px 16px; border: 1px solid rgb(255 255 255 / 90%); border-radius: 16px; background: rgb(255 255 255 / 72%); font-size: 16px; line-height: 24px; letter-spacing: -.24px; white-space: nowrap; backdrop-filter: blur(20px); animation: entry-bubble-in .56s cubic-bezier(.22, 1, .36, 1) backwards; }
+.entry-bubble-1 { top: 414px; animation-delay: .18s; }
+.entry-bubble-2 { top: 497px; animation-delay: .32s; }
 .entry-line { display: block; }
-.entry-word { display: inline; opacity: 1; filter: none; animation: entry-word-in .38s cubic-bezier(.25, .1, .25, 1) backwards; }
 .entry-role-cards { position: absolute; top: 632px; left: 494px; display: flex; align-items: center; }
 .entry-role-card { position: relative; display: flex; width: 302px; height: 216px; flex-direction: column; gap: 10px; padding: 20px; overflow: hidden; border: 1px solid rgb(255 255 255 / 90%); border-radius: 16px; background: rgb(255 255 255 / 72%); text-align: left; backdrop-filter: blur(30px); transition: transform .22s ease-in, box-shadow .22s ease-in; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) backwards; }
 .entry-role-card-pred { animation-delay: 1.36s, 1.36s; }
@@ -68,13 +67,17 @@
 .entry-role-sound img { width: 24px; height: 24px; }
 
 /* ── Настраиваю главный экран ── */
-.entry-setup { background: #e3e1f9; }
-.entry-setup-bg { position: absolute; inset: 0; animation: entry-fade .6s cubic-bezier(.25, .1, .25, 1) both; background: radial-gradient(40% 38% at 51% 26%, rgb(210 55 100 / 56%), transparent 70%), radial-gradient(45% 50% at 93% 28%, rgb(232 135 160 / 50%), transparent 72%), radial-gradient(45% 50% at 88% 55%, rgb(230 140 165 / 40%), transparent 72%), radial-gradient(45% 45% at 28% 55%, rgb(150 120 220 / 35%), transparent 75%), radial-gradient(55% 45% at 45% 105%, rgb(190 170 230 / 45%), transparent 75%), linear-gradient(100deg, #ddd6f4 0%, #e6ddf2 38%, #ecc9d8 70%, #eccbdb 100%); }
+.entry-setup { background: #f6f1f7; }
+.entry-setup-bg { position: absolute; inset: 0; animation: entry-setup-gradient-in 1.1s cubic-bezier(.4, 0, .2, 1) backwards; will-change: opacity, transform; background: radial-gradient(40% 38% at 51% 26%, rgb(210 55 100 / 56%), transparent 70%), radial-gradient(45% 50% at 93% 28%, rgb(232 135 160 / 50%), transparent 72%), radial-gradient(45% 50% at 88% 55%, rgb(230 140 165 / 40%), transparent 72%), radial-gradient(45% 45% at 28% 55%, rgb(150 120 220 / 35%), transparent 75%), radial-gradient(55% 45% at 45% 105%, rgb(190 170 230 / 45%), transparent 75%), linear-gradient(100deg, #ddd6f4 0%, #e6ddf2 38%, #ecc9d8 70%, #eccbdb 100%); }
 .entry-setup::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 4px 250px rgb(255 255 255 / 35%); pointer-events: none; }
 .entry-setup-orb { position: absolute; top: calc(50% - 75px); left: 50%; width: 216px; height: 216px; transform: translate(-50%, -50%); animation: entry-orb-in .8s cubic-bezier(.32, .72, 0, 1) both; }
 .entry-setup-orb-inner { display: block; width: 100%; height: 100%; animation: entry-orb-pulse 3s ease-in-out .9s infinite; }
 .entry-setup-orb img { width: 216px; height: 216px; }
-.entry-setup-text { position: absolute; top: calc(50% + 119px); left: calc(50% - 357px); font-size: 49px; font-weight: 700; line-height: 72px; letter-spacing: 0; color: rgb(13 8 22 / 80%); white-space: nowrap; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) .18s backwards, entry-rise .55s cubic-bezier(.32, .72, 0, 1) .18s backwards; }
+.entry-setup-text { position: absolute; top: calc(50% + 119px); left: calc(50% - 357px); font-size: 49px; font-weight: 700; line-height: 72px; letter-spacing: 0; color: rgb(13 8 22 / 80%); white-space: nowrap; }
+/* Original absolute anchors/type stay fixed; only word paint properties animate. */
+.entry-setup-text--second { left: calc(50% - 345px); }
+.entry-setup-word { display: inline-block; opacity: 0; }
+.entry-setup-text[data-word-state="visible"] .entry-setup-word { opacity: 1; }
 .entry-page.is-leaving { animation: entry-out .22s ease-in both; }
 
 @keyframes entry-fade { from { opacity: 0; filter: blur(12px); } to { opacity: 1; filter: blur(0); } }
@@ -82,13 +85,30 @@
 @keyframes entry-orb-in { from { opacity: 0; filter: blur(10px); transform: translate(-50%, -50%) scale(.94); } to { opacity: 1; filter: blur(0); transform: translate(-50%, -50%) scale(1); } }
 @keyframes entry-orb-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025); } }
 @keyframes entry-out { from { opacity: 1; filter: blur(0); } to { opacity: 0; filter: blur(12px); } }
-@keyframes entry-word-in { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: blur(0); } }
 @keyframes entry-fade-only { from { opacity: 0; } to { opacity: 1; } }
 
 /* Вход в дашборд после настройки — без filter: он создал бы containing block
    для fixed-хрома; только плавная прозрачность. */
-.dashboard-page, .chrome-side, .chrome-header, .cur-main { animation: entry-fade-only .5s cubic-bezier(.25, .1, .25, 1) both; }
+/* The page owns the sticky backdrop. Do not retain an opacity animation on
+   this ancestor after entry: fill:both keeps a backdrop root even at opacity:1,
+   so the header only tints unblurred text. Backwards preserves the entry fade
+   and releases that root once the .5s animation completes. */
+.dashboard-page { animation: entry-fade-only .5s cubic-bezier(.25, .1, .25, 1) backwards; }
+.chrome-side, .chrome-header, .cur-main { animation: entry-fade-only .5s cubic-bezier(.25, .1, .25, 1) both; }
+
+/* Motion hand-off: keep a matching opaque canvas, never fade the whole route to white.
+   Timing/weights are our tuning, not an Apple preset; gradient pixels stay static. */
+.entry-role.is-leaving { animation: none; }
+@keyframes entry-bubble-in {
+  from { opacity: 0; transform: translateY(10px); filter: blur(3px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes entry-setup-gradient-in {
+  from { opacity: 0; transform: scale(1.035); }
+  to { opacity: 1; transform: scale(1); }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .entry-header, .entry-login-area > *, .entry-alt, .entry-role-bg, .entry-role-heading, .entry-bubble, .entry-word, .entry-role-card, .entry-role-sphere, .entry-role-sound, .entry-setup-bg, .entry-setup-orb, .entry-setup-orb-inner, .entry-setup-text, .entry-page.is-leaving, .dashboard-page, .chrome-side, .chrome-header, .cur-main { animation: none !important; }
+  .entry-header, .entry-login-area > *, .entry-alt, .entry-role-bg, .entry-role-heading, .entry-bubble, .entry-role-card, .entry-role-sphere, .entry-role-sound, .entry-setup-bg, .entry-setup-orb, .entry-setup-orb-inner, .entry-setup-text, .entry-page.is-leaving, .dashboard-page, .chrome-side, .chrome-header, .cur-main { animation: none !important; }
 }
+
