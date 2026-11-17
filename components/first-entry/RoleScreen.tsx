@@ -26,10 +26,10 @@ export default function RoleScreen() {
   }, [router]);
 
 
-  const choose = (role: "entrepreneur" | "accountant") => {
+  const choose = () => {
     if (picked.current) return;
     picked.current = true;
-    setEntryRole(role);
+    setEntryRole("entrepreneur");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       router.push("/setup");
       return;
@@ -72,7 +72,7 @@ export default function RoleScreen() {
       </div>
 
       <div className="entry-role-cards">
-        <button className="entry-role-card entry-role-card-pred" type="button" onClick={() => choose("entrepreneur")}>
+        <button className="entry-role-card entry-role-card-pred" type="button" onClick={choose}>
           <span className="entry-role-card-text">
             <strong>Предприниматель</strong>
             <span>Легкий интерфейс<br />для ведения бизнеса</span>
@@ -80,7 +80,7 @@ export default function RoleScreen() {
           <img className="entry-role-photo" src="/assets/first-entry/role-pred.png" alt="" />
         </button>
         <img className="entry-role-connector" src="/assets/first-entry/connector.svg" alt="" />
-        <button className="entry-role-card entry-role-card-buh" type="button" onClick={() => choose("accountant")}>
+        <button className="entry-role-card entry-role-card-buh" type="button" disabled>
           <span className="entry-role-card-text">
             <strong>Бухгалтер</strong>
             <span>Продвинутый интерфейс<br />для углубленной работы</span>

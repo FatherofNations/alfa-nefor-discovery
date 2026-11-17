@@ -2,6 +2,7 @@
    Геометрия и типографика — из design context фреймов 59:27766/59:32554/59:33713;
    глифы — из библиотеки @alfalab/icons-glyph (точные имена из Figma). */
 
+import { accounts } from "@/data/accounts";
 import { income, money, outcome } from "@/data/payments";
 
 const asset = (name: string) => `/assets/figma/${name}`;
@@ -94,17 +95,11 @@ export function SummaryPanel() {
   );
 }
 
-const accountRows = [
-  { number: "40802 810 0 0287 0025370", card: "··0363" },
-  { number: "40802 810 0 0287 0025277", card: "" },
-  { number: "40802 810 0 0287 0025250", card: "··0363" },
-];
-
 export function AccountsPanel() {
   return (
     <div className="dash-panel accounts-panel">
       <section className="accounts-card">
-        {accountRows.map((row) => (
+        {accounts.map((row) => (
           <div className="account-row" key={row.number}>
             <span className="account-icon"><img src={asset("rub-icon.svg")} alt="" /></span>
             <span className="account-copy">
@@ -122,7 +117,7 @@ export function AccountsPanel() {
                 </>
               )}
             </span>
-            <span className="account-amount">1 000,00&nbsp;₽</span>
+            <span className="account-amount">{money(row.balance, " ")}&nbsp;₽</span>
             <button className="account-more" type="button" aria-label="Действия со счётом"><img src={asset("ops-table-da23c.svg")} alt="" /></button>
           </div>
         ))}
@@ -135,9 +130,9 @@ export function AccountsPanel() {
 }
 
 const tariffRows = [
-  { title: "Переводы юрлицам и ИП в другие банки", sub: "Осталось 7 переводов", value: "0 ₽", icon: "ic-tariff-briefcase.svg", accent: true },
-  { title: "Переводы физлицам в другие банки", sub: "Осталось 300 000 ₽", value: "2,5% + 149 ₽", icon: "ic-tariff-users.svg", accent: false },
-  { title: "Снятие наличных", sub: "Осталось 300 000 ₽", value: "0 ₽", icon: "ic-tariff-cash.svg", accent: false },
+  { title: "Переводы юрлицам и ИП в другие банки", sub: "Осталось 7 переводов", value: "0 ₽", icon: "tariffs-imgFixer2.svg", accent: true },
+  { title: "Переводы физлицам в другие банки", sub: "Осталось 300 000 ₽", value: "2,5% + 149 ₽", icon: "tariffs-imgFixer3.svg", accent: false },
+  { title: "Снятие наличных", sub: "Осталось 300 000 ₽", value: "0 ₽", icon: "tariffs-imgFixer4.svg", accent: false },
 ];
 
 export function TariffsPanel() {
@@ -147,20 +142,20 @@ export function TariffsPanel() {
         <div className="tariff-head">
           <div className="tariff-head-left">
             <strong>Условия</strong>
-            <span className="tariff-link">Счёт ··5370 <img src={asset("ic-chevron-down-secondary.svg")} alt="" /></span>
+            <span className="tariff-link">Счёт ··5370 <img src={asset("tariffs-imgWrapper.svg")} alt="" /></span>
           </div>
-          <img className="tariff-addon" src={asset("tariff-addon.svg")} alt="" />
+          <img className="tariff-addon" src={asset("tariffs-imgFixer.svg")} alt="" />
         </div>
         <div className="tariff-content">
           <div className="tariff-headline">
             <div className="tariff-headline-inner">
               <div className="tariff-plan">
                 <span className="tariff-plan-name">Тариф Простой</span>
-                <div className="tariff-cost"><strong>0 ₽</strong><span>в месяц</span></div>
+                <div className="tariff-cost"><strong>0 ₽ </strong><span>в месяц</span></div>
               </div>
               <div className="tariff-subs">
                 <span>Подписки не подключены</span>
-                <button className="tariff-plus" type="button" aria-label="Подключить подписку"><img src={asset("ic-plus.svg")} alt="" /></button>
+                <button className="tariff-plus" type="button" aria-label="Подключить подписку"><img src={asset("tariffs-imgFixer1.svg")} alt="" /></button>
               </div>
             </div>
           </div>
@@ -178,6 +173,28 @@ export function TariffsPanel() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      <section className="limits-card" aria-label="Лимиты компании">
+        <div className="tariff-head">
+          <strong className="limits-title">Лимиты компании</strong>
+          <img className="tariff-addon" src={asset("tariffs-imgFixer.svg")} alt="" />
+        </div>
+        <div className="limits-content">
+          <div className="limits-list">
+            {[
+              { title: "Переводы юрлицам", remaining: "150 000,11 ₽", fill: 124 },
+              { title: "Переводы физлицам", remaining: "300 000 ₽", fill: 238 },
+              { title: "Оплата картой", remaining: "300 000 ₽", fill: 238 },
+            ].map((limit) => (
+              <div className="limit-item" key={limit.title}>
+                <span className="limit-label">{limit.title}</span>
+                <strong className="limit-remaining">Осталось {limit.remaining}</strong>
+                <span className="limit-track" aria-hidden="true"><i style={{ width: limit.fill }} /></span>
+              </div>
+            ))}
+          </div>
+          <span className="limits-more">Посмотреть всё</span>
         </div>
       </section>
     </div>

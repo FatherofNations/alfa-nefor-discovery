@@ -1,12 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode, type Ref } from "react";
+import { accountsCountLabel, accountsTotal } from "@/data/accounts";
+import { money } from "@/data/payments";
 import { useRouter } from "next/navigation";
-import { analytics, menuItems, operationDays, opsPeriodLabel, taskCards, type Operation } from "@/data/demo";
+import { analytics, menuItems, operationDays, opsPeriodLabel, type Operation } from "@/data/demo";
 import { AccountsPanel, SummaryPanel, TariffsPanel } from "@/components/dashboards/TabPanels";
 import { hasEntered, resetEntry } from "@/lib/entry-session";
 import { useClientName } from "@/lib/client-name";
 import AssistantBar from "@/components/chrome/AssistantBar";
+import OperationRow from "./OperationRow";
+import TasksWidget from "./TasksWidget";
 import AssistantHome from "@/components/dashboards/AssistantHome";
 import { useMenuDnd } from "@/lib/menuOrder";
 
@@ -91,49 +95,6 @@ const MENU_FIXED = ["all", "bonus"] as const;
 /* Пункты с пунктирной обводкой: всегда под «Ещё», не двигаются и не скрываются. */
 const MENU_BOTTOM = ["procurement", "deposits"] as const;
 
-function CompanyLogo({ kind }: { kind: Operation["logo"] }) {
-  if (kind === "bank") {
-    return <span className="company-logo"><img src={asset("ops-table-255e8.png")} alt="" /></span>;
-  }
-  return (
-    <span className="company-logo">
-      <img className="company-logo-bg" src={asset("ops-table-75144.png")} alt="" />
-      {kind === "company"
-        ? <img className="company-logo-image" src={asset("ops-table-4c685.png")} alt="" />
-        : <img className="company-logo-person" src={asset("ops-table-ec6f5.png")} alt="" />}
-    </span>
-  );
-}
-
-function OperationRow({ operation, checked, onCheck }: { operation: Operation; checked: boolean; onCheck: () => void }) {
-  return (
-    <div className={`operation-row${operation.details ? " operation-row-tall" : ""}`}>
-      <div className="operation-main">
-        <div className="operation-content">
-          <label className={`checkbox${checked ? " checked" : ""}`}>
-            <input type="checkbox" checked={checked} onChange={onCheck} aria-label={`Выбрать операцию ${operation.title}`} />
-            {checked && <svg viewBox="0 0 24 24" fill="none"><path d="m6 12 4 4 8-9" stroke="white" strokeWidth="2" /></svg>}
-          </label>
-          <div className="operation-info">
-            <div className="operation-counterparty">
-              <CompanyLogo kind={operation.logo} />
-              <div className="operation-copy">
-                <p className="operation-title">{operation.title}</p>
-                <p className="operation-description">{operation.description}{operation.details && <><br />{operation.details}</>}</p>
-              </div>
-            </div>
-            <div className="operation-status"><span>{operation.status}</span></div>
-            <div className={`operation-amount${operation.positive ? " positive" : ""}`}>{operation.amount}</div>
-          </div>
-          <button className="icon-button operation-more" type="button" aria-label="Действия с операцией"><Icon name="ops-table-da23c.svg" /></button>
-        </div>
-        <p className="operation-number">{operation.number}</p>
-      </div>
-      <span className="operation-border" />
-    </div>
-  );
-}
-
 const TABS = ["Ассистент", "Сводка", "Счета на главной", "Тарифы и подписки"];
 
 /* Ширины шапки табов в макетах табло: 556 (Сводка), 558 (Счета), 559 (Тарифы)
@@ -175,7 +136,6 @@ export default function Glavnaya() {
   const [capsuleSyncing, setCapsuleSyncing] = useState(false);
   const [capsulePop, setCapsulePop] = useState(0);
   const [counter, setCounter] = useState<"shown" | "hiding" | "gone">("shown");
-  const [taskOffset, setTaskOffset] = useState(0);
   const [search, setSearch] = useState("");
   const [checked, setChecked] = useState<Set<string>>(new Set());
   const [accountOpen, setAccountOpen] = useState(false);
@@ -348,8 +308,8 @@ export default function Glavnaya() {
     if (assistantPhase === "open") assistantCloseRef.current?.focus();
     let closeId = 0;
     let onEnd: ((event: TransitionEvent) => void) | null = null;
-    let raf1 = 0;
-    let raf2 = 0;
+    const raf1 = 0;
+    const raf2 = 0;
     if (assistantPhase === "open") {
       /* стартовые стили фиксируем принудительным расчётом и включаем морф сразу, без лишних двух кадров ожидания */
       void document.querySelector(".assistant")?.getBoundingClientRect();
@@ -752,7 +712,7 @@ export default function Glavnaya() {
           <div className="amounts">
             <button className="balance-cell" type="button" ref={accountTriggerRef} aria-expanded={accountOpen} aria-controls="account-details" onClick={() => setAccountOpen(true)}>
               <span className="balance-icon"><Icon name="rub-icon.svg" /></span>
-              <span className="balance-copy"><strong>570 880,95 ₽</strong><span>1 счёт</span></span>
+              <span className="balance-copy"><strong>{money(accountsTotal, " ")} ₽</strong><span>{accountsCountLabel}</span></span>
               <span className="balance-addon"><img className="bank-card-img" src="/assets/figma/bank-card.png" srcSet="/assets/figma/bank-card@2x.png 2x" alt="" /></span>
             </button>
             {creditVisible && (
@@ -846,16 +806,12 @@ export default function Glavnaya() {
           <div className="hero-copy">
             <div className="hero-heading"><span className="hero-dash">—</span><h1 id="hero-title">{clientName.greetingName}, добрый день</h1></div>
             <div className="hero-subtitle">
-              <p>Разберёмся, на что уходили деньги в этом году?</p>
-              <button type="button" ref={incomeRef} onClick={() => openAssistant(incomeRef.current)} aria-haspopup="dialog"><Icon name="hero-6a06a.svg" /><span>Доходы и расходы</span></button>
+              <p>3 задачи требуют вашего внимания</p>
+              <button type="button" ref={incomeRef} onClick={() => openAssistant(incomeRef.current)} aria-haspopup="dialog"><Icon name="hero-6a06a.svg" /><span>Больше</span></button>
             </div>
           </div>
           <div className="hero-actions">
-            <div className="work-dropdown">
-              <span className="hero-chip hero-chip-static">
-                <span>Дела в работе</span><Indicator value={4} /><Chevron direction="down" />
-              </span>
-            </div>
+            <button className="hero-chip hero-chip-analytics" type="button"><Icon name="financial-analytics-icon.svg" /><span>Финансовая аналитика</span></button>
             <button className="hero-chip" type="button"><Icon name="hero-92b54.svg" /><span>Себе в Альфу</span></button>
             <button className="hero-chip" type="button" onClick={download}><Icon name="hero-b373c.svg" /><span>Скачать выписку</span></button>
             <button className="hero-chip" type="button" onClick={() => fileRef.current?.click()}><Icon name="hero-c5c76.svg" /><span>Импорт платежей</span></button>
@@ -870,63 +826,31 @@ export default function Glavnaya() {
         {shownTab === "Тарифы и подписки" && <TariffsPanel />}
         </div>
 
-        <section className={`tasks${activeTab === "Ассистент" ? "" : " tasks-after-panel"}`} aria-labelledby="tasks-title">
-          <button className="section-title" type="button"><h2 id="tasks-title">Мои дела</h2><Icon name="task-chevron-muted.svg" className="chevron" /></button>
-          <div className="tasks-viewport">
-            <div className="tasks-track" style={{ transform: `translateX(-${taskOffset}px)` }}>
-              <article className="task-card payment-card">
-                <span className="overdue">Просрочено</span>
-                <div className="payment-copy"><p>Платёж<br />по кредиту</p><p>от 04.06.26<br />32 000,00 ₽</p></div>
-                <div className="task-navigation">
-                  <span className="card-divider" />
-                  <div className="payment-controls">
-                    <button type="button" aria-label="Предыдущий платёж"><Icon name="task-chevron-muted.svg" className="chevron chevron-prev" /></button>
-                    <span className="slider-dots">{[0, 1, 2].map((dot) => <span key={dot} className={dot === 0 ? "current" : ""} />)}</span>
-                    <button type="button" aria-label="Следующий платёж"><Icon name="task-chevron-strong.svg" className="chevron" /></button>
-                  </div>
-                </div>
-                <img className="task-light" src={asset("task-light.svg")} alt="" aria-hidden="true" />
-              </article>
-              <article className="task-card work-card">
-                <div className="work-card-illu" aria-hidden="true">
-                  <div className="work-sheet work-sheet-back">
-                    <div className="work-paper work-paper-back">
-                      <div className="paper-top">
-                        <div className="paper-row">
-                          <div className="paper-lines"><span style={{ width: 24.936 }} /><span style={{ width: 16.135 }} /></div>
-                          <span className="paper-dot" />
-                        </div>
-                        <div className="paper-lines"><span style={{ width: 19.155 }} /><span style={{ width: 28.664 }} /></div>
-                      </div>
-                      <span className="paper-line-bottom" />
-                    </div>
-                  </div>
-                  <div className="work-sheet work-sheet-front">
-                    <div className="work-paper work-paper-front">
-                      <div className="paper-top">
-                        <div className="paper-row">
-                          <div className="paper-lines"><span style={{ width: 34.369 }} /><span style={{ width: 22.239 }} /></div>
-                          <span className="paper-dot" />
-                        </div>
-                        <div className="paper-lines"><span style={{ width: 26.401 }} /><span style={{ width: 43.899 }} /></div>
-                      </div>
-                      <span className="paper-line-bottom" />
-                    </div>
-                  </div>
-                  <img className="work-glow" src={asset("task-work-glow.svg")} alt="" />
-                </div>
-                <p className="work-card-title">Дела<br />в работе</p>
-                <div className="task-navigation"><span className="card-divider" /><span className="resolve-button"><Indicator value={4} small /><span>Разобрать</span></span></div>
-              </article>
-              {taskCards.map((card) => <article className="task-card action-card" key={card.title}>
-                <div className="action-card-main"><span className={`task-illustration ${card.className}`}><img src={`/assets/figma/${card.image}`} alt="" /></span><p>{card.title}</p></div>
-                <div className="task-navigation"><span className="card-divider" /><button type="button" className="score">+500<Icon name="menu-a8252.svg" className="score-icon" /></button></div>
-              </article>)}
+        <section className="promo-banners" aria-label="Предложения для бизнеса">
+          <div className="promo-banner promo-banner-payroll">
+            <div className="promo-banner-copy">
+              <strong>Зарплатный проект</strong>
+              <span>Новые условия<br />онлайн-инкассации</span>
             </div>
-            <span className="tasks-fade" />
-            <button className="task-next" type="button" aria-label={taskOffset ? "Показать начало списка" : "Следующая карточка"} onClick={() => setTaskOffset(taskOffset ? 0 : 48)}><Icon name="task-next-chevron.svg" className="chevron" /></button>
+            <img className="promo-banner-art" src="/assets/figma/main-banner-payroll.png" alt="" />
+          </div>
+          <div className="promo-banner promo-banner-card">
+            <div className="promo-banner-copy">
+              <strong>Умная карта для&nbsp;всех</strong>
+              <span>Кэшбэк, бонусы<br />и&nbsp;удобные платежи</span>
+            </div>
+            <img className="promo-banner-art" src="/assets/figma/main-banner-card.png" alt="" />
+          </div>
+          <div className="promo-banner promo-banner-cashback">
+            <div className="promo-banner-copy">
+              <strong>Кэшбек до 100%</strong>
+              <span>За бизнес-расходы,<br />1 балл = 1 ₽</span>
+            </div>
+            <img className="promo-banner-art" src="/assets/figma/main-banner-cashback.png" alt="" />
           </div>
         </section>
+
+        <TasksWidget afterPanel={activeTab !== "Ассистент"} />
 
         <section className="operations" id="operations" aria-labelledby="operations-title">
           <div className="operations-title">
@@ -1009,7 +933,7 @@ export default function Glavnaya() {
               <button className="account-panel-link" type="button">Открыть</button>
             </AccountRow>
             <span className="account-panel-divider" />
-            <AccountRow label="Доступный остаток" value={"570\u205f880,95\u2009₽"} info />
+            <AccountRow label="Доступный остаток" value={money(accountsTotal, " ") + "\u2009₽"} info />
           </div>
           <button className="account-panel-cta" type="button">К счёту</button>
         </section>

@@ -369,3 +369,11 @@ a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124);
   outline: 2px solid var(--accent-primary, #ef3124);
   outline-offset: -2px;
 }
+
+/* Превью бухгалтера — инстанс Figma 80:47841. */
+.chrome-person-av-accountant {
+  background: url(/assets/figma/accountant-header-avatar.png) center bottom / 100% 100% no-repeat,
+    linear-gradient(128.990999deg, #e3d3e5 11.842%, #cdd2e5 91.886%);
+  -webkit-mask-image: url(/assets/figma/accountant-header-avatar-shape.svg);
+  mask-image: url(/assets/figma/accountant-header-avatar-shape.svg);
+}

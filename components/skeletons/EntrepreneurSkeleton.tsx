@@ -9,7 +9,7 @@ import SkeletonText from "./SkeletonText";
 
 const MENU_WIDTHS = [118, 146, 132, 96, 108, 122];
 const SECONDARY_MENU_WIDTHS = [98, 86];
-const CHIP_WIDTHS = [207, 174, 201, 207, 73];
+const CHIP_WIDTHS = [247, 174, 201, 207, 73];
 
 export default function EntrepreneurSkeleton() {
   return (
@@ -99,15 +99,25 @@ export default function EntrepreneurSkeleton() {
             </div>
           </div>
 
+          <div className="sk-main-banners">
+            {[0, 1, 2].map((banner) => (
+              <Skeleton key={banner} style={{ width: 316, height: 120, flex: "none" }} borderRadius={16} />
+            ))}
+          </div>
+
           <div className="sk-tasks">
-            <SkeletonText fontSize={20} lineHeight={26} widths={[95]} />
-            <div className="sk-cards">
-              {[154, 154, 154, 154, 154, 154].map((width, index) => (
-                <Skeleton
-                  key={index}
-                  style={{ width, height: 212, flex: "none" }}
-                  borderRadius={12}
-                />
+            <div className="tasks-v2-header">
+              <SkeletonText fontSize={22} lineHeight={26} widths={[104]} />
+              <Skeleton style={{ width: 195, height: 32, borderRadius: 19 }} />
+            </div>
+            <div className="tasks-v2-grid">
+              <Skeleton style={{ width: 316, height: 280, flex: "none" }} borderRadius={16} />
+              {[0, 1].map((column) => (
+                <div className="tasks-v2-column" key={column}>
+                  {[83.5, 83.5, 90].map((height, index) => (
+                    <Skeleton key={index} style={{ width: 316, height, flex: "none" }} borderRadius={16} />
+                  ))}
+                </div>
               ))}
             </div>
           </div>

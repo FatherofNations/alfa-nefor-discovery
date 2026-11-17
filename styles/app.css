@@ -1,6 +1,6 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --page-bg: #f2f3f5; }
-html { background: var(--page-bg); scroll-behavior: smooth; }
+html { background: var(--page-bg); scroll-behavior: smooth; scrollbar-gutter: stable; }
 body { min-width: 1180px; font-family: var(--font); color: var(--text-primary); background: var(--page-bg); -webkit-font-smoothing: antialiased; }
 button, input { font: inherit; }
 button { appearance: none; border: 0; background: none; color: inherit; cursor: pointer; }
@@ -57,11 +57,11 @@ img { display: block; }
   position: fixed;
   z-index: 4;
   top: calc(28px * (1 - var(--tb-p)));
-  right: calc(24px * (1 - var(--tb-p)));
-  left: calc((100vw - 640px) * (1 - var(--tb-p))); /* 640 = 616 + 24; at p=1 → 0 */
+  right: 0;
+  left: 0; /* Постоянная ширина исключает перераспределение flex при скролле. */
   width: auto;
   height: calc(40px + 16px * var(--tb-p)); /* 40 → 56 эталон бухгалтера */
-  padding: 0 calc(24px * var(--tb-p));
+  padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -72,7 +72,7 @@ img { display: block; }
   backdrop-filter: blur(var(--tb-blur, 0px));
   pointer-events: none; /* полоса full-bleed не перехватывает клики слева */
 }
-.topbar > * { pointer-events: auto; }
+.topbar > * { pointer-events: auto; flex-shrink: 0; }
 .topbar-buttons { display: flex; gap: 8px; }
 .icon-button { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; }
 .icon-button img { width: 20px; height: 20px; }
@@ -95,10 +95,10 @@ img { display: block; }
 .account-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .company-account strong { font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: .07px; }
 .company-account small { font-size: 12px; font-weight: 400; line-height: 16px; color: var(--text-secondary); letter-spacing: .06px; }
-.person-select { display: flex; height: 40px; align-items: center; gap: 8px; padding: 8px 16px 8px 8px; overflow: hidden; border-radius: 999px; background: #212124; }
+.person-select { flex: none; display: flex; height: 40px; align-items: center; gap: 8px; padding: 8px 16px 8px 8px; overflow: hidden; border-radius: 999px; background: #212124; }
 .person-avatar { position: relative; display: block; width: 24px; height: 24px; flex: none; }
 .person-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.person-select > span:not(.person-avatar) { width: 112px; overflow: hidden; font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: .19px; color: rgb(255 255 255 / 94%); text-align: left; text-overflow: ellipsis; white-space: nowrap; }
+.person-select > span:not(.person-avatar) { flex: none; width: max-content; font-size: 12px; font-weight: 500; line-height: 16px; letter-spacing: .19px; color: rgb(255 255 255 / 94%); text-align: left; white-space: nowrap; }
 
 /* Keep every scrolling widget in one layer below .topbar (4) / .sidebar (5).
    Descendant transforms, filters and local z-indices cannot escape it. */
@@ -217,22 +217,34 @@ img { display: block; }
 .hero-subtitle { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; }
 .hero-subtitle p { font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.24px; white-space: nowrap; }
 .hero-subtitle button { display: flex; align-items: center; gap: 4px; }
-.hero-subtitle button span { background: linear-gradient(175.35089467084737deg, #ef3124 32.833%, #f859c5 79.58%); background-clip: text; font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.05px; color: transparent; white-space: nowrap; }
-.hero-actions { display: flex; width: 910px; height: 52px; align-items: center; justify-content: flex-start; gap: 12px; }
-.hero-chip { position: relative; display: flex; height: 52px; align-items: center; justify-content: center; gap: 8px; padding: 16px 20px; border-radius: 16px; background: #fff; font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; white-space: nowrap; }
+.hero-subtitle button span { background: linear-gradient(169.0312444017914deg, #ef3124 32.833%, #f859c5 79.58%); background-clip: text; font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.05px; color: transparent; white-space: nowrap; }
+.hero-actions { display: flex; width: 967px; height: 52px; align-items: center; justify-content: center; gap: 12px; }
+.hero-chip { flex: none; position: relative; display: flex; height: 52px; align-items: center; justify-content: center; gap: 8px; padding: 16px 20px; border-radius: 16px; background: #fff; font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; white-space: nowrap; }
 .hero-chip:hover { background: rgb(255 255 255 / 70%); }
 .hero-chip-more { color: #000; background: rgb(38 55 88 / 6%); }
 .work-dropdown { position: relative; width: 207px; flex: none; } /* z-index убран: дропдауна нет; z:10 перекрывал sticky-шапку */
 .work-dropdown > .hero-chip { width: 100%; color: #000; }
 .hero-chip-static { cursor: default; }
 .hero-chip-static:hover { background: #fff; }
+.hero-actions > .hero-chip:first-child { width: 247px; color: #000; font-weight: 400; line-height: 24px; letter-spacing: -.24px; }
 .hero-actions > .hero-chip:nth-child(2) { width: 174px; }
 .hero-actions > .hero-chip:nth-child(3) { width: 201px; }
 .hero-actions > .hero-chip:nth-child(4) { width: 207px; }
 .hero-actions > .hero-chip:nth-child(5) { width: 73px; }
 
+/* Баннеры главной предпринимателя — Figma 223:21112. */
+.promo-banners { display: flex; width: 972px; height: 120px; margin-top: 62px; gap: 12px; }
+.promo-banner { position: relative; display: flex; width: 316px; height: 120px; flex: 0 0 316px; padding: 18px 84px 18px 20px; overflow: hidden; border-radius: 16px; }
+.promo-banner-payroll { background: #abceff; }
+.promo-banner-card { background: #fcb1a7; }
+.promo-banner-cashback { background: #e5bcfa; }
+.promo-banner-copy { display: flex; width: 220px; flex-direction: column; gap: 4px; font-size: 14px; line-height: 20px; }
+.promo-banner-copy strong { font-weight: 700; letter-spacing: .47px; }
+.promo-banner-copy span { font-weight: 400; letter-spacing: -.08px; color: var(--text-secondary); }
+.promo-banner-art { position: absolute; top: 0; right: 0; width: 76px; height: 120px; object-fit: contain; }
+
 /* ── «Мои дела»: карточки 154×212, радиус 16, отступы 16 (MCP 80:46304) ── */
-.tasks { height: 262px; margin-top: 62px; transition: margin-top .55s cubic-bezier(.32, .72, 0, 1); }
+.tasks { height: 262px; margin-top: 52px; transition: margin-top .55s cubic-bezier(.32, .72, 0, 1); }
 .section-title { display: flex; width: 100%; height: 26px; align-items: center; gap: 8px; }
 .section-title h2 { font-size: 20px; font-weight: 700; line-height: 26px; letter-spacing: .2px; }
 .section-title .chevron { margin-top: 1px; }
@@ -376,8 +388,8 @@ img { display: block; }
    фоном страницы ВНЕ закругления. Иначе контент, проезжающий под плашкой,
    просвечивает в вырезе острым углом (баг «острый угол поверх скругления»). */
 .spotlight-corner { position: fixed; z-index: 59; bottom: 40px; width: 20px; height: 20px; pointer-events: none; }
-.spotlight-corner-left { left: 0; background: radial-gradient(circle at 100% 100%, transparent 20px, var(--page-bg) 20px); }
-.spotlight-corner-right { right: 0; background: radial-gradient(circle at 0 100%, transparent 20px, var(--page-bg) 20px); }
+.spotlight-corner-left { left: 0; background: radial-gradient(circle at 100% 100%, transparent 20px, #e7e8eb 20px); }
+.spotlight-corner-right { right: 0; background: radial-gradient(circle at 0 100%, transparent 20px, #e7e8eb 20px); }
 .footer-fade { position: fixed; z-index: 6; pointer-events: none; left: 0; bottom: 52px; width: 248px; height: 64px; background: #f2f3f5; mask-image: url("/assets/figma/footergrad-670c2.svg"); mask-size: 248px 64px; mask-repeat: no-repeat; }
 .spotlight { position: fixed; z-index: 60; left: 0; bottom: 0; display: flex; width: 100%; height: 60px; align-items: center; overflow: clip; border-radius: 20px 20px 0 0; background: #f2f3f5; box-shadow: inset 1px 1px 2px #fff; }
 /* логотип и подпись центрируются по одной вертикали: кружок 28 по центру
@@ -551,7 +563,8 @@ img { display: block; }
 .accounts-footer { padding: 20px 16px 12px; }
 .accounts-more { display: flex; width: 96px; height: 32px; align-items: center; justify-content: center; padding: 0 12px; border-radius: 8px; background: rgba(15, 25, 55, 0.1); font-size: 14px; font-weight: 500; line-height: 20px; }
 
-.tariffs-card { display: flex; width: 972px; height: 392px; flex-direction: column; gap: 8px; padding: 12px; border-radius: 16px; background: #fff; }
+.tariffs-panel { display: flex; gap: 12px; }
+.tariffs-card { display: flex; width: 666px; flex: none; height: 392px; flex-direction: column; gap: 8px; padding: 12px; border-radius: 16px; background: #fff; }
 .tariff-head { display: flex; height: 44px; flex: none; align-items: center; justify-content: space-between; padding: 0 16px; }
 .tariff-head-left { display: flex; align-items: center; gap: 16px; }
 .tariff-head-left > strong { font-size: 16px; font-weight: 700; line-height: 20px; letter-spacing: .43px; }
@@ -573,11 +586,11 @@ img { display: block; }
 .tariff-rows { display: flex; flex-direction: column; padding-bottom: 4px; }
 .tariff-row { display: flex; height: 72px; align-items: center; gap: 16px; padding: 0 16px 0 12px; border-radius: 12px; }
 .tariff-icon { position: relative; display: flex; width: 48px; height: 48px; flex: none; align-items: center; justify-content: center; }
-.tariff-icon::before { content: ""; position: absolute; inset: 0; background: #f2f3f5; -webkit-mask: url("/assets/figma/squircle-48.svg") 0 0 / 48px 48px no-repeat; mask: url("/assets/figma/squircle-48.svg") 0 0 / 48px 48px no-repeat; }
+.tariff-icon::before { content: ""; position: absolute; inset: 0; background: #f2f3f5; -webkit-mask: url("/assets/figma/squircle-48.svg") 0 0 / 48px 48px no-repeat; mask: url("/assets/figma/tariffs-imgShapeContent1.svg") 0 0 / 48px 48px no-repeat; }
 .tariff-icon img { position: relative; z-index: 1; width: 24px; height: 24px; }
 .tariff-icon.accent::before { background: #fff; }
-.tariff-icon.accent::after { content: ""; position: absolute; inset: -1px; background: #0cc44d; -webkit-mask: url("/assets/figma/tariff-icon-ring.svg") 0 0 / 50px 50px no-repeat; mask: url("/assets/figma/tariff-icon-ring.svg") 0 0 / 50px 50px no-repeat; }
-.tariff-copy { display: flex; flex: 1; flex-direction: column; gap: 2px; }
+.tariff-icon.accent::after { content: ""; position: absolute; inset: -1px; background: #0cc44d; -webkit-mask: url("/assets/figma/tariffs-imgGraphics.svg") 0 0 / 50px 50px no-repeat; mask: url("/assets/figma/tariffs-imgGraphics.svg") 0 0 / 50px 50px no-repeat; }
+.tariff-copy { min-width: 0; display: flex; flex: 1; flex-direction: column; gap: 2px; }
 .tariff-copy-row { display: flex; align-items: flex-start; gap: 16px; }
 .tariff-copy-row strong { flex: 1; min-width: 0; font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: -.08px; }
 .tariff-value { flex: none; font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: .07px; white-space: nowrap; }
@@ -1187,3 +1200,77 @@ body.name-modal-open { overflow: hidden; }
 
 /* Обводка окна Main Page 169:26243 сверху и справа: 1px внутрь, neutral-translucent/200 (видна на рендере узла; левую даёт .ai-window-line) */
 .assistant-panel::after { content: ""; position: absolute; z-index: 4; inset: 0; border-top: 1px solid var(--neutral-translucent-200); border-right: 1px solid var(--neutral-translucent-200); border-radius: inherit; pointer-events: none; }
+
+
+/* Figma 223:23085 — тариф и лимиты компании. */
+.limits-card { display: flex; flex: none; flex-direction: column; gap: 8px; width: 294px; height: 392px; padding: 12px; border-radius: 16px; background: #fff; }
+.limits-title { font: 700 16px/20px var(--font); letter-spacing: .43px; }
+.limits-content { display: flex; flex: 1; flex-direction: column; justify-content: space-between; padding: 4px 16px 12px; }
+.limits-list { display: flex; flex-direction: column; gap: 24px; }
+.limit-item { display: flex; flex-direction: column; }
+.limit-label, .limits-more { font: 400 14px/20px var(--font); letter-spacing: -.08px; color: var(--text-secondary); }
+.limit-remaining { margin-top: 4px; font: 500 14px/20px var(--font); letter-spacing: .07px; }
+.limit-track { display: block; height: 4px; margin-top: 8px; overflow: hidden; border-radius: 4px; background: rgba(15,25,55,.1); }
+.limit-track i { display: block; height: 4px; border-radius: 0 8px 8px 0; background: #0cc44d; }
+
+/* Нижние углы тела 59:16844: radius16, фон внешнего фрейма #e7e8eb. */
+.viewport-strip::before, .viewport-strip::after { content: ""; position: absolute; bottom: 100%; width: 16px; height: 16px; pointer-events: none; }
+.viewport-strip::before { left: 0; background: radial-gradient(circle at 100% 0, transparent 15px, #fff 15px, #fff 16px, #e7e8eb 16px); }
+.viewport-strip::after { right: 0; background: radial-gradient(circle at 0 0, transparent 15px, #fff 15px, #fff 16px, #e7e8eb 16px); }
+
+/* Белый нижний контур тела продолжается в оба скругления. */
+.viewport-strip { background: linear-gradient(#fff, #fff) center top / calc(100% - 32px) 1px no-repeat, #e7e8eb; }
+
+/* Мои дела — Figma 238:23259, 972×337. */
+.tasks.tasks-v2 { width: 972px; height: 337px; }
+.tasks-v2-header { display: flex; height: 32px; align-items: center; justify-content: space-between; }
+.tasks-v2-header h2 { font: 700 22px/26px var(--font); letter-spacing: .2px; }
+.tasks-v2-controls { display: flex; gap: 12px; height: 32px; }
+.tasks-all, .tasks-arrows { display: flex; align-items: center; height: 32px; border: 1px solid #fff; background: rgb(255 255 255 / 48%); }
+.tasks-all { width: 123px; gap: 6px; padding: 0 12px 0 8px; border-radius: 33px; font: 500 13px/16px var(--font); letter-spacing: .13px; white-space: nowrap; }
+.tasks-arrows { width: 60px; padding: 4px 6px; gap: 4px; border-radius: 19px; }
+.tasks-arrows button { display: flex; width: 20px; height: 20px; flex: none; }
+.tasks-arrows button img { width: 20px; height: 20px; }
+.tasks-arrows button:first-child img { transform: rotate(180deg); }
+.tasks-arrows-divider { width: 1px; height: 16px; margin-right: -1px; }
+.tasks-progress { position: relative; display: block; width: 16px; height: 16px; flex: none; }
+.tasks-progress-stroke { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tasks-progress-fill { position: absolute; left: 6.5px; top: 0; width: 9.999px; height: 14.096px; }
+.tasks-v2-grid { display: flex; gap: 12px; height: 281px; margin-top: 24px; }
+.tasks-important { width: 316px; height: 280px; flex: none; position: relative; overflow: hidden; border-radius: 16px; background: #fff; }
+.tasks-important-top { height: 109px; position: relative; }
+.tasks-important-badge { position: absolute; top: 20px; left: 28px; padding: 2px 8px; border-radius: 99px; background: #ffdfdf; color: #ec2d20; font: 700 11px/16px var(--font); text-transform: uppercase; }
+.tasks-important-top p { position: absolute; left: 28px; top: 48px; width: 227px; font: 500 14px/20px var(--font); letter-spacing: .07px; }
+.tasks-documents { position: absolute; left: 201px; top: 14px; width: 100.5899px; height: 86.2709px; }
+.tasks-important-divider { position: absolute; left: 28px; top: 108px; width: 260px; height: 1px; background: rgb(38 55 88 / 6%); }
+.tasks-panel-shadow { position: absolute; display: flex; align-items: center; justify-content: center; left: -27px; top: -26px; width: 142.746px; height: 66.171px; pointer-events: none; }
+.tasks-panel-shadow > span { position: relative; width: 138px; height: 37px; flex: none; transform: rotate(167.42deg) scaleY(-1); }
+.tasks-panel-shadow img { position: absolute; left: -46.2px; top: -46.2px; width: 230.4px; height: 129.4px; }
+.tasks-important-rows { position: absolute; left: 28px; right: 28px; top: 128px; display: flex; flex-direction: column; gap: 16px; }
+.tasks-important-row { display: flex; align-items: center; gap: 24px; height: 20px; font: 400 14px/20px var(--font); letter-spacing: -.08px; }
+.tasks-important-row > span:first-child { flex: 1; position: relative; }
+.tasks-important-sum { color: var(--text-secondary); white-space: pre; }
+.tasks-count { display: flex; align-items: center; justify-content: center; flex: none; width: 16px; height: 16px; border-radius: 16px; background: rgb(30 43 68 / 8%); font: 700 11px/16px var(--font); }
+.tasks-count-important { background: #ef3124; color: rgb(255 255 255 / 94%); box-shadow: 0 2px 5.5px rgb(239 49 36 / 30%); }
+.tasks-more-chevron { position: absolute; left: 34px; top: 0; width: 20px; height: 20px; transform: rotate(90deg); }
+.tasks-v2-column { display: flex; flex-direction: column; width: 316px; height: 281px; gap: 12px; flex: none; }
+.tasks-v2-card { position: relative; display: flex; align-items: center; gap: 16px; padding: 12px 24px; border: 1px solid #fff; background: rgb(255 255 255 / 48%); border-radius: 16px; height: 83.5px; flex: none; overflow: hidden; }
+.tasks-v2-copy { display: flex; width: 202px; flex: none; flex-direction: column; gap: 4px; }
+.tasks-v2-copy p { font: 400 14px/20px var(--font); letter-spacing: -.08px; }
+.tasks-reward { display: flex; align-items: center; gap: 4px; font: 500 14px/20px var(--font); letter-spacing: .07px; }
+.tasks-reward img { width: 14px; height: 14px; margin-top: .5px; }
+.tasks-v2-art { display: block; position: relative; width: 48px; height: 48px; flex: none; overflow: hidden; }
+.tasks-v2-art img { position: absolute; }
+.tasks-v2-business img { width: 93.75%; height: 93.75%; left: 3.13%; top: 1.56%; }
+.tasks-v2-cashback img { width: 97.39%; height: 97.39%; left: 2.01%; top: 1.04%; }
+.tasks-v2-protection img { width: 89.87%; height: 89.87%; left: 5.44%; top: 5%; }
+.tasks-v2-card-profile { height: 90px; }
+.tasks-v2-copy > span:not(.tasks-reward) { font: 400 12px/16px var(--font); letter-spacing: .06px; color: var(--text-tertiary); }
+.tasks-v2-glyph { display: flex; align-items: center; justify-content: center; flex: none; width: 48px; height: 48px; background: rgb(38 55 88 / 6%); mask: url(/assets/figma/tasks-v2-imgShapeContent.svg) center / contain no-repeat; }
+.tasks-v2-glyph img { width: 24px; height: 24px; }
+.tasks-progress-large { width: 48px; height: 48px; }
+.tasks-progress-large .tasks-progress-stroke { inset: -.5px; width: 49px; height: 49px; }
+.tasks-progress-large .tasks-progress-fill { left: 9.502px; top: -8.498px; width: 51px; height: 73px; }
+.tasks-progress-large strong { position: absolute; inset: 16px 0; text-align: center; font: 700 11px/16px var(--font); letter-spacing: .54px; }
+.tasks-prize-art { position: absolute; width: 69.649px; height: 69.649px; left: 245.944px; top: 35.945px; transform: rotate(-12.04deg); filter: blur(2px); border-radius: 5.696px; overflow: hidden; }
+.tasks-prize-art img { position: absolute; left: 12.29%; top: 6.32%; width: 80.63%; height: 80.63%; }

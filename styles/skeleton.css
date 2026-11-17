@@ -247,14 +247,22 @@
 
 .sk-hero-chips {
   display: flex;
-  width: 910px;
+  justify-content: center;
+  width: 967px;
   height: 52px;
   align-items: center;
   gap: 12px;
 }
 
-.sk-tasks {
+.sk-main-banners {
+  display: flex;
+  height: 120px;
   margin-top: 62px;
+  gap: 12px;
+}
+
+.sk-tasks {
+  margin-top: 52px;
 }
 
 .sk-cards {
@@ -411,6 +419,7 @@ body:not(.sk-loaded-spot) .gate-content .dashboard-page .footer-fade,
 body:not(.sk-loaded-spot) .gate-content .dashboard-page .spotlight-corner,
 body:not(.sk-loaded-tabs) .gate-content .dashboard-page .tabs,
 body:not(.sk-loaded-hero) .gate-content .dashboard-page .hero,
+body:not(.sk-loaded-hero) .gate-content .dashboard-page .promo-banners,
 body:not(.sk-loaded-tasks) .gate-content .dashboard-page .tasks,
 body:not(.sk-loaded-operations) .gate-content .dashboard-page .operations,
 body:not(.sk-loaded-qa) .gate-content .cur-main .cur-qa,
@@ -432,6 +441,7 @@ body.sk-loaded-shell .gate-skeleton .topbar,
 body.sk-loaded-spot .gate-skeleton .sk-spot,
 body.sk-loaded-tabs .gate-skeleton .sk-tabs,
 body.sk-loaded-hero .gate-skeleton .sk-hero,
+body.sk-loaded-hero .gate-skeleton .sk-main-banners,
 body.sk-loaded-tasks .gate-skeleton .sk-tasks,
 body.sk-loaded-operations .gate-skeleton .sk-ops,
 body.sk-loaded-qa .gate-skeleton .sk-acc .sk-qa,

@@ -155,7 +155,7 @@ export default function AppChrome({ personLabel = "Предпринимател�
         </div>
         <span className="chrome-hdiv" />
         <button className="chrome-person">
-          <span className="chrome-person-av" />
+          <span className={`chrome-person-av${personLabel === "Бухгалтер" ? " chrome-person-av-accountant" : ""}`} />
           <span className="chrome-person-t">{personLabel}</span>
         </button>
         <span className="chrome-hdiv" />

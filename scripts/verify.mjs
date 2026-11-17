@@ -1,17 +1,10 @@
 #!/usr/bin/env node
-/* parity-QA прототипа (см. alfa://knowledge/verification).
-   Запуск: node scripts/verify.mjs [baseUrl]   (дефолт http://localhost:3000)
-   Сервер должен быть запущен (npm run dev или build+start).
+/* HTTP and browser smoke checks. Pass --http-only for a partial check. */
 
-   Уровень 1 (без зависимостей): роуты из lib/dashboards.ts отдают 200 и
-   контент; все /assets|/fonts-ссылки из HTML существуют.
-   Уровень 2 (если установлен playwright): битые <img> (naturalWidth===0),
-   ошибки консоли/hydration, программный проклик панели tools. */
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
-import fs from "node:fs";
-import path from "node:path";
-
-const BASE = (process.argv[2] ?? "http://localhost:3000").replace(/\/$/, "");
+const BASE = (process.argv.slice(2).find((arg) => !arg.startsWith("--")) ?? "http://localhost:3001").replace(/\/$/, "");
 let failures = 0;
 const ok = (m) => console.log(`  ✓ ${m}`);
 const bad = (m) => {
@@ -19,11 +12,8 @@ const bad = (m) => {
   console.error(`  ✗ ${m}`);
 };
 
-// ── роуты из реестра дашбордов (реестра нет без панели tools — тогда только /) ──
-const regPath = path.resolve("lib/dashboards.ts");
-const reg = fs.existsSync(regPath) ? fs.readFileSync(regPath, "utf8") : "";
-const routes = [...reg.matchAll(/route:\s*"([^"]+)"/g)].map((m) => m[1]);
-if (routes.length === 0) routes.push("/");
+const routes = ["/", "/accountant", "/login", "/welcome", "/setup"];
+const httpOnly = process.argv.includes("--http-only");
 
 console.log(`verify: ${BASE}, роуты: ${routes.join(", ")}`);
 
@@ -61,14 +51,15 @@ if (seenAssets.size) ok(`ассеты по ссылкам: ${seenAssets.size} ш
 
 // ── уровень 2: браузерные проверки (опционально) ──
 let chromium = null;
-try {
-  ({ chromium } = await import("playwright"));
-} catch {
-  console.log("  ⚠ playwright не установлен — браузерные проверки пропущены");
-  console.log("    (npm i -D playwright && npx playwright install chromium)");
+if (!httpOnly) {
+  try {
+    ({ chromium } = await import(process.env.PLAYWRIGHT_MODULE ?? "playwright"));
+  } catch {
+    bad("Playwright недоступен. Используйте --http-only только для проверки HTTP.");
+  }
 }
 if (chromium) {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROME });
   const page = await browser.newPage();
   const consoleErrors = [];
   page.on("console", (msg) => {
@@ -76,8 +67,11 @@ if (chromium) {
   });
   page.on("pageerror", (err) => consoleErrors.push(String(err)));
 
+  await page.addInitScript(() => { window.__alfaEntryState = { entered: true, role: "entrepreneur" }; });
+  const screenSelectors = { "/": ".dashboard-page", "/accountant": ".cur-content", "/login": ".entry-submit", "/welcome": ".entry-role-cards", "/setup": ".entry-setup" };
   for (const route of routes) {
     await page.goto(BASE + route, { waitUntil: "networkidle" });
+    if (!(await page.locator(screenSelectors[route]).count())) bad(`${route}: ожидаемый экран не найден`);
     // битые картинки: браузер молча рендерит пустоту — ловим naturalWidth
     const broken = await page.$$eval("img", (imgs) =>
       imgs.filter((i) => i.naturalWidth === 0 && i.src).map((i) => i.src)
@@ -85,23 +79,27 @@ if (chromium) {
     if (broken.length) bad(`${route}: битые <img>: ${broken.join(", ")}`);
     else ok(`${route}: 0 битых <img>`);
 
-    // проклик панели tools программно (не «на глаз»)
-    const fab = await page.$(".twk-fab");
-    if (fab) {
-      await page.evaluate(() =>
-        document
-          .querySelector(".twk-fab")
-          .dispatchEvent(new MouseEvent("click", { bubbles: true }))
-      );
-      await page.waitForTimeout(700);
-      const open = await page.evaluate(() =>
-        document.body.classList.contains("twk-open")
-      );
-      if (open) ok(`${route}: панель tools открывается`);
-      else bad(`${route}: панель tools не открылась`);
-      await page.keyboard.press("Escape");
-      await page.waitForTimeout(300);
-    }
+  }
+  const staticPage = await browser.newPage({ reducedMotion: "reduce" });
+  staticPage.setDefaultTimeout(8000);
+  staticPage.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
+  staticPage.on("pageerror", (error) => consoleErrors.push(String(error)));
+  staticPage.on("requestfailed", (request) => bad(`Статика: ${request.url()} не загрузился`));
+  try {
+    await staticPage.goto(pathToFileURL(resolve("static-dist/index.html")).href);
+    await staticPage.locator(".entry-alt-btn").first().click();
+    await staticPage.locator(".entry-role-card-pred").click();
+    await staticPage.locator(".entry-setup").waitFor();
+    await staticPage.locator(".dashboard-page").waitFor();
+    await staticPage.getByRole("button", { name: "Сводка" }).click();
+    await staticPage.keyboard.press("/");
+    await staticPage.getByRole("dialog").waitFor();
+    await staticPage.keyboard.press("Escape");
+    await staticPage.evaluate(() => { location.hash = "/accountant"; });
+    await staticPage.locator(".cur-content").waitFor();
+    ok("Статика: вход, роль, настройка, сводка, имя клиента и бухгалтер");
+  } catch (error) {
+    bad(`Статика: ${error.message}`);
   }
   const hydration = consoleErrors.filter((e) => /hydrat/i.test(e));
   if (hydration.length) bad(`hydration-ошибки: ${hydration.length}`);
@@ -110,5 +108,5 @@ if (chromium) {
   await browser.close();
 }
 
-console.log(failures ? `\nFAIL: ${failures} проблем` : "\nOK: все проверки пройдены");
+console.log(failures ? `\nFAIL: ${failures} проблем` : httpOnly ? "\nOK: только HTTP, браузер не проверялся" : "\nOK: все проверки пройдены");
 process.exit(failures ? 1 : 0);
