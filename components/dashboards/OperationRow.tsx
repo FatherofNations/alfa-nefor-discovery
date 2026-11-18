@@ -22,12 +22,14 @@ function CompanyLogo({ kind }: { kind: Operation["logo"] }) {
 
 export default function OperationRow({ operation, checked, onCheck }: { operation: Operation; checked: boolean; onCheck: () => void }) {
   return (
-    <div className={`operation-row${operation.details ? " operation-row-tall" : ""}`}>
+    <div className={operation.details ? "operation-row operation-row-details" : "operation-row"}>
       <div className="operation-main">
         <div className="operation-content">
-          <label className={`checkbox${checked ? " checked" : ""}`}>
+          <label className="checkbox">
             <input type="checkbox" checked={checked} onChange={onCheck} aria-label={`Выбрать операцию ${operation.title}`} />
-            {checked && <svg viewBox="0 0 24 24" fill="none"><path d="m6 12 4 4 8-9" stroke="white" strokeWidth="2" /></svg>}
+            {checked
+              ? <img className="checkbox-mark" src={asset("ops-table-checkbox-checked.svg")} width={20} height={20} alt="" />
+              : <span className="checkbox-mark checkbox-mark-empty" aria-hidden="true" />}
           </label>
           <div className="operation-info">
             <div className="operation-counterparty">
@@ -38,7 +40,7 @@ export default function OperationRow({ operation, checked, onCheck }: { operatio
               </div>
             </div>
             <div className="operation-status"><span>{operation.status}</span></div>
-            <div className={`operation-amount${operation.positive ? " positive" : ""}`}>{operation.amount}</div>
+            <div className={`operation-amount${operation.positive ? " positive" : ""}`}>{`${operation.amount}\u2009`}</div>
           </div>
           <button className="icon-button operation-more" type="button" aria-label="Действия с операцией"><Icon name="ops-table-da23c.svg" /></button>
         </div>

@@ -2,7 +2,7 @@
 /* HTTP and browser smoke checks. Pass --http-only for a partial check. */
 
 import { resolve } from "node:path";
-import { pathToFileURL } from "node:url";
+import { verifyStatic } from "./verify-static.mjs";
 
 const BASE = (process.argv.slice(2).find((arg) => !arg.startsWith("--")) ?? "http://localhost:3001").replace(/\/$/, "");
 let failures = 0;
@@ -80,24 +80,9 @@ if (chromium) {
     else ok(`${route}: 0 битых <img>`);
 
   }
-  const staticPage = await browser.newPage({ reducedMotion: "reduce" });
-  staticPage.setDefaultTimeout(8000);
-  staticPage.on("console", (message) => { if (message.type() === "error") consoleErrors.push(message.text()); });
-  staticPage.on("pageerror", (error) => consoleErrors.push(String(error)));
-  staticPage.on("requestfailed", (request) => bad(`Статика: ${request.url()} не загрузился`));
   try {
-    await staticPage.goto(pathToFileURL(resolve("static-dist/index.html")).href);
-    await staticPage.locator(".entry-alt-btn").first().click();
-    await staticPage.locator(".entry-role-card-pred").click();
-    await staticPage.locator(".entry-setup").waitFor();
-    await staticPage.locator(".dashboard-page").waitFor();
-    await staticPage.getByRole("button", { name: "Сводка" }).click();
-    await staticPage.keyboard.press("/");
-    await staticPage.getByRole("dialog").waitFor();
-    await staticPage.keyboard.press("Escape");
-    await staticPage.evaluate(() => { location.hash = "/accountant"; });
-    await staticPage.locator(".cur-content").waitFor();
-    ok("Статика: вход, роль, настройка, сводка, имя клиента и бухгалтер");
+    await verifyStatic(browser, resolve("static-dist/index.html"));
+    ok("Статика: вход, вкладки, имя клиента, смена компании и роли, скрытие сумм и выход");
   } catch (error) {
     bad(`Статика: ${error.message}`);
   }

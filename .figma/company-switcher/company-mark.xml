@@ -1,0 +1,15 @@
+<instance id="I238:29748;32738:240608" name="IconView" x="348" y="0" width="48" height="48">
+  <frame id="I238:29748;32738:240608;448:17259" name="Content" x="0" y="0" width="48" height="48">
+    <frame id="I238:29748;32738:240608;448:17260" name="BottomAddon" x="35" y="35" width="20" height="20" hidden="true" />
+    <frame id="I238:29748;32738:240608;448:17262" name="TopAddon" x="35" y="-7" width="20" height="20" hidden="true" />
+    <instance id="I238:29748;32738:240608;448:17264" name="Indicator" x="41" y="-1" width="8" height="8" hidden="true" />
+    <boolean-operation id="I238:29748;32738:240608;448:17265" name="Shape" x="0" y="0" width="48" height="48" />
+    <frame id="I238:29748;32738:240608;448:17270" name="ShapeContent" x="0" y="0" width="48" height="48">
+      <rounded-rectangle id="I238:29748;32738:240608;448:17271" name="BgColor" x="0" y="0" width="48" height="48" />
+      <rounded-rectangle id="I238:29748;32738:240608;448:17272" name="BgImg" x="0" y="0" width="48" height="48" hidden="true" />
+      <text id="I238:29748;32738:240608;448:32082" name="Text" x="0" y="0" width="48" height="48" hidden="true" />
+      <instance id="I238:29748;32738:240608;448:31937" name="🔩 Content" x="12" y="12" width="24" height="24" />
+      <boolean-operation id="I238:29748;32738:240608;448:17275" name="Border" x="0" y="0" width="48" height="48" hidden="true" />
+    </frame>
+  </frame>
+</instance>

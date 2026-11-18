@@ -1,0 +1,335 @@
+{
+  "missed": [],
+  "measured": {
+    ".tasks-cards": {
+      "x": 0,
+      "y": 0,
+      "width": 972,
+      "height": 344,
+      "top": 0,
+      "right": 972,
+      "bottom": 344,
+      "left": 0
+    },
+    ".tasks-cards-header": {
+      "x": 0,
+      "y": 0,
+      "width": 972,
+      "height": 32,
+      "top": 0,
+      "right": 972,
+      "bottom": 32,
+      "left": 0
+    },
+    ".tasks-cards-controls": {
+      "x": 777,
+      "y": 0,
+      "width": 195,
+      "height": 32,
+      "top": 0,
+      "right": 972,
+      "bottom": 32,
+      "left": 777
+    },
+    ".tasks-cards-every-task": {
+      "x": 777,
+      "y": 0,
+      "width": 123,
+      "height": 32,
+      "top": 0,
+      "right": 900,
+      "bottom": 32,
+      "left": 777
+    },
+    ".tasks-cards-arrows": {
+      "x": 912,
+      "y": 0,
+      "width": 60,
+      "height": 32,
+      "top": 0,
+      "right": 972,
+      "bottom": 32,
+      "left": 912
+    },
+    ".tasks-cards-arrows > button:last-child": {
+      "x": 946,
+      "y": 6,
+      "width": 20,
+      "height": 20,
+      "top": 6,
+      "right": 966,
+      "bottom": 26,
+      "left": 946
+    },
+    ".tasks-cards-body": {
+      "x": 0,
+      "y": 56,
+      "width": 972,
+      "height": 288,
+      "top": 56,
+      "right": 972,
+      "bottom": 344,
+      "left": 0
+    },
+    ".tasks-cards-important": {
+      "x": 0,
+      "y": 56,
+      "width": 316,
+      "height": 288,
+      "top": 56,
+      "right": 316,
+      "bottom": 344,
+      "left": 0
+    },
+    ".tasks-cards-signal": {
+      "x": 10,
+      "y": 66,
+      "width": 296,
+      "height": 92,
+      "top": 66,
+      "right": 306,
+      "bottom": 158,
+      "left": 10
+    },
+    ".tasks-cards-signal-copy": {
+      "x": 20,
+      "y": 76,
+      "width": 240,
+      "height": 72,
+      "top": 76,
+      "right": 260,
+      "bottom": 148,
+      "left": 20
+    },
+    ".tasks-cards-signal .tasks-cards-count": {
+      "x": 276,
+      "y": 76,
+      "width": 20,
+      "height": 20,
+      "top": 76,
+      "right": 296,
+      "bottom": 96,
+      "left": 276
+    },
+    ".tasks-cards-rows": {
+      "x": 10,
+      "y": 174,
+      "width": 296,
+      "height": 160,
+      "top": 174,
+      "right": 306,
+      "bottom": 334,
+      "left": 10
+    },
+    ".tasks-cards-row:nth-child(1)": {
+      "x": 10,
+      "y": 174,
+      "width": 296,
+      "height": 40,
+      "top": 174,
+      "right": 306,
+      "bottom": 214,
+      "left": 10
+    },
+    ".tasks-cards-row:nth-child(2)": {
+      "x": 10,
+      "y": 214,
+      "width": 296,
+      "height": 40,
+      "top": 214,
+      "right": 306,
+      "bottom": 254,
+      "left": 10
+    },
+    ".tasks-cards-row:nth-child(3)": {
+      "x": 10,
+      "y": 254,
+      "width": 296,
+      "height": 40,
+      "top": 254,
+      "right": 306,
+      "bottom": 294,
+      "left": 10
+    },
+    ".tasks-cards-row:nth-child(4)": {
+      "x": 10,
+      "y": 294,
+      "width": 296,
+      "height": 40,
+      "top": 294,
+      "right": 306,
+      "bottom": 334,
+      "left": 10
+    },
+    ".tasks-cards-column:nth-child(2)": {
+      "x": 328,
+      "y": 56,
+      "width": 316,
+      "height": 288,
+      "top": 56,
+      "right": 644,
+      "bottom": 344,
+      "left": 328
+    },
+    ".tasks-cards-column:nth-child(3)": {
+      "x": 656,
+      "y": 56,
+      "width": 316,
+      "height": 288,
+      "top": 56,
+      "right": 972,
+      "bottom": 344,
+      "left": 656
+    },
+    ".tasks-cards-column:nth-child(2) .tasks-cards-task:nth-child(1)": {
+      "x": 328,
+      "y": 56,
+      "width": 316,
+      "height": 88,
+      "top": 56,
+      "right": 644,
+      "bottom": 144,
+      "left": 328
+    },
+    ".tasks-cards-column:nth-child(2) .tasks-cards-task:nth-child(2)": {
+      "x": 328,
+      "y": 156,
+      "width": 316,
+      "height": 88,
+      "top": 156,
+      "right": 644,
+      "bottom": 244,
+      "left": 328
+    },
+    ".tasks-cards-column:nth-child(2) .tasks-cards-task:nth-child(3)": {
+      "x": 328,
+      "y": 256,
+      "width": 316,
+      "height": 88,
+      "top": 256,
+      "right": 644,
+      "bottom": 344,
+      "left": 328
+    },
+    ".tasks-cards-column:nth-child(3) .tasks-cards-task:nth-child(1)": {
+      "x": 656,
+      "y": 56,
+      "width": 316,
+      "height": 88,
+      "top": 56,
+      "right": 972,
+      "bottom": 144,
+      "left": 656
+    },
+    ".tasks-cards-column:nth-child(3) .tasks-cards-task:nth-child(2)": {
+      "x": 656,
+      "y": 156,
+      "width": 316,
+      "height": 88,
+      "top": 156,
+      "right": 972,
+      "bottom": 244,
+      "left": 656
+    },
+    ".tasks-cards-column:nth-child(3) .tasks-cards-task:nth-child(3)": {
+      "x": 656,
+      "y": 256,
+      "width": 316,
+      "height": 88,
+      "top": 256,
+      "right": 972,
+      "bottom": 344,
+      "left": 656
+    },
+    ".tasks-cards-row:nth-child(1) .tasks-cards-row-label": {
+      "x": 20,
+      "y": 184,
+      "width": 124,
+      "height": 20,
+      "top": 184,
+      "right": 144,
+      "bottom": 204,
+      "left": 20
+    },
+    ".tasks-cards-row:nth-child(1) .tasks-cards-amount": {
+      "x": 160,
+      "y": 184,
+      "width": 100,
+      "height": 20,
+      "top": 184,
+      "right": 260,
+      "bottom": 204,
+      "left": 160
+    },
+    ".tasks-cards-row:nth-child(1) .tasks-cards-count": {
+      "x": 276,
+      "y": 184,
+      "width": 20,
+      "height": 20,
+      "top": 184,
+      "right": 296,
+      "bottom": 204,
+      "left": 276
+    },
+    ".tasks-cards-row:nth-child(2) .tasks-cards-row-label": {
+      "x": 20,
+      "y": 224,
+      "width": 152,
+      "height": 20,
+      "top": 224,
+      "right": 172,
+      "bottom": 244,
+      "left": 20
+    },
+    ".tasks-cards-row:nth-child(2) .tasks-cards-amount": {
+      "x": 188,
+      "y": 224,
+      "width": 72,
+      "height": 20,
+      "top": 224,
+      "right": 260,
+      "bottom": 244,
+      "left": 188
+    },
+    ".tasks-cards-row:nth-child(2) .tasks-cards-count": {
+      "x": 276,
+      "y": 224,
+      "width": 20,
+      "height": 20,
+      "top": 224,
+      "right": 296,
+      "bottom": 244,
+      "left": 276
+    },
+    ".tasks-cards-row:nth-child(3) .tasks-cards-row-label": {
+      "x": 20,
+      "y": 264,
+      "width": 152,
+      "height": 20,
+      "top": 264,
+      "right": 172,
+      "bottom": 284,
+      "left": 20
+    },
+    ".tasks-cards-row:nth-child(3) .tasks-cards-amount": {
+      "x": 188,
+      "y": 264,
+      "width": 72,
+      "height": 20,
+      "top": 264,
+      "right": 260,
+      "bottom": 284,
+      "left": 188
+    },
+    ".tasks-cards-row:nth-child(3) .tasks-cards-count": {
+      "x": 276,
+      "y": 264,
+      "width": 20,
+      "height": 20,
+      "top": 264,
+      "right": 296,
+      "bottom": 284,
+      "left": 276
+    }
+  }
+}

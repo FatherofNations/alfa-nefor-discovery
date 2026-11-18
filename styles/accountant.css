@@ -21,6 +21,7 @@ body.cur { min-width: 1600px; }
   margin: 0 auto;
   padding: 32px 0 140px;
 }
+.cur-static { display: contents; }
 
 /* ══ Быстрые действия ══ */
 .cur-qa { display: flex; gap: 12px; align-items: flex-start; }
@@ -145,7 +146,7 @@ body.cur { min-width: 1600px; }
   background: #fff; border: 0.5px solid var(--nt-200); border-radius: 10px;
   box-shadow: 0 0 1px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.04), 0 12px 16px rgba(0,0,0,0.04);
 }
-.cur-seg-btn { position: relative; z-index: 1; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+.cur-seg-btn { position: relative; z-index: 1; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; padding: 0; }
 .cur-seg-btn img { width: 28px; height: 28px; }
 .cur-tablo-gear { width: 20px; height: 20px; opacity: 0.6; }
 .cur-tablo-gear img { width: 20px; height: 20px; }
@@ -301,10 +302,11 @@ body.cur { min-width: 1600px; }
 /* белый сегмент-переключатель ходит между «показать» и «скрыть»:
    позиция из геометрии сегмента (кнопка 28 + gap 12 = шаг 40) */
 .cur-seg-hl { left: calc(2px + var(--seg-i, 0) * 40px); transition: left 0.55s cubic-bezier(0.32, 0.72, 0, 1); }
+.cur-content[data-amounts-hidden="true"] .cur-seg { --seg-i: 1; }
 /* суммы скрыты (глаз перечёркнут): блюр 12px, кривые из canon.css */
 .cur-bal-amount, .cur-bal-sum { transition: filter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
-body.cur-amounts-hidden .cur-bal-amount,
-body.cur-amounts-hidden .cur-bal-sum { filter: blur(12px); user-select: none; }
+.cur-content[data-amounts-hidden="true"] .cur-bal-amount,
+.cur-content[data-amounts-hidden="true"] .cur-bal-sum { filter: blur(12px); user-select: none; }
 @media (prefers-reduced-motion: reduce) {
   .cur-seg-hl, .cur-tab, .cur-bal-amount, .cur-bal-sum { transition: none; }
 }

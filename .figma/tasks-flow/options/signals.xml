@@ -1,0 +1,42 @@
+<instance id="271:28357" name="[D] OptionList" x="792" y="678" width="240" height="314">
+  <slot id="I271:28357;121470:2183" name="HeaderContent" x="0" y="6" width="280" height="40" hidden="true" />
+  <slot id="I271:28357;121328:27152" name="Body" x="10" y="10" width="220" height="294">
+    <frame id="I271:28357;121328:27152;271:28332" name="Signals List" x="0" y="0" width="220" height="294">
+      <frame id="I271:28357;121328:27152;271:28333" name="Card" x="0" y="0" width="220" height="92">
+        <instance id="I271:28357;121328:27152;271:28334" name="Addon" x="10" y="10" width="93" height="20" />
+        <frame id="I271:28357;121328:27152;271:28335" name="TextInfo" x="10" y="42" width="200" height="40">
+          <instance id="I271:28357;121328:27152;271:28336" name="Text" x="0" y="0" width="200" height="20" />
+          <instance id="I271:28357;121328:27152;271:28337" name="Text" x="0" y="24" width="71" height="16" />
+        </frame>
+      </frame>
+      <frame id="I271:28357;121328:27152;271:28338" name="Divider Frame" x="0" y="92" width="220" height="9">
+        <instance id="I271:28357;121328:27152;271:28339" name="Divider" x="0" y="4" width="220" height="1" />
+      </frame>
+      <frame id="I271:28357;121328:27152;271:28340" name="Card" x="0" y="101" width="220" height="92">
+        <instance id="I271:28357;121328:27152;271:28341" name="RowValue" x="10" y="10" width="78" height="20" />
+        <frame id="I271:28357;121328:27152;271:28342" name="TextInfo" x="10" y="42" width="200" height="40">
+          <instance id="I271:28357;121328:27152;271:28343" name="Text" x="0" y="0" width="200" height="20" />
+          <frame id="I271:28357;121328:27152;271:28344" name="Caption" x="0" y="24" width="200" height="16">
+            <instance id="I271:28357;121328:27152;271:28345" name="Text" x="0" y="0" width="139" height="16" />
+          </frame>
+        </frame>
+      </frame>
+      <frame id="I271:28357;121328:27152;271:28346" name="Divider Frame" x="0" y="193" width="220" height="9">
+        <instance id="I271:28357;121328:27152;271:28347" name="Divider" x="0" y="4" width="220" height="1" />
+      </frame>
+      <frame id="I271:28357;121328:27152;271:28348" name="Card" x="0" y="202" width="220" height="92">
+        <instance id="I271:28357;121328:27152;271:28349" name="RowValue" x="10" y="10" width="60" height="20" />
+        <frame id="I271:28357;121328:27152;271:28350" name="TextInfo" x="10" y="42" width="200" height="40">
+          <instance id="I271:28357;121328:27152;271:28351" name="Text" x="0" y="0" width="200" height="20" />
+          <frame id="I271:28357;121328:27152;271:28352" name="Caption" x="0" y="24" width="200" height="16">
+            <instance id="I271:28357;121328:27152;271:28353" name="Text" x="0" y="0" width="73" height="16" />
+            <instance id="I271:28357;121328:27152;271:28354" name="Text" x="75" y="0" width="4" height="16" />
+            <instance id="I271:28357;121328:27152;271:28355" name="Amount" x="81" y="0" width="95" height="16" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <instance id="I271:28357;121328:27152;271:28356" name="Scrollbar" x="218" y="0" width="10" height="180" hidden="true" />
+  </slot>
+  <slot id="I271:28357;121470:2200" name="FooterContent" x="0" y="310" width="280" height="40" hidden="true" />
+</instance>

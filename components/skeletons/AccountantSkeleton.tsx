@@ -1,4 +1,3 @@
-import BodyClass from "@/components/BodyClass";
 import AppChrome from "@/components/chrome/AppChrome";
 import AssistantBar from "@/components/chrome/AssistantBar";
 import Skeleton from "./Skeleton";
@@ -16,7 +15,6 @@ const TAB_WIDTHS = [144, 79, 182, 159];
 export default function AccountantSkeleton() {
   return (
     <div className="sk-page" aria-busy="true" aria-label="Загрузка главной">
-      <BodyClass name="cur" />
       <AppChrome personLabel="Бухгалтер" />
 
       <main className="cur-main">

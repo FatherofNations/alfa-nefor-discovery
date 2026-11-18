@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import BodyClass from "@/components/BodyClass";
 import AppChrome from "@/components/chrome/AppChrome";
 import AssistantBar from "@/components/chrome/AssistantBar";
-import { ACCOUNTANT_HTML } from "./accountantHtml";
+import { ACCOUNTANT_CARDS_HTML, ACCOUNTANT_FEED_HTML, ACCOUNTANT_OVERVIEW_HTML } from "./accountantHtml";
 import { hasEntered, resetEntry, setEntryRole } from "@/lib/entry-session";
 
 /* Дашборд бухгалтера — byte-perfect партиал из пресета @Main.
@@ -13,37 +13,27 @@ import { hasEntered, resetEntry, setEntryRole } from "@/lib/entry-session";
    на отдельном роуте /accountant: у бухгалтера другой каркас (меню 248,
    шапка 56), поэтому основная главная не подмешивается. */
 
+// Предпочтение сохраняется при смене вида главной в пределах открытого документа.
+let amountsHidden = false;
+const amountListeners = new Set<() => void>();
+const readAmountsHidden = () => amountsHidden;
+const readInitialAmountsHidden = () => false;
+
+function subscribeAmountsHidden(listener: () => void) {
+  amountListeners.add(listener);
+  return () => { amountListeners.delete(listener); };
+}
+
+function setAmountsHidden(hidden: boolean) {
+  amountsHidden = hidden;
+  for (const listener of amountListeners) listener();
+}
+
 export default function AccountantPage() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const root = document.querySelector(".cur-content");
-    if (!root) return;
-    const onClick = (event: Event) => {
-      const target = event.target as Element;
-      /* табы «С чего начать»/«Сводка» — некликабельные: по нажатию ничего не
-         меняется (ни активное состояние, ни текст) */
-      const segBtn = target.closest(".cur-seg-btn");
-      if (segBtn) {
-        const buttons = [...document.querySelectorAll(".cur-seg-btn")];
-        const hide = buttons.indexOf(segBtn) === 1;
-        document.body.classList.toggle("cur-amounts-hidden", hide);
-        document.querySelector<HTMLElement>(".cur-seg")?.style.setProperty("--seg-i", hide ? "1" : "0");
-      }
-    };
-    root.addEventListener("click", onClick);
-    return () => root.removeEventListener("click", onClick);
-  }, []);
-
-  useEffect(() => {
-    const chip = document.querySelector<HTMLButtonElement>(".gate-content .chrome-person") ?? document.querySelector<HTMLButtonElement>(".chrome-person");
-    if (!chip) return;
-    const onChip = () => setMenuOpen((open) => !open);
-    chip.addEventListener("click", onChip);
-    return () => chip.removeEventListener("click", onChip);
-  }, []);
+  const hideAmounts = useSyncExternalStore(subscribeAmountsHidden, readAmountsHidden, readInitialAmountsHidden);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -77,23 +67,43 @@ export default function AccountantPage() {
     if (!hasEntered()) router.replace("/login");
   }, [router]);
 
-  useEffect(() => {
-    const exit = document.querySelector<HTMLButtonElement>('.chrome-header [aria-label="Выйти"]');
-    if (!exit) return;
-    const onExit = () => {
-      resetEntry();
-      router.push("/login");
-    };
-    exit.addEventListener("click", onExit);
-    return () => exit.removeEventListener("click", onExit);
-  }, [router]);
+  const logout = () => {
+    resetEntry();
+    router.push("/login");
+  };
 
   return (
     <>
       <BodyClass name="cur" />
-      <AppChrome personLabel="Бухгалтер" />
+      <AppChrome personLabel="Бухгалтер" roleMenuOpen={menuOpen} onRoleClick={() => setMenuOpen((open) => !open)} onLogout={logout} />
       <main className="cur-main">
-        <div className="cur-content" dangerouslySetInnerHTML={{ __html: ACCOUNTANT_HTML }} />
+        <div className="cur-content" data-amounts-hidden={hideAmounts}>
+          <div className="cur-static" dangerouslySetInnerHTML={{ __html: ACCOUNTANT_OVERVIEW_HTML }} />
+          <section className="cur-tablo-section">
+            <div className="cur-tablo">
+              <div className="cur-tablo-tabs">
+                <span className="cur-tab active">С чего начать</span>
+                <span className="cur-tab">Сводка</span>
+                <span className="cur-tab">Счета на главной</span>
+                <span className="cur-tab">Обзор отрасли</span>
+              </div>
+              <div className="cur-tablo-ctrl">
+                <div className="cur-seg">
+                  <span className="cur-seg-hl" />
+                  <button className="cur-seg-btn" type="button" aria-label="Показать суммы" aria-pressed={!hideAmounts} onClick={() => setAmountsHidden(false)}>
+                    <img src="/assets/accountant/curTabloEye.svg" width="28" height="28" alt="" />
+                  </button>
+                  <button className="cur-seg-btn" type="button" aria-label="Скрыть суммы" aria-pressed={hideAmounts} onClick={() => setAmountsHidden(true)}>
+                    <img src="/assets/accountant/curTabloEyeOff.svg" width="28" height="28" alt="" />
+                  </button>
+                </div>
+                <span className="cur-tablo-gear"><img src="/assets/accountant/curTabloGear.svg" width="20" height="20" alt="" /></span>
+              </div>
+            </div>
+            <div className="cur-cards" dangerouslySetInnerHTML={{ __html: ACCOUNTANT_CARDS_HTML }} />
+          </section>
+          <div className="cur-static" dangerouslySetInnerHTML={{ __html: ACCOUNTANT_FEED_HTML }} />
+        </div>
       </main>
       <AssistantBar label="Alpha Intellect" />
 

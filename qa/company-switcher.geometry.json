@@ -1,0 +1,432 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "source": {
+    "frame": "238:29683",
+    "frameName": "SidePanelDesktop / Single",
+    "dumps": [
+      {
+        "file": "panel-tree.xml",
+        "root": "238:29683",
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "generatedAt": "2026-11-18T01:02:22.836Z"
+  },
+  "elements": [
+    {
+      "selector": ".company-switcher",
+      "node": "238:29742",
+      "name": "[D] UniversalMoadal",
+      "figma": {
+        "x": 928,
+        "y": 12,
+        "w": 500,
+        "h": 876
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-header",
+      "node": "238:29743",
+      "name": "[D] UniversalModalHeader",
+      "figma": {
+        "x": 928,
+        "y": 12,
+        "w": 500,
+        "h": 68
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-close",
+      "node": "I238:29743;50305:25080;50305:25386",
+      "name": "Cross",
+      "figma": {
+        "x": 1360,
+        "y": 32,
+        "w": 48,
+        "h": 48
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-close img",
+      "node": "I238:29743;50305:25080;50305:25388",
+      "name": "Fixer",
+      "figma": {
+        "x": 1372,
+        "y": 44,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-body",
+      "node": "238:29744",
+      "name": "[D] UniversalModalBody",
+      "figma": {
+        "x": 928,
+        "y": 80,
+        "w": 500,
+        "h": 808
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-current",
+      "node": "238:29748",
+      "name": "Company Card Cell",
+      "figma": {
+        "x": 960,
+        "y": 96,
+        "w": 436,
+        "h": 293
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-details",
+      "node": "I238:29748;32738:240603",
+      "name": "Company",
+      "figma": {
+        "x": 980,
+        "y": 116,
+        "w": 396,
+        "h": 108
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-current-head",
+      "node": "I238:29748;32738:240604",
+      "name": "Header",
+      "figma": {
+        "x": 980,
+        "y": 116,
+        "w": 396,
+        "h": 48
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-mark",
+      "node": "I238:29748;32738:240608",
+      "name": "IconView",
+      "figma": {
+        "x": 1328,
+        "y": 116,
+        "w": 48,
+        "h": 48
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-mark img",
+      "node": "I238:29748;32738:240608;448:31937",
+      "name": "🔩 Content",
+      "figma": {
+        "x": 1340,
+        "y": 128,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-fields",
+      "node": "I238:29748;32738:240609",
+      "name": "Frame 2131329483",
+      "figma": {
+        "x": 980,
+        "y": 176,
+        "w": 396,
+        "h": 48
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-fields > div:first-child",
+      "node": "I238:29748;32738:240610",
+      "name": "ID",
+      "figma": {
+        "x": 980,
+        "y": 176,
+        "w": 396,
+        "h": 20
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-fields > div:nth-child(2)",
+      "node": "I238:29748;32738:240613",
+      "name": "ID",
+      "figma": {
+        "x": 980,
+        "y": 204,
+        "w": 396,
+        "h": 20
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-divider",
+      "node": "I238:29748;32738:240616",
+      "name": "Divider",
+      "figma": {
+        "x": 980,
+        "y": 244,
+        "w": 396,
+        "h": 1
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-links",
+      "node": "I238:29748;32738:240617",
+      "name": "Llinks",
+      "figma": {
+        "x": 980,
+        "y": 265,
+        "w": 396,
+        "h": 104
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-link:first-child",
+      "node": "I238:29748;32738:240618",
+      "name": "Profile",
+      "figma": {
+        "x": 980,
+        "y": 265,
+        "w": 396,
+        "h": 44
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-link:first-child img",
+      "node": "I238:29748;32738:240623;91406:8830",
+      "name": "Wrapper",
+      "figma": {
+        "x": 1352,
+        "y": 275,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-link:nth-child(2)",
+      "node": "I238:29748;32738:240624",
+      "name": "Tariff",
+      "figma": {
+        "x": 980,
+        "y": 325,
+        "w": 396,
+        "h": 44
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-link:nth-child(2) img",
+      "node": "I238:29748;32738:240629;91406:8830",
+      "name": "Wrapper",
+      "figma": {
+        "x": 1352,
+        "y": 335,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list-section",
+      "node": "238:29772",
+      "name": "Body",
+      "figma": {
+        "x": 960,
+        "y": 413,
+        "w": 436,
+        "h": 620
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list-head",
+      "node": "238:29773",
+      "name": "CompanyListHeader",
+      "figma": {
+        "x": 960,
+        "y": 413,
+        "w": 436,
+        "h": 84
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list-head h3",
+      "node": "I238:29773;32738:240672",
+      "name": "Title",
+      "figma": {
+        "x": 960,
+        "y": 413,
+        "w": 436,
+        "h": 48
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list",
+      "node": "238:29774",
+      "name": "Companies",
+      "figma": {
+        "x": 960,
+        "y": 517,
+        "w": 436,
+        "h": 516
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(1) button",
+      "node": "238:29775",
+      "name": "Company_card",
+      "figma": {
+        "x": 960,
+        "y": 517,
+        "w": 436,
+        "h": 120
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(2) button",
+      "node": "238:29776",
+      "name": "Company_card",
+      "figma": {
+        "x": 960,
+        "y": 649,
+        "w": 436,
+        "h": 120
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(3) button",
+      "node": "238:29777",
+      "name": "Company_card",
+      "figma": {
+        "x": 960,
+        "y": 781,
+        "w": 436,
+        "h": 120
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(4) button",
+      "node": "238:29778",
+      "name": "Company_card",
+      "figma": {
+        "x": 960,
+        "y": 913,
+        "w": 436,
+        "h": 120
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(1) button .company-switcher-option-name",
+      "node": "I238:29775;32790:76491;55413:72952",
+      "name": "🔩 MiddleContentSlot",
+      "figma": {
+        "x": 980,
+        "y": 533,
+        "w": 400,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(1) button .company-switcher-option-inn",
+      "node": "I238:29775;32790:76491;55413:73094",
+      "name": "🔩 MiddleContentSlot",
+      "figma": {
+        "x": 980,
+        "y": 561,
+        "w": 400,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(1) button .company-switcher-amounts",
+      "node": "I238:29775;32790:76491;55413:73113",
+      "name": "to-do",
+      "figma": {
+        "x": 980,
+        "y": 589,
+        "w": 400,
+        "h": 28
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(2) button .company-switcher-option-name",
+      "node": "I238:29776;32790:26426;55413:72952",
+      "name": "🔩 MiddleContentSlot",
+      "figma": {
+        "x": 980,
+        "y": 665,
+        "w": 400,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(2) button .company-switcher-option-inn",
+      "node": "I238:29776;32790:26426;55413:73094",
+      "name": "🔩 MiddleContentSlot",
+      "figma": {
+        "x": 980,
+        "y": 693,
+        "w": 400,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(2) button .company-switcher-amounts",
+      "node": "I238:29776;32790:26426;55413:73113",
+      "name": "to-do",
+      "figma": {
+        "x": 980,
+        "y": 721,
+        "w": 400,
+        "h": 28
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".company-switcher-scroll-thumb",
+      "node": "I238:29780;603:56566",
+      "name": "kolbaska",
+      "figma": {
+        "x": 1421,
+        "y": 630,
+        "w": 4,
+        "h": 196
+      },
+      "tol": 0
+    }
+  ]
+}

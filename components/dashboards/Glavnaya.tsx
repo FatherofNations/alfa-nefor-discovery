@@ -9,6 +9,7 @@ import { AccountsPanel, SummaryPanel, TariffsPanel } from "@/components/dashboar
 import { hasEntered, resetEntry } from "@/lib/entry-session";
 import { useClientName } from "@/lib/client-name";
 import AssistantBar from "@/components/chrome/AssistantBar";
+import CompanySwitcher from "@/components/chrome/CompanySwitcher";
 import OperationRow from "./OperationRow";
 import TasksWidget from "./TasksWidget";
 import AssistantHome from "@/components/dashboards/AssistantHome";
@@ -765,10 +766,14 @@ export default function Glavnaya() {
           <button className="icon-button" type="button" aria-label="Уведомления"><img src={asset("notifications-icon.svg")} alt="" /></button>
         </div>
         <span className="vertical-divider" />
-        <button className="company-account" type="button">
-          <span className="account-avatar"><img src="/assets/figma/avatar-photo.png" alt="" /></span>
-          <span><strong>ООО «Город Нагатино»</strong><small>{clientName.headerLabel}</small></span>
-        </button>
+        <CompanySwitcher className="company-account">
+          {(companyName) => (
+            <>
+              <span className="account-avatar"><img src="/assets/figma/avatar-photo.png" alt="" /></span>
+              <span><strong>{companyName}</strong><small>{clientName.headerLabel}</small></span>
+            </>
+          )}
+        </CompanySwitcher>
         <span className="vertical-divider" />
         <RoleChip role={role} open={roleOpen} onToggle={() => setRoleOpen((open) => !open)} triggerRef={roleTriggerRef} />
         <span className="vertical-divider" />
@@ -955,16 +960,19 @@ export default function Glavnaya() {
                 <button className="icon-button" data-flip="notif" type="button" aria-label="Уведомления"><img src={asset("notifications-icon.svg")} alt="" /></button>
               </div>
               <span className="ai-divider" data-flip="div1" />
-              <button className="ai-account" data-flip="account" type="button" aria-label={`Аккаунт: ООО «Город Нагатино», ${clientName.headerLabel}`}>
-                {/* v11: аккаунт тот же, что в шапке дашборда (аватар и clientName.headerLabel), без кроссфейда */}
-                <span className="ai-av">
-                  <span className="account-avatar ai-av-from" aria-hidden="true"><img src="/assets/figma/avatar-photo.png" alt="" /></span>
-                </span>
-                <span className="ai-account-copy">
-                  <strong>ООО «Город Нагатино»</strong>
-                  <span className="ai-sub"><small className="ai-sub-from">{clientName.headerLabel}</small></span>
-                </span>
-              </button>
+              <CompanySwitcher className="ai-account" flipKey="account">
+                {(companyName) => (
+                  <>
+                    <span className="ai-av">
+                      <span className="account-avatar ai-av-from" aria-hidden="true"><img src="/assets/figma/avatar-photo.png" alt="" /></span>
+                    </span>
+                    <span className="ai-account-copy">
+                      <strong>{companyName}</strong>
+                      <span className="ai-sub"><small className="ai-sub-from">{clientName.headerLabel}</small></span>
+                    </span>
+                  </>
+                )}
+              </CompanySwitcher>
               <span className="ai-divider" data-flip="div2" />
               <span className="ai-role" data-flip="role"><RoleChip role={role} open={false} onToggle={() => {}} triggerRef={assistantGhostRef} /></span>
               <span className="ai-divider" data-flip="div3" />

@@ -1,0 +1,78 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "dir": ".figma/company-switcher",
+  "frame": ".figma/company-switcher/reference-full.png",
+  "fixture": "qa/company-switcher.geometry.json",
+  "elements": [
+    {
+      "name": "close-glyph",
+      "selector": ".company-switcher-close img",
+      "node": "I238:29743;50305:25080;50305:25388",
+      "ref": "frame"
+    },
+    {
+      "name": "company-mark",
+      "selector": ".company-switcher-mark",
+      "node": "I238:29748;32738:240608",
+      "ref": "frame"
+    },
+    {
+      "name": "briefcase-glyph",
+      "selector": ".company-switcher-mark img",
+      "node": "I238:29748;32738:240608;448:31937",
+      "ref": "frame"
+    },
+    {
+      "name": "profile-chevron",
+      "selector": ".company-switcher-link:first-child img",
+      "node": "I238:29748;32738:240623;91406:8830",
+      "ref": "frame"
+    },
+    {
+      "name": "tariff-chevron",
+      "selector": ".company-switcher-link:nth-child(2) img",
+      "node": "I238:29748;32738:240629;91406:8830",
+      "ref": "frame"
+    },
+    {
+      "name": "divider",
+      "selector": ".company-switcher-divider",
+      "node": "I238:29748;32738:240616",
+      "ref": "frame"
+    },
+    {
+      "name": "current-company",
+      "selector": ".company-switcher-current",
+      "node": "238:29748",
+      "ref": "frame"
+    },
+    {
+      "name": "list-header",
+      "selector": ".company-switcher-list-head",
+      "node": "238:29773",
+      "ref": "frame"
+    },
+    {
+      "name": "selected-company",
+      "selector": ".company-switcher-list li:nth-child(1) button",
+      "node": "238:29775",
+      "ref": "frame"
+    },
+    {
+      "name": "other-company",
+      "selector": ".company-switcher-list li:nth-child(2) button",
+      "node": "238:29776",
+      "ref": "frame"
+    },
+    {
+      "name": "scroll-thumb",
+      "selector": ".company-switcher-scroll-thumb",
+      "node": "I238:29780;603:56566",
+      "ref": "frame"
+    }
+  ]
+}

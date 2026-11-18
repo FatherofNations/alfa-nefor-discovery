@@ -1,0 +1,266 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1600,
+    "height": 3840
+  },
+  "comment": "Селекторы измеряются относительно .operations-table в Chrome на выборке из двух дней с четырьмя операциями из узла 59:19781. Текущие декабрьские операции проверяются отдельно, их число строк и переносы отличаются.",
+  "elements": [
+    {
+      "selector": ".operations-table",
+      "node": "59:19781"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1)",
+      "node": "59:19782"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) > .day-header",
+      "node": "59:19783"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) > .day-header h3",
+      "node": "59:19784"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) > .day-header > span",
+      "node": "59:19785"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) > div:nth-child(2)",
+      "node": "59:19786"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2)",
+      "node": "59:19850"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) > .day-header",
+      "node": "59:19851"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) > .day-header h3",
+      "node": "59:19852"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) > .day-header > span",
+      "node": "59:19853"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1)",
+      "node": "59:19787"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-main",
+      "node": "59:19788"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-content",
+      "node": "59:19789"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .checkbox",
+      "node": "59:19790"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-info",
+      "node": "59:19791"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-counterparty",
+      "node": "59:19792"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .company-logo",
+      "node": "59:19793"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-copy",
+      "node": "59:19796"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-title",
+      "node": "59:19797"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-description",
+      "node": "59:19798"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-status",
+      "node": "59:19799"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-amount",
+      "node": "59:19803"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-more",
+      "node": "59:19804"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2)",
+      "node": "59:19808"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-main",
+      "node": "59:19809"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-content",
+      "node": "59:19810"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .checkbox",
+      "node": "59:19811"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-info",
+      "node": "59:19812"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-counterparty",
+      "node": "59:19813"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .company-logo",
+      "node": "59:19814"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-copy",
+      "node": "59:19817"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-title",
+      "node": "59:19818"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-description",
+      "node": "59:19819"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-status",
+      "node": "59:19820"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-amount",
+      "node": "59:19824"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-more",
+      "node": "59:19825"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3)",
+      "node": "59:19829"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-main",
+      "node": "59:19830"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-content",
+      "node": "59:19831"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .checkbox",
+      "node": "59:19832"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-info",
+      "node": "59:19833"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-counterparty",
+      "node": "59:19834"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .company-logo",
+      "node": "59:19835"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-copy",
+      "node": "59:19838"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-title",
+      "node": "59:19839"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-description",
+      "node": "59:19840"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-status",
+      "node": "59:19841"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-amount",
+      "node": "59:19845"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-more",
+      "node": "59:19846"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1)",
+      "node": "59:19854"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-main",
+      "node": "59:19855"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-content",
+      "node": "59:19856"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .checkbox",
+      "node": "59:19857"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-info",
+      "node": "59:19858"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-counterparty",
+      "node": "59:19859"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .company-logo",
+      "node": "59:19860"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-copy",
+      "node": "59:19863"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-title",
+      "node": "59:19864"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-description",
+      "node": "59:19865"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-status",
+      "node": "59:19866"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-amount",
+      "node": "59:19870"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-more",
+      "node": "59:19871"
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:first-child .checkbox-mark",
+      "node": "I59:19790;105:21403"
+    },
+    {
+      "selector": ".operations-table > .show-more",
+      "node": "59:19875"
+    }
+  ]
+}

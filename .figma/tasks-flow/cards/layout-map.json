@@ -1,0 +1,141 @@
+{
+  "route": "/widget",
+  "viewport": {
+    "width": 1000,
+    "height": 355
+  },
+  "elements": [
+    {
+      "selector": ".tasks-cards",
+      "node": "271:27776"
+    },
+    {
+      "selector": ".tasks-cards-header",
+      "node": "271:27777"
+    },
+    {
+      "selector": ".tasks-cards-controls",
+      "node": "271:27780"
+    },
+    {
+      "selector": ".tasks-cards-every-task",
+      "node": "271:27785"
+    },
+    {
+      "selector": ".tasks-cards-arrows",
+      "node": "271:27791"
+    },
+    {
+      "selector": ".tasks-cards-arrows > button:last-child",
+      "node": "I271:27791;136846:8891;271:27790"
+    },
+    {
+      "selector": ".tasks-cards-body",
+      "node": "271:27793"
+    },
+    {
+      "selector": ".tasks-cards-important",
+      "node": "271:27820"
+    },
+    {
+      "selector": ".tasks-cards-signal",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27797"
+    },
+    {
+      "selector": ".tasks-cards-signal-copy",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27800"
+    },
+    {
+      "selector": ".tasks-cards-signal .tasks-cards-count",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27806"
+    },
+    {
+      "selector": ".tasks-cards-rows",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27809"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(1)",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27810"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(2)",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27811"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(3)",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27812"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(4)",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27813"
+    },
+    {
+      "selector": ".tasks-cards-column:nth-child(2)",
+      "node": "271:27822"
+    },
+    {
+      "selector": ".tasks-cards-column:nth-child(3)",
+      "node": "271:27832"
+    },
+    {
+      "selector": ".tasks-cards-column:nth-child(2) .tasks-cards-task:nth-child(1)",
+      "node": "271:27825"
+    },
+    {
+      "selector": ".tasks-cards-column:nth-child(2) .tasks-cards-task:nth-child(2)",
+      "node": "271:27828"
+    },
+    {
+      "selector": ".tasks-cards-column:nth-child(2) .tasks-cards-task:nth-child(3)",
+      "node": "271:27831"
+    },
+    {
+      "selector": ".tasks-cards-column:nth-child(3) .tasks-cards-task:nth-child(1)",
+      "node": "271:27837"
+    },
+    {
+      "selector": ".tasks-cards-column:nth-child(3) .tasks-cards-task:nth-child(2)",
+      "node": "271:27840"
+    },
+    {
+      "selector": ".tasks-cards-column:nth-child(3) .tasks-cards-task:nth-child(3)",
+      "node": "271:27843"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(1) .tasks-cards-row-label",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27810;101:3970"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(1) .tasks-cards-amount",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27810;107:4115"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(1) .tasks-cards-count",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27810;92:3806"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(2) .tasks-cards-row-label",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27811;101:3970"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(2) .tasks-cards-amount",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27811;107:4115"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(2) .tasks-cards-count",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27811;92:3806"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(3) .tasks-cards-row-label",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27812;101:3970"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(3) .tasks-cards-amount",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27812;107:4115"
+    },
+    {
+      "selector": ".tasks-cards-row:nth-child(3) .tasks-cards-count",
+      "node": "I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27812;92:3806"
+    }
+  ]
+}

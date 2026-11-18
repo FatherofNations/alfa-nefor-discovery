@@ -1,0 +1,10 @@
+<instance id="271:28669" name="[D] OptionList" x="792" y="789" width="240" height="204">
+  <slot id="I271:28669;121470:2183" name="HeaderContent" x="0" y="6" width="280" height="40" hidden="true" />
+  <slot id="I271:28669;121328:27152" name="Body" x="10" y="10" width="220" height="184">
+    <instance id="I271:28669;121328:27152;271:28665" name="inWorkListItem" x="0" y="0" width="220" height="40" />
+    <instance id="I271:28669;121328:27152;271:28666" name="inWorkListItem" x="0" y="40" width="220" height="40" />
+    <instance id="I271:28669;121328:27152;271:28667" name="inWorkListItem" x="0" y="80" width="220" height="40" />
+    <instance id="I271:28669;121328:27152;271:28668" name="inWorkListItem" x="0" y="120" width="220" height="64" />
+  </slot>
+  <slot id="I271:28669;121470:2200" name="FooterContent" x="0" y="310" width="280" height="40" hidden="true" />
+</instance>

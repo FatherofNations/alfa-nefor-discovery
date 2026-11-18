@@ -1,0 +1,145 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "elements": [
+    {
+      "selector": ".company-switcher",
+      "node": "238:29742"
+    },
+    {
+      "selector": ".company-switcher-header",
+      "node": "238:29743"
+    },
+    {
+      "selector": ".company-switcher-close",
+      "node": "I238:29743;50305:25080;50305:25386"
+    },
+    {
+      "selector": ".company-switcher-close img",
+      "node": "I238:29743;50305:25080;50305:25388"
+    },
+    {
+      "selector": ".company-switcher-body",
+      "node": "238:29744"
+    },
+    {
+      "selector": ".company-switcher-current",
+      "node": "238:29748"
+    },
+    {
+      "selector": ".company-switcher-details",
+      "node": "I238:29748;32738:240603"
+    },
+    {
+      "selector": ".company-switcher-current-head",
+      "node": "I238:29748;32738:240604"
+    },
+    {
+      "selector": ".company-switcher-mark",
+      "node": "I238:29748;32738:240608"
+    },
+    {
+      "selector": ".company-switcher-mark img",
+      "node": "I238:29748;32738:240608;448:31937"
+    },
+    {
+      "selector": ".company-switcher-fields",
+      "node": "I238:29748;32738:240609"
+    },
+    {
+      "selector": ".company-switcher-fields > div:first-child",
+      "node": "I238:29748;32738:240610"
+    },
+    {
+      "selector": ".company-switcher-fields > div:nth-child(2)",
+      "node": "I238:29748;32738:240613"
+    },
+    {
+      "selector": ".company-switcher-divider",
+      "node": "I238:29748;32738:240616"
+    },
+    {
+      "selector": ".company-switcher-links",
+      "node": "I238:29748;32738:240617"
+    },
+    {
+      "selector": ".company-switcher-link:first-child",
+      "node": "I238:29748;32738:240618"
+    },
+    {
+      "selector": ".company-switcher-link:first-child img",
+      "node": "I238:29748;32738:240623;91406:8830"
+    },
+    {
+      "selector": ".company-switcher-link:nth-child(2)",
+      "node": "I238:29748;32738:240624"
+    },
+    {
+      "selector": ".company-switcher-link:nth-child(2) img",
+      "node": "I238:29748;32738:240629;91406:8830"
+    },
+    {
+      "selector": ".company-switcher-list-section",
+      "node": "238:29772"
+    },
+    {
+      "selector": ".company-switcher-list-head",
+      "node": "238:29773"
+    },
+    {
+      "selector": ".company-switcher-list-head h3",
+      "node": "I238:29773;32738:240672"
+    },
+    {
+      "selector": ".company-switcher-list",
+      "node": "238:29774"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(1) button",
+      "node": "238:29775"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(2) button",
+      "node": "238:29776"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(3) button",
+      "node": "238:29777"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(4) button",
+      "node": "238:29778"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(1) button .company-switcher-option-name",
+      "node": "I238:29775;32790:76491;55413:72952"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(1) button .company-switcher-option-inn",
+      "node": "I238:29775;32790:76491;55413:73094"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(1) button .company-switcher-amounts",
+      "node": "I238:29775;32790:76491;55413:73113"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(2) button .company-switcher-option-name",
+      "node": "I238:29776;32790:26426;55413:72952"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(2) button .company-switcher-option-inn",
+      "node": "I238:29776;32790:26426;55413:73094"
+    },
+    {
+      "selector": ".company-switcher-list li:nth-child(2) button .company-switcher-amounts",
+      "node": "I238:29776;32790:26426;55413:73113"
+    },
+    {
+      "selector": ".company-switcher-scroll-thumb",
+      "node": "I238:29780;603:56566"
+    }
+  ]
+}

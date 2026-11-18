@@ -10,6 +10,7 @@
 "use client";
 
 import ChromeNavActive from "./NavActive";
+import CompanySwitcher from "./CompanySwitcher";
 import Link from "next/link";
 import { useClientName } from "@/lib/client-name";
 import { useMenuDnd } from "@/lib/menuOrder";
@@ -73,7 +74,14 @@ function Cell({ n, fixed }: { n: NavItem; fixed?: "top" | "bottom" }) {
   );
 }
 
-export default function AppChrome({ personLabel = "Предприниматель" }: { personLabel?: string }) {
+type AppChromeProps = {
+  personLabel?: string;
+  roleMenuOpen?: boolean;
+  onRoleClick?: () => void;
+  onLogout?: () => void;
+};
+
+export default function AppChrome({ personLabel = "Предприниматель", roleMenuOpen, onRoleClick, onLogout }: AppChromeProps) {
   const clientName = useClientName();
   const menu = useMenuDnd("accountant");
   return (
@@ -146,20 +154,24 @@ export default function AppChrome({ personLabel = "Предпринимател�
           </button>
         </div>
         <span className="chrome-hdiv" />
-        <div className="chrome-company">
-          <span className="chrome-co-logo" />
-          <span className="chrome-co-info">
-            <b>ООО «Город Нагатино»</b>
-            <i>{clientName.headerLabel}</i>
-          </span>
-        </div>
+        <CompanySwitcher className="chrome-company">
+          {(companyName) => (
+            <>
+              <span className="chrome-co-logo" />
+              <span className="chrome-co-info">
+                <b>{companyName}</b>
+                <i>{clientName.headerLabel}</i>
+              </span>
+            </>
+          )}
+        </CompanySwitcher>
         <span className="chrome-hdiv" />
-        <button className="chrome-person">
+        <button className="chrome-person" type="button" onClick={onRoleClick} aria-haspopup={onRoleClick ? "menu" : undefined} aria-expanded={roleMenuOpen}>
           <span className={`chrome-person-av${personLabel === "Бухгалтер" ? " chrome-person-av-accountant" : ""}`} />
           <span className="chrome-person-t">{personLabel}</span>
         </button>
         <span className="chrome-hdiv" />
-        <button className="chrome-hbtn" aria-label="Выйти">
+        <button className="chrome-hbtn" type="button" aria-label="Выйти" onClick={onLogout}>
           <img src={`${A}hdr-exit.svg`} width="20" height="20" alt="" />
         </button>
       </header>

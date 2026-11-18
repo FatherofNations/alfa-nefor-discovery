@@ -3,11 +3,34 @@
 Интерактивный прототип по Figma-макету. Создан из шаблона
 [alfa-mcp](https://github.com/FatherofNations/alfa-mcp).
 
+## Открыть прототип
+
+Распакуйте `static-dist.zip` и дважды нажмите на `static-dist/index.html`.
+Храните файлы распакованной папки вместе. Для запуска достаточно браузера,
+подключение к сети и сервер не требуются.
+
+## Собрать и проверить
+
+Используйте Node.js 22 из `.nvmrc` и npm. Для упаковки и проверки архива
+нужны команды `zip` и `unzip`.
+
 ```bash
-npm install
-npm run dev        # http://localhost:3000
-npm run verify     # parity-QA (при запущенном сервере)
+nvm use
+npm ci
+npm run build:static
+npx playwright install chromium
+npm run verify:static
 ```
+
+`build:static` создаёт папку `static-dist/` и архив `static-dist.zip`.
+`verify:static` распаковывает архив во временную папку и запускает
+`index.html` через `file://`. CI выполняет эту же проверку и сохраняет
+архив в артефактах запуска.
+
+Для работы над Next-версией запустите `npm run dev -- -p 3001`.
+На запущенном сервере `npm run verify http://localhost:3001` проверяет
+HTTP-страницы и статическую сборку из `static-dist/`. Для проверки
+только HTTP используйте `npm run verify -- --http-only`.
 
 Дальнейшие шаги после скаффолда (шрифты дизайн-системы уже установлены):
 

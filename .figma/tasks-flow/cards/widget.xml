@@ -1,0 +1,106 @@
+<frame id="271:27776" name="Frame 2147239154" x="0" y="526" width="972" height="344">
+  <frame id="271:27777" name="Заголовок" x="0" y="0" width="972" height="32">
+    <frame id="271:27778" name="Frame 2147238791" x="0" y="3" width="104" height="26">
+      <text id="271:27779" name="Title" x="0" y="0" width="104" height="26" />
+    </frame>
+    <frame id="271:27780" name="Frame 2147239920" x="777" y="0" width="195" height="32">
+      <instance id="271:27785" name="[D] BackgroundPlateSlot" x="0" y="0" width="123" height="32">
+        <slot id="I271:27785;136846:8891" name="Slot" x="8" y="8" width="103" height="16">
+          <frame id="I271:27785;136846:8891;271:27782" name="Frame 2147239921" x="0" y="0" width="103" height="16">
+            <instance id="I271:27785;136846:8891;271:27783" name="CircularProgressBar" x="0" y="0" width="16" height="16" />
+            <instance id="I271:27785;136846:8891;271:27784" name="Text" x="22" y="0" width="81" height="16" />
+          </frame>
+        </slot>
+      </instance>
+      <instance id="271:27791" name="[D] BackgroundPlateSlot" x="135" y="0" width="60" height="32">
+        <slot id="I271:27791;136846:8891" name="Slot" x="6" y="6" width="48" height="20">
+          <frame id="I271:27791;136846:8891;271:27787" name="Frame 2147239920" x="0" y="0" width="48" height="20">
+            <instance id="I271:27791;136846:8891;271:27788" name="Content" x="20" y="0" width="20" height="20" />
+            <line id="I271:27791;136846:8891;271:27789" name="Line 168" x="24" y="2" width="6.993832357693464e-7" height="16" />
+            <instance id="I271:27791;136846:8891;271:27790" name="Content" x="28" y="0" width="20" height="20" />
+          </frame>
+        </slot>
+      </instance>
+    </frame>
+  </frame>
+  <instance id="271:27792" name="↕ SpacingVertical" x="0" y="32" width="972" height="24" />
+  <frame id="271:27793" name="Block" x="0" y="56" width="972" height="288">
+    <instance id="271:27820" name="[D] BackgroundPlateSlot" x="0" y="0" width="316" height="288">
+      <slot id="I271:27820;136846:8891" name="Slot" x="0" y="0" width="316" height="288">
+        <instance id="I271:27820;136846:8891;271:27818" name="[D] BackgroundPlateSlot" x="0" y="0" width="316" height="288">
+          <slot id="I271:27820;136846:8891;271:27818;136846:8891" name="Slot" x="0" y="0" width="316" height="288">
+            <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815" name="[D] BackgroundPlateSlot" x="0" y="0" width="316" height="288">
+              <slot id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891" name="Slot" x="10" y="10" width="296" height="268">
+                <frame id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27797" name="[D] PureCell" x="0" y="0" width="296" height="92">
+                  <frame id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27798" name="Content" x="10" y="10" width="276" height="72">
+                    <frame id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27799" name="Body" x="0" y="0" width="276" height="72">
+                      <frame id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27800" name="Main" x="0" y="0" width="240" height="72">
+                        <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27801" name="Addon" x="0" y="0" width="65" height="20" />
+                        <frame id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27802" name="Frame 2147240111" x="0" y="28" width="240" height="44">
+                          <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27803" name="Text" x="0" y="0" width="240" height="20" />
+                          <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27804" name="Text" x="0" y="24" width="240" height="20" />
+                        </frame>
+                      </frame>
+                      <frame id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27805" name="Addon" x="256" y="0" width="20" height="72">
+                        <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27806" name="Addon" x="0" y="0" width="20" height="20" />
+                      </frame>
+                    </frame>
+                    <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27807" name="Footer" x="0" y="56" width="410" height="24" hidden="true" />
+                  </frame>
+                </frame>
+                <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27808" name="Divider" x="0" y="99.5" width="296" height="1" />
+                <frame id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27809" name="Content" x="0" y="108" width="296" height="160">
+                  <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27810" name="[D] PureCell" x="0" y="0" width="296" height="40" />
+                  <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27811" name="[D] PureCell" x="0" y="40" width="296" height="40" />
+                  <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27812" name="[D] PureCell" x="0" y="80" width="296" height="40" />
+                  <instance id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27813" name="[D] PureCell" x="0" y="120" width="296" height="40" />
+                </frame>
+                <vector id="I271:27820;136846:8891;271:27818;136846:8891;271:27815;136846:8891;271:27814" name="Panel Shadow" x="226.7353515625" y="-49.19921875" width="142.01815459132195" height="84.56834298372269" />
+              </slot>
+            </instance>
+            <frame id="I271:27820;136846:8891;271:27818;136846:8891;271:27816" name="Stack" x="0" y="212" width="154" height="8" hidden="true" />
+          </slot>
+        </instance>
+        <instance id="I271:27820;136846:8891;271:27819" name="Stack" x="0" y="288" width="316" height="8" />
+      </slot>
+    </instance>
+    <frame id="271:27821" name="Tasks" x="328" y="0" width="644" height="288">
+      <frame id="271:27822" name="Column" x="0" y="0" width="316" height="288">
+        <instance id="271:27825" name="[D] BackgroundPlateSlot" x="0" y="0" width="316" height="88">
+          <slot id="I271:27825;136846:8891" name="Slot" x="20" y="20" width="276" height="48">
+            <instance id="I271:27825;136846:8891;271:27824" name="[D] PureCell" x="0" y="0" width="276" height="48" />
+          </slot>
+        </instance>
+        <instance id="271:27828" name="[D] BackgroundPlateSlot" x="0" y="100" width="316" height="88">
+          <slot id="I271:27828;136846:8891" name="Slot" x="20" y="20" width="276" height="48">
+            <instance id="I271:27828;136846:8891;271:27827" name="[D] PureCell" x="0" y="0" width="276" height="48" />
+          </slot>
+        </instance>
+        <instance id="271:27831" name="[D] BackgroundPlateSlot" x="0" y="200" width="316" height="88">
+          <slot id="I271:27831;136846:8891" name="Slot" x="20" y="20" width="276" height="48">
+            <instance id="I271:27831;136846:8891;271:27830" name="[D] PureCell" x="0" y="0" width="276" height="48" />
+          </slot>
+        </instance>
+      </frame>
+      <frame id="271:27832" name="Column" x="328" y="0" width="316" height="288">
+        <instance id="271:27837" name="[D] BackgroundPlateSlot" x="0" y="0" width="316" height="88">
+          <slot id="I271:27837;136846:8891" name="Slot" x="20" y="20" width="276" height="48">
+            <instance id="I271:27837;136846:8891;271:27834" name="[D] PureCell" x="0" y="0" width="276" height="48" />
+            <instance id="I271:27837;136846:8891;271:27835" name="Content" x="220" y="26.525390625" width="82.64312399783739" height="82.64312399783739" />
+            <vector id="I271:27837;136846:8891;271:27836" name="Panel Shadow" x="333.6922607421875" y="21.564453125" width="138.01151180267334" height="101.04294157028198" />
+          </slot>
+        </instance>
+        <instance id="271:27840" name="[D] BackgroundPlateSlot" x="0" y="100" width="316" height="88">
+          <slot id="I271:27840;136846:8891" name="Slot" x="20" y="20" width="276" height="48">
+            <instance id="I271:27840;136846:8891;271:27839" name="[D] PureCell" x="0" y="0" width="276" height="48" />
+          </slot>
+        </instance>
+        <instance id="271:27843" name="[D] BackgroundPlateSlot" x="0" y="200" width="316" height="88">
+          <slot id="I271:27843;136846:8891" name="Slot" x="20" y="20" width="276" height="48">
+            <instance id="I271:27843;136846:8891;271:27842" name="[D] PureCell" x="0" y="0" width="276" height="48" />
+          </slot>
+        </instance>
+      </frame>
+    </frame>
+  </frame>
+</frame>

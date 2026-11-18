@@ -1,0 +1,141 @@
+<frame id="59:19781" name="Table" x="0" y="214" width="972" height="817">
+  <frame id="59:19782" name="Day" x="16" y="22" width="940" height="489">
+    <frame id="59:19783" name="Header" x="0" y="0" width="940" height="43">
+      <text id="59:19784" name="Title" x="16" y="0" width="908" height="22" />
+      <instance id="59:19785" name="BorderLine" x="16" y="42" width="908" height="1" />
+    </frame>
+    <frame id="59:19786" name="Body" x="0" y="43" width="940" height="446">
+      <frame id="59:19787" name="[D] BodyRow :: Basic" x="0" y="0" width="940" height="141">
+        <frame id="59:19788" name="Row" x="0" y="0" width="940" height="140">
+          <frame id="59:19789" name="Content" x="16" y="24" width="908" height="52">
+            <instance id="59:19790" name="Checkbox_24" x="0" y="0" width="24" height="24" />
+            <frame id="59:19791" name="Info" x="44" y="0" width="820" height="52">
+              <frame id="59:19792" name="Info" x="0" y="0" width="501" height="52">
+                <frame id="59:19793" name="logo" x="0" y="0" width="52" height="52">
+                  <vector id="59:19794" name="bg" x="0" y="0" width="52" height="52" />
+                  <rounded-rectangle id="59:19795" name="BgImg" x="0" y="0" width="52" height="52" />
+                </frame>
+                <frame id="59:19796" name="Frame 2147224462" x="72" y="0" width="429" height="52">
+                  <text id="59:19797" name="ООО «Умные и свободные»" x="0" y="0" width="429" height="24" />
+                  <text id="59:19798" name="Аванс по договору №51/9-12 от 27.07.2023" x="0" y="28" width="429" height="24" />
+                </frame>
+              </frame>
+              <frame id="59:19799" name="Content" x="525" y="0" width="95" height="24">
+                <instance id="59:19800" name="StatusPreset" x="0" y="2" width="88" height="20" />
+                <frame id="59:19801" name="Addon" x="58" y="4" width="16" height="16" hidden="true">
+                  <instance id="59:19802" name="IconView" x="0" y="0" width="16" height="16" />
+                </frame>
+              </frame>
+              <instance id="59:19803" name="Text" x="644" y="0" width="176" height="24" />
+            </frame>
+            <instance id="59:19804" name="dots-horizontal" x="884" y="0" width="24" height="24" />
+          </frame>
+          <frame id="59:19805" name="Number" x="16" y="92" width="299" height="24">
+            <text id="59:19806" name="№63677, Т-Банк, ·· 9909" x="116" y="0" width="183" height="24" />
+          </frame>
+        </frame>
+        <instance id="59:19807" name="BorderLine" x="0" y="140" width="940" height="1" />
+      </frame>
+      <frame id="59:19808" name="[D] BodyRow :: Basic" x="0" y="141" width="940" height="141">
+        <frame id="59:19809" name="Row" x="0" y="0" width="940" height="140">
+          <frame id="59:19810" name="Content" x="16" y="24" width="908" height="52">
+            <instance id="59:19811" name="Checkbox_24" x="0" y="0" width="24" height="24" />
+            <frame id="59:19812" name="Info" x="44" y="0" width="820" height="52">
+              <frame id="59:19813" name="Info" x="0" y="0" width="501" height="52">
+                <frame id="59:19814" name="logo" x="0" y="0" width="52" height="52">
+                  <vector id="59:19815" name="bg" x="0" y="0" width="52" height="52" />
+                  <rounded-rectangle id="59:19816" name="BgImg" x="0" y="0" width="52" height="52" />
+                </frame>
+                <frame id="59:19817" name="Frame 2147224462" x="72" y="0" width="429" height="52">
+                  <text id="59:19818" name="ИП «Костин Иван Федорович»" x="0" y="0" width="429" height="24" />
+                  <text id="59:19819" name="Перевод себе в Альфа-Банк" x="0" y="28" width="429" height="24" />
+                </frame>
+              </frame>
+              <frame id="59:19820" name="Content" x="525" y="0" width="95" height="24">
+                <instance id="59:19821" name="StatusPreset" x="0" y="2" width="88" height="20" />
+                <frame id="59:19822" name="Addon" x="58" y="4" width="16" height="16" hidden="true">
+                  <instance id="59:19823" name="IconView" x="0" y="0" width="16" height="16" />
+                </frame>
+              </frame>
+              <instance id="59:19824" name="Text" x="644" y="0" width="176" height="24" />
+            </frame>
+            <instance id="59:19825" name="dots-horizontal" x="884" y="0" width="24" height="24" />
+          </frame>
+          <frame id="59:19826" name="Number" x="16" y="92" width="299" height="24">
+            <text id="59:19827" name="№63677, Т-Банк, ·· 9909" x="116" y="0" width="183" height="24" />
+          </frame>
+        </frame>
+        <instance id="59:19828" name="BorderLine" x="0" y="140" width="940" height="1" />
+      </frame>
+      <frame id="59:19829" name="[D] BodyRow :: Basic" x="0" y="282" width="940" height="164">
+        <frame id="59:19830" name="Row" x="0" y="0" width="940" height="164">
+          <frame id="59:19831" name="Content" x="16" y="24" width="908" height="76">
+            <instance id="59:19832" name="Checkbox_24" x="0" y="0" width="24" height="24" />
+            <frame id="59:19833" name="Info" x="44" y="0" width="820" height="76">
+              <frame id="59:19834" name="Info" x="0" y="0" width="501" height="76">
+                <frame id="59:19835" name="logo" x="0" y="0" width="52" height="52">
+                  <vector id="59:19836" name="bg" x="0" y="0" width="52" height="52" />
+                  <rounded-rectangle id="59:19837" name="BgImg" x="0" y="0" width="52" height="52" />
+                </frame>
+                <frame id="59:19838" name="Frame 2147224462" x="72" y="0" width="429" height="76">
+                  <text id="59:19839" name="АО «Альфа-Банк»" x="0" y="0" width="429" height="24" />
+                  <text id="59:19840" name="Комиссия за SMS-оповещение за август 2025 Согласно тарифам Банка ИП Костин Иван Федорович" x="0" y="28" width="429" height="48" />
+                </frame>
+              </frame>
+              <frame id="59:19841" name="Content" x="525" y="0" width="95" height="24">
+                <instance id="59:19842" name="StatusPreset" x="0" y="2" width="86" height="20" />
+                <frame id="59:19843" name="Addon" x="58" y="4" width="16" height="16" hidden="true">
+                  <instance id="59:19844" name="IconView" x="0" y="0" width="16" height="16" />
+                </frame>
+              </frame>
+              <instance id="59:19845" name="Text" x="644" y="0" width="176" height="24" />
+            </frame>
+            <instance id="59:19846" name="dots-horizontal" x="884" y="0" width="24" height="24" />
+          </frame>
+          <frame id="59:19847" name="Number" x="16" y="116" width="181" height="24">
+            <text id="59:19848" name="№87896" x="116" y="0" width="65" height="24" />
+          </frame>
+        </frame>
+        <instance id="59:19849" name="BorderLine" x="0" y="164" width="1208" height="1" hidden="true" />
+      </frame>
+    </frame>
+  </frame>
+  <frame id="59:19850" name="Day" x="16" y="523" width="940" height="204">
+    <frame id="59:19851" name="Header" x="0" y="0" width="940" height="43">
+      <text id="59:19852" name="Title" x="16" y="0" width="908" height="22" />
+      <instance id="59:19853" name="BorderLine" x="16" y="42" width="908" height="1" />
+    </frame>
+    <frame id="59:19854" name="[D] BodyRow :: Basic" x="0" y="63" width="940" height="141">
+      <frame id="59:19855" name="Row" x="0" y="0" width="940" height="140">
+        <frame id="59:19856" name="Content" x="16" y="24" width="908" height="52">
+          <instance id="59:19857" name="Checkbox_24" x="0" y="0" width="24" height="24" />
+          <frame id="59:19858" name="Info" x="44" y="0" width="820" height="52">
+            <frame id="59:19859" name="Info" x="0" y="0" width="501" height="52">
+              <frame id="59:19860" name="logo" x="0" y="0" width="52" height="52">
+                <vector id="59:19861" name="bg" x="0" y="0" width="52" height="52" />
+                <rounded-rectangle id="59:19862" name="BgImg" x="0" y="0" width="52" height="52" />
+              </frame>
+              <frame id="59:19863" name="Frame 2147224462" x="72" y="0" width="429" height="52">
+                <text id="59:19864" name="ООО «Умные и свободные»" x="0" y="0" width="429" height="24" />
+                <text id="59:19865" name="Аванс по договору №51/9-12 от 27.07.2023" x="0" y="28" width="429" height="24" />
+              </frame>
+            </frame>
+            <frame id="59:19866" name="Content" x="525" y="0" width="95" height="24">
+              <instance id="59:19867" name="StatusPreset" x="0" y="2" width="90" height="20" />
+              <frame id="59:19868" name="Addon" x="58" y="4" width="16" height="16" hidden="true">
+                <instance id="59:19869" name="IconView" x="0" y="0" width="16" height="16" />
+              </frame>
+            </frame>
+            <instance id="59:19870" name="Text" x="644" y="0" width="176" height="24" />
+          </frame>
+          <instance id="59:19871" name="dots-horizontal" x="884" y="0" width="24" height="24" />
+        </frame>
+        <frame id="59:19872" name="Number" x="16" y="92" width="284" height="24">
+          <text id="59:19873" name="№ 105, Т-Банк, ·· 9909" x="116" y="0" width="168" height="24" />
+        </frame>
+      </frame>
+      <instance id="59:19874" name="BorderLine" x="0" y="140" width="1208" height="1" hidden="true" />
+    </frame>
+  </frame>
+  <instance id="59:19875" name="[D] Button" x="16" y="739" width="940" height="56" />
+</frame>

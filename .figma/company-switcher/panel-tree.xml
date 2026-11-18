@@ -1,0 +1,245 @@
+<frame id="238:29683" name="SidePanelDesktop / Single" x="5142" y="7839" width="1440" height="900">
+  <frame id="238:29684" name="Header" x="320" y="0" width="1120" height="56">
+    <instance id="238:29685" name="Button / Light" x="-174" y="8" width="108" height="40.000999450683594" hidden="true" />
+    <frame id="238:29686" name="Sections" x="449" y="8" width="647" height="40.000999450683594">
+      <instance id="238:29687" name="Button / Light" x="0" y="0" width="108" height="40.000999450683594" />
+      <rounded-rectangle id="238:29688" name="Divider" x="124" y="4.000499725341797" width="1" height="32" />
+      <frame id="238:29689" name="Frame 335873" x="141" y="0.000499725341796875" width="136" height="40">
+        <instance id="238:29690" name="iconSection w Dot" x="0" y="0" width="40" height="40" />
+        <instance id="238:29691" name="iconSection w Dot" x="48" y="0" width="40" height="40" />
+        <instance id="238:29692" name="iconSection w Dot" x="96" y="0" width="40" height="40" />
+      </frame>
+      <rounded-rectangle id="238:29693" name="Divider" x="293" y="4.000499725341797" width="1" height="32" />
+      <frame id="238:29694" name="compositeSection" x="310" y="0.000499725341796875" width="264" height="40">
+        <frame id="238:29695" name="company" x="0" y="0" width="264" height="40">
+          <instance id="238:29696" name="IconViewS" x="8" y="0" width="40" height="40" />
+          <frame id="238:29697" name="Names" x="60" y="2" width="204" height="36">
+            <text id="238:29698" name="Text" x="0" y="0" width="204" height="20" />
+            <text id="238:29699" name="Text" x="0" y="20" width="87" height="16" />
+          </frame>
+        </frame>
+      </frame>
+      <rounded-rectangle id="238:29700" name="Divider" x="590" y="4.000499725341797" width="1" height="32" />
+      <instance id="238:29701" name="iconSection w Counter" x="607" y="0.000499725341796875" width="40" height="40" />
+    </frame>
+  </frame>
+  <instance id="238:29702" name="[D] SideMenu" x="0" y="0" width="248" height="970" />
+  <frame id="238:29703" name="Content" x="248" y="0" width="668" height="900">
+    <instance id="238:29704" name="🔄 ↕ SpacingVertical" x="49" y="56" width="570" height="20" />
+    <instance id="238:29705" name="Quick Actions" x="49" y="76" width="1092" height="112" />
+    <instance id="238:29706" name="🔄 ↕ SpacingVertical" x="49" y="188" width="570" height="24" />
+    <instance id="238:29707" name="In work" x="49" y="212" width="1092" height="56" />
+    <instance id="238:29708" name="🔄 ↕ SpacingVertical" x="49" y="268" width="570" height="24" />
+    <frame id="238:29709" name="Available Balance, Banners" x="49" y="292" width="1092" height="220">
+      <instance id="238:29710" name="Available Balance / Desktop" x="0" y="0" width="813" height="220" />
+      <frame id="238:29711" name="min 220 px" x="837" y="0" width="255" height="220">
+        <instance id="238:29712" name="[D] BannerDashboard" x="0" y="0" width="255" height="68" />
+        <instance id="238:29713" name="[D] BannerDashboard" x="0" y="76" width="255" height="68" />
+        <instance id="238:29714" name="[D] BannerDashboard" x="0" y="152" width="255" height="68" />
+      </frame>
+    </frame>
+    <instance id="238:29715" name="🔄 ↕ SpacingVertical" x="49" y="512" width="570" height="24" />
+    <frame id="238:29716" name="Widget _ History" x="49" y="536" width="1092" height="1226.001953125">
+      <instance id="238:29717" name="_ Header" x="0" y="0" width="1092" height="64" />
+      <instance id="238:29718" name="_ Border" x="0" y="64" width="1092" height="8" />
+      <frame id="238:29719" name="_ Filter _ History" x="0" y="72" width="1092" height="240">
+        <frame id="238:29720" name="Period, Search" x="24" y="16" width="1044" height="48">
+          <instance id="238:29721" name="🔄 UniversalDateInput" x="0" y="0" width="342" height="48" />
+          <instance id="238:29722" name="🔄 Input" x="358" y="0" width="686" height="48" />
+        </frame>
+        <frame id="238:29723" name="Filters" x="24" y="84" width="682" height="32">
+          <instance id="238:29724" name="[D] Tag" x="0" y="0" width="94" height="32" />
+          <instance id="238:29725" name="[D] Tag" x="102" y="0" width="103" height="32" />
+          <instance id="238:29726" name="[D] Tag" x="213" y="0" width="129" height="32" />
+          <instance id="238:29727" name="[D] Tag" x="350" y="0" width="145" height="32" />
+          <instance id="238:29728" name="[D] Tag" x="503" y="0" width="82" height="32" />
+          <instance id="238:29729" name="[D] Tag" x="593" y="0" width="89" height="32" />
+        </frame>
+        <frame id="238:29730" name="Turnovers" x="24" y="136" width="1044" height="80">
+          <instance id="238:29731" name="_ Turnovers Card" x="0" y="4" width="252" height="76" />
+          <instance id="238:29732" name="_ Turnovers Card" x="264" y="4" width="252" height="76" />
+          <instance id="238:29733" name="_ Turnovers Card" x="528" y="4" width="252" height="76" />
+          <instance id="238:29734" name="_ Turnovers Card" x="792" y="4" width="252" height="76" />
+        </frame>
+      </frame>
+      <instance id="238:29735" name="_ TopBar" x="0" y="312" width="1092" height="48.000999450683594" />
+      <frame id="238:29736" name="Body" x="0" y="360.0010070800781" width="1092" height="866.0009765625">
+        <instance id="238:29737" name="_ Body" x="0" y="0" width="1092" height="866.0009765625" />
+      </frame>
+    </frame>
+    <instance id="238:29738" name="🔄 ↕ SpacingVertical" x="49" y="1762.001953125" width="570" height="72" />
+    <instance id="238:29739" name="footer" x="49" y="1834.001953125" width="570" height="40" />
+  </frame>
+  <rounded-rectangle id="238:29740" name="overlay" x="0" y="0" width="1440" height="970" />
+  <frame id="238:29741" name="[D] UniversalModal" x="916" y="0" width="524" height="900">
+    <frame id="238:29742" name="[D] UniversalMoadal" x="12" y="12" width="500" height="876">
+<instance id="238:29743" name="[D] UniversalModalHeader" x="0" y="0" width="500" height="68">
+<instance id="I238:29743;50305:25080" name="Presets" x="20" y="20" width="460" height="48">
+  <frame id="I238:29743;50305:25080;50305:25382" name="Top" x="0" y="0" width="460" height="48">
+    <frame id="I238:29743;50305:25080;50305:25383" name="MiddleSlot" x="0" y="0" width="412" height="48">
+      <text id="I238:29743;50305:25080;50305:25384" name="Title" x="12" y="11" width="388" height="26" />
+    </frame>
+    <frame id="I238:29743;50305:25080;50305:25385" name="Cross" x="412" y="0" width="48" height="48">
+      <frame id="I238:29743;50305:25080;50305:25386" name="Cross" x="0" y="0" width="48" height="48">
+        <rounded-rectangle id="I238:29743;50305:25080;50305:25387" name="BG" x="0" y="0" width="48" height="48" />
+        <frame id="I238:29743;50305:25080;50305:25388" name="Fixer" x="12" y="12" width="24" height="24" />
+      </frame>
+    </frame>
+  </frame>
+</instance>
+</instance>
+      <frame id="238:29744" name="[D] UniversalModalBody" x="0" y="68" width="500" height="808">
+        <frame id="238:29745" name="Frame 2131329229" x="32" y="0" width="436" height="309">
+          <frame id="238:29746" name="Top Cards" x="0" y="0" width="436" height="309">
+            <frame id="238:29747" name="Frame 2131329485" x="0" y="16" width="436" height="293">
+<instance id="238:29748" name="Company Card Cell" x="0" y="0" width="436" height="293">
+  <frame id="I238:29748;32738:240603" name="Company" x="20" y="20" width="396" height="108">
+    <frame id="I238:29748;32738:240604" name="Header" x="0" y="0" width="396" height="48">
+      <frame id="I238:29748;32738:240605" name="Company Details" x="0" y="0" width="198" height="44">
+        <text id="I238:29748;32738:240606" name="Type" x="0" y="0" width="64" height="16" />
+        <text id="I238:29748;32738:240607" name="Name" x="0" y="20" width="198" height="24" />
+      </frame>
+<instance id="I238:29748;32738:240608" name="IconView" x="348" y="0" width="48" height="48">
+  <frame id="I238:29748;32738:240608;448:17259" name="Content" x="0" y="0" width="48" height="48">
+    <frame id="I238:29748;32738:240608;448:17260" name="BottomAddon" x="35" y="35" width="20" height="20" hidden="true" />
+    <frame id="I238:29748;32738:240608;448:17262" name="TopAddon" x="35" y="-7" width="20" height="20" hidden="true" />
+    <instance id="I238:29748;32738:240608;448:17264" name="Indicator" x="41" y="-1" width="8" height="8" hidden="true" />
+    <boolean-operation id="I238:29748;32738:240608;448:17265" name="Shape" x="0" y="0" width="48" height="48" />
+    <frame id="I238:29748;32738:240608;448:17270" name="ShapeContent" x="0" y="0" width="48" height="48">
+      <rounded-rectangle id="I238:29748;32738:240608;448:17271" name="BgColor" x="0" y="0" width="48" height="48" />
+      <rounded-rectangle id="I238:29748;32738:240608;448:17272" name="BgImg" x="0" y="0" width="48" height="48" hidden="true" />
+      <text id="I238:29748;32738:240608;448:32082" name="Text" x="0" y="0" width="48" height="48" hidden="true" />
+      <instance id="I238:29748;32738:240608;448:31937" name="🔩 Content" x="12" y="12" width="24" height="24" />
+      <boolean-operation id="I238:29748;32738:240608;448:17275" name="Border" x="0" y="0" width="48" height="48" hidden="true" />
+    </frame>
+  </frame>
+</instance>
+    </frame>
+    <frame id="I238:29748;32738:240609" name="Frame 2131329483" x="0" y="60" width="396" height="48">
+      <frame id="I238:29748;32738:240610" name="ID" x="0" y="0" width="396" height="20">
+        <text id="I238:29748;32738:240611" name="ID" x="0" y="0" width="36" height="20" />
+        <text id="I238:29748;32738:240612" name="Num" x="42" y="0" width="106" height="20" />
+      </frame>
+      <frame id="I238:29748;32738:240613" name="ID" x="0" y="28" width="396" height="20">
+        <text id="I238:29748;32738:240614" name="ID" x="0" y="0" width="36" height="20" />
+        <text id="I238:29748;32738:240615" name="Num" x="42" y="0" width="354" height="20" />
+      </frame>
+    </frame>
+  </frame>
+  <instance id="I238:29748;32738:240616" name="Divider" x="20" y="148" width="396" height="1" />
+  <frame id="I238:29748;32738:240617" name="Llinks" x="20" y="169" width="396" height="104">
+    <frame id="I238:29748;32738:240618" name="Profile" x="0" y="0" width="396" height="44">
+      <frame id="I238:29748;32738:240619" name="Left" x="0" y="0" width="336" height="44">
+        <text id="I238:29748;32738:240620" name="Name" x="0" y="0" width="62" height="20" />
+        <text id="I238:29748;32738:240621" name="Caption" x="0" y="24" width="264" height="20" />
+      </frame>
+      <frame id="I238:29748;32738:240622" name="Right" x="372" y="10" width="24" height="24">
+<instance id="I238:29748;32738:240623" name="IconWrapper" x="0" y="0" width="24" height="24">
+  <frame id="I238:29748;32738:240623;91406:8830" name="Wrapper" x="0" y="0" width="24" height="24" />
+</instance>
+      </frame>
+    </frame>
+    <frame id="I238:29748;32738:240624" name="Tariff" x="0" y="60" width="396" height="44">
+      <frame id="I238:29748;32738:240625" name="Left" x="0" y="0" width="336" height="44">
+        <text id="I238:29748;32738:240626" name="Name" x="0" y="0" width="44" height="20" />
+        <text id="I238:29748;32738:240627" name="Caption" x="0" y="24" width="190" height="20" />
+      </frame>
+      <frame id="I238:29748;32738:240628" name="Right" x="372" y="10" width="24" height="24">
+<instance id="I238:29748;32738:240629" name="IconWrapper" x="0" y="0" width="24" height="24">
+  <frame id="I238:29748;32738:240629;91406:8830" name="Wrapper" x="0" y="0" width="24" height="24" />
+</instance>
+      </frame>
+    </frame>
+    <frame id="I238:29748;32761:311496" name="Tariff" x="0" y="120" width="380" height="44" hidden="true" />
+  </frame>
+  <instance id="I238:29748;32854:44361" name="[D] Style Level 1" x="0" y="0" width="436" height="293" />
+</instance>
+            </frame>
+          </frame>
+          <frame id="238:29753" name="SubHeader" x="32" y="32" width="436" height="220" hidden="true">
+            <frame id="238:29754" name="TitleBlock" x="0" y="0" width="436" height="208">
+              <frame id="238:29755" name="Frame 2131326854" x="0" y="0" width="436" height="208">
+                <instance id="238:29756" name="Бухгалтерия на УСН «Доходы»" x="138" y="24" width="160" height="160" />
+                <instance id="238:29757" name="↕ SpacingVertical" x="24" y="184" width="388" height="16" hidden="true" />
+                <instance id="238:29758" name="[D] TitleView" x="24" y="200" width="388" height="72" hidden="true" />
+                <instance id="238:29759" name="↕ SpacingVertical" x="24" y="200" width="388" height="12" hidden="true" />
+                <instance id="238:29760" name="[D] BackgroundPlate" x="0" y="0" width="436" height="208" />
+              </frame>
+            </frame>
+            <instance id="238:29761" name="↕ SpacingVertical" x="0" y="328" width="420" height="12" hidden="true" />
+            <frame id="238:29762" name="notif" x="0" y="340" width="420" height="80" hidden="true">
+              <instance id="238:29763" name="[D][Corporate] PureCell" x="16" y="16" width="388" height="48" />
+              <instance id="238:29764" name="[D] BackgroundPlate" x="0" y="0" width="420" height="80" />
+            </frame>
+            <instance id="238:29765" name="↕ SpacingVertical" x="0" y="208" width="436" height="12" />
+          </frame>
+          <instance id="238:29766" name="↕ SpacingVertical" x="32" y="548" width="420" height="16" hidden="true" />
+          <instance id="238:29767" name="[D] ContentCardWrapper" x="32" y="564" width="420" height="84" hidden="true" />
+          <instance id="238:29768" name="↕ SpacingVertical" x="32" y="648" width="420" height="16" hidden="true" />
+          <instance id="238:29769" name="[D] ContentCardWrapper" x="32" y="664" width="420" height="84" hidden="true" />
+        </frame>
+        <instance id="238:29770" name="Scrollbar" x="456" y="0" width="12" height="525" hidden="true" />
+        <instance id="238:29771" name="🔄 ↕ SpacingVertical" x="32" y="309" width="436" height="24" />
+        <frame id="238:29772" name="Body" x="32" y="333" width="436" height="620">
+<instance id="238:29773" name="CompanyListHeader" x="0" y="0" width="436" height="84">
+  <frame id="I238:29773;32738:240670" name="_ Company Card Head Cell" x="0" y="0" width="436" height="84">
+    <frame id="I238:29773;32738:240671" name="Content" x="0" y="0" width="436" height="76">
+      <frame id="I238:29773;32738:240672" name="Title" x="0" y="0" width="436" height="48">
+        <instance id="I238:29773;32738:240673" name="[D] TitleView" x="0" y="12" width="436" height="24" />
+        <instance id="I238:29773;32738:240674" name="Link" x="264" y="6" width="76" height="20" hidden="true" />
+        <instance id="I238:29773;32738:240675" name="IconView" x="388" y="8" width="32" height="32" hidden="true" />
+      </frame>
+      <frame id="I238:29773;32738:240676" name="Amounts" x="0" y="56" width="192" height="20">
+        <instance id="I238:29773;32738:240677" name="Amount" x="0" y="0" width="94" height="20" />
+        <instance id="I238:29773;32738:240678" name="Amount" x="110" y="0" width="82" height="20" />
+        <instance id="I238:29773;32738:240679" name="Amount" x="208" y="0" width="114" height="20" hidden="true" />
+        <text id="I238:29773;32738:240680" name="More Currencies" x="208" y="0" width="111" height="20" hidden="true" />
+      </frame>
+    </frame>
+  </frame>
+</instance>
+          <frame id="238:29774" name="Companies" x="0" y="104" width="436" height="516">
+<instance id="238:29775" name="Company_card" x="0" y="0" width="436" height="120">
+<instance id="I238:29775;32790:76491" name="[D] ContentCardWrapper" x="0" y="0" width="436" height="120">
+  <instance id="I238:29775;32790:76491;55398:40811" name="🔩 [D] LeftSlot" x="24" y="24" width="24" height="24" hidden="true" />
+  <frame id="I238:29775;32790:76491;55398:49291" name="MiddleSlot" x="20" y="16" width="400" height="84">
+    <frame id="I238:29775;32790:76491;55398:49325" name="StatusSlot" x="0" y="0" width="528" height="24" hidden="true" />
+    <instance id="I238:29775;32790:76491;55413:72952" name="🔩 MiddleContentSlot" x="0" y="0" width="400" height="24" />
+    <instance id="I238:29775;32790:76491;55413:73094" name="🔩 MiddleContentSlot" x="0" y="28" width="400" height="24" />
+    <instance id="I238:29775;32790:76491;55413:73113" name="to-do" x="0" y="56" width="400" height="28" />
+    <instance id="I238:29775;32790:76491;55413:73136" name="🔩 MiddleContentSlot" x="0" y="84" width="528" height="24" hidden="true" />
+    <instance id="I238:29775;32790:76491;55398:49294" name="🔩 MiddleContentSlot" x="0" y="112" width="528" height="24" hidden="true" />
+  </frame>
+  <instance id="I238:29775;32790:76491;55398:40912" name="🔩 [D] RightSlot" x="608" y="24" width="24" height="24" hidden="true" />
+  <instance id="I238:29775;32790:76491;54751:40859" name="[D] BackgroundPlate" x="0" y="0" width="436" height="120" />
+</instance>
+</instance>
+<instance id="238:29776" name="Company_card" x="0" y="132" width="436" height="120">
+<instance id="I238:29776;32790:26426" name="[D] ContentCardWrapper" x="0" y="0" width="436" height="120">
+  <instance id="I238:29776;32790:26426;55398:40811" name="🔩 [D] LeftSlot" x="24" y="24" width="24" height="24" hidden="true" />
+  <frame id="I238:29776;32790:26426;55398:49291" name="MiddleSlot" x="20" y="16" width="400" height="84">
+    <frame id="I238:29776;32790:26426;55398:49325" name="StatusSlot" x="0" y="0" width="528" height="24" hidden="true" />
+    <instance id="I238:29776;32790:26426;55413:72952" name="🔩 MiddleContentSlot" x="0" y="0" width="400" height="24" />
+    <instance id="I238:29776;32790:26426;55413:73094" name="🔩 MiddleContentSlot" x="0" y="28" width="400" height="24" />
+    <instance id="I238:29776;32790:26426;55413:73113" name="to-do" x="0" y="56" width="400" height="28" />
+    <instance id="I238:29776;32790:26426;55413:73136" name="🔩 MiddleContentSlot" x="0" y="84" width="528" height="24" hidden="true" />
+    <instance id="I238:29776;32790:26426;55398:49294" name="🔩 MiddleContentSlot" x="0" y="112" width="528" height="24" hidden="true" />
+  </frame>
+  <instance id="I238:29776;32790:26426;55398:40912" name="🔩 [D] RightSlot" x="608" y="24" width="24" height="24" hidden="true" />
+  <instance id="I238:29776;32790:26426;54751:40859" name="[D] BackgroundPlate" x="0" y="0" width="436" height="120" />
+</instance>
+</instance>
+            <instance id="238:29777" name="Company_card" x="0" y="264" width="436" height="120" />
+            <instance id="238:29778" name="Company_card" x="0" y="396" width="436" height="120" />
+          </frame>
+        </frame>
+      </frame>
+      <instance id="238:29779" name="[D][Corporate] UniversalModalFooter" x="0" y="731.9990234375" width="500" height="96.0009994506836" hidden="true" />
+<instance id="238:29780" name="Scrollbar" x="488" y="68" width="12" height="754">
+  <frame id="I238:29780;603:56566" name="kolbaska" x="5" y="550" width="4" height="196">
+    <frame id="I238:29780;603:56567" name="Fixer" x="0" y="96" width="4" height="4" />
+  </frame>
+</instance>
+    </frame>
+  </frame>
+</frame>

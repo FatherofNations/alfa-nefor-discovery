@@ -1,0 +1,13 @@
+<instance id="I238:29743;50305:25080" name="Presets" x="20" y="20" width="460" height="48">
+  <frame id="I238:29743;50305:25080;50305:25382" name="Top" x="0" y="0" width="460" height="48">
+    <frame id="I238:29743;50305:25080;50305:25383" name="MiddleSlot" x="0" y="0" width="412" height="48">
+      <text id="I238:29743;50305:25080;50305:25384" name="Title" x="12" y="11" width="388" height="26" />
+    </frame>
+    <frame id="I238:29743;50305:25080;50305:25385" name="Cross" x="412" y="0" width="48" height="48">
+      <frame id="I238:29743;50305:25080;50305:25386" name="Cross" x="0" y="0" width="48" height="48">
+        <rounded-rectangle id="I238:29743;50305:25080;50305:25387" name="BG" x="0" y="0" width="48" height="48" />
+        <frame id="I238:29743;50305:25080;50305:25388" name="Fixer" x="12" y="12" width="24" height="24" />
+      </frame>
+    </frame>
+  </frame>
+</instance>

@@ -29,7 +29,7 @@ const PAYMENT_ROWS = payments.map((p) => `  <div class="cur-tr${p.purpose.length
   </div>
 `).join("\n");
 
-export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfect из nefor-dash /current, Figma 132:34615) -->
+export const ACCOUNTANT_OVERVIEW_HTML = `<!-- Быстрые действия (byte-perfect из nefor-dash /current, Figma 132:34615) -->
 <section class="cur-qa">
   <a class="cur-qa-btn">
     <span class="cur-qa-ico"><img src="/assets/accountant/curQaTopup.svg" width="20" height="20" alt=""></span>
@@ -143,28 +143,9 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
       <div class="cur-ban-img"><img src="/assets/accountant/acc-ban3-art.png" alt=""></div>
     </div>
   </div>
-</section>
+</section>`;
 
-<!-- Табло: табы + переключатель видимости + карточки онбординга (byte-perfect из nefor-dash /current) -->
-<section class="cur-tablo-section">
-  <div class="cur-tablo">
-    <div class="cur-tablo-tabs">
-      <span class="cur-tab active">С чего начать</span>
-      <span class="cur-tab">Сводка</span>
-      <span class="cur-tab">Счета на главной</span>
-      <span class="cur-tab">Обзор отрасли</span>
-    </div>
-    <div class="cur-tablo-ctrl">
-      <div class="cur-seg">
-        <span class="cur-seg-hl"></span>
-        <span class="cur-seg-btn"><img src="/assets/accountant/curTabloEye.svg" width="28" height="28" alt=""></span>
-        <span class="cur-seg-btn"><img src="/assets/accountant/curTabloEyeOff.svg" width="28" height="28" alt=""></span>
-      </div>
-      <span class="cur-tablo-gear"><img src="/assets/accountant/curTabloGear.svg" width="20" height="20" alt=""></span>
-    </div>
-  </div>
-
-  <div class="cur-cards">
+export const ACCOUNTANT_CARDS_HTML = `
     <div class="cur-card cur-card-entry">
       <img class="cur-card-entry-bg" src="/assets/accountant/acc-card-entry-bg.svg" alt="">
       <div class="cur-card-entry-head">
@@ -218,10 +199,9 @@ export const ACCOUNTANT_HTML = `<!-- Быстрые действия (byte-perfe
       <div class="cur-task-art art6"><img src="/assets/accountant/acc-card6-img.png" alt=""></div>
     </div>
 
-  </div>
-</section>
+`;
 
-<!-- Лента операций: заголовок + фильтры + таблица (byte-perfect из nefor-dash /current).
+export const ACCOUNTANT_FEED_HTML = `<!-- Лента операций: заголовок + фильтры + таблица (byte-perfect из nefor-dash /current).
      Демо-строки запечены в разметку — правятся прямо здесь. -->
 <h2 class="cur-title">Лента операций</h2>
 

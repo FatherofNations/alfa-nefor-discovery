@@ -1,0 +1,800 @@
+{
+  "route": "/",
+  "viewport": {
+    "width": 1600,
+    "height": 3840
+  },
+  "source": {
+    "frame": "59:19781",
+    "frameName": "Table",
+    "dumps": [
+      {
+        "file": "table.xml",
+        "root": "59:19781",
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "file": "checkbox.xml",
+        "root": "59:19790",
+        "offset": {
+          "x": 32,
+          "y": 89
+        }
+      }
+    ],
+    "generatedAt": "2026-11-18T07:03:59.576Z"
+  },
+  "elements": [
+    {
+      "selector": ".operations-table",
+      "node": "59:19781",
+      "name": "Table",
+      "figma": {
+        "x": 0,
+        "y": 0,
+        "w": 972,
+        "h": 817
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1)",
+      "node": "59:19782",
+      "name": "Day",
+      "figma": {
+        "x": 16,
+        "y": 22,
+        "w": 940,
+        "h": 489
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) > .day-header",
+      "node": "59:19783",
+      "name": "Header",
+      "figma": {
+        "x": 16,
+        "y": 22,
+        "w": 940,
+        "h": 43
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) > .day-header h3",
+      "node": "59:19784",
+      "name": "Title",
+      "figma": {
+        "x": 32,
+        "y": 22,
+        "w": 908,
+        "h": 22
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) > .day-header > span",
+      "node": "59:19785",
+      "name": "BorderLine",
+      "figma": {
+        "x": 32,
+        "y": 64,
+        "w": 908,
+        "h": 1
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) > div:nth-child(2)",
+      "node": "59:19786",
+      "name": "Body",
+      "figma": {
+        "x": 16,
+        "y": 65,
+        "w": 940,
+        "h": 446
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2)",
+      "node": "59:19850",
+      "name": "Day",
+      "figma": {
+        "x": 16,
+        "y": 523,
+        "w": 940,
+        "h": 204
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) > .day-header",
+      "node": "59:19851",
+      "name": "Header",
+      "figma": {
+        "x": 16,
+        "y": 523,
+        "w": 940,
+        "h": 43
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) > .day-header h3",
+      "node": "59:19852",
+      "name": "Title",
+      "figma": {
+        "x": 32,
+        "y": 523,
+        "w": 908,
+        "h": 22
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) > .day-header > span",
+      "node": "59:19853",
+      "name": "BorderLine",
+      "figma": {
+        "x": 32,
+        "y": 565,
+        "w": 908,
+        "h": 1
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1)",
+      "node": "59:19787",
+      "name": "[D] BodyRow :: Basic",
+      "figma": {
+        "x": 16,
+        "y": 65,
+        "w": 940,
+        "h": 141
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-main",
+      "node": "59:19788",
+      "name": "Row",
+      "figma": {
+        "x": 16,
+        "y": 65,
+        "w": 940,
+        "h": 140
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-content",
+      "node": "59:19789",
+      "name": "Content",
+      "figma": {
+        "x": 32,
+        "y": 89,
+        "w": 908,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .checkbox",
+      "node": "59:19790",
+      "name": "Checkbox_24",
+      "figma": {
+        "x": 32,
+        "y": 89,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-info",
+      "node": "59:19791",
+      "name": "Info",
+      "figma": {
+        "x": 76,
+        "y": 89,
+        "w": 820,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-counterparty",
+      "node": "59:19792",
+      "name": "Info",
+      "figma": {
+        "x": 76,
+        "y": 89,
+        "w": 501,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .company-logo",
+      "node": "59:19793",
+      "name": "logo",
+      "figma": {
+        "x": 76,
+        "y": 89,
+        "w": 52,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-copy",
+      "node": "59:19796",
+      "name": "Frame 2147224462",
+      "figma": {
+        "x": 148,
+        "y": 89,
+        "w": 429,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-title",
+      "node": "59:19797",
+      "name": "ООО «Умные и свободные»",
+      "figma": {
+        "x": 148,
+        "y": 89,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-description",
+      "node": "59:19798",
+      "name": "Аванс по договору №51/9-12 от 27.07.2023",
+      "figma": {
+        "x": 148,
+        "y": 117,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-status",
+      "node": "59:19799",
+      "name": "Content",
+      "figma": {
+        "x": 601,
+        "y": 89,
+        "w": 95,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-amount",
+      "node": "59:19803",
+      "name": "Text",
+      "figma": {
+        "x": 720,
+        "y": 89,
+        "w": 176,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(1) .operation-more",
+      "node": "59:19804",
+      "name": "dots-horizontal",
+      "figma": {
+        "x": 916,
+        "y": 89,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2)",
+      "node": "59:19808",
+      "name": "[D] BodyRow :: Basic",
+      "figma": {
+        "x": 16,
+        "y": 206,
+        "w": 940,
+        "h": 141
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-main",
+      "node": "59:19809",
+      "name": "Row",
+      "figma": {
+        "x": 16,
+        "y": 206,
+        "w": 940,
+        "h": 140
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-content",
+      "node": "59:19810",
+      "name": "Content",
+      "figma": {
+        "x": 32,
+        "y": 230,
+        "w": 908,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .checkbox",
+      "node": "59:19811",
+      "name": "Checkbox_24",
+      "figma": {
+        "x": 32,
+        "y": 230,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-info",
+      "node": "59:19812",
+      "name": "Info",
+      "figma": {
+        "x": 76,
+        "y": 230,
+        "w": 820,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-counterparty",
+      "node": "59:19813",
+      "name": "Info",
+      "figma": {
+        "x": 76,
+        "y": 230,
+        "w": 501,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .company-logo",
+      "node": "59:19814",
+      "name": "logo",
+      "figma": {
+        "x": 76,
+        "y": 230,
+        "w": 52,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-copy",
+      "node": "59:19817",
+      "name": "Frame 2147224462",
+      "figma": {
+        "x": 148,
+        "y": 230,
+        "w": 429,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-title",
+      "node": "59:19818",
+      "name": "ИП «Костин Иван Федорович»",
+      "figma": {
+        "x": 148,
+        "y": 230,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-description",
+      "node": "59:19819",
+      "name": "Перевод себе в Альфа-Банк",
+      "figma": {
+        "x": 148,
+        "y": 258,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-status",
+      "node": "59:19820",
+      "name": "Content",
+      "figma": {
+        "x": 601,
+        "y": 230,
+        "w": 95,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-amount",
+      "node": "59:19824",
+      "name": "Text",
+      "figma": {
+        "x": 720,
+        "y": 230,
+        "w": 176,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(2) .operation-more",
+      "node": "59:19825",
+      "name": "dots-horizontal",
+      "figma": {
+        "x": 916,
+        "y": 230,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3)",
+      "node": "59:19829",
+      "name": "[D] BodyRow :: Basic",
+      "figma": {
+        "x": 16,
+        "y": 347,
+        "w": 940,
+        "h": 164
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-main",
+      "node": "59:19830",
+      "name": "Row",
+      "figma": {
+        "x": 16,
+        "y": 347,
+        "w": 940,
+        "h": 164
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-content",
+      "node": "59:19831",
+      "name": "Content",
+      "figma": {
+        "x": 32,
+        "y": 371,
+        "w": 908,
+        "h": 76
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .checkbox",
+      "node": "59:19832",
+      "name": "Checkbox_24",
+      "figma": {
+        "x": 32,
+        "y": 371,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-info",
+      "node": "59:19833",
+      "name": "Info",
+      "figma": {
+        "x": 76,
+        "y": 371,
+        "w": 820,
+        "h": 76
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-counterparty",
+      "node": "59:19834",
+      "name": "Info",
+      "figma": {
+        "x": 76,
+        "y": 371,
+        "w": 501,
+        "h": 76
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .company-logo",
+      "node": "59:19835",
+      "name": "logo",
+      "figma": {
+        "x": 76,
+        "y": 371,
+        "w": 52,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-copy",
+      "node": "59:19838",
+      "name": "Frame 2147224462",
+      "figma": {
+        "x": 148,
+        "y": 371,
+        "w": 429,
+        "h": 76
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-title",
+      "node": "59:19839",
+      "name": "АО «Альфа-Банк»",
+      "figma": {
+        "x": 148,
+        "y": 371,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-description",
+      "node": "59:19840",
+      "name": "Комиссия за SMS-оповещение за август 2025 Согласно тарифам Банка ИП Костин Иван Федорович",
+      "figma": {
+        "x": 148,
+        "y": 399,
+        "w": 429,
+        "h": 48
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-status",
+      "node": "59:19841",
+      "name": "Content",
+      "figma": {
+        "x": 601,
+        "y": 371,
+        "w": 95,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-amount",
+      "node": "59:19845",
+      "name": "Text",
+      "figma": {
+        "x": 720,
+        "y": 371,
+        "w": 176,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:nth-child(3) .operation-more",
+      "node": "59:19846",
+      "name": "dots-horizontal",
+      "figma": {
+        "x": 916,
+        "y": 371,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1)",
+      "node": "59:19854",
+      "name": "[D] BodyRow :: Basic",
+      "figma": {
+        "x": 16,
+        "y": 586,
+        "w": 940,
+        "h": 141
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-main",
+      "node": "59:19855",
+      "name": "Row",
+      "figma": {
+        "x": 16,
+        "y": 586,
+        "w": 940,
+        "h": 140
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-content",
+      "node": "59:19856",
+      "name": "Content",
+      "figma": {
+        "x": 32,
+        "y": 610,
+        "w": 908,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .checkbox",
+      "node": "59:19857",
+      "name": "Checkbox_24",
+      "figma": {
+        "x": 32,
+        "y": 610,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-info",
+      "node": "59:19858",
+      "name": "Info",
+      "figma": {
+        "x": 76,
+        "y": 610,
+        "w": 820,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-counterparty",
+      "node": "59:19859",
+      "name": "Info",
+      "figma": {
+        "x": 76,
+        "y": 610,
+        "w": 501,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .company-logo",
+      "node": "59:19860",
+      "name": "logo",
+      "figma": {
+        "x": 76,
+        "y": 610,
+        "w": 52,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-copy",
+      "node": "59:19863",
+      "name": "Frame 2147224462",
+      "figma": {
+        "x": 148,
+        "y": 610,
+        "w": 429,
+        "h": 52
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-title",
+      "node": "59:19864",
+      "name": "ООО «Умные и свободные»",
+      "figma": {
+        "x": 148,
+        "y": 610,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-description",
+      "node": "59:19865",
+      "name": "Аванс по договору №51/9-12 от 27.07.2023",
+      "figma": {
+        "x": 148,
+        "y": 638,
+        "w": 429,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-status",
+      "node": "59:19866",
+      "name": "Content",
+      "figma": {
+        "x": 601,
+        "y": 610,
+        "w": 95,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-amount",
+      "node": "59:19870",
+      "name": "Text",
+      "figma": {
+        "x": 720,
+        "y": 610,
+        "w": 176,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(2) .operation-row:nth-child(1) .operation-more",
+      "node": "59:19871",
+      "name": "dots-horizontal",
+      "figma": {
+        "x": 916,
+        "y": 610,
+        "w": 24,
+        "h": 24
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .operation-day:nth-of-type(1) .operation-row:first-child .checkbox-mark",
+      "node": "I59:19790;105:21403",
+      "name": "Content",
+      "figma": {
+        "x": 34,
+        "y": 91,
+        "w": 20,
+        "h": 20
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".operations-table > .show-more",
+      "node": "59:19875",
+      "name": "[D] Button",
+      "figma": {
+        "x": 16,
+        "y": 739,
+        "w": 940,
+        "h": 56
+      },
+      "tol": 0
+    }
+  ]
+}

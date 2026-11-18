@@ -10,7 +10,7 @@
    закрыть, Enter в поле — сохранить, клик по фону — закрыть.
    Появление/скрытие — scale .92→1 + opacity в стиле самой тёмной панели. */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getClientFullName, setClientFullName } from "@/lib/client-name";
 
@@ -20,7 +20,9 @@ export default function ClientNameModal() {
   const pathname = usePathname();
   const [phase, setPhase] = useState<"closed" | "open" | "closing">("closed");
   const [value, setValue] = useState("");
+  const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const saveRef = useRef<HTMLButtonElement>(null);
   const open = phase !== "closed";
 
   const canOpen = pathname !== null && DASHBOARD_ROUTES.has(pathname);
@@ -36,7 +38,7 @@ export default function ClientNameModal() {
       const isSlash = event.key === "/" || event.code === "Slash";
       if (!isSlash || event.metaKey || event.ctrlKey || event.altKey) return;
       const target = event.target as Element | null;
-      if (target?.closest("input, textarea, select, [contenteditable='true']")) return;
+      if (target?.closest("input, textarea, select, [contenteditable='true'], dialog[open]")) return;
       event.preventDefault();
       setValue(getClientFullName());
       setPhase("open");
@@ -45,11 +47,34 @@ export default function ClientNameModal() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [canOpen, open]);
 
-  /* Esc и повторное «/» закрывают (если фокус не в поле — тогда «/» печатается),
-     блокировка скролла страницы; closing → unmount. Автофокуса нет (просьба Ильи). */
+  useLayoutEffect(() => {
+    if (!open) return;
+    const previousFocus = document.activeElement;
+    document.body.classList.add("name-modal-open");
+    dialogRef.current?.focus({ preventScroll: true });
+    return () => {
+      document.body.classList.remove("name-modal-open");
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) {
+        previousFocus.focus({ preventScroll: true });
+      }
+    };
+  }, [open]);
+
+  /* Esc и повторное «/» закрывают диалог. В поле «/» вводится как текст. */
   useEffect(() => {
     if (phase === "closed") return;
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Tab") {
+        const active = document.activeElement;
+        const first = inputRef.current;
+        const last = saveRef.current;
+        if ((event.shiftKey ? active === first : active === last) || active === dialogRef.current
+          || !dialogRef.current?.contains(active)) {
+          event.preventDefault();
+          (event.shiftKey ? last : first)?.focus();
+        }
+        return;
+      }
       if (event.key === "Escape") {
         event.preventDefault();
         requestClose();
@@ -63,14 +88,12 @@ export default function ClientNameModal() {
       requestClose();
     };
     document.addEventListener("keydown", onKeyDown);
-    document.body.classList.add("name-modal-open");
     let closeId = 0;
     if (phase === "closing") {
       closeId = window.setTimeout(() => setPhase("closed"), 160); /* = длительность закрытия у Аниматора */
     }
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      document.body.classList.remove("name-modal-open");
       if (closeId) window.clearTimeout(closeId);
     };
   }, [phase, requestClose]);
@@ -91,7 +114,7 @@ export default function ClientNameModal() {
         if (event.target === event.currentTarget) requestClose();
       }}
     >
-      <div className="name-modal" role="dialog" aria-modal="true" aria-labelledby="client-name-title">
+      <div ref={dialogRef} className="name-modal" role="dialog" aria-modal="true" aria-labelledby="client-name-title" tabIndex={-1}>
         <div className="name-modal-fields">
           <label className="name-modal-title" id="client-name-title" htmlFor="client-name-input">
             Имя клиента
@@ -111,7 +134,7 @@ export default function ClientNameModal() {
             spellCheck={false}
           />
         </div>
-        <button className="name-modal-save" type="button" onClick={save}>
+        <button ref={saveRef} className="name-modal-save" type="button" onClick={save}>
           Сохранить
         </button>
       </div>

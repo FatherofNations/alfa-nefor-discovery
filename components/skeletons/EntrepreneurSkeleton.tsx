@@ -106,16 +106,16 @@ export default function EntrepreneurSkeleton() {
           </div>
 
           <div className="sk-tasks">
-            <div className="tasks-v2-header">
+            <div className="tasks-cards-header">
               <SkeletonText fontSize={22} lineHeight={26} widths={[104]} />
               <Skeleton style={{ width: 195, height: 32, borderRadius: 19 }} />
             </div>
-            <div className="tasks-v2-grid">
-              <Skeleton style={{ width: 316, height: 280, flex: "none" }} borderRadius={16} />
+            <div className="tasks-cards-body">
+              <Skeleton style={{ width: 316, height: 288, flex: "none" }} borderRadius={16} />
               {[0, 1].map((column) => (
-                <div className="tasks-v2-column" key={column}>
-                  {[83.5, 83.5, 90].map((height, index) => (
-                    <Skeleton key={index} style={{ width: 316, height, flex: "none" }} borderRadius={16} />
+                <div className="tasks-cards-column" key={column}>
+                  {[0, 1, 2].map((card) => (
+                    <Skeleton key={card} style={{ width: 316, height: 88, flex: "none" }} borderRadius={16} />
                   ))}
                 </div>
               ))}

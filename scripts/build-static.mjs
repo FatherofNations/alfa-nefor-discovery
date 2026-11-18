@@ -4,20 +4,21 @@
    Что делает:
    1) бандлит React-прототип в один IIFE app.js (esbuild) и подменяет
       next/link и next/navigation на hash-роутер (static/shims/*);
-   2) склеивает глобальные CSS в app.css, переводя url(/assets/…) и
-      url(/fonts/…) в относительные пути;
-   3) копирует public/assets и public/fonts рядом с index.html;
-   4) пишет index.html с относительными ссылками.
+   2) встраивает локальные CSS-ресурсы в app.css;
+   3) копирует ресурсы для разметки рядом с index.html;
+   4) упаковывает готовую папку в static-dist.zip.
 
    Запуск: npm run build:static */
 
 import { build } from "esbuild";
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = path.join(root, "static-dist");
+const publicDir = path.join(root, "public");
 const nextLinkShim = path.join(root, "static/shims/next-link.tsx");
 const nextNavigationShim = path.join(root, "static/shims/next-navigation.ts");
 
@@ -31,6 +32,10 @@ const CSS_FILES = [
   "wide.css",
   "skeleton.css",
   "focus-reset.css",
+  "company-switcher.css",
+  "tasks-cards.css",
+  "tasks-options.css",
+  "tasks-flow.css",
   "menu-dnd.css",
   "accountant-tokens.css",
   "chrome.css",
@@ -47,17 +52,35 @@ const MIME = {
   ".woff2": "font/woff2",
 };
 
+// Крупные CSS-фоны и шрифты уже встроены. Если файл нужен бандлу, оставляем и копию.
+const CSS_ONLY_IMAGES = new Set([
+  "assets/figma/accountant-chrome-1-imgBgImg.png",
+  "assets/figma/accountant-header-avatar.png",
+  "assets/figma/ai-company-logo.png",
+]);
+const inlinedAssets = new Map();
+
 /* CSS-ссылки (маски, фоны, шрифты) в file:// грузятся в CORS-режиме и Chrome
    их блокирует (origin null). Поэтому все url(...) из CSS инлайним data-URI:
    иконки-маски и шрифты работают при простом открытии index.html. */
-const inlineCssAssets = (css) =>
-  css.replace(/url\((['"]?)(\/?)(assets|fonts)\/[^)'"]+\1\)/g, (match, quote, _slash, dir) => {
-    const raw = match.slice(match.indexOf(dir)).replace(/['")]+$/, "");
-    const file = path.join(root, "public", raw);
-    if (!fs.existsSync(file)) return match;
-    const mime = MIME[path.extname(file).toLowerCase()] ?? "application/octet-stream";
-    return `url("data:${mime};base64,${fs.readFileSync(file).toString("base64")}")`;
+function inlineCssAssets(css, stylesheet) {
+  return css.replace(/url\(\s*(['"]?)\/?((?:assets|fonts)\/[^)'"]+?)\1\s*\)/g, (_match, _quote, url) => {
+    const relativePath = decodeURIComponent(url.split(/[?#]/, 1)[0]);
+    const file = path.join(publicDir, relativePath);
+    if (!inlinedAssets.has(file)) {
+      const mime = MIME[path.extname(file).toLowerCase()] ?? "application/octet-stream";
+      let content;
+      try {
+        content = fs.readFileSync(file);
+      } catch (error) {
+        throw new Error(`styles/${stylesheet}: не удалось прочитать CSS-ресурс ${file}`, { cause: error });
+      }
+      inlinedAssets.set(file, `data:${mime};base64,${content.toString("base64")}`);
+    }
+    const fragment = url.includes("#") ? url.slice(url.indexOf("#")) : "";
+    return `url("${inlinedAssets.get(file)}${fragment}")`;
   });
+}
 
 const relativizeUrls = (text) =>
   text
@@ -67,12 +90,15 @@ const relativizeUrls = (text) =>
     .replaceAll("`/assets/", "`assets/")
     .replaceAll('"/fonts/', '"fonts/');
 
-fs.rmSync(outDir, { recursive: true, force: true });
-fs.mkdirSync(outDir, { recursive: true });
+const css = CSS_FILES.map((file) =>
+  inlineCssAssets(fs.readFileSync(path.join(root, "styles", file), "utf8"), file),
+).join("\n");
+const bundlePath = path.join(outDir, "app.js");
 
-await build({
+const { outputFiles } = await build({
   entryPoints: [path.join(root, "static/entry.tsx")],
-  outfile: path.join(outDir, "app.js"),
+  outfile: bundlePath,
+  write: false,
   bundle: true,
   format: "iife",
   platform: "browser",
@@ -94,14 +120,22 @@ await build({
   logLevel: "warning",
 });
 
-const bundlePath = path.join(outDir, "app.js");
-fs.writeFileSync(bundlePath, relativizeUrls(fs.readFileSync(bundlePath, "utf8")));
-
-const css = CSS_FILES.map((file) => fs.readFileSync(path.join(root, "styles", file), "utf8")).join("\n");
-fs.writeFileSync(path.join(outDir, "app.css"), inlineCssAssets(css));
+const bundle = relativizeUrls(outputFiles.find((file) => file.path === bundlePath).text);
+fs.rmSync(outDir, { recursive: true, force: true });
+fs.mkdirSync(outDir, { recursive: true });
+fs.writeFileSync(bundlePath, bundle);
+fs.writeFileSync(path.join(outDir, "app.css"), css);
 
 for (const dir of ["assets", "fonts"]) {
-  fs.cpSync(path.join(root, "public", dir), path.join(outDir, dir), { recursive: true });
+  fs.cpSync(path.join(publicDir, dir), path.join(outDir, dir), {
+    recursive: true,
+    filter: (file) => {
+      if (!inlinedAssets.has(file)) return true;
+      const relativePath = path.relative(publicDir, file).split(path.sep).join("/");
+      const cssOnly = dir === "fonts" || CSS_ONLY_IMAGES.has(relativePath);
+      return !cssOnly || bundle.includes(path.parse(file).name);
+    },
+  });
 }
 /* favicon лежит в app/icon.svg (Next сам его подхватывает) */
 if (fs.existsSync(path.join(root, "app/icon.svg"))) {
@@ -135,3 +169,13 @@ const dirSize = (dir) =>
   }, 0);
 
 console.log(`static-dist: app.js ${(fs.statSync(bundlePath).size / 1024).toFixed(0)} KB, всего ${sizeMb(dirSize(outDir))} MB`);
+
+const archive = path.join(root, "static-dist.zip");
+const pendingArchive = path.join(root, `.static-dist-${process.pid}.zip`);
+try {
+  execFileSync("zip", ["-q", "-r", pendingArchive, path.basename(outDir)], { cwd: root, stdio: "inherit" });
+  fs.renameSync(pendingArchive, archive);
+} finally {
+  fs.rmSync(pendingArchive, { force: true });
+}
+console.log(`static-dist.zip: ${sizeMb(fs.statSync(archive).size)} MB`);

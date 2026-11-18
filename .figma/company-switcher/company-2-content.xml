@@ -1,0 +1,13 @@
+<instance id="I238:29776;32790:26426" name="[D] ContentCardWrapper" x="0" y="0" width="436" height="120">
+  <instance id="I238:29776;32790:26426;55398:40811" name="🔩 [D] LeftSlot" x="24" y="24" width="24" height="24" hidden="true" />
+  <frame id="I238:29776;32790:26426;55398:49291" name="MiddleSlot" x="20" y="16" width="400" height="84">
+    <frame id="I238:29776;32790:26426;55398:49325" name="StatusSlot" x="0" y="0" width="528" height="24" hidden="true" />
+    <instance id="I238:29776;32790:26426;55413:72952" name="🔩 MiddleContentSlot" x="0" y="0" width="400" height="24" />
+    <instance id="I238:29776;32790:26426;55413:73094" name="🔩 MiddleContentSlot" x="0" y="28" width="400" height="24" />
+    <instance id="I238:29776;32790:26426;55413:73113" name="to-do" x="0" y="56" width="400" height="28" />
+    <instance id="I238:29776;32790:26426;55413:73136" name="🔩 MiddleContentSlot" x="0" y="84" width="528" height="24" hidden="true" />
+    <instance id="I238:29776;32790:26426;55398:49294" name="🔩 MiddleContentSlot" x="0" y="112" width="528" height="24" hidden="true" />
+  </frame>
+  <instance id="I238:29776;32790:26426;55398:40912" name="🔩 [D] RightSlot" x="608" y="24" width="24" height="24" hidden="true" />
+  <instance id="I238:29776;32790:26426;54751:40859" name="[D] BackgroundPlate" x="0" y="0" width="436" height="120" />
+</instance>

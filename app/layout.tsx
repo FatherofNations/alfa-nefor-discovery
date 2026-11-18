@@ -9,6 +9,10 @@ import "@/styles/assistant-home.css";
 import "@/styles/wide.css";
 import "@/styles/skeleton.css";
 import "@/styles/focus-reset.css";
+import "@/styles/company-switcher.css";
+import "@/styles/tasks-cards.css";
+import "@/styles/tasks-options.css";
+import "@/styles/tasks-flow.css";
 import ClientNameModal from "@/components/client-name/ClientNameModal";
 
 export const metadata: Metadata = {

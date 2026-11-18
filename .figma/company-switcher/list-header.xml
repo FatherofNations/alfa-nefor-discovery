@@ -1,0 +1,17 @@
+<instance id="238:29773" name="CompanyListHeader" x="0" y="0" width="436" height="84">
+  <frame id="I238:29773;32738:240670" name="_ Company Card Head Cell" x="0" y="0" width="436" height="84">
+    <frame id="I238:29773;32738:240671" name="Content" x="0" y="0" width="436" height="76">
+      <frame id="I238:29773;32738:240672" name="Title" x="0" y="0" width="436" height="48">
+        <instance id="I238:29773;32738:240673" name="[D] TitleView" x="0" y="12" width="436" height="24" />
+        <instance id="I238:29773;32738:240674" name="Link" x="264" y="6" width="76" height="20" hidden="true" />
+        <instance id="I238:29773;32738:240675" name="IconView" x="388" y="8" width="32" height="32" hidden="true" />
+      </frame>
+      <frame id="I238:29773;32738:240676" name="Amounts" x="0" y="56" width="192" height="20">
+        <instance id="I238:29773;32738:240677" name="Amount" x="0" y="0" width="94" height="20" />
+        <instance id="I238:29773;32738:240678" name="Amount" x="110" y="0" width="82" height="20" />
+        <instance id="I238:29773;32738:240679" name="Amount" x="208" y="0" width="114" height="20" hidden="true" />
+        <text id="I238:29773;32738:240680" name="More Currencies" x="208" y="0" width="111" height="20" hidden="true" />
+      </frame>
+    </frame>
+  </frame>
+</instance>

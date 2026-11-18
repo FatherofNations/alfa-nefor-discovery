@@ -183,7 +183,7 @@ a.chrome-logo:focus-visible { outline: 2px solid var(--accent-primary, #ef3124);
 /* эталон: контейнер во всю высоту ряда (40) с py8 → видимая линия 24 */
 .chrome-hdiv { flex: none; width: 1px; height: 24px; background: var(--nt-300, rgba(15, 25, 55, 0.1)); }
 
-.chrome-company { display: flex; align-items: center; gap: 12px; padding-left: 8px; }
+.chrome-company { display: flex; align-items: center; gap: 12px; padding: 0 0 0 8px; text-align: left; }
 .chrome-co-logo {
   flex: none;
   width: 40px;

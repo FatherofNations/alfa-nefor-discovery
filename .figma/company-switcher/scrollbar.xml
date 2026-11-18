@@ -1,0 +1,5 @@
+<instance id="238:29780" name="Scrollbar" x="488" y="68" width="12" height="754">
+  <frame id="I238:29780;603:56566" name="kolbaska" x="5" y="550" width="4" height="196">
+    <frame id="I238:29780;603:56567" name="Fixer" x="0" y="96" width="4" height="4" />
+  </frame>
+</instance>
