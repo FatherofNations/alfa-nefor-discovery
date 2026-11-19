@@ -26,11 +26,6 @@ export async function verifyStatic(browser, indexPath) {
   const dialog = page.getByRole("dialog", { name: "Имя клиента" });
   const input = dialog.getByRole("textbox", { name: "Имя клиента" });
   const save = dialog.getByRole("button", { name: "Сохранить" });
-  const unlockDashboard = async () => {
-    await page.locator(".dash-gate[data-clicks-locked='true']").waitFor();
-    await page.keyboard.press("Space");
-    await page.locator(".dash-gate[data-clicks-locked='false']").waitFor();
-  };
   const scrollDown = async () => {
     await page.evaluate(() => window.scrollTo({ top: 420, behavior: "instant" }));
     await page.waitForFunction(() => scrollY > 0);
@@ -91,21 +86,29 @@ export async function verifyStatic(browser, indexPath) {
     await waitForRoute("/");
     await page.locator(".dash-gate.gate-ready #hero-title").waitFor();
     await page.getByRole("heading", { name: /Ольга, добрый день/ }).waitFor();
+    await button("Расходы за месяц").waitFor();
     await checkAssets("Главная предпринимателя");
+
+    const assistant = page.getByRole("dialog", { name: "Альфа-Интеллект" });
+    for (const [trigger, thread, answer] of [
+      ["3 задачи требуют вашего внимания Больше", "Важные задачи", "Вот три важные задачи"],
+      ["Расходы за месяц", "Расходы за месяц", "Расходы за апрель 2026"],
+    ]) {
+      await button(trigger).click();
+      await assistant.getByText(answer, { exact: true }).waitFor();
+      await assistant.locator("[aria-current='page']").getByText(thread, { exact: true }).waitFor();
+      assert.equal(await assistant.locator(".assistant-recent li").count(), 10);
+      await checkAssets(thread);
+      await page.keyboard.press("Escape");
+      await assistant.waitFor({ state: "detached" });
+      await expectFocused(button(trigger));
+    }
 
     const balance = page.locator("button.balance-cell");
     const details = page.getByRole("dialog", { name: "Детализация остатка" });
     const offer = page.getByRole("region", { name: "Заменили действие" });
     const template = button("Платёж по шаблону");
     await button("Импорт платежей").waitFor();
-    await balance.click();
-    assert.equal(await details.count(), 0, "Клики на открывшемся дашборде заблокированы");
-    await page.mouse.move(800, 680);
-    await page.mouse.wheel(0, 420);
-    await page.waitForFunction(() => scrollY > 0);
-    await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
-    await unlockDashboard();
-
     await balance.click();
     await details.getByRole("button", { name: "К счетам" }).waitFor();
     await details.getByRole("button", { name: "Закрыть детализацию" }).click();
@@ -114,11 +117,19 @@ export async function verifyStatic(browser, indexPath) {
     assert.equal(await offer.count(), 0, "Закрытие детализации сохраняет исходное действие");
     await page.keyboard.press("Space");
     await page.locator(".dash-gate[data-clicks-locked='true']").waitFor();
+    await balance.click();
+    assert.equal(await details.count(), 0, "Пробел блокирует открытие детализации");
+    await page.mouse.move(800, 680);
+    await page.mouse.wheel(0, 420);
+    await page.waitForFunction(() => scrollY > 0);
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+
     await page.keyboard.press("1");
     await offer.waitFor();
     await offer.getByRole("button", { name: "Оставить" }).click();
     assert.equal(await offer.count(), 1);
-    await unlockDashboard();
+    await page.keyboard.press("Space");
+    await page.locator(".dash-gate[data-clicks-locked='false']").waitFor();
     assert.equal(await template.evaluate((node) => getComputedStyle(node).color), "rgb(137, 126, 255)");
     await checkAssets("Предложение заменить быстрое действие");
     await offer.getByRole("button", { name: "Отклонить замену действия" }).click();
@@ -208,7 +219,6 @@ export async function verifyStatic(browser, indexPath) {
     await page.reload();
     await page.getByRole("heading", { name: /Мария, добрый день/ }).waitFor();
     await template.waitFor();
-    await unlockDashboard();
     await balance.click();
     await details.getByRole("button", { name: "Закрыть детализацию" }).click();
     assert.equal(await offer.count(), 0);
@@ -251,7 +261,6 @@ export async function verifyStatic(browser, indexPath) {
       await waitForRoute("/accountant");
       await page.locator(".dash-gate.gate-ready .cur-content").waitFor();
       assert.equal(await page.evaluate(() => scrollY), 0);
-      await unlockDashboard();
     };
     await openAccountant();
     await checkAssets("Главная бухгалтера");
@@ -275,7 +284,6 @@ export async function verifyStatic(browser, indexPath) {
     await page.reload();
     await waitForRoute("/accountant");
     await page.locator(".dash-gate.gate-ready .cur-content").waitFor();
-    await unlockDashboard();
 
     entry.searchParams.set("skel", "on");
     entry.hash = "/accountant";
@@ -297,7 +305,6 @@ export async function verifyStatic(browser, indexPath) {
     await waitForRoute("/");
     await page.locator(".dash-gate.gate-ready .dashboard-page").waitFor();
     assert.equal(await page.evaluate(() => scrollY), 0);
-    await unlockDashboard();
     await openAccountant();
     await expectAmounts(true);
     await button("Показать суммы").click();

@@ -15,6 +15,7 @@ import CompanySwitcher from "@/components/chrome/CompanySwitcher";
 import OperationRow from "./OperationRow";
 import TasksWidget from "./TasksWidget";
 import AssistantHome from "@/components/dashboards/AssistantHome";
+import { AssistantConversation, AssistantThreadMenu, threadAssets, type AssistantTopic } from "./AssistantThreads";
 import { useMenuDnd } from "@/lib/menuOrder";
 
 const asset = (name: string) => `/assets/figma/${name === "ops-table-ec6f5.png" ? name : name.replace(".png", ".webp")}`;
@@ -166,8 +167,7 @@ export default function Glavnaya() {
      поэтому быстрый реверс и повторный клик продолжают движение с текущей точки. */
   const [assistantShown, setAssistantShown] = useState(false);
   const assistantCloseRef = useRef<HTMLButtonElement>(null);
-  const expensesRef = useRef<HTMLButtonElement>(null);
-  const incomeRef = useRef<HTMLButtonElement>(null);
+  const [assistantTopic, setAssistantTopic] = useState<AssistantTopic>("expenses");
   const assistantReturnRef = useRef<HTMLButtonElement | null>(null);
   const [assistantFlip, setAssistantFlip] = useState(20);
   const [assistantBrand, setAssistantBrand] = useState<[number, number]>([17, 17]);
@@ -177,10 +177,9 @@ export default function Glavnaya() {
   const assistantRowRef = useRef<HTMLDivElement>(null);
   // предзагрузка логотипа бокового меню ассистента, чтобы в первом кадре панели он уже был
   useEffect(() => {
-    /* тот же логотип, что в строке ассистента на дашборде (кривая звёздочка + тень) */
-    for (const src of ["/assets/figma/spotlight-dbc5c.svg", "/assets/figma/spotlight-d6d2f.svg"]) {
+    for (const assetName of ["logo.svg", "logo-shadow.svg"]) {
       const img = new Image();
-      img.src = src;
+      img.src = threadAssets + assetName;
       void img.decode?.().catch(() => {});
     }
   }, []);
@@ -233,9 +232,10 @@ export default function Glavnaya() {
     assistantViewTracksRef.current.forEach((a) => a.cancel());
   }, []);
 
-  const openAssistant = useCallback((from?: HTMLButtonElement | null) => {
+  const openAssistant = useCallback((topic: AssistantTopic, from: HTMLButtonElement) => {
+    setAssistantTopic(topic);
     setAssistantView("chat");
-    assistantReturnRef.current = from ?? expensesRef.current;
+    assistantReturnRef.current = from;
     /* FLIP: кластер кнопок шапки стартует с текущего y дашборда (28 / sticky) и едет на y8 */
     const reopening = assistantClosingAtRef.current > 0; /* v12: при повторном открытии во время закрытия геометрию не перемеряем — элементы ещё в движении */
     const row = topbarRef.current?.querySelector(".topbar-buttons");
@@ -752,12 +752,14 @@ export default function Glavnaya() {
           <div className="hero-copy">
             <div className="hero-heading"><span className="hero-dash">—</span><h1 id="hero-title">{clientName.greetingName}, добрый день</h1></div>
             <div className="hero-subtitle">
-              <p>3 задачи требуют вашего внимания</p>
-              <button type="button" ref={incomeRef} onClick={() => openAssistant(incomeRef.current)} aria-haspopup="dialog"><Icon name="hero-6a06a.svg" /><span>Больше</span></button>
+              <button type="button" onClick={(event) => openAssistant("tasks", event.currentTarget)} aria-haspopup="dialog">
+                <span>3 задачи требуют вашего внимания</span>
+                <span className="hero-subtitle-action"><Icon name="hero-6a06a.svg" /><span>Больше</span></span>
+              </button>
             </div>
           </div>
           <div className="hero-actions">
-            <button className="hero-chip hero-chip-analytics" type="button"><Icon name="financial-analytics-icon.svg" /><span>Финансовая аналитика</span></button>
+            <button className="hero-chip hero-chip-analytics" type="button" onClick={(event) => openAssistant("expenses", event.currentTarget)} aria-haspopup="dialog"><Icon name="financial-analytics-icon.svg" /><span>Расходы за месяц</span></button>
             <button className="hero-chip" type="button"><Icon name="hero-92b54.svg" /><span>Себе в Альфу</span></button>
             <button className="hero-chip" type="button" onClick={download}><Icon name="hero-b373c.svg" /><span>Скачать выписку</span></button>
             <div className={`hero-action-slot${showTemplate ? " has-template" : ""}`}>
@@ -839,7 +841,7 @@ export default function Glavnaya() {
             <button className="operations-title-main" type="button">
               <h2 id="operations-title">Лента операций</h2><Chevron />
             </button>
-            <button className="expenses-link" type="button" ref={expensesRef} onClick={() => openAssistant(expensesRef.current)} aria-haspopup="dialog">
+            <button className="expenses-link" type="button" onClick={(event) => openAssistant("expenses", event.currentTarget)} aria-haspopup="dialog">
               <Icon name="ops-title-db9bc.svg" /><span>Расходы за месяц по категориям</span>
             </button>
           </div>
@@ -928,7 +930,7 @@ export default function Glavnaya() {
       <AssistantBar />
 
       {assistantOpen && (
-        <section style={{ ["--flip-dy" as string]: `${assistantFlip}px`, ["--brand-dx" as string]: `${assistantBrand[0]}px`, ["--brand-dy" as string]: `${assistantBrand[1]}px` }} className={`assistant${assistantShown ? " is-shown" : ""}${assistantPhase === "closing" ? " is-closing" : ""}${assistantQuick ? " is-quick" : ""}`} role="dialog" aria-modal="true" aria-label="Альфа-Интеллект">
+        <section style={{ ["--flip-dy" as string]: `${assistantFlip}px`, ["--brand-dx" as string]: `${assistantBrand[0]}px`, ["--brand-dy" as string]: `${assistantBrand[1]}px` }} className={`assistant${assistantShown ? " is-shown" : ""}${assistantPhase === "closing" ? " is-closing" : ""}${assistantQuick ? " is-quick" : ""}`} role="dialog" aria-modal="true" aria-label="Альфа-Интеллект" data-topic={assistantTopic}>
           <header className="assistant-topbar">
             <div className="assistant-brand">
               <span className="logo-sign"><img src={asset("logo-sign.svg")} alt="" /></span>
@@ -965,28 +967,20 @@ export default function Glavnaya() {
           <div className="assistant-panel" ref={assistantPanelRef}>
           {/* граница меню/окна (x248): отдельный слой поверх содержимого панели, у края панели, без своей анимации и фейда */}
           <span className="ai-window-line" aria-hidden="true" />
-          <aside className="assistant-nav">
-            <div className="assistant-nav-head">
-              {/* логотип как в строке ассистента на дашборде (AssistantBar), в размере 40 */}
-              <span className="assistant-neural" aria-hidden="true">
-                <img className="neural-shadow" src="/assets/figma/spotlight-d6d2f.svg" alt="" decoding="sync" />
-                <img src="/assets/figma/spotlight-dbc5c.svg" width={40} height={40} alt="" decoding="sync" />
-              </span>
-              <strong>Альфа-Интеллект</strong>
-            </div>
-            <div className="assistant-nav-list">
-              <button className={`assistant-nav-item${assistantView === "home" ? " active" : ""}`} type="button" aria-current={assistantView === "home" ? "page" : undefined} onClick={() => switchAssistantView("home")}><img src="/assets/figma/ic-crown.svg" alt="" />Главная</button>
-              <button className={`assistant-nav-item${assistantView === "chat" ? " active" : ""}`} type="button" aria-current={assistantView === "chat" ? "page" : undefined} onClick={() => switchAssistantView("chat")}><img src="/assets/figma/ic-clock.svg" alt="" />Чат</button>
-            </div>
-          </aside>
+          <AssistantThreadMenu
+            topic={assistantTopic}
+            home={assistantView === "home"}
+            onHome={() => switchAssistantView("home")}
+            onThread={() => switchAssistantView("chat")}
+          />
 
           <div className="assistant-chat">
             <div className="assistant-head-actions">
               <button className="assistant-round" type="button" aria-label="О Альфа-Интеллекте">
-                <img src="/assets/figma/ai-info.svg" alt="" width={24} height={24} />
+                <img src={threadAssets + assistantTopic + "-info.svg"} alt="" />
               </button>
               <button className="assistant-round assistant-close" type="button" aria-label="Закрыть" onClick={closeAssistant} ref={assistantCloseRef}>
-                <img src="/assets/figma/ai-close.svg" alt="" width={24} height={24} />
+                <img src={assistantTopic === "tasks" ? threadAssets + "tasks-close.svg" : asset("ai-close.svg")} alt="" />
               </button>
             </div>
             {/* Motion-only presence layers preserve the developer's containing-block geometry. */}
@@ -994,33 +988,7 @@ export default function Glavnaya() {
               <AssistantHome greetingName={clientName.greetingName} active={assistantView === "home"} switching={assistantSwitching} />
             </div>
             <div className="assistant-view-layer" data-view="chat" data-switching={assistantSwitching} data-from-opacity={assistantViewFromRef.current.chat} data-active={assistantView === "chat"} inert={assistantView !== "chat"} aria-hidden={assistantView !== "chat"}>
-            <div className="assistant-user">
-              <span>Расходы за месяц по категориям</span>
-              <span className="assistant-time">12:30</span>
-            </div>
-            <div className="assistant-answer" ref={assistantAnswerRef}>
-              <p className="assistant-answer-title">Расходы за апрель 2026</p>
-              <p>– Поставщики: {"2\u205f240\u205f000\u2009₽"}</p>
-              <p>– ФОТ и подрядчик: {"1\u205f320\u205f000\u2009₽"}</p>
-              <p>– Аренда: {"710\u205f000\u2009₽"}</p>
-              <p>– Налоги и сборы: {"547\u205f500\u2009₽"}</p>
-              <p>– Банк и комиссии: {"42\u205f100\u2009₽"}</p>
-              <p>– Прочее: {"98\u205f000\u2009₽"}</p>
-              <p className="assistant-answer-total">Итого расходы: {"4\u205f967\u205f600\u2009₽"}</p>
-              <p>Хочешь расскажу, сколько уходит на комиссии банка в разбивке по типам операций?</p>
-              <div className="assistant-answer-actions">
-                <button type="button" aria-label="Копировать ответ"><img src="/assets/figma/ai-copy.svg" alt="" width={20} height={20} /></button>
-                <button type="button" aria-label="Нравится"><img src="/assets/figma/ai-like.svg" alt="" width={20} height={20} /></button>
-                <button type="button" aria-label="Не нравится"><img src="/assets/figma/ai-dislike.svg" alt="" width={20} height={20} /></button>
-              </div>
-            </div>
-            <div className="assistant-footer">
-              <img className="assistant-footer-glow" src="/assets/figma/spot-full-045cf.svg" alt="" aria-hidden="true" />
-              <label className="assistant-ask">
-                <span className="assistant-ask-clip"><img src="/assets/figma/paperclip-icon.svg" alt="" /></span>
-                <input placeholder="Спросите что угодно" aria-label="Вопрос Альфа-Интеллекту" />
-              </label>
-            </div>
+              <AssistantConversation topic={assistantTopic} answerRef={assistantAnswerRef} />
             </div>
           </div>
           </div>

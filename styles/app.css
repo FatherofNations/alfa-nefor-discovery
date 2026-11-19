@@ -204,10 +204,10 @@ img { display: block; }
 .hero-heading { position: relative; display: flex; align-items: center; justify-content: center; height: 48px; }
 .hero-heading h1 { font-size: 36px; font-weight: 700; line-height: 48px; letter-spacing: .1px; white-space: nowrap; }
 .hero-dash { position: absolute; left: -33.5px; top: 24px; transform: translate(-50%, -50%); font-size: 40px; font-weight: 700; line-height: 48px; letter-spacing: .1px; }
-.hero-subtitle { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; }
-.hero-subtitle p { font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.24px; white-space: nowrap; }
-.hero-subtitle button { display: flex; align-items: center; gap: 4px; }
-.hero-subtitle button span { background: linear-gradient(169.0312444017914deg, #ef3124 32.833%, #f859c5 79.58%); background-clip: text; font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.05px; color: transparent; white-space: nowrap; }
+.hero-subtitle { display: flex; align-items: center; justify-content: center; width: 100%; }
+.hero-subtitle button { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.24px; white-space: nowrap; }
+.hero-subtitle-action { display: flex; align-items: center; gap: 4px; }
+.hero-subtitle-action > span { background: linear-gradient(169.0312444017914deg, #ef3124 32.833%, #f859c5 79.58%); background-clip: text; font-weight: 500; letter-spacing: -.05px; color: transparent; }
 .hero-actions { display: flex; width: 967px; height: 52px; align-items: center; justify-content: center; gap: 12px; }
 .hero-chip { flex: none; position: relative; display: flex; height: 52px; align-items: center; justify-content: center; gap: 8px; padding: 16px 20px; border-radius: 16px; background: #fff; font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; white-space: nowrap; }
 .hero-chip:hover { background: rgb(255 255 255 / 70%); }
@@ -674,11 +674,6 @@ img { display: block; }
 .assistant-neural { position: relative; display: flex; width: 28px; height: 28px; flex: none; align-items: center; justify-content: center; }
 .assistant-neural > img:not(.neural-shadow) { position: relative; width: 28px; height: 28px; }
 .assistant-nav-head strong { background: linear-gradient(to right, #7a63f1, #93f); background-clip: text; font-size: 16px; font-weight: 700; line-height: 24px; letter-spacing: .43px; color: transparent; white-space: nowrap; }
-.assistant-nav-list { padding-top: 16px; }
-.assistant-nav-item { position: relative; display: flex; width: 100%; height: 64px; align-items: center; gap: 12px; padding: 0 16px 0 24px; text-align: left; font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.05px; color: var(--text-secondary); }
-.assistant-nav-item img { width: 20px; height: 20px; flex: none; }
-.assistant-nav-item.active { font-weight: 700; color: var(--text-primary); }
-.assistant-nav-item.active::before { content: ""; position: absolute; left: 0; top: 50%; width: 4px; height: 54px; border-radius: 0 4px 4px 0; background: #ef3124; transform: translateY(-50%); }
 .assistant-chat { position: absolute; top: 64px; left: 248px; right: 0; bottom: 0; border-top: 1px solid #e7e8eb; background: #fff; }
 .assistant-close { position: absolute; top: 35px; right: 32px; display: flex; width: 32px; height: 32px; align-items: center; justify-content: center; }
 .assistant-close img { width: 24px; height: 24px; }
@@ -1232,6 +1227,94 @@ body.name-modal-open { overflow: hidden; }
 
 /* Обводка окна Main Page 169:26243 сверху и справа: 1px внутрь, neutral-translucent/200 (видна на рендере узла; левую даёт .ai-window-line) */
 .assistant-panel::after { content: ""; position: absolute; z-index: 4; inset: 0; border-top: 1px solid var(--neutral-translucent-200); border-right: 1px solid var(--neutral-translucent-200); border-radius: inherit; pointer-events: none; }
+
+/* Figma 280:41087 / 59:23885 — список диалогов и две переписки. */
+.assistant-panel .assistant-nav { overflow: auto; scrollbar-width: none; }
+.assistant-panel .assistant-neural > .neural-shadow { inset: 50% auto auto 50%; width: 58px; height: 58px; transform: translate(calc(-50% + 3px), calc(-50% + 3px)); }
+.assistant-new-dialog, .assistant-recent summary {
+  display: flex;
+  width: 100%;
+  height: 64px;
+  align-items: center;
+  padding: 8px 20px 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -.05px;
+}
+.assistant-new-dialog { gap: 12px; padding-left: 20px; }
+.assistant-new-dialog img { width: 24px; height: 24px; }
+.assistant-recent summary { justify-content: space-between; color: var(--text-secondary); cursor: pointer; list-style: none; }
+.assistant-recent summary::-webkit-details-marker { display: none; }
+.assistant-recent summary img { width: 20px; height: 20px; }
+.assistant-recent:not([open]) summary img { transform: rotate(180deg); }
+.assistant-recent ul { margin: 0; padding: 0; list-style: none; }
+.assistant-recent li { height: 48px; color: var(--text-secondary); }
+.assistant-recent li, .assistant-thread-current { display: flex; align-items: center; min-width: 0; padding: 0 20px 0 16px; text-align: left; }
+.assistant-recent li:has(.assistant-thread-current) { padding: 0; }
+.assistant-thread-current { position: relative; width: 100%; height: 100%; }
+.assistant-thread-current[aria-current] { color: var(--text-primary); }
+.assistant-thread-current[aria-current]::before { content: ""; position: absolute; left: 0; top: 6px; width: 4px; height: 36px; border-radius: 0 4px 4px 0; background: var(--accent-primary); }
+.assistant-recent li span {
+  width: 212px;
+  overflow: hidden;
+  white-space: nowrap;
+  font: 400 14px/20px var(--font);
+  letter-spacing: -.08px;
+  mask: url("/assets/figma/assistant-threads/thread-mask.svg") 0 -6px / 212px 32px no-repeat;
+}
+
+.assistant[data-topic="tasks"] .assistant-panel { top: 70px; border-radius: 20px 20px 0 0; }
+.assistant[data-topic="tasks"] .assistant-head-actions { top: 24px; right: 24px; gap: 12px; }
+.assistant[data-topic="expenses"] .assistant-head-actions { top: 24px; right: 20px; }
+.assistant[data-topic="tasks"] .assistant-round { background: var(--neutral-translucent-100); }
+.assistant[data-topic="expenses"] .assistant-round { background: var(--page-bg, #f2f3f5); }
+.assistant[data-topic="tasks"] .assistant-round:first-child img { width: 20px; height: 20px; }
+.assistant-conversation { position: absolute; inset: 0 0 160px; overflow: auto; padding-top: 60px; }
+.assistant[data-topic="tasks"] .assistant-conversation { bottom: 156px; padding-top: 74px; }
+.assistant-panel .assistant-user {
+  position: relative;
+  inset: auto;
+  width: max-content;
+  max-width: calc(100% - 40px);
+  margin-inline: auto max(20px, calc((100% - 826px) / 2));
+  align-items: baseline;
+  padding: 12px 16px;
+  border-radius: 20px 0 20px 20px;
+  background: var(--neutral-translucent-100);
+  line-height: 20px;
+  letter-spacing: normal;
+}
+.assistant-user .assistant-time { letter-spacing: normal; }
+.assistant-panel .assistant-conversation .assistant-answer {
+  position: relative;
+  inset: auto;
+  width: min(840px, calc(100% - 40px));
+  margin: 43px auto 0;
+  line-height: 24px;
+}
+.assistant[data-topic="tasks"] .assistant-conversation .assistant-answer { margin-top: 42px; }
+.assistant-panel .assistant-conversation .assistant-answer > p, .assistant-task > p { padding-bottom: 12px; }
+.assistant-panel .assistant-conversation .assistant-answer > .assistant-answer-title,
+.assistant-panel .assistant-conversation .assistant-answer > .assistant-answer-total { padding-top: 12px; line-height: 24px; letter-spacing: normal; }
+.assistant-task > p { padding-left: 20px; }
+.assistant-dash-line { position: relative; padding-left: 20px; }
+.assistant-dash-line::before { content: "–"; position: absolute; left: 0; width: 14px; text-align: right; }
+.assistant-panel .assistant-footer {
+  left: 0;
+  right: 0;
+  padding-inline: max(20px, calc((100% - 840px) / 2));
+}
+.assistant-panel .assistant-footer-glow { left: 50%; }
+.assistant[data-topic="tasks"] .assistant-footer {
+  height: 156px;
+  padding: 60px max(20px, calc((100% - 824px) / 2)) 24px;
+  background: url("/assets/figma/assistant-threads/tasks-footer.png") center / cover no-repeat;
+}
+.assistant[data-topic="tasks"] .assistant-footer .assistant-ask { isolation: isolate; padding: 0 20px; background: transparent; filter: none; box-shadow: 0 4px 20px rgb(73 0 255 / 1%); }
+.assistant[data-topic="tasks"] .assistant-footer .assistant-ask::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; background: linear-gradient(to left, #fcb2c6, #bfc4fe); filter: blur(10px); opacity: .5; }
+.assistant[data-topic="tasks"] .assistant-footer .assistant-ask::after { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; background: rgb(255 255 255 / 88%); }
+.assistant[data-topic="tasks"] .assistant-footer .assistant-ask input { padding-inline: 0; }
 
 
 /* Figma 223:23085 — тариф и лимиты компании. */

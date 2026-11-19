@@ -45,7 +45,7 @@ export default function DashboardSkeletonGate({
   const pathname = usePathname();
   const { inn: companyInn } = useSelectedCompany();
   const [loadedCount, setLoadedCount] = useState(0);
-  const [clicksLocked, setClicksLocked] = useState(true);
+  const [clicksLocked, setClicksLocked] = useState(false);
 
   useLayoutEffect(() => {
     resetScrollOnRoleChange(pathname);
