@@ -1,10 +1,10 @@
-/* ═══ Широкие экраны (>1600) ═══
-   Контейнеры дашбордов ФИКСИРОВАННЫЕ, без full-bleed растяжения:
-   - главная предпринимателя: колонка 972 px (как «Основа» в макете 59:16843);
-   - главная бухгалтера: максимум 1248 px (как .cur-content в @Main).
-   Обе центрируются в свободной зоне справа от сайдбара — это делает базовый
-   CSS (app.css: .dashboard-content margin-left max(336px, calc(50vw - 328px));
-   accountant.css: .cur-content max-width 1248 + margin 0 auto).
-   Правила растяжения удалены по просьбе пользователя: на 4K контент остаётся
-   той же ширины, что и на 1600, а не тянется на всю ширину вьюпорта.
-   Файл оставлен (и импортируется в layout), чтобы не ломать порядок стилей. */
+/* На больших экранах центрируем каркас предпринимателя по раскладке
+   при 1750 px. Формула начинается с нулевого отступа на границе. */
+.dashboard-page {
+  --dashboard-edge-inset: max(0px, (100vw - 1750px) / 2);
+}
+
+.dashboard-page > .sidebar { left: calc(var(--dashboard-edge-inset) + 8px); }
+.dashboard-page > .topbar { left: var(--dashboard-edge-inset); right: var(--dashboard-edge-inset); }
+.dashboard-page > .account-panel { left: calc(var(--dashboard-edge-inset) + 324px); }
+.dashboard-page > .footer-fade { left: var(--dashboard-edge-inset); }

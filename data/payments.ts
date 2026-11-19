@@ -2,7 +2,9 @@
    показывают одни и те же операции, отличается только представление:
    лента по дням (data/demo.ts → Glavnaya) и таблица (accountantHtml.ts).
    Период — 1–15 декабря 2026. Обороты считаются из этих же платежей, а
-   исходящий остаток равен остатку на счёте бухгалтера (570 880,95 ₽). */
+   исходящий остаток берётся из общего справочника счетов. */
+
+import { accountsTotal } from "./accounts";
 
 export type Payment = {
   id: string;
@@ -53,7 +55,7 @@ export function signed(value: number, groupSep: string, rubSep: string) {
   return `${value > 0 ? "+" : "−"}${money(value, groupSep)}${rubSep}₽`;
 }
 
-export const CLOSING_BALANCE = 570880.95;
+export const CLOSING_BALANCE = accountsTotal;
 export const income = payments.filter((p) => p.amount > 0).reduce((s, p) => s + p.amount, 0);
 export const outcome = payments.filter((p) => p.amount < 0).reduce((s, p) => s - p.amount, 0);
 export const OPENING_BALANCE = Math.round((CLOSING_BALANCE - income + outcome) * 100) / 100;

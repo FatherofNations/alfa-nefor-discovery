@@ -22,7 +22,7 @@ function CompanyLogo({ kind }: { kind: Operation["logo"] }) {
 
 export default function OperationRow({ operation, checked, onCheck }: { operation: Operation; checked: boolean; onCheck: () => void }) {
   return (
-    <div className={operation.details ? "operation-row operation-row-details" : "operation-row"}>
+    <div className="operation-row">
       <div className="operation-main">
         <div className="operation-content">
           <label className="checkbox">

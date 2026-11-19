@@ -116,8 +116,33 @@ export async function verifyStatic(browser, indexPath) {
       await tabs.getByRole("button", { name: new RegExp(`^${name}`), pressed: true }).waitFor();
       await page.locator(".tab-stage.phase-idle").waitFor();
       await checkAssets(name);
+      if (name === "Счета на главной") {
+        const masks = await page.locator(".accounts-panel .account-card-copy > span").allTextContents();
+        assert.equal(masks.length, 2);
+        assert.equal(new Set(masks).size, masks.length, "Маски разных карт должны отличаться");
+      }
     }
     const trigger = tabs.getByRole("button", { name: "Ассистент", exact: true });
+
+    // После сжатия шапки подложка раньше мигала второй раз с задержкой.
+    await tabs.getByRole("button", { name: /^Сводка/ }).click();
+    await tabs.locator(".tab-counter").waitFor({ state: "detached" });
+    const starts = await trigger.evaluate(async (tab) => {
+      const bar = tab.parentElement;
+      const since = performance.now();
+      const times = [];
+      const record = (event) => {
+        if (event.animationName === "tab-capsule-pop") times.push(performance.now() - since);
+      };
+      bar.addEventListener("animationstart", record);
+      tab.click();
+      await new Promise((resolve) => window.setTimeout(resolve, 1100));
+      bar.removeEventListener("animationstart", record);
+      return times;
+    });
+    assert.equal(starts.length, 1, "Подложка должна появляться один раз на выбор вкладки");
+    assert(starts[0] < 450, `Подложка запустилась с задержкой ${Math.round(starts[0])} мс`);
+
     await trigger.focus();
     await page.keyboard.press("/");
     const dialog = page.getByRole("dialog", { name: "Имя клиента" });
@@ -152,16 +177,30 @@ export async function verifyStatic(browser, indexPath) {
     const companyPanel = page.getByRole("dialog", { name: "Иванова Мария Петровна" });
     await companyPanel.waitFor();
     await companyPanel.getByRole("heading", { name: "ООО «Умные и свободные»" }).waitFor();
+    await companyPanel.getByText("Руководитель", { exact: true }).waitFor();
     await checkAssets("Смена компании");
     assert.equal(await companyPanel.locator(".company-switcher-option").count(), 4);
     await page.keyboard.press("Escape");
     await companyPanel.waitFor({ state: "detached" });
     await expectFocused(companyTrigger);
 
+    // Показываем прогрессивную загрузку после выбора и в headless Chromium.
+    await page.evaluate(() => {
+      const url = new URL(location.href);
+      url.searchParams.set("skel", "on");
+      history.replaceState(history.state, "", url);
+    });
     await companyTrigger.click();
     await companyPanel.getByRole("button", { name: /^ООО «Циферблат»/ }).click();
     await companyPanel.waitFor({ state: "detached" });
+    await page.locator(".dash-gate[aria-busy='true'] .gate-skeleton").waitFor();
+    await page.locator(".dash-gate.gate-ready").waitFor();
     await page.locator(".topbar").getByRole("button", { name: "Сменить компанию: ООО «Циферблат»" }).waitFor();
+    const balanceText = await balance.locator("strong").textContent();
+    assert.equal(balanceText, "950 078,40 ₽");
+    const logoOffsets = await page.locator(".operation-row").evaluateAll((rows) => rows.map((row) =>
+      row.querySelector(".company-logo").getBoundingClientRect().top - row.querySelector(".operation-content").getBoundingClientRect().top));
+    assert(logoOffsets.length > 0 && logoOffsets.every((top) => top === 0), "Логотипы должны совпадать с верхним краем строки");
 
     const openAccountant = async () => {
       await page.locator(".topbar").getByRole("button", { name: "Предприниматель", exact: true }).click();
@@ -171,12 +210,22 @@ export async function verifyStatic(browser, indexPath) {
     };
     await openAccountant();
     await checkAssets("Главная бухгалтера");
+    assert.equal(await page.locator(".cur-bal-amount").textContent(), balanceText);
     await page.locator(".chrome-header").getByRole("button", { name: "Сменить компанию: ООО «Циферблат»" }).click();
     await companyPanel.getByRole("heading", { name: "ООО «Циферблат»" }).waitFor();
-    await companyPanel.getByRole("button", { name: /^ООО «Циферблат»/, pressed: true }).waitFor();
+    await companyPanel.getByText("Бухгалтер", { exact: true }).waitFor();
+    const activeCompany = companyPanel.getByRole("button", { name: /^ООО «Циферблат»/, pressed: true });
+    assert.equal(await activeCompany.evaluate((option) => getComputedStyle(option).padding), "16px 16px 20px 20px");
     await checkAssets("Смена компании на главной бухгалтера");
     await page.mouse.click(300, 300);
     await companyPanel.waitFor({ state: "detached" });
+    await page.locator(".chrome-header").getByRole("button", { name: "Сменить компанию: ООО «Циферблат»" }).click();
+    await companyPanel.getByRole("button", { name: /^ООО «Калуга Трейд»/ }).click();
+    await page.locator(".dash-gate[aria-busy='true'] .gate-skeleton").waitFor();
+    await page.locator(".dash-gate.gate-ready").waitFor();
+    await waitForRoute("/accountant");
+    await page.locator(".chrome-header").getByRole("button", { name: "Сменить компанию: ООО «Калуга Трейд»" }).waitFor();
+    assert.equal(await page.locator(".cur-bal-amount").textContent(), balanceText);
     // В отдельной загрузке проверяем рабочую шапку после снятия скелетона.
     entry.searchParams.set("skel", "on");
     entry.hash = "/accountant";

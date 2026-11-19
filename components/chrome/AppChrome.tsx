@@ -154,7 +154,7 @@ export default function AppChrome({ personLabel = "Предпринимател�
           </button>
         </div>
         <span className="chrome-hdiv" />
-        <CompanySwitcher className="chrome-company">
+        <CompanySwitcher className="chrome-company" role="Бухгалтер">
           {(companyName) => (
             <>
               <span className="chrome-co-logo" />

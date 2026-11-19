@@ -17,6 +17,7 @@ import AssistantHome from "@/components/dashboards/AssistantHome";
 import { useMenuDnd } from "@/lib/menuOrder";
 
 const asset = (name: string) => `/assets/figma/${name === "ops-table-ec6f5.png" ? name : name.replace(".png", ".webp")}`;
+const balanceLabel = `${money(accountsTotal, " ")}\u2009₽`;
 
 function Icon({ name, className = "" }: { name: string; className?: string }) {
   return <img className={`icon ${className}`} src={asset(name)} alt="" aria-hidden="true" />;
@@ -132,11 +133,6 @@ export default function Glavnaya() {
   const [shownTab, setShownTab] = useState("Ассистент");
   const [tabPhase, setTabPhase] = useState<"idle" | "out" | "in-prep" | "in">("idle");
   const tabTimers = useRef<number[]>([]);
-  const navRef = useRef<HTMLElement>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [capsule, setCapsule] = useState({ left: 0, width: 0, ready: false });
-  const [capsuleSyncing, setCapsuleSyncing] = useState(false);
-  const [capsulePop, setCapsulePop] = useState(0);
   const [counter, setCounter] = useState<"shown" | "hiding" | "gone">("shown");
   const [search, setSearch] = useState("");
   const [checked, setChecked] = useState<Set<string>>(new Set());
@@ -562,8 +558,7 @@ export default function Glavnaya() {
 
   /* Счётчик «2» на «Сводка»: 3 s пауза, затем
      1) бейдж только opacity+scale (без обрезки overflow),
-     2) с задержкой — сжатие слота/вкладки/шапки,
-     3) капсула покадрово = bounds активной кнопки (без lag CSS transition).
+     2) с задержкой — сжатие слота/вкладки/шапки.
      Reduced motion → сразу gone. Уход с вкладки до 3 s отменяет таймер. */
   useEffect(() => {
     if (counter !== "shown" || activeTab !== "Сводка") return;
@@ -580,79 +575,6 @@ export default function Glavnaya() {
     const hideId = window.setTimeout(() => setCounter("gone"), 620);
     return () => window.clearTimeout(hideId);
   }, [counter]);
-
-  const measureCapsule = useCallback(() => {
-    const index = TABS.indexOf(activeTab);
-    const nav = navRef.current;
-    const btn = tabRefs.current[index];
-    if (!nav || !btn) return;
-    const rect = btn.getBoundingClientRect();
-    const navRect = nav.getBoundingClientRect();
-    setCapsule({ left: rect.left - navRect.left, width: rect.width, ready: true });
-  }, [activeTab]);
-
-  useEffect(() => {
-    let alive = true;
-    const run = () => { if (alive) measureCapsule(); };
-    const raf = requestAnimationFrame(run);
-    const raf2 = requestAnimationFrame(run);
-    window.addEventListener("resize", run);
-    document.fonts.ready.then(run).catch(() => {});
-    return () => {
-      alive = false;
-      cancelAnimationFrame(raf);
-      cancelAnimationFrame(raf2);
-      window.removeEventListener("resize", run);
-    };
-  }, [measureCapsule]);
-
-  useEffect(() => {
-    const id = requestAnimationFrame(measureCapsule);
-    return () => cancelAnimationFrame(id);
-  }, [counter, measureCapsule]);
-
-  useLayoutEffect(() => {
-    if (counter === "shown") return;
-    measureCapsule();
-  }, [counter, measureCapsule]);
-
-  /* Пока сжимается вкладка со счётчиком — капсула строго в bounds кнопки.
-     CSS transition left/width здесь даёт лаг и «наезд» соседних табов на плашку,
-     поэтому на время motion transition отключён и left/width пишутся каждый кадр. */
-  useEffect(() => {
-    if (counter === "shown") return;
-    setCapsuleSyncing(true);
-    let raf = 0;
-    let alive = true;
-    const start = performance.now();
-    const tick = () => {
-      if (!alive) return;
-      measureCapsule();
-      if (performance.now() - start < 640) raf = requestAnimationFrame(tick);
-      else setCapsuleSyncing(false);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => {
-      alive = false;
-      cancelAnimationFrame(raf);
-      setCapsuleSyncing(false);
-    };
-  }, [counter, measureCapsule]);
-
-  /* Смена вкладки: позиция капсулы мгновенно, появление — pop (scale+opacity).
-     Во время dismiss каунтера pop не трогаем — там покадровый sync.
-     Срабатывает только при реальной смене activeTab (не при конце sync). */
-  const prevTabRef = useRef(activeTab);
-  useEffect(() => {
-    if (prevTabRef.current === activeTab) return;
-    prevTabRef.current = activeTab;
-    if (capsuleSyncing || counter === "hiding") return;
-    const id = requestAnimationFrame(() => {
-      measureCapsule();
-      setCapsulePop((n) => n + 1);
-    });
-    return () => cancelAnimationFrame(id);
-  }, [activeTab, capsuleSyncing, counter, measureCapsule]);
 
   /* Sticky collapse шапки → вид chrome-header бухгалтера.
      Эталон /accountant .chrome-header (измерено 1600×900):
@@ -731,7 +653,7 @@ export default function Glavnaya() {
           <div className="amounts">
             <button className="balance-cell" type="button" ref={accountTriggerRef} aria-expanded={accountOpen} aria-controls="account-details" onClick={() => setAccountOpen(true)}>
               <span className="balance-icon"><Icon name="rub-icon.svg" /></span>
-              <span className="balance-copy"><strong>{money(accountsTotal, " ")} ₽</strong><span>{accountsCountLabel}</span></span>
+              <span className="balance-copy"><strong>{balanceLabel}</strong><span>{accountsCountLabel}</span></span>
               <span className="balance-addon"><img className="bank-card-img" src="/assets/figma/bank-card.png" srcSet="/assets/figma/bank-card@2x.png 2x" alt="" /></span>
             </button>
             {creditVisible && (
@@ -784,7 +706,7 @@ export default function Glavnaya() {
           <button className="icon-button" type="button" aria-label="Уведомления"><img src={asset("notifications-icon.svg")} alt="" /></button>
         </div>
         <span className="vertical-divider" />
-        <CompanySwitcher className="company-account">
+        <CompanySwitcher className="company-account" role="Руководитель">
           {(companyName) => (
             <>
               <span className="account-avatar"><img src="/assets/figma/avatar-photo.png" alt="" /></span>
@@ -800,20 +722,11 @@ export default function Glavnaya() {
 
       <div className="dashboard-content">
         <nav
-          ref={navRef}
           className={`tabs${counter !== "shown" ? ` tabs-compact tabs-${COMPACT_CLASS[activeTab] ?? "summary"}` : ""}${counter === "hiding" ? " tabs-counter-dismiss" : ""}`}
           aria-label="Разделы главной"
         >
-          {capsule.ready && (
-            <span
-              key={capsulePop}
-              className={`tab-capsule${capsuleSyncing || counter === "hiding" ? " syncing" : " pop"}`}
-              style={{ left: capsule.left, width: capsule.width }}
-              aria-hidden="true"
-            />
-          )}
-          {TABS.map((tab, i) => (
-            <button ref={(el) => { tabRefs.current[i] = el; }} key={tab} type="button" className={`tab${activeTab === tab ? " active" : ""}`} onClick={() => changeTab(tab)} aria-pressed={activeTab === tab}>
+          {TABS.map((tab) => (
+            <button key={tab} type="button" className={`tab${activeTab === tab ? " active" : ""}`} onClick={() => changeTab(tab)} aria-pressed={activeTab === tab}>
               <span>{tab}</span>
               {tab === "Сводка" && counter !== "gone" && (
                 <span className={`tab-counter-slot${counter === "hiding" ? " hiding" : ""}`} aria-hidden={counter === "hiding"}>
@@ -978,7 +891,7 @@ export default function Glavnaya() {
             </button>
           </div>
           <div className="account-panel-body">
-            <AccountRow label="Исходящий остаток" value={"570\u205f880,00\u2009₽"} info />
+            <AccountRow label="Исходящий остаток" value={balanceLabel} info />
             <span className="account-panel-divider" />
             <AccountRow label="Фиксированный остаток" value={"0,00\u2009₽"} muted />
             <AccountRow label="Ожидает списания" value={"0,00\u2009₽"} muted />
@@ -992,7 +905,7 @@ export default function Glavnaya() {
               <button className="account-panel-link" type="button">Открыть</button>
             </AccountRow>
             <span className="account-panel-divider" />
-            <AccountRow label="Доступный остаток" value={money(accountsTotal, " ") + "\u2009₽"} info />
+            <AccountRow label="Доступный остаток" value={balanceLabel} info />
           </div>
           <button className="account-panel-cta" type="button">К счёту</button>
         </section>
@@ -1014,7 +927,7 @@ export default function Glavnaya() {
                 <button className="icon-button" data-flip="notif" type="button" aria-label="Уведомления"><img src={asset("notifications-icon.svg")} alt="" /></button>
               </div>
               <span className="ai-divider" data-flip="div1" />
-              <CompanySwitcher className="ai-account" flipKey="account">
+              <CompanySwitcher className="ai-account" role="Руководитель" flipKey="account">
                 {(companyName) => (
                   <>
                     <span className="ai-av">

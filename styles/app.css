@@ -124,27 +124,17 @@ img { display: block; }
 }
 .tab:nth-of-type(3) { width: 165px; }
 .tab:nth-of-type(4) { width: 182px; }
-.tab.active { background: transparent; color: var(--text-primary); font-weight: 500; letter-spacing: -.05px; }
-.tab-capsule {
+.tab.active { color: var(--text-primary); font-weight: 500; letter-spacing: -.05px; }
+/* Подложка следует за размерами кнопки при сужении шапки. */
+.tab.active::before {
+  content: "";
   position: absolute;
-  top: 4px;
-  z-index: 0;
-  height: 44px;
-  border-radius: 999px;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
   background: #fff;
   pointer-events: none;
-  /* Позиция ставится мгновенно; анимация — только появление из scale+opacity
-     (одна логика до и после ухода каунтера, без «езды» по ширине). */
-  transform: scale(1);
-  opacity: 1;
-  transform-origin: center center;
-}
-.tab-capsule.pop {
-  animation: tab-capsule-pop .42s cubic-bezier(.32, .72, 0, 1) both;
-}
-.tab-capsule.syncing {
-  animation: none !important;
-  transition: none !important;
+  animation: tab-capsule-pop .42s cubic-bezier(.32, .72, 0, 1);
 }
 @keyframes tab-capsule-pop {
   from { opacity: 0; transform: scale(.92); }
@@ -405,8 +395,7 @@ img { display: block; }
 .checkbox-mark { position: absolute; inset: 2px; width: 20px; height: 20px; pointer-events: none; }
 .checkbox-mark-empty { background: var(--neutral-0); border: 1.5px solid var(--neutral-translucent-700); border-radius: 4px; }
 .operation-info { display: flex; min-width: 0; flex: 1; align-items: flex-start; gap: 24px; }
-.operation-counterparty { display: flex; min-width: 0; flex: 1; align-items: center; gap: 20px; }
-.operation-row-details .operation-counterparty { align-items: flex-start; }
+.operation-counterparty { display: flex; min-width: 0; flex: 1; align-items: flex-start; gap: 20px; }
 .company-logo { position: relative; display: block; width: 52px; height: 52px; flex: none; overflow: hidden; border-radius: 14px; mask-image: url("/assets/figma/ops-table-8473e.svg"); mask-size: 52px 52px; }
 .company-logo > img { position: absolute; max-width: none; }
 .company-logo > img:not(.company-logo-image):not(.company-logo-person):not(.company-logo-bg) { inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -749,7 +738,7 @@ img { display: block; }
   *, *::before, *::after { transition: none !important; }
   .assistant, .assistant-user, .assistant-answer > *, .role-menu { animation: none; }
   .tab-stage.phase-in .summary-card, .tab-stage.phase-in .accounts-card, .tab-stage.phase-in .tariffs-card { animation: none !important; }
-  .tab-capsule, .tab-capsule.pop { animation: none !important; transition: none !important; }
+  .tab.active::before { animation: none; }
   .assistant, .assistant.is-closing { animation: none !important; }
   .dashboard-page.assistant-shift > .sidebar,
   .dashboard-page.assistant-shift > .topbar,

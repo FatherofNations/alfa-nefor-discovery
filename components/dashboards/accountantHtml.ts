@@ -3,7 +3,10 @@
    styles/accountant.css; геометрия сверена с get_metadata 136:18900/….
    Правки контента — прямо в этой разметке. */
 
-import { payments, shortDate, signed } from "@/data/payments";
+import { accounts, accountsTotal } from "@/data/accounts";
+import { money, payments, shortDate, signed } from "@/data/payments";
+
+const [primaryAccount] = accounts;
 
 const DOTS = '<svg class="cur-dots" width="20" height="20" viewBox="0 0 20 20"><circle cx="4" cy="10" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="16" cy="10" r="1.6"/></svg>';
 
@@ -60,7 +63,7 @@ export const ACCOUNTANT_OVERVIEW_HTML = `<!-- Быстрые действия (b
 <section class="cur-row1">
   <div class="cur-balance">
     <div class="cur-bal-body">
-      <div class="cur-bal-amount">570 880,95 ₽</div>
+      <div class="cur-bal-amount">${money(accountsTotal, " ")} ₽</div>
       <div class="cur-bal-bottom">
         <div class="cur-bal-connect">
           <div class="cur-bal-connect-main">
@@ -83,14 +86,14 @@ export const ACCOUNTANT_OVERVIEW_HTML = `<!-- Быстрые действия (b
             <span class="cur-bal-ic cur-bal-ic-gray"><img src="/assets/accountant/curBalRub.svg" width="24" height="24" alt=""></span>
             <div class="cur-bal-acc-txt">
               <span class="cur-bal-acc-name">Рублёвый счёт</span>
-              <span class="cur-bal-acc-num">·· 5370</span>
+              <span class="cur-bal-acc-num">·· ${primaryAccount.number.slice(-4)}</span>
             </div>
           </div>
           <div class="cur-bal-acc">
             <span class="cur-bal-cardbox"><span class="cur-bal-card"></span></span>
             <div class="cur-bal-acc-txt">
               <span class="cur-bal-acc-name">Business One</span>
-              <span class="cur-bal-acc-num">·· 0363</span>
+              <span class="cur-bal-acc-num">·· ${primaryAccount.card.slice(-4)}</span>
             </div>
           </div>
         </div>

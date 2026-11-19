@@ -3,6 +3,7 @@
 import { useLayoutEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { hasEntered, resetEntry } from "@/lib/entry-session";
+import { useSelectedCompany } from "@/lib/company-selection";
 import { setTemplatePaymentKept } from "@/lib/quick-actions";
 
 /* Скелетон дашборда — прогрессивная загрузка ПО ВИДЖЕТАМ.
@@ -40,6 +41,7 @@ export default function DashboardSkeletonGate({
   hardReload = false,
 }: DashboardSkeletonGateProps) {
   const router = useRouter();
+  const { inn: companyInn } = useSelectedCompany();
   const [loadedCount, setLoadedCount] = useState(0);
 
   useLayoutEffect(() => {
@@ -55,7 +57,7 @@ export default function DashboardSkeletonGate({
     const keys = schedule.map((widget) => widget.key);
     const mode = new URLSearchParams(window.location.search).get("skel");
 
-    /* новый маунт (в т.ч. клиентская навигация) — снимаем прошлые отметки */
+    /* Новый дашборд или смена компании: виджеты начинают загрузку заново. */
     keys.forEach((key) => document.body.classList.remove(`sk-loaded-${key}`));
 
     if (mode === "hold") return;
@@ -88,14 +90,14 @@ export default function DashboardSkeletonGate({
       window.setTimeout(() => activate([key]), delay),
     );
     return () => timers.forEach((timer) => window.clearTimeout(timer));
-  }, [hardReload, router, widgets]);
+  }, [companyInn, hardReload, router, widgets]);
 
   const allLoaded = loadedCount >= widgets.length;
 
   return (
     <div className={`dash-gate${allLoaded ? " gate-ready" : ""}`} aria-busy={allLoaded ? undefined : true}>
       {!allLoaded && <div className="gate-skeleton">{fallback}</div>}
-      <div className="gate-content">{children}</div>
+      <div className="gate-content" key={companyInn}>{children}</div>
     </div>
   );
 }

@@ -1,35 +1,12 @@
 "use client";
 
-import { useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import { useId, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { useClientFullName } from "@/lib/client-name";
+import { companies, selectCompany, useSelectedCompany, type Company } from "@/lib/company-selection";
 
 const ASSETS = "/assets/figma/company-switcher/";
-
-const companies = [
-  { name: "ООО «Умные и свободные»", inn: "540960870096", role: "Зарплатный специалист", rubles: "77 300", foreign: "10 000", currency: "$" },
-  { name: "ООО «Калуга Трейд»", inn: "540960870888", rubles: "77 300", foreign: "10 000", currency: "$", more: "и ещё 2 валюты" },
-  { name: "ИП Васильев А.И.", inn: "540960870018", rubles: "77 300", foreign: "10 000", currency: "$" },
-  { name: "ООО «Циферблат»", inn: "540960870001", rubles: "12 000 240", foreign: "612 312", currency: "¥" },
-];
-
-type Company = typeof companies[number];
-const defaultCompany = companies[0];
-let selectedCompany = defaultCompany;
-const listeners = new Set<() => void>();
-
-function subscribeToCompany(listener: () => void) {
-  listeners.add(listener);
-  return () => { listeners.delete(listener); };
-}
-
-function selectCompany(company: Company) {
-  if (selectedCompany === company) return;
-  selectedCompany = company;
-  listeners.forEach((listener) => listener());
-}
-
-const readCompany = () => selectedCompany;
-const readDefaultCompany = () => defaultCompany;
+type CompanyRole = "Руководитель" | "Бухгалтер";
 
 function Amounts({ rubles, foreign, currency, more }: Pick<Company, "rubles" | "foreign" | "currency" | "more">) {
   return (
@@ -41,7 +18,7 @@ function Amounts({ rubles, foreign, currency, more }: Pick<Company, "rubles" | "
   );
 }
 
-function CompanyPanel({ id, company, onDismiss }: { id: string; company: Company; onDismiss: () => void }) {
+function CompanyPanel({ id, company, role, onDismiss }: { id: string; company: Company; role: CompanyRole; onDismiss: () => void }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const clientFullName = useClientFullName();
   const titleId = `${id}-title`;
@@ -96,7 +73,7 @@ function CompanyPanel({ id, company, onDismiss }: { id: string; company: Company
             </div>
             <dl className="company-switcher-fields">
               <div><dt>ИНН</dt><dd>{company.inn}</dd></div>
-              {company.role && <div><dt>Роль</dt><dd>{company.role}</dd></div>}
+              <div><dt>Роль</dt><dd>{role}</dd></div>
             </dl>
           </div>
           <div className="company-switcher-divider" />
@@ -123,7 +100,7 @@ function CompanyPanel({ id, company, onDismiss }: { id: string; company: Company
                   type="button"
                   className="company-switcher-option"
                   aria-pressed={company === item}
-                  onClick={() => { selectCompany(item); dismiss(); }}
+                  onClick={() => { dismiss(); selectCompany(item); }}
                 >
                   <span className="company-switcher-option-name">{item.name}</span>
                   <span className="company-switcher-option-inn"><span className="company-switcher-secondary">ИНН</span>{item.inn}</span>
@@ -139,15 +116,16 @@ function CompanyPanel({ id, company, onDismiss }: { id: string; company: Company
   );
 }
 
-export default function CompanySwitcher({ className, children, flipKey }: {
+export default function CompanySwitcher({ className, children, role, flipKey }: {
   className: string;
   children: (companyName: string) => ReactNode;
+  role: CompanyRole;
   flipKey?: string;
 }) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const id = useId();
-  const company = useSyncExternalStore(subscribeToCompany, readCompany, readDefaultCompany);
+  const company = useSelectedCompany();
 
   const closePanel = () => {
     setOpen(false);
@@ -169,7 +147,7 @@ export default function CompanySwitcher({ className, children, flipKey }: {
       >
         {children(company.name)}
       </button>
-      {open && <CompanyPanel id={id} company={company} onDismiss={closePanel} />}
+      {open && createPortal(<CompanyPanel id={id} company={company} role={role} onDismiss={closePanel} />, document.body)}
     </>
   );
 }
