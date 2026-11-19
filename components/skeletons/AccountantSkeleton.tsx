@@ -65,7 +65,7 @@ export default function AccountantSkeleton() {
         </div>
       </main>
 
-      <AssistantBar label="Alpha Intellect" />
+      <AssistantBar />
     </div>
   );
 }

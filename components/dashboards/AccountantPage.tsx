@@ -6,7 +6,7 @@ import BodyClass from "@/components/BodyClass";
 import AppChrome from "@/components/chrome/AppChrome";
 import AssistantBar from "@/components/chrome/AssistantBar";
 import { ACCOUNTANT_CARDS_HTML, ACCOUNTANT_FEED_HTML, ACCOUNTANT_OVERVIEW_HTML } from "./accountantHtml";
-import { hasEntered, resetEntry, setEntryRole } from "@/lib/entry-session";
+import { hasEntered, prepareDashboardRoleChange, resetEntry } from "@/lib/entry-session";
 
 /* Дашборд бухгалтера — byte-perfect партиал из пресета @Main.
    Хром (AppChrome + SpotlightBar) и стили chrome.css/accountant.css здесь же,
@@ -57,10 +57,7 @@ export default function AccountantPage() {
 
   const goEntrepreneur = useCallback(() => {
     setMenuOpen(false);
-    /* без этого чипса на главной предпринимателя оставалась «бухгалтерской»
-       (неверная аватарка/подпись) — роль обязана переключиться */
-    setEntryRole("entrepreneur");
-    router.push("/");
+    router.push(prepareDashboardRoleChange("entrepreneur"), { scroll: false });
   }, [router]);
 
   useEffect(() => {
@@ -105,7 +102,7 @@ export default function AccountantPage() {
           <div className="cur-static" dangerouslySetInnerHTML={{ __html: ACCOUNTANT_FEED_HTML }} />
         </div>
       </main>
-      <AssistantBar label="Alpha Intellect" />
+      <AssistantBar />
 
       {menuOpen && (
         <div className="role-menu cur-role" role="menu" aria-label="Вид главной" ref={menuRef} tabIndex={-1}>

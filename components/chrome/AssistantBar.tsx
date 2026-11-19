@@ -2,16 +2,13 @@
    (spotlight: логотип-кружок + градиентная подпись, пилюля-инпут со скрепкой
    и «развернуть», кнопка «Связь с банком»), плюс разделительные слои:
    полоса 6px над плашкой и скруглённые вырезы по углам, чтобы контент,
-   уезжающий под плашку, не просвечивал острым углом.
-   На бухгалтере подпись — Alpha Intellect (по просьбе пользователя). */
-
-type AssistantBarProps = {
-  label: string;
-};
+   уезжающий под плашку, не просвечивал острым углом. */
 
 const FIG = "/assets/figma/";
 
-export default function AssistantBar({ label }: AssistantBarProps) {
+export default function AssistantBar() {
+  const label = "Альфа-Интеллект";
+
   return (
     <>
       <div className="footer-fade" />

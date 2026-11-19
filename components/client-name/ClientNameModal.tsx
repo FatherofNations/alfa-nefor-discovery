@@ -6,18 +6,15 @@
    radius 29, padding 20, gap 16; заголовок 14/18 regular, инпут 16/20 на
    rgba(255,255,255,.14) radius 16, кнопка 50 высотой, 14/18 medium black).
 
-   Открытие — клавиша «/» (как просил пользователь) на дашбордах. Esc —
+   Открытие — клавиша «/» на всех экранах. Esc —
    закрыть, Enter в поле — сохранить, клик по фону — закрыть.
    Появление/скрытие — scale .92→1 + opacity в стиле самой тёмной панели. */
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
 import { getClientFullName, setClientFullName } from "@/lib/client-name";
-
-const DASHBOARD_ROUTES = new Set(["/", "/accountant"]);
+import { canUsePrototypeShortcut } from "@/lib/prototype-shortcuts";
 
 export default function ClientNameModal() {
-  const pathname = usePathname();
   const [phase, setPhase] = useState<"closed" | "open" | "closing">("closed");
   const [value, setValue] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -25,27 +22,23 @@ export default function ClientNameModal() {
   const saveRef = useRef<HTMLButtonElement>(null);
   const open = phase !== "closed";
 
-  const canOpen = pathname !== null && DASHBOARD_ROUTES.has(pathname);
-
   const requestClose = useCallback(() => {
     setPhase("closing");
   }, []);
 
   /* «/» открывает модалку, если фокус не в поле ввода/редакторе */
   useEffect(() => {
-    if (!canOpen || open) return;
+    if (open) return;
     const onKeyDown = (event: KeyboardEvent) => {
       const isSlash = event.key === "/" || event.code === "Slash";
-      if (!isSlash || event.metaKey || event.ctrlKey || event.altKey) return;
-      const target = event.target as Element | null;
-      if (target?.closest("input, textarea, select, [contenteditable='true'], dialog[open]")) return;
+      if (!isSlash || event.repeat || !canUsePrototypeShortcut(event) || document.querySelector("dialog[open]")) return;
       event.preventDefault();
       setValue(getClientFullName());
       setPhase("open");
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [canOpen, open]);
+  }, [open]);
 
   useLayoutEffect(() => {
     if (!open) return;
@@ -81,9 +74,7 @@ export default function ClientNameModal() {
         return;
       }
       const isSlash = event.key === "/" || event.code === "Slash";
-      if (phase !== "open" || !isSlash || event.metaKey || event.ctrlKey || event.altKey) return;
-      const target = event.target as Element | null;
-      if (target?.closest("input, textarea, select, [contenteditable='true']")) return;
+      if (phase !== "open" || !isSlash || event.repeat || !canUsePrototypeShortcut(event)) return;
       event.preventDefault();
       requestClose();
     };

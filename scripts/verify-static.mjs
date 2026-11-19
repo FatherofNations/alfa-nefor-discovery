@@ -23,6 +23,18 @@ export async function verifyStatic(browser, indexPath) {
   const expectFocused = async (locator) => {
     assert(await locator.evaluate((node) => node === document.activeElement), `Фокус вне ${locator}`);
   };
+  const dialog = page.getByRole("dialog", { name: "Имя клиента" });
+  const input = dialog.getByRole("textbox", { name: "Имя клиента" });
+  const save = dialog.getByRole("button", { name: "Сохранить" });
+  const unlockDashboard = async () => {
+    await page.locator(".dash-gate[data-clicks-locked='true']").waitFor();
+    await page.keyboard.press("Space");
+    await page.locator(".dash-gate[data-clicks-locked='false']").waitFor();
+  };
+  const scrollDown = async () => {
+    await page.evaluate(() => window.scrollTo({ top: 420, behavior: "instant" }));
+    await page.waitForFunction(() => scrollY > 0);
+  };
 
   const checkAssets = async (screen) => {
     const broken = await page.locator("img").evaluateAll(async (images) => {
@@ -44,6 +56,11 @@ export async function verifyStatic(browser, indexPath) {
     await waitForRoute("/login");
     await button("Войти").waitFor();
     await checkAssets("Вход");
+    await page.keyboard.press("/");
+    await dialog.waitFor();
+    await input.fill("соколова ольга сергеевна");
+    await input.press("Enter");
+    await dialog.waitFor({ state: "detached" });
     for (const weight of [400, 500, 700]) {
       const loaded = await page.evaluate(async (value) => {
         const faces = await document.fonts.load(`${value} 16px "Alfa Interface Sans"`, "Прототип");
@@ -57,12 +74,23 @@ export async function verifyStatic(browser, indexPath) {
     const entrepreneur = page.getByRole("button", { name: /^Предприниматель/ });
     await entrepreneur.waitFor();
     await checkAssets("Выбор роли");
+    await page.keyboard.press("/");
+    await dialog.waitFor();
+    assert.equal(await input.inputValue(), "Соколова Ольга Сергеевна");
+    await page.keyboard.press("Escape");
+    await dialog.waitFor({ state: "detached" });
     await entrepreneur.click();
     await waitForRoute("/setup");
     await page.locator(".entry-setup").waitFor();
     await checkAssets("Настройка");
+    await page.keyboard.press("/");
+    await dialog.waitFor();
+    assert.equal(await input.inputValue(), "Соколова Ольга Сергеевна");
+    await page.keyboard.press("Escape");
+    await dialog.waitFor({ state: "detached" });
     await waitForRoute("/");
     await page.locator(".dash-gate.gate-ready #hero-title").waitFor();
+    await page.getByRole("heading", { name: /Ольга, добрый день/ }).waitFor();
     await checkAssets("Главная предпринимателя");
 
     const balance = page.locator("button.balance-cell");
@@ -71,15 +99,31 @@ export async function verifyStatic(browser, indexPath) {
     const template = button("Платёж по шаблону");
     await button("Импорт платежей").waitFor();
     await balance.click();
+    assert.equal(await details.count(), 0, "Клики на открывшемся дашборде заблокированы");
+    await page.mouse.move(800, 680);
+    await page.mouse.wheel(0, 420);
+    await page.waitForFunction(() => scrollY > 0);
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+    await unlockDashboard();
+
+    await balance.click();
+    await details.getByRole("button", { name: "К счетам" }).waitFor();
     await details.getByRole("button", { name: "Закрыть детализацию" }).click();
-    await offer.waitFor();
+    await details.waitFor({ state: "detached" });
     await expectFocused(balance);
+    assert.equal(await offer.count(), 0, "Закрытие детализации сохраняет исходное действие");
+    await page.keyboard.press("Space");
+    await page.locator(".dash-gate[data-clicks-locked='true']").waitFor();
+    await page.keyboard.press("1");
+    await offer.waitFor();
+    await offer.getByRole("button", { name: "Оставить" }).click();
+    assert.equal(await offer.count(), 1);
+    await unlockDashboard();
     assert.equal(await template.evaluate((node) => getComputedStyle(node).color), "rgb(137, 126, 255)");
     await checkAssets("Предложение заменить быстрое действие");
     await offer.getByRole("button", { name: "Отклонить замену действия" }).click();
     await button("Импорт платежей").waitFor();
-    await balance.click();
-    await page.keyboard.press("Escape");
+    await page.keyboard.press("1");
     await offer.getByRole("button", { name: "Оставить" }).click();
     await offer.waitFor({ state: "detached" });
     await expectFocused(template);
@@ -145,11 +189,8 @@ export async function verifyStatic(browser, indexPath) {
 
     await trigger.focus();
     await page.keyboard.press("/");
-    const dialog = page.getByRole("dialog", { name: "Имя клиента" });
     await dialog.waitFor();
     await expectFocused(dialog);
-    const input = dialog.getByRole("textbox", { name: "Имя клиента" });
-    const save = dialog.getByRole("button", { name: "Сохранить" });
     await page.keyboard.press("Tab");
     await expectFocused(input);
     await page.keyboard.press("Shift+Tab");
@@ -167,6 +208,7 @@ export async function verifyStatic(browser, indexPath) {
     await page.reload();
     await page.getByRole("heading", { name: /Мария, добрый день/ }).waitFor();
     await template.waitFor();
+    await unlockDashboard();
     await balance.click();
     await details.getByRole("button", { name: "Закрыть детализацию" }).click();
     assert.equal(await offer.count(), 0);
@@ -203,10 +245,13 @@ export async function verifyStatic(browser, indexPath) {
     assert(logoOffsets.length > 0 && logoOffsets.every((top) => top === 0), "Логотипы должны совпадать с верхним краем строки");
 
     const openAccountant = async () => {
+      await scrollDown();
       await page.locator(".topbar").getByRole("button", { name: "Предприниматель", exact: true }).click();
       await page.getByRole("menuitemradio", { name: /^Бухгалтер/ }).click();
       await waitForRoute("/accountant");
       await page.locator(".dash-gate.gate-ready .cur-content").waitFor();
+      assert.equal(await page.evaluate(() => scrollY), 0);
+      await unlockDashboard();
     };
     await openAccountant();
     await checkAssets("Главная бухгалтера");
@@ -227,11 +272,13 @@ export async function verifyStatic(browser, indexPath) {
     await page.locator(".chrome-header").getByRole("button", { name: "Сменить компанию: ООО «Калуга Трейд»" }).waitFor();
     assert.equal(await page.locator(".cur-bal-amount").textContent(), balanceText);
     // В отдельной загрузке проверяем рабочую шапку после снятия скелетона.
-    entry.searchParams.set("skel", "on");
-    entry.hash = "/accountant";
-    await page.goto(entry.href);
+    await page.reload();
     await waitForRoute("/accountant");
     await page.locator(".dash-gate.gate-ready .cur-content").waitFor();
+    await unlockDashboard();
+
+    entry.searchParams.set("skel", "on");
+    entry.hash = "/accountant";
 
     const expectAmounts = async (hidden) => {
       await page.getByRole("button", { name: hidden ? "Скрыть суммы" : "Показать суммы", pressed: true }).waitFor();
@@ -244,9 +291,13 @@ export async function verifyStatic(browser, indexPath) {
     };
     await button("Скрыть суммы").click();
     await expectAmounts(true);
+    await scrollDown();
     await button("Бухгалтер").click();
     await page.getByRole("menuitemradio", { name: /^Предприниматель/ }).click();
     await waitForRoute("/");
+    await page.locator(".dash-gate.gate-ready .dashboard-page").waitFor();
+    assert.equal(await page.evaluate(() => scrollY), 0);
+    await unlockDashboard();
     await openAccountant();
     await expectAmounts(true);
     await button("Показать суммы").click();
@@ -263,6 +314,9 @@ export async function verifyStatic(browser, indexPath) {
     await Promise.all([page.waitForEvent("load"), page.keyboard.press("Meta+Shift+R")]);
     await button("Войти").waitFor();
     assert.equal(await page.evaluate(() => sessionStorage.getItem("__alfaTemplatePaymentKept")), null);
+    await page.keyboard.press("/");
+    await dialog.waitFor();
+    assert.equal(await input.inputValue(), "Иванова Мария Петровна");
     assert.deepEqual(errors, [], "Ошибки браузера в статической сборке");
   } finally {
     for (const error of errors) console.error(error);

@@ -219,7 +219,6 @@
 
 .tasks-cards-task-title,
 .tasks-cards-task-caption { height: 24px; padding: 2px 0; }
-.tasks-cards-task-title-profile { font-size: 16px; letter-spacing: -.24px; }
 .tasks-cards-task-caption > p { color: var(--text-secondary); }
 .tasks-cards-reward { display: flex; align-items: center; gap: 2px; font-weight: 500; letter-spacing: .07px; }
 .tasks-cards-reward img { display: block; width: 20px; height: 20px; }

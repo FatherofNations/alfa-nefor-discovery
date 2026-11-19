@@ -60,19 +60,16 @@ function Reward({ amount }: { amount: number }) {
   );
 }
 
-function TaskCard({ title, children, graphic, profile = false, prize = false }: {
+function TaskCard({ title, children, graphic, prize = false }: {
   title: string;
   children: ReactNode;
   graphic: ReactNode;
-  profile?: boolean;
   prize?: boolean;
 }) {
-  const titleClass = profile ? "tasks-cards-task-title tasks-cards-task-title-profile" : "tasks-cards-task-title";
-
   return (
     <article className="tasks-cards-task">
       <div className="tasks-cards-task-text">
-        <p className={titleClass}>{title}</p>
+        <p className="tasks-cards-task-title">{title}</p>
         <div className="tasks-cards-task-caption">{children}</div>
       </div>
       <div className="tasks-cards-graphic">{graphic}</div>
@@ -184,7 +181,7 @@ export default function TasksCards({ mode, onToggle, controls }: TasksCardsProps
           <TaskCard title="Выбрать категории кэшбэка" graphic={<Artwork type="cashback" name="imgOnboardingCardImage1.png" />}>
             <Reward amount={500} />
           </TaskCard>
-          <TaskCard title="Изучить условия тарифа" profile graphic={<Glyph name="imgFixer2.svg" />}>
+          <TaskCard title="Изучить условия тарифа" graphic={<Glyph name="imgFixer2.svg" />}>
             <p>Дайте коллеге доступ</p>
           </TaskCard>
         </div>

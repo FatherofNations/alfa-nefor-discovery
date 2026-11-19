@@ -312,7 +312,7 @@ export function useMenuDnd(menu: MenuId) {
           grabRef.current = { id, snapshot: clone(states[menu]) };
           el.classList.add("is-grabbed");
           el.setAttribute("aria-pressed", "true");
-          say(`${label(el)}: взят. Стрелки вверх и вниз — переместить, пробел — поставить, Escape — отменить`);
+          say(`${label(el)}: взят. Стрелки вверх и вниз — переместить, Shift+пробел — поставить, Escape — отменить`);
         }
         return;
       }

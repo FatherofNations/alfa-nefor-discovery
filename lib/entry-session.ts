@@ -10,6 +10,7 @@ export type EntryRole = "entrepreneur" | "accountant";
 type EntryState = { entered: boolean; role: EntryRole };
 
 const STORAGE_KEY = "__alfaEntryState";
+let roleChangePath: "/" | "/accountant" | null = null;
 const host = (): Record<string, EntryState | undefined> | null =>
   typeof window === "undefined" ? null : (window as unknown as Record<string, EntryState | undefined>);
 
@@ -59,12 +60,25 @@ export function markEntered(): void {
 }
 
 export function resetEntry(): void {
+  roleChangePath = null;
   const next: EntryState = { entered: false, role: "entrepreneur" };
   persist(next);
 }
 
 export function setEntryRole(role: EntryRole): void {
   persist({ ...state(), role });
+}
+
+export function prepareDashboardRoleChange(role: EntryRole) {
+  setEntryRole(role);
+  roleChangePath = role === "accountant" ? "/accountant" : "/";
+  return roleChangePath;
+}
+
+export function resetScrollOnRoleChange(path: string | null): void {
+  if (roleChangePath === null || path !== roleChangePath) return;
+  roleChangePath = null;
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 }
 
 export function getEntryRole(): EntryRole {

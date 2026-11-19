@@ -6,8 +6,9 @@ import { money } from "@/data/payments";
 import { useRouter } from "next/navigation";
 import { analytics, menuItems, operationDays, opsPeriodLabel, type Operation } from "@/data/demo";
 import { AccountsPanel, SummaryPanel, TariffsPanel } from "@/components/dashboards/TabPanels";
-import { hasEntered, resetEntry } from "@/lib/entry-session";
+import { hasEntered, prepareDashboardRoleChange, resetEntry } from "@/lib/entry-session";
 import { hasKeptTemplatePayment, setTemplatePaymentKept } from "@/lib/quick-actions";
+import { canUsePrototypeShortcut } from "@/lib/prototype-shortcuts";
 import { useClientName } from "@/lib/client-name";
 import AssistantBar from "@/components/chrome/AssistantBar";
 import CompanySwitcher from "@/components/chrome/CompanySwitcher";
@@ -138,7 +139,7 @@ export default function Glavnaya() {
   const [checked, setChecked] = useState<Set<string>>(new Set());
   const [accountOpen, setAccountOpen] = useState(false);
   const [quickAction, setQuickAction] = useState<"import" | "suggested" | "kept">("import");
-  const suggestTemplate = quickAction === "suggested" && !accountOpen;
+  const suggestTemplate = quickAction === "suggested";
   const showTemplate = suggestTemplate || quickAction === "kept";
   const fileRef = useRef<HTMLInputElement>(null);
   const quickActionRef = useRef<HTMLButtonElement>(null);
@@ -149,14 +150,10 @@ export default function Glavnaya() {
     if (hasKeptTemplatePayment()) setQuickAction("kept");
   }, []);
 
-  const finishAccount = useCallback(() => {
-    setAccountOpen(false);
-    setQuickAction((current) => current === "kept" ? current : "suggested");
-  }, []);
   const closeAccount = useCallback(() => {
-    finishAccount();
+    setAccountOpen(false);
     accountTriggerRef.current?.focus();
-  }, [finishAccount]);
+  }, []);
   const resolveTemplateSuggestion = (keep: boolean) => {
     if (keep) setTemplatePaymentKept(true);
     setQuickAction(keep ? "kept" : "import");
@@ -301,7 +298,7 @@ export default function Glavnaya() {
       const target = event.target as Node;
       if (accountPanelRef.current?.contains(target)) return;
       if (accountTriggerRef.current?.contains(target)) return;
-      finishAccount();
+      setAccountOpen(false);
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onDown);
@@ -310,7 +307,7 @@ export default function Glavnaya() {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("mousedown", onDown);
     };
-  }, [accountOpen, closeAccount, finishAccount]);
+  }, [accountOpen, closeAccount]);
 
   useEffect(() => {
     if (assistantPhase === "closed") return;
@@ -555,6 +552,19 @@ export default function Glavnaya() {
       tabTimers.current.push(window.setTimeout(() => setTabPhase("idle"), 760));
     }, 240));
   }, [activeTab]);
+
+  useEffect(() => {
+    if (quickAction === "kept" || accountOpen || assistantOpen || roleOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "1" || event.shiftKey || event.repeat || !canUsePrototypeShortcut(event)) return;
+      if (document.body.classList.contains("name-modal-open") || document.querySelector("dialog[open]")) return;
+      event.preventDefault();
+      setQuickAction("suggested");
+      changeTab("Ассистент");
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [accountOpen, assistantOpen, changeTab, quickAction, roleOpen]);
 
   /* Счётчик «2» на «Сводка»: 3 s пауза, затем
      1) бейдж только opacity+scale (без обрезки overflow),
@@ -865,7 +875,11 @@ export default function Glavnaya() {
                 <span className="role-copy"><strong>Предприниматель</strong><span>Легкий интерфейс для ведения бизнеса</span></span>
                 {role === "entrepreneur" && <img className="role-check" src="/assets/figma/role-check.svg" alt="" />}
               </button>
-              <button className="role-option" type="button" role="menuitemradio" aria-checked={role === "accountant"} onClick={() => { setRole("accountant"); setRoleOpen(false); router.push("/accountant"); }}>
+              <button className="role-option" type="button" role="menuitemradio" aria-checked={role === "accountant"} onClick={() => {
+                setRole("accountant");
+                setRoleOpen(false);
+                router.push(prepareDashboardRoleChange("accountant"), { scroll: false });
+              }}>
                 <span className="role-avatar"><img src="/assets/figma/role-accountant.png" alt="" /></span>
                 <span className="role-copy"><strong>Бухгалтер</strong><span>Продвинутый интерфейс для работы с финансами</span></span>
                 {role === "accountant" && <img className="role-check" src="/assets/figma/role-check.svg" alt="" />}
@@ -907,11 +921,11 @@ export default function Glavnaya() {
             <span className="account-panel-divider" />
             <AccountRow label="Доступный остаток" value={balanceLabel} info />
           </div>
-          <button className="account-panel-cta" type="button">К счёту</button>
+          <button className="account-panel-cta" type="button">К счетам</button>
         </section>
       )}
 
-      <AssistantBar label="Альфа-Интеллект" />
+      <AssistantBar />
 
       {assistantOpen && (
         <section style={{ ["--flip-dy" as string]: `${assistantFlip}px`, ["--brand-dx" as string]: `${assistantBrand[0]}px`, ["--brand-dy" as string]: `${assistantBrand[1]}px` }} className={`assistant${assistantShown ? " is-shown" : ""}${assistantPhase === "closing" ? " is-closing" : ""}${assistantQuick ? " is-quick" : ""}`} role="dialog" aria-modal="true" aria-label="Альфа-Интеллект">

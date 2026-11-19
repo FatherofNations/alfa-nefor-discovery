@@ -613,7 +613,7 @@ img { display: block; }
 .tariff-cost span { padding-bottom: 2px; font-size: 14px; line-height: 20px; letter-spacing: -.08px; color: var(--text-secondary); }
 .tariff-subs { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
 .tariff-subs > span { font-size: 14px; line-height: 20px; letter-spacing: -.08px; color: var(--text-secondary); }
-.tariff-plus { display: flex; width: 32px; height: 32px; align-items: center; justify-content: center; background: #f2f3f5; -webkit-mask: url("/assets/figma/squircle-32.svg") 0 0 / 32px 32px no-repeat; mask: url("/assets/figma/squircle-32.svg") 0 0 / 32px 32px no-repeat; }
+.tariff-plus { display: flex; width: 32px; height: 32px; margin-block: 2px; align-items: center; justify-content: center; background: #f2f3f5; -webkit-mask: url("/assets/figma/squircle-32.svg") 0 0 / 32px 32px no-repeat; mask: url("/assets/figma/squircle-32.svg") 0 0 / 32px 32px no-repeat; }
 .tariff-plus img { width: 16px; height: 16px; }
 .tariff-rows { display: flex; flex-direction: column; padding-bottom: 4px; }
 .tariff-row { display: flex; height: 72px; align-items: center; gap: 16px; padding: 0 16px 0 12px; border-radius: 12px; }
