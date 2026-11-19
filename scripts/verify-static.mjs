@@ -65,6 +65,27 @@ export async function verifyStatic(browser, indexPath) {
     await page.locator(".dash-gate.gate-ready #hero-title").waitFor();
     await checkAssets("Главная предпринимателя");
 
+    const balance = page.locator("button.balance-cell");
+    const details = page.getByRole("dialog", { name: "Детализация остатка" });
+    const offer = page.getByRole("region", { name: "Заменили действие" });
+    const template = button("Платёж по шаблону");
+    await button("Импорт платежей").waitFor();
+    await balance.click();
+    await details.getByRole("button", { name: "Закрыть детализацию" }).click();
+    await offer.waitFor();
+    await expectFocused(balance);
+    assert.equal(await template.evaluate((node) => getComputedStyle(node).color), "rgb(137, 126, 255)");
+    await checkAssets("Предложение заменить быстрое действие");
+    await offer.getByRole("button", { name: "Отклонить замену действия" }).click();
+    await button("Импорт платежей").waitFor();
+    await balance.click();
+    await page.keyboard.press("Escape");
+    await offer.getByRole("button", { name: "Оставить" }).click();
+    await offer.waitFor({ state: "detached" });
+    await expectFocused(template);
+    assert.match(await template.locator("img").getAttribute("src"), /template-kept\.svg$/);
+    await checkAssets("Сохранённое быстрое действие");
+
     const tasks = page.getByRole("region", { name: "Мои дела" });
     await tasks.getByRole("button", { name: /Требуют внимания/ }).click();
     const signals = tasks.getByRole("list", { name: "Сигналы" });
@@ -120,6 +141,10 @@ export async function verifyStatic(browser, indexPath) {
     await dialog.waitFor({ state: "detached" });
     await page.reload();
     await page.getByRole("heading", { name: /Мария, добрый день/ }).waitFor();
+    await template.waitFor();
+    await balance.click();
+    await details.getByRole("button", { name: "Закрыть детализацию" }).click();
+    assert.equal(await offer.count(), 0);
 
     const companyTrigger = page.locator(".topbar").getByRole("button", { name: /Сменить компанию/ });
     await page.locator(".topbar").getByRole("button", { name: "Сменить компанию: ООО «Умные и свободные»" }).waitFor();
@@ -149,6 +174,7 @@ export async function verifyStatic(browser, indexPath) {
     await page.locator(".chrome-header").getByRole("button", { name: "Сменить компанию: ООО «Циферблат»" }).click();
     await companyPanel.getByRole("heading", { name: "ООО «Циферблат»" }).waitFor();
     await companyPanel.getByRole("button", { name: /^ООО «Циферблат»/, pressed: true }).waitFor();
+    await checkAssets("Смена компании на главной бухгалтера");
     await page.mouse.click(300, 300);
     await companyPanel.waitFor({ state: "detached" });
     // В отдельной загрузке проверяем рабочую шапку после снятия скелетона.
@@ -184,6 +210,10 @@ export async function verifyStatic(browser, indexPath) {
     await page.goto(entry.href);
     await waitForRoute("/login");
     await button("Войти").waitFor();
+    assert.equal(await page.evaluate(() => sessionStorage.getItem("__alfaTemplatePaymentKept")), "1");
+    await Promise.all([page.waitForEvent("load"), page.keyboard.press("Meta+Shift+R")]);
+    await button("Войти").waitFor();
+    assert.equal(await page.evaluate(() => sessionStorage.getItem("__alfaTemplatePaymentKept")), null);
     assert.deepEqual(errors, [], "Ошибки браузера в статической сборке");
   } finally {
     for (const error of errors) console.error(error);

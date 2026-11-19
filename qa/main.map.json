@@ -102,7 +102,7 @@
       "node": "59:16886"
     },
     {
-      "selector": ".hero-actions > .hero-chip:nth-child(4)",
+      "selector": ".hero-action-slot > .hero-chip",
       "node": "59:16890"
     },
     {

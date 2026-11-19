@@ -3,6 +3,7 @@
 import { useLayoutEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { hasEntered, resetEntry } from "@/lib/entry-session";
+import { setTemplatePaymentKept } from "@/lib/quick-actions";
 
 /* Скелетон дашборда — прогрессивная загрузка ПО ВИДЖЕТАМ.
 
@@ -45,6 +46,7 @@ export default function DashboardSkeletonGate({
     setLoadedCount(0);
     if (hardReload) {
       resetEntry();
+      setTemplatePaymentKept(false);
       router.replace("/login");
       return;
     }

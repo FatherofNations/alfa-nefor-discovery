@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { analytics, menuItems, operationDays, opsPeriodLabel, type Operation } from "@/data/demo";
 import { AccountsPanel, SummaryPanel, TariffsPanel } from "@/components/dashboards/TabPanels";
 import { hasEntered, resetEntry } from "@/lib/entry-session";
+import { hasKeptTemplatePayment, setTemplatePaymentKept } from "@/lib/quick-actions";
 import { useClientName } from "@/lib/client-name";
 import AssistantBar from "@/components/chrome/AssistantBar";
 import CompanySwitcher from "@/components/chrome/CompanySwitcher";
@@ -140,14 +141,31 @@ export default function Glavnaya() {
   const [search, setSearch] = useState("");
   const [checked, setChecked] = useState<Set<string>>(new Set());
   const [accountOpen, setAccountOpen] = useState(false);
+  const [quickAction, setQuickAction] = useState<"import" | "suggested" | "kept">("import");
+  const suggestTemplate = quickAction === "suggested" && !accountOpen;
+  const showTemplate = suggestTemplate || quickAction === "kept";
   const fileRef = useRef<HTMLInputElement>(null);
+  const quickActionRef = useRef<HTMLButtonElement>(null);
   const accountTriggerRef = useRef<HTMLButtonElement>(null);
   const accountPanelRef = useRef<HTMLElement>(null);
   const accountCloseRef = useRef<HTMLButtonElement>(null);
-  const closeAccount = useCallback(() => {
-    setAccountOpen(false);
-    accountTriggerRef.current?.focus();
+  useLayoutEffect(() => {
+    if (hasKeptTemplatePayment()) setQuickAction("kept");
   }, []);
+
+  const finishAccount = useCallback(() => {
+    setAccountOpen(false);
+    setQuickAction((current) => current === "kept" ? current : "suggested");
+  }, []);
+  const closeAccount = useCallback(() => {
+    finishAccount();
+    accountTriggerRef.current?.focus();
+  }, [finishAccount]);
+  const resolveTemplateSuggestion = (keep: boolean) => {
+    if (keep) setTemplatePaymentKept(true);
+    setQuickAction(keep ? "kept" : "import");
+    quickActionRef.current?.focus();
+  };
   /* closed → open → closing → closed; closing держит DOM для sink-анимации */
   const [assistantPhase, setAssistantPhase] = useState<"closed" | "open" | "closing">("closed");
   const assistantOpen = assistantPhase !== "closed";
@@ -287,7 +305,7 @@ export default function Glavnaya() {
       const target = event.target as Node;
       if (accountPanelRef.current?.contains(target)) return;
       if (accountTriggerRef.current?.contains(target)) return;
-      setAccountOpen(false);
+      finishAccount();
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onDown);
@@ -296,7 +314,7 @@ export default function Glavnaya() {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("mousedown", onDown);
     };
-  }, [accountOpen, closeAccount]);
+  }, [accountOpen, closeAccount, finishAccount]);
 
   useEffect(() => {
     if (assistantPhase === "closed") return;
@@ -819,7 +837,43 @@ export default function Glavnaya() {
             <button className="hero-chip hero-chip-analytics" type="button"><Icon name="financial-analytics-icon.svg" /><span>Финансовая аналитика</span></button>
             <button className="hero-chip" type="button"><Icon name="hero-92b54.svg" /><span>Себе в Альфу</span></button>
             <button className="hero-chip" type="button" onClick={download}><Icon name="hero-b373c.svg" /><span>Скачать выписку</span></button>
-            <button className="hero-chip" type="button" onClick={() => fileRef.current?.click()}><Icon name="hero-c5c76.svg" /><span>Импорт платежей</span></button>
+            <div className={`hero-action-slot${showTemplate ? " has-template" : ""}`}>
+              <button
+                className={`hero-chip${suggestTemplate ? " hero-chip-suggested" : ""}`}
+                type="button"
+                ref={quickActionRef}
+                aria-disabled={showTemplate || undefined}
+                onClick={showTemplate ? undefined : () => fileRef.current?.click()}
+              >
+                <Icon name={showTemplate ? `quick-actions/template-${suggestTemplate ? "suggested" : "kept"}.svg` : "hero-c5c76.svg"} />
+                <span>{showTemplate ? "Платёж по шаблону" : "Импорт платежей"}</span>
+              </button>
+              {suggestTemplate && (
+                <section
+                  className="quick-action-offer"
+                  aria-labelledby="quick-action-offer-title"
+                  onKeyDown={(event) => { if (event.key === "Escape") resolveTemplateSuggestion(false); }}
+                >
+                  <img className="quick-action-stars" src={asset("quick-actions/stars.svg")} alt="" />
+                  <img className="quick-action-tail" src={asset("quick-actions/tail.svg")} alt="" />
+                  <div className="quick-action-card">
+                    <div className="quick-action-head">
+                      <div className="quick-action-copy">
+                        <h2 id="quick-action-offer-title">Заменили действие</h2>
+                        <p>Вместо Импорт платежей —<br />теперь то, чем вы пользуетесь чаще</p>
+                      </div>
+                      <button className="quick-action-close" type="button" aria-label="Отклонить замену действия" onClick={() => resolveTemplateSuggestion(false)}>
+                        <img src={asset("quick-actions/close.svg")} alt="" />
+                      </button>
+                    </div>
+                    <div className="quick-action-buttons">
+                      <button className="quick-action-keep" type="button" onClick={() => resolveTemplateSuggestion(true)}>Оставить</button>
+                      <button className="quick-action-configure" type="button" disabled>Настроить</button>
+                    </div>
+                  </div>
+                </section>
+              )}
+            </div>
             <button className="hero-chip hero-chip-more" type="button">Ещё</button>
             <input ref={fileRef} className="visually-hidden" type="file" accept=".csv,.txt,.pdf" tabIndex={-1} />
           </div>

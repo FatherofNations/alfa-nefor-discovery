@@ -229,8 +229,54 @@ img { display: block; }
 .hero-actions > .hero-chip:first-child { width: 247px; color: #000; font-weight: 400; line-height: 24px; letter-spacing: -.24px; }
 .hero-actions > .hero-chip:nth-child(2) { width: 174px; }
 .hero-actions > .hero-chip:nth-child(3) { width: 201px; }
-.hero-actions > .hero-chip:nth-child(4) { width: 207px; }
 .hero-actions > .hero-chip:nth-child(5) { width: 73px; }
+.hero-action-slot { position: relative; flex: none; width: 207px; transition: width .55s cubic-bezier(.32, .72, 0, 1); }
+.hero-action-slot.has-template { width: 223px; }
+.hero-action-slot > .hero-chip { width: 100%; }
+.hero-action-slot > .hero-chip[aria-disabled] { cursor: default; }
+.hero-action-slot > .hero-chip[aria-disabled]:hover { background: #fff; }
+.hero-chip-suggested { color: var(--decorative-indigo); }
+
+/* Предложение под четвёртым действием, Figma 13:30580. */
+.quick-action-offer {
+  position: absolute;
+  z-index: 3;
+  top: calc(100% + 12px);
+  left: calc(50% - 180.5px);
+  width: 350px;
+}
+.quick-action-stars { position: absolute; top: -64px; left: 62px; width: 224.667px; height: 55.335px; pointer-events: none; }
+.quick-action-tail { position: absolute; top: -12px; left: 171px; rotate: 90deg; pointer-events: none; }
+.quick-action-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 20px 24px rgb(0 0 0 / 8%), 0 12px 16px rgb(0 0 0 / 4%), 0 4px 8px rgb(0 0 0 / 4%), 0 0 1px rgb(0 0 0 / 4%);
+}
+.quick-action-head { display: flex; align-items: flex-start; }
+.quick-action-copy { flex: 1; min-width: 0; }
+.quick-action-copy h2 { font-size: 18px; font-weight: 700; line-height: 24px; letter-spacing: .38px; }
+.quick-action-copy p { margin-top: 4px; font-size: 16px; line-height: 24px; letter-spacing: -.24px; }
+.quick-action-close { flex: none; width: 24px; height: 24px; border-radius: 4px; }
+.quick-action-buttons { display: flex; flex-direction: column; gap: 8px; }
+.quick-action-buttons > button { min-height: 40px; padding: 4px 16px; border-radius: 10px; font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: .07px; }
+.quick-action-keep { background: var(--accent-primary); color: var(--text-inverted-primary); }
+.quick-action-configure { background: rgb(15 25 55 / 10%); backdrop-filter: blur(40px); cursor: default; }
+.quick-action-offer button:focus-visible, .hero-action-slot > .hero-chip:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.quick-action-keep:focus-visible { outline-color: var(--accent-primary); }
+.quick-action-offer, .hero-chip-suggested > * {
+  animation: quick-action-fade-in .5s cubic-bezier(.25, .1, .25, 1) both,
+             quick-action-rise-in .55s cubic-bezier(.32, .72, 0, 1) both;
+}
+@keyframes quick-action-fade-in { from { opacity: 0; filter: blur(12px); } to { opacity: 1; filter: none; } }
+@keyframes quick-action-rise-in { from { transform: translateY(8px); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-action-slot { transition: none; }
+  .quick-action-offer, .hero-chip-suggested > * { animation: none; }
+}
 
 /* Баннеры главной предпринимателя — Figma 223:21112. */
 .promo-banners { display: flex; width: 972px; height: 120px; margin-top: 62px; gap: 12px; }

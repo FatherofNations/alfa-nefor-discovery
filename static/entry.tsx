@@ -18,6 +18,17 @@ import EntrepreneurSkeleton from "@/components/skeletons/EntrepreneurSkeleton";
 import AccountantSkeleton from "@/components/skeletons/AccountantSkeleton";
 import ClientNameModal from "@/components/client-name/ClientNameModal";
 import { ACCOUNTANT_WIDGETS, ENTREPRENEUR_WIDGETS } from "@/lib/skeleton-widgets";
+import { resetEntry } from "@/lib/entry-session";
+import { setTemplatePaymentKept } from "@/lib/quick-actions";
+
+// У file:// нет заголовков запроса. Обрабатываем команду, когда фокус на странице.
+window.addEventListener("keydown", (event) => {
+  if (event.code !== "KeyR" || !event.shiftKey || !(event.metaKey || event.ctrlKey) || event.altKey) return;
+  event.preventDefault();
+  setTemplatePaymentKept(false);
+  resetEntry();
+  window.location.reload();
+}, { capture: true });
 
 const TITLES: Record<string, string> = {
   "/": "Главная",
