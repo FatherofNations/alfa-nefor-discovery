@@ -166,7 +166,7 @@ export default function TasksCards({ mode, onToggle, controls, renderWorkRow, wo
           <TaskCard title="Защитить от блокировок" graphic={<Artwork type="protection" name="imgOnboardingCardImage2.png" />}>
             <Reward amount={500} />
           </TaskCard>
-          <TaskCard title="Изучить условия тарифа" graphic={<Glyph name="imgFixer3.svg" />}>
+          <TaskCard title="Заполнить СНИЛС" graphic={<Glyph name="imgFixer3.svg" />}>
             <p>Дополните профиль</p>
           </TaskCard>
         </div>
