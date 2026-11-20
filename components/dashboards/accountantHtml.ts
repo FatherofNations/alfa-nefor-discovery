@@ -214,7 +214,7 @@ export const ACCOUNTANT_FEED_HTML = `<!-- Лента операций: заго�
       <span class="cur-df-chev">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 7l-5 5 5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
-      <span class="cur-df-label">Декабрь</span>
+      <span class="cur-df-label">Ноябрь</span>
       <span class="cur-df-chev">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M10 7l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>

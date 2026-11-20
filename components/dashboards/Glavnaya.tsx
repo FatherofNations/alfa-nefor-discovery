@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode, type Ref } from "react";
 import { accountsCountLabel, accountsTotal } from "@/data/accounts";
 import { money } from "@/data/payments";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { analytics, menuItems, operationDays, opsPeriodLabel, type Operation } from "@/data/demo";
 import { AccountsPanel, SummaryPanel, TariffsPanel } from "@/components/dashboards/TabPanels";
@@ -13,6 +14,7 @@ import { useClientName } from "@/lib/client-name";
 import AssistantBar from "@/components/chrome/AssistantBar";
 import CompanySwitcher from "@/components/chrome/CompanySwitcher";
 import OperationRow from "./OperationRow";
+import NewPaymentForm from "./NewPaymentForm";
 import TasksWidget from "./TasksWidget";
 import AssistantHome from "@/components/dashboards/AssistantHome";
 import { AssistantConversation, AssistantThreadMenu, threadAssets, type AssistantTopic } from "./AssistantThreads";
@@ -69,7 +71,9 @@ function RoleChip({ role, open, onToggle, triggerRef }: {
   );
 }
 
-function MenuItem({ id, label, icon, muted, loyalty, target, secondary, fixed }: {
+const newPaymentPath = "/new-payment";
+
+function MenuItem({ id, label, icon, muted, loyalty, target, secondary, fixed, current }: {
   id: string;
   label: string;
   icon: string;
@@ -78,12 +82,26 @@ function MenuItem({ id, label, icon, muted, loyalty, target, secondary, fixed }:
   target?: string;
   secondary?: boolean;
   fixed?: "top" | "bottom";
+  current?: boolean;
 }) {
-  return (
-    <button className={`menu-item${secondary ? " menu-secondary" : ""}`} type="button" data-menu-id={id} data-menu-fixed={fixed === "bottom" ? "bottom" : fixed ? "" : undefined} data-target={target} onClick={target ? () => document.getElementById(target)?.scrollIntoView({ behavior: "smooth" }) : undefined}>
+  const shared = {
+    className: `menu-item${secondary ? " menu-secondary" : ""}`,
+    "data-menu-id": id,
+    "data-menu-fixed": fixed === "bottom" ? "bottom" : fixed ? "" : undefined,
+  };
+  const body = (
+    <>
       <span className={`menu-item-icon${muted ? " muted" : ""}`}><Icon name={icon} /></span>
       <span>{label}</span>
       {loyalty && <span className="loyalty">100<Icon name="menu-a8252.svg" /></span>}
+    </>
+  );
+  if (id === "pay") {
+    return <Link {...shared} href={newPaymentPath} aria-current={current ? "page" : undefined} draggable={false}>{body}</Link>;
+  }
+  return (
+    <button {...shared} type="button" data-target={target} onClick={target ? () => document.getElementById(target)?.scrollIntoView({ behavior: "smooth" }) : undefined}>
+      {body}
     </button>
   );
 }
@@ -119,7 +137,7 @@ const TAB_HEIGHTS: Record<string, number> = {
   "Тарифы и подписки": 432,
 };
 
-export default function Glavnaya() {
+export default function Glavnaya({ payment = false }: { payment?: boolean }) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("Ассистент");
   const logout = useCallback(() => {
@@ -169,7 +187,7 @@ export default function Glavnaya() {
   const assistantCloseRef = useRef<HTMLButtonElement>(null);
   const [assistantTopic, setAssistantTopic] = useState<AssistantTopic>("expenses");
   const assistantReturnRef = useRef<HTMLButtonElement | null>(null);
-  const [assistantFlip, setAssistantFlip] = useState(20);
+  const [assistantFlip, setAssistantFlip] = useState(16);
   const [assistantBrand, setAssistantBrand] = useState<[number, number]>([17, 17]);
   /* повторный клик, пока панель ещё едет вниз: дашборд ещё скрыт, поэтому разворачиваемся сразу, без паузы 120 мс */
   const assistantClosingAtRef = useRef(0);
@@ -239,7 +257,7 @@ export default function Glavnaya() {
     /* FLIP: кластер кнопок шапки стартует с текущего y дашборда (28 / sticky) и едет на y8 */
     const reopening = assistantClosingAtRef.current > 0; /* v12: при повторном открытии во время закрытия геометрию не перемеряем — элементы ещё в движении */
     const row = topbarRef.current?.querySelector(".topbar-buttons");
-    if (row && !reopening) setAssistantFlip(Math.round(row.getBoundingClientRect().top - 8));
+    if (row && !reopening) setAssistantFlip(Math.round(row.getBoundingClientRect().top - 12));
     /* LogoCell «Альфа-Бизнес» стартует с места логотипа в карточке меню дашборда */
     const sign = document.querySelector(".dashboard-page > .sidebar .sidebar-logo .logo-sign");
     if (sign && !reopening) { const r = sign.getBoundingClientRect(); setAssistantBrand([Math.round(r.left - 12), Math.round(r.top - 12)]); }
@@ -554,7 +572,7 @@ export default function Glavnaya() {
   }, [activeTab]);
 
   useEffect(() => {
-    if (quickAction === "kept" || accountOpen || assistantOpen || roleOpen) return;
+    if (payment || quickAction === "kept" || accountOpen || assistantOpen || roleOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "1" || event.shiftKey || event.repeat || !canUsePrototypeShortcut(event)) return;
       if (document.body.classList.contains("name-modal-open") || document.querySelector("dialog[open]")) return;
@@ -564,7 +582,7 @@ export default function Glavnaya() {
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [accountOpen, assistantOpen, changeTab, quickAction, roleOpen]);
+  }, [accountOpen, assistantOpen, changeTab, payment, quickAction, roleOpen]);
 
   /* Счётчик «2» на «Сводка»: 3 s пауза, затем
      1) бейдж только opacity+scale (без обрезки overflow),
@@ -653,12 +671,12 @@ export default function Glavnaya() {
   const filterRow = (row: Operation) => !normalizedSearch || `${row.title} ${row.description} ${row.details ?? ""} ${row.number}`.toLocaleLowerCase("ru").includes(normalizedSearch);
 
   return (
-    <main style={{ ["--brand-dx" as string]: `${assistantBrand[0]}px`, ["--brand-dy" as string]: `${assistantBrand[1]}px` }} className={`dashboard-page${assistantOpen ? " assistant-shift" : ""}${assistantShown ? " assistant-shown" : ""}${assistantPhase === "closing" ? " is-closing" : ""}`}>
+    <main style={{ ["--brand-dx" as string]: `${assistantBrand[0]}px`, ["--brand-dy" as string]: `${assistantBrand[1]}px` }} className={`dashboard-page${payment ? " payment-page" : ""}${assistantOpen ? " assistant-shift" : ""}${assistantShown ? " assistant-shown" : ""}${assistantPhase === "closing" ? " is-closing" : ""}`}>
       <aside className={`sidebar${accountOpen ? " sidebar-solid" : ""}`} aria-label="Основная навигация">
-        <div className="sidebar-logo">
+        <Link className="sidebar-logo" href="/" aria-label="Альфа-Бизнес — на главную">
           <span className="logo-sign"><img src={asset("logo-sign.svg")} alt="" /></span>
           <img className="logo-wordmark" src={asset("logo-wordmark.svg")} alt="Альфа-Бизнес" />
-        </div>
+        </Link>
         <div className="sidebar-content">
           <div className="amounts">
             <button className="balance-cell" type="button" ref={accountTriggerRef} aria-expanded={accountOpen} aria-controls="account-details" onClick={() => setAccountOpen(true)}>
@@ -687,7 +705,7 @@ export default function Glavnaya() {
               <div className="menu-main">
                 {MENU_FIXED.map((id) => <MenuItem key={id} id={id} fixed="top" {...MENU_BY_ID[id]} />)}
                 <div data-menu-zone="main">
-                  {menu.state.main.map((id) => <MenuItem key={id} id={id} {...MENU_BY_ID[id]} />)}
+                  {menu.state.main.map((id) => <MenuItem key={id} id={id} current={payment && id === "pay"} {...MENU_BY_ID[id]} />)}
                 </div>
                 <div className="menu-folder">
                   <button className="menu-item menu-category" type="button" data-menu-folder="" aria-expanded={menu.state.folderOpen} aria-controls="menu-folder-body" onClick={menu.toggleFolder}>
@@ -695,7 +713,7 @@ export default function Glavnaya() {
                   </button>
                   <div className="menu-folder-body" id="menu-folder-body" data-menu-folder-body="" data-open={menu.state.folderOpen ? "true" : "false"} inert={!menu.state.folderOpen}>
                     <div data-menu-zone="folder">
-                      {menu.state.folder.map((id) => <MenuItem key={id} id={id} {...MENU_BY_ID[id]} />)}
+                      {menu.state.folder.map((id) => <MenuItem key={id} id={id} current={payment && id === "pay"} {...MENU_BY_ID[id]} />)}
                       {menu.state.folder.length === 0 && <p className="menu-folder-empty">Перетащите разделы сюда, чтобы скрыть их из меню</p>}
                     </div>
                   </div>
@@ -730,6 +748,7 @@ export default function Glavnaya() {
         <button className="icon-button" type="button" aria-label="Выйти" onClick={logout}><img src={asset("logout-icon.svg")} alt="" /></button>
       </header>
 
+      {payment ? <NewPaymentForm /> : (
       <div className="dashboard-content">
         <nav
           className={`tabs${counter !== "shown" ? ` tabs-compact tabs-${COMPACT_CLASS[activeTab] ?? "summary"}` : ""}${counter === "hiding" ? " tabs-counter-dismiss" : ""}`}
@@ -811,26 +830,26 @@ export default function Glavnaya() {
         </div>
 
         <section className="promo-banners" aria-label="Предложения для бизнеса">
-          <div className="promo-banner promo-banner-payroll">
+          <div className="promo-banner promo-banner-credit">
             <div className="promo-banner-copy">
-              <strong>Зарплатный проект</strong>
-              <span>Новые условия<br />онлайн-инкассации</span>
+              <strong>Кредитная карта</strong>
+              <span>Льготный период 60&nbsp;дней</span>
             </div>
-            <img className="promo-banner-art" src="/assets/figma/main-banner-payroll.png" alt="" />
+            <span className="promo-banner-art"><img src="/assets/figma/main-banner-credit.png" alt="" /></span>
           </div>
-          <div className="promo-banner promo-banner-card">
+          <div className="promo-banner promo-banner-protection">
             <div className="promo-banner-copy">
-              <strong>Умная карта для&nbsp;всех</strong>
-              <span>Кэшбэк, бонусы<br />и&nbsp;удобные платежи</span>
+              <strong>Защита бизнеса</strong>
+              <span>На один месяц от&nbsp;блокировок</span>
             </div>
-            <img className="promo-banner-art" src="/assets/figma/main-banner-card.png" alt="" />
+            <span className="promo-banner-art"><img src="/assets/figma/main-banner-protection.png" alt="" /></span>
           </div>
-          <div className="promo-banner promo-banner-cashback">
+          <div className="promo-banner promo-banner-savings">
             <div className="promo-banner-copy">
-              <strong>Кэшбек до 100%</strong>
-              <span>За бизнес-расходы,<br />1 балл = 1 ₽</span>
+              <strong>Накопительный счёт</strong>
+              <span>Лизинг, бизнес-карты<br />и&nbsp;другие продукты</span>
             </div>
-            <img className="promo-banner-art" src="/assets/figma/main-banner-cashback.png" alt="" />
+            <span className="promo-banner-art"><img src="/assets/figma/main-banner-savings.png" alt="" /></span>
           </div>
         </section>
 
@@ -866,6 +885,7 @@ export default function Glavnaya() {
           </div>
         </section>
       </div>
+      )}
 
       {roleOpen && (
         <div className="role-menu" role="menu" aria-label="Вид главной" ref={roleMenuRef} tabIndex={-1}>

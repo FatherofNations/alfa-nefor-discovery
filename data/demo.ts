@@ -1,4 +1,4 @@
-import { CLOSING_BALANCE, OPENING_BALANCE, OPS_PERIOD, dayLabel, income, money, outcome, payments, shortDate, signed } from "./payments";
+import { type Payment, CLOSING_BALANCE, OPENING_BALANCE, OPS_PERIOD, dayLabel, income, money, outcome, payments, shortDate, signed } from "./payments";
 
 export const menuItems = [
   { label: "Все сервисы", icon: "menu-889b6.svg" },
@@ -35,7 +35,7 @@ export type Operation = {
   positive?: boolean;
   number: string;
   status: string;
-  logo: "company" | "person" | "bank";
+  logo: Payment["logo"];
 };
 
 export const operationDays: { date: string; rows: Operation[] }[] = [...new Set(payments.map((p) => p.date))].map((date) => ({

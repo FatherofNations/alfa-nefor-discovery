@@ -1,0 +1,100 @@
+<frame id="357:27653" name="Дашборд" x="-1892" y="759" width="1600" height="2170">
+  <frame id="357:27654" name="тело" x="0" y="0" width="1600" height="2104">
+    <frame id="357:27658" name="Right" x="960" y="28" width="616" height="40">
+      <frame id="357:27659" name="ButtonsGroup" x="0" y="0" width="88" height="40">
+        <instance id="357:27660" name="IconButton" x="0" y="0" width="40" height="40" />
+        <instance id="357:27661" name="IconButton" x="48" y="0" width="40" height="40" />
+      </frame>
+      <instance id="357:27662" name="DividerVertical" x="104" y="0" width="1" height="40" />
+      <instance id="357:27663" name="CompanyAccount" x="121" y="0" width="221" height="40" />
+      <instance id="357:27664" name="DividerVertical" x="358" y="0" width="1" height="40" />
+      <instance id="357:27665" name="PersonSelect" x="375" y="0" width="168" height="40" />
+      <instance id="357:27666" name="DividerVertical" x="559" y="0" width="1" height="40" />
+      <instance id="357:27667" name="IconButton" x="576" y="0" width="40" height="40" />
+    </frame>
+    <frame id="357:36709" name="Frame 345818" x="366" y="108" width="1184" height="1956.0009765625">
+      <instance id="357:36710" name="Шапка страницы" x="0" y="0" width="1184" height="120" />
+      <frame id="357:38923" name="По реквизитам" x="0" y="144" width="1184" height="1812.0009765625">
+        <frame id="357:38924" name="left" x="0" y="0" width="781" height="1812.0009765625">
+          <instance id="357:38925" name="[D] Plate" x="0" y="0" width="720" height="56" hidden="true" />
+          <frame id="357:42444" name="По реквизитам / Отправитель" x="0" y="0" width="781" height="166">
+            <frame id="357:42566" name="[D] BackgroundPlate" x="0" y="0" width="781" height="166">
+              <instance id="357:42567" name="[D] Style Level 1" x="0" y="0" width="781" height="166" />
+            </frame>
+            <frame id="357:42446" name="Отправитель" x="32" y="32" width="717" height="102">
+              <instance id="357:42447" name="[D] TitleView" x="0" y="0" width="717" height="26" />
+              <frame id="357:42448" name="Frame 345797" x="0" y="46" width="717" height="56">
+                <instance id="357:42449" name="По реквизитам / Отправитель / Наименование отправителя" x="0" y="0" width="485" height="56" />
+                <instance id="357:42450" name="По реквизитам / Отправитель / КПП" x="509" y="0" width="208" height="56" />
+              </frame>
+            </frame>
+          </frame>
+          <frame id="357:42568" name="По реквизитам / Получатель" x="0" y="190" width="781" height="1494">
+            <instance id="357:42569" name="По реквизитам / Реквизиты получателя" x="0" y="0" width="781" height="490">
+  <instance id="I357:42569;86672:649374" name="[D] BackgroundPlate" x="0" y="0" width="781" height="490" />
+  <instance id="I357:42569;57328:278925" name="По реквизитам / Реквизиты получателя / Заголовок" x="32" y="32" width="717" height="26" />
+  <instance id="I357:42569;1:141171" name="По реквизитам / Реквизиты получателя / Тип получателя" x="32" y="78" width="717" height="40" />
+  <frame id="I357:42569;1:141170" name="autolayout-container" x="32" y="138" width="717" height="320">
+    <instance id="I357:42569;1:141172" name="По реквизитам / Наименование получателя*" x="0" y="0" width="717" height="80" />
+    <instance id="I357:42569;1:141174" name="По реквизитам / ИНН*" x="0" y="104" width="316" height="56" />
+    <instance id="I357:42569;1:141177" name="По реквизитам / Реквизиты получателя / Юрлицо / БИК или название банка*" x="0" y="184" width="592" height="56" />
+    <frame id="I357:42569;57328:314443" name="Frame 345811" x="0" y="264" width="717" height="56">
+      <instance id="I357:42569;57328:314444" name="По реквизитам / Реквизиты получателя / Юрлицо / Счёт получателя NEW*" x="0" y="0" width="346.5" height="56" />
+      <instance id="I357:42569;57328:314445" name="По реквизитам / Реквизиты получателя / Юрлицо / УИН/УИП" x="370.5" y="0" width="346.5" height="56" />
+    </frame>
+  </frame>
+</instance>
+            <instance id="357:42570" name="По реквизитам / Сумма и назначение" x="0" y="522" width="781" height="566" />
+            <instance id="357:42571" name="По реквизитам / Настройки отправки" x="0" y="1120" width="781" height="374">
+  <instance id="I357:42571;86672:697681" name="[D] BackgroundPlate" x="0" y="0" width="781" height="374" />
+  <instance id="I357:42571;86672:459751" name="По реквизитам / Счёт списания и сумма / Заголовок" x="32" y="32" width="717" height="26" />
+  <frame id="I357:42571;46:62713" name="Frame 335807" x="32" y="78" width="717" height="264">
+    <frame id="I357:42571;46:62718" name="Frame 32014" x="0" y="0" width="717" height="56">
+      <instance id="I357:42571;46:64153" name="По реквизитам / Настройки отправки / Дата в документе" x="0" y="0" width="377" height="56" />
+      <instance id="I357:42571;57438:270942" name="По реквизитам / Настройки отправки / Отправить не ранее" x="401" y="0" width="316" height="56" />
+    </frame>
+    <instance id="I357:42571;46:63148" name="По реквизитам / Настройки отправки / Срочность" x="0" y="80" width="717" height="56" />
+    <frame id="I357:42571;66244:274409" name="Frame 345831" x="0" y="160" width="316" height="56">
+      <instance id="I357:42571;57438:276737" name="По реквизитам / Настройки отправки / Очерёдность" x="0" y="0" width="316" height="56" />
+      <instance id="I357:42571;66244:278152" name="Input" x="336" y="0" width="656" height="56" hidden="true" />
+    </frame>
+    <instance id="I357:42571;57441:282243" name="По реквизитам / Настройки отправки / Уведомление об исполнении платежа" x="0" y="240" width="656" height="24" />
+  </frame>
+</instance>
+          </frame>
+          <instance id="357:38928" name="По реквизитам / Действия" x="0" y="1708" width="720" height="104.0009994506836">
+  <instance id="I357:38928;55409:217829" name="По реквизитам / Действия / Отправить платёж после подписания" x="0" y="0" width="720" height="24" />
+  <instance id="I357:38928;57441:423974" name="По реквизитам / Действия / Ряд кнопок" x="0" y="48" width="661" height="56.000999450683594">
+  <instance id="I357:38928;57441:423974;57441:418810" name="🔄 Button" x="0" y="0" width="143" height="56.000999450683594" />
+  <instance id="I357:38928;57441:423974;66002:336548" name="🔄 Button" x="159" y="0" width="237" height="56.000999450683594" />
+  <instance id="I357:38928;57441:423974;66002:337759" name="🔄 Button" x="412" y="0" width="177" height="56.000999450683594" />
+  <instance id="I357:38928;57441:423974;66002:338495" name="🔄 Button" x="605" y="0" width="56" height="56" />
+</instance>
+</instance>
+        </frame>
+        <frame id="357:38929" name="right" x="805" y="0" width="379" height="220">
+          <instance id="357:38930" name="По реквизитам / Виджет / Предпросмотр" x="0" y="270" width="348" height="386" hidden="true" />
+          <instance id="357:38931" name="По реквизитам / Виджет / Время опердня" x="0" y="0" width="379" height="132" />
+          <instance id="357:38932" name="LOCAL_neuro-helper" x="0" y="156" width="379" height="64" />
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <instance id="357:28003" name="Company Details" x="467" y="388.0009765625" width="1092" height="348.0010070800781" hidden="true" />
+  <instance id="357:28005" name="Spotlight-bar" x="0" y="2110" width="1600" height="60" />
+  <frame id="357:28006" name="Menu" x="8" y="8" width="308" height="818">
+    <frame id="357:28007" name="Logo_content" x="1" y="21" width="306" height="40">
+      <instance id="357:28008" name="Logo" x="20" y="0" width="266" height="40" />
+    </frame>
+    <frame id="357:28009" name="Content" x="1" y="89" width="306" height="552">
+      <instance id="357:28010" name="Amounts" x="0" y="0" width="306" height="108" />
+      <instance id="357:28011" name="DividerHorizontal" x="0" y="116" width="306" height="25" hidden="true" />
+      <instance id="357:28012" name="Quick Actions" x="0" y="149" width="306" height="80" hidden="true" />
+      <frame id="357:28013" name="Frame 2147239738" x="0" y="116" width="306" height="436">
+        <instance id="357:28014" name="DividerHorizontal" x="0" y="0" width="306" height="25" />
+        <instance id="357:43549" name="menu" x="0" y="27" width="306" height="409" />
+      </frame>
+    </frame>
+    <rounded-rectangle id="357:43610" name="Border" x="0" y="334" width="2" height="36" />
+  </frame>
+</frame>

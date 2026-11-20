@@ -1,0 +1,34 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="neural-assistant">
+<g id="icon" filter="url(#filter0_i_0_30)">
+<use xlink:href="#stroke0_0_30" fill="#FF1418"/>
+<use xlink:href="#stroke0_0_30" fill="url(#paint0_linear_0_30)"/>
+<use xlink:href="#stroke1_0_30" fill="#FF1418"/>
+<use xlink:href="#stroke1_0_30" fill="url(#paint1_linear_0_30)"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_i_0_30" x="4" y="1.00098" width="16" height="22" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="0.818182"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_0_30"/>
+</filter>
+<linearGradient id="paint0_linear_0_30" x1="12" y1="14.001" x2="12" y2="3.56764" gradientUnits="userSpaceOnUse">
+<stop stop-color="#904BFF"/>
+<stop offset="0.403846" stop-color="#BD5BBF" stop-opacity="0.596154"/>
+<stop offset="1" stop-color="#FF6161" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_30" x1="12" y1="14.001" x2="12" y2="3.56764" gradientUnits="userSpaceOnUse">
+<stop stop-color="#904BFF"/>
+<stop offset="0.403846" stop-color="#BD5BBF" stop-opacity="0.596154"/>
+<stop offset="1" stop-color="#FF6161" stop-opacity="0"/>
+</linearGradient>
+<path id="stroke0_0_30" d="M11.6227 17.0039C10.6429 13.2344 7.72445 10.5228 4 9.50098V8.75923C7.72445 7.7374 10.6429 4.77052 11.6227 1.00098H12.3773C13.3571 4.77052 16.2755 7.7374 20 8.75923V9.50098C16.2755 10.5228 13.3571 13.2344 12.3773 17.0039H11.6227Z"/>
+<path id="stroke1_0_30" d="M19.0097 20H4.99614V23.001H19.0097V20Z"/>
+</defs>
+</svg>

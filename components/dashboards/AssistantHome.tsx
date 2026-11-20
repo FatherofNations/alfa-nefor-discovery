@@ -9,8 +9,8 @@ type HomeCard = { icon: string; title: string; text: string; balanced?: boolean 
 
 const HOME_CARDS: HomeCard[] = [
   { icon: "ai-home-flash.svg", title: "Согласуйте заявку", text: "Заявка на кредит ожидает решения" },
-  { icon: "ai-home-warning.svg", title: "Приближается срок оплаты налог", text: "28 октября" },
-  { icon: "ai-home-bag.svg", title: "3 платежа ожидают оплаты", text: "Оплатите квитанции до 26 октября 2026", balanced: true },
+  { icon: "ai-home-warning.svg", title: "Приближается срок оплаты налога", text: "20 ноября" },
+  { icon: "ai-home-bag.svg", title: "3 платежа ожидают оплаты", text: "Оплатите квитанции до 20 ноября 2026", balanced: true },
 ];
 
 const FIG = "/assets/figma/";

@@ -36,6 +36,7 @@ const TITLES: Record<string, string> = {
   "/login": "Вход — Альфа-Бизнес",
   "/welcome": "Выбор вида главной",
   "/setup": "Настройка главного экрана",
+  "/new-payment": "Новый платёж",
 };
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
       break;
     case "/setup":
       screen = <SetupScreen />;
+      break;
+    case "/new-payment":
+      screen = <Glavnaya payment />;
       break;
     case "/accountant":
       screen = (

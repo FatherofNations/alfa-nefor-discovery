@@ -1,0 +1,216 @@
+{
+  "route": "/new-payment",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "source": {
+    "frame": "357:27653",
+    "frameName": "Дашборд",
+    "dumps": [
+      {
+        "file": "frame.xml",
+        "root": "357:27653",
+        "offset": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "generatedAt": "2026-11-19T21:34:25.505Z"
+  },
+  "elements": [
+    {
+      "selector": ".payment-heading",
+      "node": "357:36710",
+      "name": "Шапка страницы",
+      "figma": {
+        "x": 366,
+        "y": 108,
+        "w": 1184,
+        "h": 120
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-sender",
+      "node": "357:42444",
+      "name": "По реквизитам / Отправитель",
+      "figma": {
+        "x": 366,
+        "y": 252,
+        "w": 781,
+        "h": 166
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-recipient",
+      "node": "357:42569",
+      "name": "По реквизитам / Реквизиты получателя",
+      "figma": {
+        "x": 366,
+        "y": 442,
+        "w": 781,
+        "h": 490
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-amount-card",
+      "node": "357:42570",
+      "name": "По реквизитам / Сумма и назначение",
+      "figma": {
+        "x": 366,
+        "y": 964,
+        "w": 781,
+        "h": 566
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-settings",
+      "node": "357:42571",
+      "name": "По реквизитам / Настройки отправки",
+      "figma": {
+        "x": 366,
+        "y": 1562,
+        "w": 781,
+        "h": 374
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-actions",
+      "node": "357:38928",
+      "name": "По реквизитам / Действия",
+      "figma": {
+        "x": 366,
+        "y": 1960,
+        "w": 720,
+        "h": 104.0009994506836
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-hours",
+      "node": "357:38931",
+      "name": "По реквизитам / Виджет / Время опердня",
+      "figma": {
+        "x": 1171,
+        "y": 252,
+        "w": 379,
+        "h": 132
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-assistant",
+      "node": "357:38932",
+      "name": "LOCAL_neuro-helper",
+      "figma": {
+        "x": 1171,
+        "y": 408,
+        "w": 379,
+        "h": 64
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-bank-field",
+      "node": "I357:42569;1:141177",
+      "name": "По реквизитам / Реквизиты получателя / Юрлицо / БИК или название банка*",
+      "figma": {
+        "x": 398,
+        "y": 764,
+        "w": 592,
+        "h": 56
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-sender-fields",
+      "node": "357:42448",
+      "name": "Frame 345797",
+      "figma": {
+        "x": 398,
+        "y": 330,
+        "w": 717,
+        "h": 56
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-dates",
+      "node": "I357:42571;46:62718",
+      "name": "Frame 32014",
+      "figma": {
+        "x": 398,
+        "y": 1640,
+        "w": 717,
+        "h": 56
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-action-buttons",
+      "node": "I357:38928;57441:423974",
+      "name": "По реквизитам / Действия / Ряд кнопок",
+      "figma": {
+        "x": 366,
+        "y": 2008,
+        "w": 661,
+        "h": 56.000999450683594
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-action-buttons button:nth-child(1)",
+      "node": "I357:38928;57441:423974;57441:418810",
+      "name": "🔄 Button",
+      "figma": {
+        "x": 366,
+        "y": 2008,
+        "w": 143,
+        "h": 56.000999450683594
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-action-buttons button:nth-child(2)",
+      "node": "I357:38928;57441:423974;66002:336548",
+      "name": "🔄 Button",
+      "figma": {
+        "x": 525,
+        "y": 2008,
+        "w": 237,
+        "h": 56.000999450683594
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-action-buttons button:nth-child(3)",
+      "node": "I357:38928;57441:423974;66002:337759",
+      "name": "🔄 Button",
+      "figma": {
+        "x": 778,
+        "y": 2008,
+        "w": 177,
+        "h": 56.000999450683594
+      },
+      "tol": 0
+    },
+    {
+      "selector": ".payment-action-buttons button:nth-child(4)",
+      "node": "I357:38928;57441:423974;66002:338495",
+      "name": "🔄 Button",
+      "figma": {
+        "x": 971,
+        "y": 2008,
+        "w": 56,
+        "h": 56
+      },
+      "tol": 0
+    }
+  ]
+}

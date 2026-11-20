@@ -34,7 +34,6 @@ export default function AssistantBar() {
           <button className="support-button" type="button">
             <img src={`${FIG}support-icon.svg`} alt="" />
             <span>Связь с банком</span>
-            <span className="indicator indicator-small">1</span>
           </button>
         </div>
       </section>

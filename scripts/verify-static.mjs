@@ -89,10 +89,29 @@ export async function verifyStatic(browser, indexPath) {
     await button("Расходы за месяц").waitFor();
     await checkAssets("Главная предпринимателя");
 
+    const payLink = page.getByRole("link", { name: "Новый платёж" });
+    await payLink.click();
+    await waitForRoute("/new-payment");
+    await page.getByRole("heading", { name: "Рублёвый платёж № 123457" }).waitFor();
+    assert.equal(await payLink.getAttribute("aria-current"), "page");
+    const form = page.getByRole("form", { name: /Рублёвый платёж/ });
+    await form.getByRole("textbox", { name: "ФИО получателя*" }).fill("Иванов Иван Иванович");
+    await form.getByRole("textbox", { name: "Сумма*" }).fill("42750,00");
+    await form.getByRole("textbox", { name: "Назначение платежа*" }).fill("Оплата");
+    await form.getByText("6/210 символов").waitFor();
+    await form.getByRole("combobox", { name: "Счёт списания" }).selectOption({index: 1});
+    await form.getByText("Рублёвый счёт ··5277").waitFor();
+    await button("Без НДС").click();
+    assert.equal(await button("Без НДС").getAttribute("aria-pressed"), "true");
+    await checkAssets("Новый платёж");
+    await page.getByRole("link", { name: "Альфа-Бизнес — на главную" }).click();
+    await waitForRoute("/");
+    await page.locator(".dash-gate.gate-ready #hero-title").waitFor();
+
     const assistant = page.getByRole("dialog", { name: "Альфа-Интеллект" });
     for (const [trigger, thread, answer] of [
       ["3 задачи требуют вашего внимания Больше", "Важные задачи", "Вот три важные задачи"],
-      ["Расходы за месяц", "Расходы за месяц", "Расходы за апрель 2026"],
+      ["Расходы за месяц", "Расходы за месяц", "Расходы за ноябрь 2026"],
     ]) {
       await button(trigger).click();
       await assistant.getByText(answer, { exact: true }).waitFor();
@@ -146,10 +165,12 @@ export async function verifyStatic(browser, indexPath) {
     const signals = tasks.getByRole("list", { name: "Сигналы" });
     await signals.getByText("Заявка на кредит").waitFor();
     const pay = tasks.getByRole("button", { name: /^Оплатить/ });
-    await pay.click();
+    await pay.hover();
     const work = tasks.getByRole("list", { name: "Дела в работе" });
-    await work.getByText("Валютные переводы").waitFor();
+    await work.getByText("Входящие счета").waitFor();
     assert.equal(await signals.count(), 0);
+    await work.hover();
+    await work.getByText("Входящие счета").waitFor();
     await page.keyboard.press("Escape");
     await work.waitFor({ state: "hidden" });
     await expectFocused(pay);
@@ -160,6 +181,23 @@ export async function verifyStatic(browser, indexPath) {
     await allTasks.getByText("Черновики").waitFor();
     const hide = allTasks.getByRole("button", { name: "Скрыть" });
     await expectFocused(hide);
+    for (const [category, item] of [
+      ["Оплатить", "Входящие счета"],
+      ["Подписать", "Проценты на остаток"],
+      ["Отправить", "Реестры платежей"],
+      ["Доработать", "Ожидают идентификации"],
+      ["Отклонённые", "Реестры платежей"],
+      ["Черновики", "Валютные переводы"],
+      ["В работе у банка", "Платёжные требования"],
+    ]) {
+      const row = allTasks.getByRole("button", { name: new RegExp(`^${category}`) });
+      await row.hover();
+      await work.getByText(item, { exact: true }).waitFor();
+      assert.equal(await row.getAttribute("aria-expanded"), "true");
+    }
+    await page.keyboard.press("Escape");
+    await work.waitFor({ state: "hidden" });
+    await expectFocused(allTasks.getByRole("button", { name: /^В работе у банка/ }));
     await hide.click();
     await allTasks.waitFor({ state: "hidden" });
     await expectFocused(more);

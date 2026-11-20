@@ -1,33 +1,72 @@
 "use client";
 
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { workCategories, workOrder, workSummary, type WorkCategoryId, type WorkItem } from "@/data/work-tasks";
 import TasksCards from "./TasksCards";
 import TasksOptions from "./TasksOptions";
 
-type TasksMode = "signals" | "work" | "all";
-const optionKinds = ["signals", "work"] as const;
-
-const expandedRows = [
-  { title: "Оплатить", amount: "1 234 567,00 ₽ ", count: 3, important: true },
-  { title: "Подписать", amount: "21 207,04 ₽ ", count: 1 },
-  { title: "В работе у банка", amount: "58 949,10 ₽ ", count: 3 },
-  { title: "Доработать", amount: "1 207,74 ₽ ", count: 3 },
-  { title: "Отклонённые", amount: "91 777,12 ₽ ", count: 3 },
-  { title: "Черновики", amount: "2 381 567,06 ₽ ", count: 3 },
-];
+type TasksMode = "signals" | "all";
+type WorkPopover = {
+  category: WorkCategoryId;
+  anchor: HTMLButtonElement;
+  open: boolean;
+  pinned: boolean;
+  expanded: boolean;
+  top: number;
+};
 
 export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
   const id = useId();
   const controls = { signals: `${id}-signals`, work: `${id}-work`, all: `${id}-all` };
   const [mode, setMode] = useState<TasksMode | null>(null);
+  const [work, setWork] = useState<WorkPopover | null>(null);
+  const activeWork = work?.open ? work : null;
   const rootRef = useRef<HTMLElement>(null);
   const hideRef = useRef<HTMLButtonElement>(null);
   const returnFocus = useRef<TasksMode | null>(null);
+  const closeTimer = useRef<number | undefined>(undefined);
+
+  const cancelWorkClose = useCallback(() => window.clearTimeout(closeTimer.current), []);
+  useEffect(() => cancelWorkClose, [cancelWorkClose]);
+
+  const closeWork = useCallback(() => {
+    cancelWorkClose();
+    setWork(current => current?.open ? { ...current, open: false } : current);
+  }, [cancelWorkClose]);
+
+  const scheduleWorkClose = () => {
+    cancelWorkClose();
+    closeTimer.current = window.setTimeout(() => {
+      setWork(current => current?.open && !current.pinned ? { ...current, open: false } : current);
+    }, 220);
+  };
+
+  function openWork(category: WorkCategoryId, anchor: HTMLButtonElement, pinned: boolean, expanded: boolean) {
+    const root = rootRef.current;
+    if (!root || root.closest("[data-clicks-locked='true']")) return;
+    cancelWorkClose();
+    if (activeWork?.anchor === anchor) {
+      if (!pinned) return;
+      if (activeWork.pinned) closeWork();
+      else setWork({ ...activeWork, pinned: true });
+      return;
+    }
+
+    const row = anchor.getBoundingClientRect();
+    const items: WorkItem[] = workCategories[category].items;
+    const listHeight = 20 + items.reduce((height, item) => height + (item.caption ? 64 : 40), 0);
+    const spotlight = root.closest(".dashboard-page")?.querySelector(".spotlight");
+    const visibleBottom = spotlight?.getBoundingClientRect().top ?? window.innerHeight;
+    const top = Math.max(0, Math.min(row.top - 7, Math.max(row.bottom, visibleBottom) - listHeight));
+    setWork({ category, anchor, pinned, expanded, top: top - root.getBoundingClientRect().top, open: true });
+    if (mode === "signals") setMode(null);
+  }
 
   const dismiss = useCallback((restoreFocus: boolean) => {
+    closeWork();
     returnFocus.current = restoreFocus ? mode : null;
     setMode(null);
-  }, [mode]);
+  }, [closeWork, mode]);
 
   useLayoutEffect(() => {
     if (mode === "all") {
@@ -41,21 +80,24 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
   }, [mode]);
 
   useEffect(() => {
-    if (!mode) return;
+    if (!mode && !activeWork) return;
     const onPointerDown = (event: PointerEvent) => {
       const target = event.target;
       const root = rootRef.current;
       if (!(target instanceof Element) || !root) return;
       const control = target.closest("[data-tasks-trigger]");
       if (control && root.contains(control)) return;
-      const layer = target.closest(`[data-tasks-layer="${mode}"]`);
+      const layer = target.closest("[data-tasks-layer][data-open='true']");
       if (layer && root.contains(layer)) return;
       dismiss(false);
     };
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        dismiss(true);
+        if (activeWork) {
+          closeWork();
+          activeWork.anchor.focus({ preventScroll: true });
+        } else dismiss(true);
       }
     };
     document.addEventListener("pointerdown", onPointerDown);
@@ -64,7 +106,30 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [mode, dismiss]);
+  }, [mode, activeWork, closeWork, dismiss]);
+
+  function renderWorkRow(category: WorkCategoryId, expanded: boolean) {
+    const { title, count, amount, important } = workSummary(category);
+    return (
+      <button
+        key={category}
+        className="tasks-cards-row"
+        type="button"
+        data-tasks-trigger={category}
+        aria-expanded={activeWork?.category === category && activeWork.expanded === expanded}
+        aria-controls={controls.work}
+        onPointerEnter={event => {
+          if (event.pointerType !== "touch") openWork(category, event.currentTarget, false, expanded);
+        }}
+        onPointerLeave={scheduleWorkClose}
+        onClick={event => openWork(category, event.currentTarget, true, expanded)}
+      >
+        <span className="tasks-cards-row-label">{title}</span>
+        <span className="tasks-cards-amount">{amount}</span>
+        <span className={important ? "tasks-cards-count tasks-cards-count-important" : "tasks-cards-count"}>{count}</span>
+      </button>
+    );
+  }
 
   return (
     <section
@@ -72,19 +137,32 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
       className={`tasks tasks-flow${afterPanel ? " tasks-after-panel" : ""}`}
       aria-labelledby="tasks-title"
     >
-      <TasksCards mode={mode} onToggle={(next) => setMode((current) => current === next ? null : next)} controls={controls} />
-      {optionKinds.map((kind) => (
-        <div
-          key={kind}
-          className="tasks-flow-overlay"
-          data-tasks-layer={kind}
-          data-open={mode === kind}
-          inert={mode !== kind}
-          aria-hidden={mode !== kind}
-        >
-          <TasksOptions kind={kind} id={controls[kind]} />
-        </div>
-      ))}
+      <TasksCards
+        mode={mode}
+        onToggle={next => {
+          closeWork();
+          setMode(current => current === next ? null : next);
+        }}
+        controls={controls}
+        renderWorkRow={category => renderWorkRow(category, false)}
+        workOpen={Boolean(activeWork)}
+      />
+      <div className="tasks-flow-overlay" data-tasks-layer="signals" data-open={mode === "signals"} inert={mode !== "signals"} aria-hidden={mode !== "signals"}>
+        <TasksOptions id={controls.signals} />
+      </div>
+      <div
+        className="tasks-flow-overlay"
+        data-tasks-layer="work"
+        data-expanded={work?.expanded}
+        data-open={Boolean(activeWork)}
+        style={{ top: work?.top }}
+        inert={!activeWork}
+        aria-hidden={!activeWork}
+        onPointerEnter={cancelWorkClose}
+        onPointerLeave={scheduleWorkClose}
+      >
+        <TasksOptions id={controls.work} items={workCategories[work?.category ?? "pay"].items} />
+      </div>
       <div
         id={controls.all}
         className="tasks-flow-overlay tasks-expanded"
@@ -96,13 +174,7 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
         aria-label="Все дела"
       >
         <ul className="tasks-expanded-list">
-          {expandedRows.map(({ title, amount, count, important }) => (
-            <li className="tasks-expanded-row" key={title}>
-              <span>{title}</span>
-              <span className="tasks-expanded-amount">{amount}</span>
-              <span className={`tasks-expanded-count${important ? " tasks-expanded-count-important" : ""}`}>{count}</span>
-            </li>
-          ))}
+          {workOrder.map(category => <li key={category}>{renderWorkRow(category, true)}</li>)}
         </ul>
         <button ref={hideRef} className="tasks-expanded-close" type="button" onClick={() => dismiss(true)}>
           Скрыть

@@ -13,6 +13,7 @@ import "@/styles/company-switcher.css";
 import "@/styles/tasks-cards.css";
 import "@/styles/tasks-options.css";
 import "@/styles/tasks-flow.css";
+import "@/styles/new-payment.css";
 import ClientNameModal from "@/components/client-name/ClientNameModal";
 
 export const metadata: Metadata = {

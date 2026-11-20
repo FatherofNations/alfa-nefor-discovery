@@ -1,11 +1,14 @@
 import type { ReactNode } from "react";
+import { featuredWork, workOrder, type WorkCategoryId } from "@/data/work-tasks";
 
-type Mode = "signals" | "work" | "all";
+type Mode = "signals" | "all";
 
 type TasksCardsProps = {
   mode: Mode | null;
   onToggle: (mode: Mode) => void;
   controls: Record<Mode, string>;
+  renderWorkRow: (id: WorkCategoryId) => ReactNode;
+  workOpen: boolean;
 };
 
 const existingAsset = (name: string) => `/assets/figma/tasks-v2-${name}`;
@@ -34,21 +37,6 @@ function Count({ children, important = false }: { children: number; important?: 
     <span className={important ? "tasks-cards-count tasks-cards-count-important" : "tasks-cards-count"}>
       {children}
     </span>
-  );
-}
-
-function RowContent({ title, amount, count, important = false }: {
-  title: string;
-  amount: string;
-  count: number;
-  important?: boolean;
-}) {
-  return (
-    <>
-      <span className="tasks-cards-row-label">{title}</span>
-      <span className="tasks-cards-amount">{amount}</span>
-      <Count important={important}>{count}</Count>
-    </>
   );
 }
 
@@ -93,9 +81,9 @@ function Glyph({ name }: { name: string }) {
   return <span className="tasks-cards-glyph"><img src={existingAsset(name)} alt="" /></span>;
 }
 
-export default function TasksCards({ mode, onToggle, controls }: TasksCardsProps) {
+export default function TasksCards({ mode, onToggle, controls, renderWorkRow, workOpen }: TasksCardsProps) {
   return (
-    <div className="tasks-cards" data-mode={mode ?? undefined}>
+    <div className="tasks-cards" data-mode={mode ?? (workOpen ? "work" : undefined)}>
       <header className="tasks-cards-header">
         <h2 id="tasks-title">Мои дела</h2>
         <div className="tasks-cards-controls">
@@ -140,22 +128,7 @@ export default function TasksCards({ mode, onToggle, controls }: TasksCardsProps
             </button>
             <span className="tasks-cards-separator" aria-hidden="true" />
             <div className="tasks-cards-rows">
-              <button
-                className="tasks-cards-row"
-                type="button"
-                data-tasks-trigger="work"
-                aria-expanded={mode === "work"}
-                aria-controls={controls.work}
-                onClick={() => onToggle("work")}
-              >
-                <RowContent title="Оплатить" amount={"1\u202f234\u202f567,00\u202f₽\u2009"} count={3} important />
-              </button>
-              <div className="tasks-cards-row">
-                <RowContent title="Доработать" amount={"1 207,00\u202f₽\u2009"} count={1} />
-              </div>
-              <div className="tasks-cards-row">
-                <RowContent title="Подписать" amount={"1 207,00\u202f₽\u2009"} count={3} />
-              </div>
+              {featuredWork.map(renderWorkRow)}
               <button
                 className="tasks-cards-row"
                 type="button"
@@ -167,7 +140,7 @@ export default function TasksCards({ mode, onToggle, controls }: TasksCardsProps
                 <span className="tasks-cards-row-label">
                   Ещё<img src={flowAsset("more-chevron.svg")} alt="" />
                 </span>
-                <Count>{3}</Count>
+                <Count>{workOrder.length - featuredWork.length}</Count>
               </button>
             </div>
           </div>

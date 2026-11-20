@@ -12,7 +12,7 @@ const bad = (m) => {
   console.error(`  ✗ ${m}`);
 };
 
-const routes = ["/", "/accountant", "/login", "/welcome", "/setup"];
+const routes = ["/", "/new-payment", "/accountant", "/login", "/welcome", "/setup"];
 const httpOnly = process.argv.includes("--http-only");
 
 console.log(`verify: ${BASE}, роуты: ${routes.join(", ")}`);
@@ -68,7 +68,7 @@ if (chromium) {
   page.on("pageerror", (err) => consoleErrors.push(String(err)));
 
   await page.addInitScript(() => { window.__alfaEntryState = { entered: true, role: "entrepreneur" }; });
-  const screenSelectors = { "/": ".dashboard-page", "/accountant": ".cur-content", "/login": ".entry-submit", "/welcome": ".entry-role-cards", "/setup": ".entry-setup" };
+  const screenSelectors = { "/": ".dashboard-page", "/new-payment": ".payment-form", "/accountant": ".cur-content", "/login": ".entry-submit", "/welcome": ".entry-role-cards", "/setup": ".entry-setup" };
   for (const route of routes) {
     await page.goto(BASE + route, { waitUntil: "networkidle" });
     if (!(await page.locator(screenSelectors[route]).count())) bad(`${route}: ожидаемый экран не найден`);
@@ -82,7 +82,7 @@ if (chromium) {
   }
   try {
     await verifyStatic(browser, resolve("static-dist/index.html"));
-    ok("Статика: вход, вкладки, имя клиента, смена компании и роли, скрытие сумм и выход");
+    ok("Статика: вход, новый платёж, вкладки, имя клиента, смена компании и роли, скрытие сумм и выход");
   } catch (error) {
     bad(`Статика: ${error.message}`);
   }

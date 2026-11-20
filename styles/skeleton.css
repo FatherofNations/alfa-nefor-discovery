@@ -218,14 +218,14 @@
 
 .sk-tabs {
   width: 585px;
-  margin-left: 196px;
+  margin-left: 193.5px;
 }
 
 .sk-hero {
   display: flex;
   width: 967px;
   margin-top: 36px;
-  margin-left: 5px;
+  margin-inline: auto;
   flex-direction: column;
   align-items: center;
   gap: 28px;
@@ -257,12 +257,12 @@
 .sk-main-banners {
   display: flex;
   height: 120px;
-  margin-top: 62px;
+  margin-top: 56px;
   gap: 12px;
 }
 
 .sk-tasks {
-  margin-top: 52px;
+  margin-top: 56px;
 }
 
 .sk-cards {

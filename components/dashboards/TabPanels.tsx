@@ -13,7 +13,7 @@ export function SummaryPanel() {
       <section className="summary-card turnover-card">
         <span className="widget-badge widget-badge-new">Новое</span>
         <div className="widget-head">
-          <h3>В декабре</h3>
+          <h3>В ноябре</h3>
           <img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" />
         </div>
         <div className="turnover-body">
@@ -33,7 +33,7 @@ export function SummaryPanel() {
             <div className="turnover-bars"><i className="bar-dot bar-green" /><i className="bar-dot bar-red" /></div>
             <div className="turnover-bars"><i className="bar-dot bar-dot-empty" /><i className="bar-dot bar-dot-empty" /></div>
             <div className="turnover-bars"><i className="bar-dot bar-dot-empty" /><i className="bar-dot bar-dot-empty" /></div>
-            <div className="turnover-dates"><span>1 сен</span><span>30 сен</span></div>
+            <div className="turnover-dates"><span>17 ноя</span><span>20 ноя</span></div>
           </div>
         </div>
       </section>

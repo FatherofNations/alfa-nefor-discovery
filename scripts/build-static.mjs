@@ -36,6 +36,7 @@ const CSS_FILES = [
   "tasks-cards.css",
   "tasks-options.css",
   "tasks-flow.css",
+  "new-payment.css",
   "menu-dnd.css",
   "accountant-tokens.css",
   "chrome.css",

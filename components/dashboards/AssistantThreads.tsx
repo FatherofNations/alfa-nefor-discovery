@@ -19,7 +19,7 @@ const recentThreads = [
 const tasks = [
   ["Разберитесь с риском по ФЗ-115", "По счёту *3594 есть просроченная задача. Проверьте, что нужно сделать."],
   ["Выберите тип кредитного лимита", "Заявка на кредит одобрена — осталось выбрать тип лимита."],
-  ["Подготовьтесь к платежу по кредитной линии", "Завтра — платёж 1 332 000,00 ₽ по кредитной линии от 03.06.26."],
+  ["Подготовьтесь к платежу по кредитной линии", "Завтра — платёж 1 332 000,00 ₽ по кредитной линии от 18.11.26."],
 ];
 
 const expenses = [
@@ -76,7 +76,7 @@ export function AssistantConversation({ topic, answerRef }: { topic: AssistantTo
           <span className="assistant-time">12:30</span>
         </div>
         <div className="assistant-answer" ref={answerRef}>
-          <p className="assistant-answer-title">{important ? "Вот три важные задачи" : "Расходы за апрель 2026"}</p>
+          <p className="assistant-answer-title">{important ? "Вот три важные задачи" : "Расходы за ноябрь 2026"}</p>
           {important ? (
             <>
               {tasks.map(([title, description]) => (
