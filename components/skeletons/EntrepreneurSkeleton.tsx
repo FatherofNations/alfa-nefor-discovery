@@ -88,8 +88,8 @@ export default function EntrepreneurSkeleton() {
             <div className="sk-hero-copy">
               <SkeletonText fontSize={36} lineHeight={48} widths={[333]} align="center" />
               <div className="sk-hero-sub">
-                <SkeletonText fontSize={16} lineHeight={24} widths={[370]} />
-                <SkeletonText fontSize={16} lineHeight={24} widths={[166]} />
+                <SkeletonText fontSize={16} lineHeight={24} widths={[765]} />
+                <SkeletonText fontSize={16} lineHeight={24} widths={[439]} />
               </div>
             </div>
             <div className="sk-hero-chips">

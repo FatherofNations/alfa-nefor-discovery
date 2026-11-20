@@ -1,9 +1,10 @@
+import OctoberSummary from "./OctoberSummary";
 import type { Ref } from "react";
 
 export type AssistantTopic = "tasks" | "expenses";
 export const threadAssets = "/assets/figma/assistant-threads/";
 
-const threadNames = { tasks: "Важные задачи", expenses: "Расходы за месяц" };
+const threadNames = { tasks: "Сводка", expenses: "Расходы за месяц" };
 const recentThreads = [
   "Исследование влияния удаленной работы на производительность",
   "Оценка эффективности рекламных кампаний в интернете",
@@ -14,12 +15,6 @@ const recentThreads = [
   "Методы повышения вовлеченности клиентов в мобильных приложениях",
   "Анализ конкурентоспособности бренда на локальном рынке",
   "Использование искусственного интеллекта для персонализации предложений",
-];
-
-const tasks = [
-  ["Разберитесь с риском по ФЗ-115", "По счёту *3594 есть просроченная задача. Проверьте, что нужно сделать."],
-  ["Выберите тип кредитного лимита", "Заявка на кредит одобрена — осталось выбрать тип лимита."],
-  ["Подготовьтесь к платежу по кредитной линии", "Завтра — платёж 1 332 000,00 ₽ по кредитной линии от 18.11.26."],
 ];
 
 const expenses = [
@@ -71,24 +66,14 @@ export function AssistantConversation({ topic, answerRef }: { topic: AssistantTo
   return (
     <>
       <div className="assistant-conversation">
-        <div className="assistant-user">
-          <span>{important ? threadNames.tasks : "Расходы за месяц по категориям"}</span>
+        {!important && <div className="assistant-user">
+          <span>Расходы за месяц по категориям</span>
           <span className="assistant-time">12:30</span>
-        </div>
+        </div>}
         <div className="assistant-answer" ref={answerRef}>
-          <p className="assistant-answer-title">{important ? "Вот три важные задачи" : "Расходы за ноябрь 2026"}</p>
-          {important ? (
+          {important ? <OctoberSummary /> : (
             <>
-              {tasks.map(([title, description]) => (
-                <div className="assistant-task" key={title}>
-                  <p className="assistant-dash-line"><strong>{title}</strong></p>
-                  <p>{description}</p>
-                </div>
-              ))}
-              <p>С какой задачи начнём?</p>
-            </>
-          ) : (
-            <>
+              <p className="assistant-answer-title">Расходы за ноябрь 2026</p>
               {expenses.map(([label, amount]) => <p className="assistant-dash-line" key={label}>{label}: {amount}{"\u2009₽"}</p>)}
               <p className="assistant-answer-total">Итого расходы: {"4\u205f967\u205f600\u2009₽"}</p>
               <p>Хочешь расскажу, сколько уходит на комиссии банка в разбивке по типам операций?</p>

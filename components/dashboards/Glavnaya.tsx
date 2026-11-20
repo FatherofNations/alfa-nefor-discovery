@@ -131,7 +131,7 @@ const COMPACT_CLASS: Record<string, string> = {
 /* Высота сцены вкладки = отступ + высота панели (включая field 36/40),
    чтобы смена вкладки анимировала height, а «Мои дела» ехали плавно. */
 const TAB_HEIGHTS: Record<string, number> = {
-  "Ассистент": 204,
+  "Ассистент": 232,
   "Сводка": 424,
   "Счета на главной": 395,
   "Тарифы и подписки": 432,
@@ -772,8 +772,9 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
             <div className="hero-heading"><span className="hero-dash">—</span><h1 id="hero-title">{clientName.greetingName}, добрый день</h1></div>
             <div className="hero-subtitle">
               <button type="button" onClick={(event) => openAssistant("tasks", event.currentTarget)} aria-haspopup="dialog">
-                <span>3 задачи требуют вашего внимания</span>
-                <span className="hero-subtitle-action"><Icon name="hero-6a06a.svg" /><span>Больше</span></span>
+                <span>Расходы за октябрь выросли на 12%. Подготовил разбор и два изменения в законодательстве,</span>
+                <span className="hero-summary-last">на которые стоит обратить внимание
+                <span className="hero-subtitle-action"><Icon name="hero-6a06a.svg" /><span>Узнать больше</span></span></span>
               </button>
             </div>
           </div>
