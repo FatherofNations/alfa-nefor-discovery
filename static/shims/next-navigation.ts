@@ -21,7 +21,7 @@ function emit(): void {
   listeners.forEach((listener) => listener());
 }
 
-export function navigateStatic(to: string, replace: boolean): void {
+export function navigateStatic(to: string, replace: boolean, scroll = true): void {
   const path = to.split("?")[0] || "/";
   if (path === currentPath && !replace) return;
   currentPath = path;
@@ -31,6 +31,7 @@ export function navigateStatic(to: string, replace: boolean): void {
   } catch {
     window.location.hash = to;
   }
+  if (scroll) window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   emit();
 }
 
@@ -55,8 +56,8 @@ export function usePathname(): string {
 export function useRouter() {
   return useMemo(
     () => ({
-      push: (href: string) => navigateStatic(String(href), false),
-      replace: (href: string) => navigateStatic(String(href), true),
+      push: (href: string, options?: { scroll?: boolean }) => navigateStatic(String(href), false, options?.scroll),
+      replace: (href: string, options?: { scroll?: boolean }) => navigateStatic(String(href), true, options?.scroll),
       prefetch: () => {},
       back: () => window.history.back(),
       forward: () => window.history.forward(),

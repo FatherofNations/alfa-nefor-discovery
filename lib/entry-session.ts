@@ -5,6 +5,8 @@
    (см. lib/reload-mode.ts), по которому гейт чистит сессию и уводит на /login.
    Тестовые прогоны могут по-прежнему подставить window.__alfaEntryState —
    это значение имеет приоритет. */
+import { resetResearchProgress } from "./research-progress";
+
 export type EntryRole = "entrepreneur" | "accountant";
 
 type EntryState = { entered: boolean; role: EntryRole };
@@ -61,6 +63,7 @@ export function markEntered(): void {
 
 export function resetEntry(): void {
   roleChangePath = null;
+  resetResearchProgress();
   const next: EntryState = { entered: false, role: "entrepreneur" };
   persist(next);
 }

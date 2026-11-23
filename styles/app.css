@@ -33,7 +33,7 @@ img { display: block; }
 .menu-divider { width: 100%; padding: 12px 24px; }
 .menu-divider span { display: block; width: 100%; height: 1px; background: rgb(30 43 68 / 8%); }
 .menu-list { position: relative; width: 100%; height: 409px; }
-.menu-main { position: absolute; inset: 0; padding: 0 8px; }
+.menu-main { --menu-inset: 8px; position: absolute; inset: 0; padding-inline: var(--menu-inset); }
 .menu-item { position: relative; display: flex; width: 100%; height: 48px; align-items: center; gap: 22px; padding: 14px 16px 14px 22px; text-align: left; font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: .07px; white-space: nowrap; }
 .menu-item::before { content: ""; position: absolute; left: 50%; top: 50%; width: 268px; height: 40px; border-radius: 12px; background: #e7e8eb; opacity: 0; transform: translate(-50%, -50%); transition: opacity .22s ease-in; }
 .menu-item:hover::before { opacity: 1; }
@@ -46,48 +46,39 @@ img { display: block; }
 .menu-secondary::after { content: ""; position: absolute; left: 16px; top: 8px; width: 32px; height: 32px; background: url(/assets/figma/menu-secondary-border.png) center / 32px 32px no-repeat; }
 .menu-secondary::before, .menu-category::before { content: none; }
 
-/* Sticky collapse: --tb-p 0→1 от scroll (см. Glavnaya).
-   Expanded (0): absolute-эквивалент top:28 right:24 w:616 h:40, без подложки.
-   Collapsed (1): как .chrome-header бухгалтера — top:0 h:56 pad 0 24,
-   full-bleed слева (сайдбар z:5 выше), blur-подложка (предложение; эталон бухгалтера solid).
-   z-index:4 — ниже сайдбара (5), выше контента; .work-dropdown без z, иначе chip
-   «Дела в работе» перекрывал шапку при скролле. */
+/* Геометрия шапки привязана к прокрутке. Центрирование даёт ход кнопок с y=28 до y=8. */
 .topbar {
-  --tb-p: 0;
+  --topbar-collapse: 0;
+  --topbar-backdrop: 0;
   position: fixed;
   z-index: 4;
-  top: calc(28px * (1 - var(--tb-p)));
+  top: calc(28px * (1 - var(--topbar-collapse)));
   right: 0;
   left: 0; /* Постоянная ширина исключает перераспределение flex при скролле. */
   width: auto;
-  height: calc(40px + 16px * var(--tb-p)); /* 40 → 56 эталон бухгалтера */
+  height: calc(40px + 16px * var(--topbar-collapse));
   padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 16px;
   box-sizing: border-box;
-  background: rgb(242 243 245 / var(--tb-bg-a, 0)); /* предложение: 96% page-bg × p */
-  -webkit-backdrop-filter: blur(var(--tb-blur, 0px)); /* предложение: 60px × p */
-  backdrop-filter: blur(var(--tb-blur, 0px));
+  background-color: rgb(242 243 245 / calc(.96 * var(--topbar-backdrop)));
+  -webkit-backdrop-filter: blur(calc(60px * var(--topbar-backdrop)));
+  backdrop-filter: blur(calc(60px * var(--topbar-backdrop)));
   pointer-events: none; /* полоса full-bleed не перехватывает клики слева */
 }
 .topbar > * { pointer-events: auto; flex-shrink: 0; }
 .topbar-buttons { display: flex; gap: 8px; }
 .icon-button { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; }
 .icon-button img { width: 20px; height: 20px; }
-/* divider: expanded 40 + py8 → линия 24; collapsed height 24 как .chrome-hdiv */
 .vertical-divider {
   width: 1px;
-  height: calc(40px - 16px * var(--tb-p, 0));
-  padding: calc(8px * (1 - var(--tb-p, 0))) 0;
+  height: 40px;
+  padding: 8px 0;
   flex: none;
   background-clip: content-box;
   background-color: rgb(15 25 55 / 10%);
-}
-.topbar .vertical-divider {
-  height: calc(40px - 16px * var(--tb-p));
-  padding: calc(8px * (1 - var(--tb-p))) 0;
 }
 .company-account { display: flex; height: 40px; align-items: center; gap: 12px; padding-left: 8px; text-align: left; }
 .company-account > span { display: flex; flex-direction: column; white-space: nowrap; }
@@ -205,10 +196,12 @@ img { display: block; }
 .hero-heading h1 { font-size: 36px; font-weight: 700; line-height: 48px; letter-spacing: .1px; white-space: nowrap; }
 .hero-dash { position: absolute; left: -33.5px; top: 24px; transform: translate(-50%, -50%); font-size: 40px; font-weight: 700; line-height: 48px; letter-spacing: .1px; }
 .hero-subtitle { display: flex; align-items: center; justify-content: center; width: 100%; }
-.hero-summary-last { display: flex; align-items: center; gap: 8px; }
+.hero-subtitle button > span:first-child { width: 765px; }
+.hero-summary-last { display: flex; align-items: center; gap: 8px; transform: translateX(-1px); }
+.hero-summary-last > span:first-child { width: 290px; text-align: right; }
 .hero-subtitle button { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.24px; white-space: nowrap; }
 .hero-subtitle-action { display: flex; align-items: center; gap: 4px; }
-.hero-subtitle-action > span { background: linear-gradient(169.0312444017914deg, #ef3124 32.833%, #f859c5 79.58%); background-clip: text; font-weight: 500; letter-spacing: -.05px; color: transparent; }
+.hero-subtitle-action > span { width: 115px; text-align: center; background: linear-gradient(174.2258450574568deg, #ef3124 32.833%, #f859c5 79.58%); background-clip: text; font-weight: 500; letter-spacing: -.05px; color: transparent; }
 .hero-actions { display: flex; width: 967px; height: 52px; align-items: center; justify-content: center; gap: 12px; }
 .hero-chip { flex: none; position: relative; display: flex; height: 52px; align-items: center; justify-content: center; gap: 8px; padding: 16px 20px; border-radius: 16px; background: #fff; font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; white-space: nowrap; }
 .hero-chip:hover { background: rgb(255 255 255 / 70%); }
@@ -466,7 +459,35 @@ img { display: block; }
 @keyframes role-menu-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ── Сайдпанель «Детализация остатка» ─────────────────────────── */
-.account-panel { position: fixed; z-index: 20; left: 324px; top: 8px; width: 480px; height: calc(100dvh - 82px); min-height: 680px; background: #fff; border-radius: 16px; box-shadow: 8px 8px 50px rgb(0 0 0 / 8%); animation: account-panel-in .55s cubic-bezier(.32, .72, 0, 1) both; }
+.account-panel {
+  --account-panel-duration: .55s;
+  --account-panel-easing: cubic-bezier(.32,.72,0,1);
+  position: fixed;
+  z-index: 20;
+  left: 324px;
+  top: 8px;
+  width: 480px;
+  height: calc(100dvh - 82px);
+  min-height: 680px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 8px 8px 50px rgb(0 0 0 / 8%);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity var(--account-panel-duration) var(--account-panel-easing),
+    transform var(--account-panel-duration) var(--account-panel-easing),
+    visibility 0s var(--account-panel-duration);
+}
+.account-panel[data-open="true"] {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .account-panel { --account-panel-duration: 0s; }
+}
 .account-panel-head { position: absolute; left: 19px; right: 20px; top: 20px; height: 32px; display: flex; align-items: center; justify-content: space-between; padding-left: 9px; }
 .account-panel-head h2 { font-size: 22px; font-weight: 700; line-height: 26px; letter-spacing: .2px; color: #000; white-space: nowrap; }
 .account-panel-close { display: flex; width: 32px; height: 32px; flex: none; align-items: center; justify-content: center; }
@@ -489,7 +510,6 @@ img { display: block; }
 .account-panel-switch::after { content: ""; position: absolute; left: 4px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: rgb(9 12 37 / 27.8%); }
 .account-panel-link { font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -.24px; color: #2a77ef; }
 .account-panel-cta { position: absolute; left: 28px; right: 28px; bottom: 28px; height: 48px; border-radius: 10px; background: #ef3124; color: rgb(255 255 255 / 94%); font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; }
-@keyframes account-panel-in { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
 
 /* ── Вкладки табло: Сводка / Счета / Тарифы ──────────────────── */
 /* Геометрия и типографика — из design context кадров 59:27766 / 59:32554 /
@@ -1269,7 +1289,19 @@ body.name-modal-open { overflow: hidden; }
 .assistant[data-topic="tasks"] .assistant-round { background: var(--neutral-translucent-100); }
 .assistant[data-topic="expenses"] .assistant-round { background: var(--page-bg, #f2f3f5); }
 .assistant[data-topic="tasks"] .assistant-round:first-child img { width: 20px; height: 20px; }
-.assistant-conversation { position: absolute; inset: 0 0 160px; overflow: auto; padding-top: 60px; }
+/* The fullscreen dialog owns scrolling. Reclaim the viewport gutter while
+   keeping the dashboard and both header rows at their original x positions. */
+html:has(.assistant) { overflow: hidden; scrollbar-gutter: auto; }
+.dashboard-page.assistant-shift { width: calc(100% - var(--assistant-root-gutter)); }
+.dashboard-page.assistant-shift > .topbar { right: calc(var(--dashboard-edge-inset) + var(--assistant-root-gutter)); }
+.assistant .assistant-topbar-right { margin-right: var(--assistant-root-gutter); }
+.assistant-conversation {
+  position: absolute;
+  inset: 0 0 160px;
+  overflow: auto;
+  padding-top: 60px;
+  scrollbar-color: var(--neutral-translucent-500) transparent;
+}
 .assistant[data-topic="tasks"] .assistant-conversation { bottom: 156px; padding-top: 74px; }
 .assistant-panel .assistant-user {
   position: relative;
@@ -1335,11 +1367,41 @@ body.name-modal-open { overflow: hidden; }
 /* Белый нижний контур тела продолжается в оба скругления. */
 .viewport-strip { background: linear-gradient(#fff, #fff) center top / calc(100% - 32px) 1px no-repeat, #e7e8eb; }
 
-.october-summary { display: grid; gap: 16px; }
-.october-summary table { width: 100%; border-collapse: collapse; text-align: left; }
-.october-summary th, .october-summary td { padding: 16px 8px; border-bottom: 1px solid var(--neutral-translucent-200); }
+.october-summary {
+  display: grid;
+  gap: 16px;
+  font: 400 16px/24px var(--font);
+  letter-spacing: -.24px;
+  color: var(--text-primary);
+}
+.october-summary strong, .october-summary h3 { font-weight: 700; letter-spacing: 0; }
+.october-summary table {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0;
+  padding-block: 2px;
+  text-align: left;
+}
+.october-summary th, .october-summary td { padding: 16px 16px 16px 0; }
+.october-summary th { font-weight: 400; color: var(--text-secondary); }
+.october-summary th:first-child { width: 38.35%; }
+.october-summary th:nth-child(2), .october-summary th:nth-child(3) { width: 20.39%; }
+.october-summary :is(th, td):last-child { padding-right: 0; }
+.october-summary th, .october-summary tbody tr:not(:last-child) td { border-bottom: 1px solid var(--neutral-translucent-200); }
+.october-summary h2 { margin-block: 28px 12px; font: 700 18px/22px var(--font); letter-spacing: .38px; }
 .october-summary section { display: grid; gap: 8px; }
-.october-summary h3 { font-size: inherit; }
+.october-summary h3 { font-size: 16px; line-height: 24px; }
 .october-summary .summary-source { color: #2a77ef; }
-.october-summary ul { display: grid; list-style: none; gap: 8px; justify-items: start; }
-.october-summary li { background: var(--neutral-translucent-100); border-radius: 12px; padding: 10px 16px; }
+.october-summary ul { list-style: none; padding-top: 1px; }
+.october-summary li { position: relative; padding: 10px 0 10px 40px; line-height: 20px; }
+.october-summary li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  background: url("/assets/figma/assistant-threads/summary-suggestion.svg") center / contain no-repeat;
+}
+.october-summary li + li { margin-top: 8px; border-top: 1px solid var(--neutral-translucent-200); padding-top: 18px; }
+.october-summary li + li::before { top: 18px; }

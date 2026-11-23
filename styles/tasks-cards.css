@@ -68,14 +68,70 @@
 .tasks-cards-progress-fill { top: 0; left: 6.5px; width: 9.5px; height: 14.0962px; }
 
 .tasks-cards-body {
-  display: grid;
-  grid-template-columns: repeat(3, 316px);
-  gap: 12px;
+  position: relative;
+  display: flow-root;
   height: 288px;
   margin-top: 24px;
 }
+.research-task-carousel {
+  /* Место для тени слева без смещения карточек и точек привязки. */
+  --tasks-shadow-gutter: 40px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 316px;
+  grid-template-rows: 288px;
+  column-gap: 12px;
+  margin-block: -16px -48px;
+  margin-inline-start: calc(-1 * var(--tasks-shadow-gutter));
+  padding-block: 16px 48px;
+  padding-inline-start: var(--tasks-shadow-gutter);
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-padding-inline-start: var(--tasks-shadow-gutter);
+  scroll-snap-type: x mandatory;
+}
+.tasks-cards-body[data-fade-left="true"] .research-task-carousel {
+  clip-path: inset(0 0 0 var(--tasks-shadow-gutter));
+}
+.research-task-carousel > * { scroll-snap-align: start; }
+.tasks-cards-body::after {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 3;
+  width: 40px;
+  background: linear-gradient(to right, rgb(242 243 245 / 90%), rgb(242 243 245 / 0%));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s ease-in;
+  content: "";
+}
+.tasks-cards-body[data-fade-left="true"]::after { opacity: 1; }
 
 .tasks-cards-important { position: relative; height: 288px; }
+.tasks-cards-important::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background: var(--neutral-0);
+  transition:
+    top .55s cubic-bezier(.32,.72,0,1),
+    width .55s cubic-bezier(.32,.72,0,1),
+    height .55s cubic-bezier(.32,.72,0,1),
+    box-shadow .5s cubic-bezier(.25,.1,.25,1);
+}
+.tasks-cards[data-mode="all"] .tasks-cards-important { z-index: 2; }
+.tasks-cards[data-mode="all"] .tasks-cards-important::before {
+  top: -12px;
+  width: 324px;
+  height: 300px;
+  box-shadow: 0 20px 12px rgb(0 0 0 / 8%), 0 12px 8px rgb(0 0 0 / 4%),
+    0 4px 4px rgb(0 0 0 / 4%), 0 0 .5px rgb(0 0 0 / 4%), 0 10px 20px rgb(0 0 0 / 5%);
+}
 .tasks-cards-important-plate {
   position: relative;
   z-index: 1;
@@ -86,7 +142,11 @@
   padding: 10px;
   overflow: hidden;
   border-radius: 16px;
-  background: var(--neutral-0, #fff);
+  transition: opacity .5s cubic-bezier(.25,.1,.25,1) .22s;
+}
+.tasks-cards[data-mode="all"] .tasks-cards-important-plate {
+  opacity: 0;
+  transition: opacity .22s ease-in;
 }
 
 .tasks-cards-stack {
@@ -97,7 +157,9 @@
   height: 8px;
   overflow: hidden;
   pointer-events: none;
+  transition: opacity .5s cubic-bezier(.25,.1,.25,1);
 }
+.tasks-cards[data-mode="all"] .tasks-cards-stack { opacity: 0; }
 
 .tasks-cards-stack::before {
   position: absolute;
@@ -189,10 +251,15 @@
 .tasks-cards-row-label img { display: block; width: 20px; height: 20px; }
 .tasks-cards-amount { flex: none; color: var(--text-secondary); text-align: right; white-space: nowrap; }
 
-.tasks-cards-signal:hover,
-.tasks-cards-signal:focus-visible,
-.tasks-cards-signal[aria-expanded="true"],
-.tasks-cards-row[aria-expanded="true"] { background-color: var(--neutral-translucent-100); }
+.tasks-cards[data-work-open="false"] :is(.tasks-cards-signal, .tasks-cards-row):hover,
+.tasks-cards[data-work-open="false"]:not(:has(:is(.tasks-cards-signal, .tasks-cards-row):hover))
+  :is(.tasks-cards-signal, .tasks-work-toggle)[aria-expanded="true"],
+.tasks-work-list .tasks-cards-row[aria-expanded="true"] { background-color: var(--neutral-translucent-100); }
+
+.tasks-cards :is(.tasks-cards-signal, .tasks-cards-row):focus-visible {
+  outline: 2px solid var(--text-secondary);
+  outline-offset: -2px;
+}
 
 .tasks-cards-column { display: flex; flex-direction: column; gap: 12px; }
 
@@ -207,7 +274,30 @@
   border-radius: 16px;
   background: rgb(255 255 255 / 48%);
   box-shadow: inset 0 0 0 1px #fff;
+  cursor: pointer;
 }
+
+.tasks-cards-task:hover {
+  background-color: var(--neutral-0);
+  box-shadow: none;
+}
+
+/* 503:67925 — место заголовка и иллюстрации интернет-эквайринга. */
+.tasks-cards-task-acquiring {
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 16px 16px 20px;
+}
+.tasks-cards-task-acquiring .research-widget-art {
+  position: absolute;
+  top: 4.17%;
+  left: 3.91%;
+  width: 92.19%;
+  height: 92.19%;
+}
+
+.tasks-cards-task[data-completed="true"] { gap: 12px; }
+.tasks-cards-task[data-completed="true"] .tasks-cards-task-title { color: var(--text-tertiary); }
 
 .tasks-cards-task-text {
   position: relative;
@@ -220,7 +310,16 @@
 
 .tasks-cards-task-title,
 .tasks-cards-task-caption { height: 24px; padding: 2px 0; }
+.tasks-cards-task-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tasks-cards-task-caption > p { color: var(--text-secondary); }
+.tasks-cards-task-caption > .tasks-cards-completed-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--status-positive);
+  font-weight: 500;
+  letter-spacing: .07px;
+}
 .tasks-cards-reward { display: flex; align-items: center; gap: 2px; font-weight: 500; letter-spacing: .07px; }
 .tasks-cards-reward img { display: block; width: 20px; height: 20px; }
 
@@ -287,21 +386,17 @@
 .tasks-cards-highlight-prize > span { transform: rotate(-150deg) scaleY(-1); }
 .tasks-cards-highlight img { position: absolute; top: -46.2px; left: -46.2px; width: 230.4px; height: 129.4px; }
 
-.tasks-cards:not([data-mode="all"]) .tasks-cards-important,
-.tasks-cards:not([data-mode="all"]) .tasks-cards-column,
-.tasks-cards:not([data-mode="all"]) .tasks-cards-controls,
-.tasks-cards-highlight-signals { transition: opacity .5s cubic-bezier(.25, .1, .25, 1); }
+.tasks-cards-column { transition: opacity .5s cubic-bezier(.25,.1,.25,1); }
 
-.tasks-cards-signal,
-.tasks-cards-row { transition: background-color .5s cubic-bezier(.25, .1, .25, 1); }
 .tasks-cards-highlight-signals { z-index: 2; }
-.tasks-cards[data-mode="all"] .tasks-cards-important,
-.tasks-cards[data-mode="all"] .tasks-cards-column,
-.tasks-cards[data-mode="all"] .tasks-cards-controls { opacity: .5; transition: opacity .22s ease-in; }
+.tasks-cards:is([data-mode="all"], [data-work-open="true"]) .tasks-cards-column { opacity: .5; }
 
 @media (prefers-reduced-motion: reduce) {
-  .tasks-cards .tasks-cards-important,
+  .tasks-cards .tasks-cards-important::before,
+  .tasks-cards .tasks-cards-important-plate,
+  .tasks-cards .tasks-cards-stack,
   .tasks-cards .tasks-cards-column,
+  .tasks-cards .tasks-cards-body::after,
   .tasks-cards .tasks-cards-controls,
   .tasks-cards .tasks-cards-signal,
   .tasks-cards .tasks-cards-row,

@@ -11,6 +11,7 @@ import { usePathname } from "./shims/next-navigation";
 import LoginScreen from "@/components/first-entry/LoginScreen";
 import RoleScreen from "@/components/first-entry/RoleScreen";
 import SetupScreen from "@/components/first-entry/SetupScreen";
+import { isResearchScreen, researchScreens } from "@/data/research";
 import Glavnaya from "@/components/dashboards/Glavnaya";
 import AccountantPage from "@/components/dashboards/AccountantPage";
 import DashboardSkeletonGate from "@/components/skeletons/DashboardSkeletonGate";
@@ -37,14 +38,18 @@ const TITLES: Record<string, string> = {
   "/welcome": "Выбор вида главной",
   "/setup": "Настройка главного экрана",
   "/new-payment": "Новый платёж",
+  "/operations": "Лента операций",
 };
 
 function App() {
   const path = usePathname();
 
+  const segment = path.startsWith("/research/") ? path.slice("/research/".length) : "";
+  const research = isResearchScreen(segment) ? segment : undefined;
+
   useEffect(() => {
-    document.title = TITLES[path] ?? "Альфа-Бизнес — прототип";
-  }, [path]);
+    document.title = (research ? researchScreens[research] : TITLES[path]) ?? "Альфа-Бизнес — прототип";
+  }, [path, research]);
 
   let screen;
   switch (path) {
@@ -60,6 +65,9 @@ function App() {
     case "/new-payment":
       screen = <Glavnaya payment />;
       break;
+    case "/operations":
+      screen = <Glavnaya operations />;
+      break;
     case "/accountant":
       screen = (
         <DashboardSkeletonGate key="accountant" fallback={<AccountantSkeleton />} widgets={ACCOUNTANT_WIDGETS}>
@@ -68,7 +76,7 @@ function App() {
       );
       break;
     default:
-      screen = (
+      screen = research ? <Glavnaya research={research} /> : (
         <DashboardSkeletonGate key="entrepreneur" fallback={<EntrepreneurSkeleton />} widgets={ENTREPRENEUR_WIDGETS}>
           <Glavnaya />
         </DashboardSkeletonGate>

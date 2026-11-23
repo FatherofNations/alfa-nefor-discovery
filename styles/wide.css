@@ -1,7 +1,7 @@
 /* На больших экранах центрируем каркас предпринимателя по раскладке
    при 1750 px. Формула начинается с нулевого отступа на границе. */
 .dashboard-page {
-  --dashboard-edge-inset: max(0px, (100vw - 1750px) / 2);
+  --dashboard-edge-inset: max(0px, (100vw - var(--assistant-root-gutter, 0px) - 1750px) / 2);
 }
 
 .dashboard-page > .sidebar { left: calc(var(--dashboard-edge-inset) + 8px); }

@@ -5,7 +5,7 @@ import { accountsCountLabel, accountsTotal } from "@/data/accounts";
 import { money } from "@/data/payments";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { analytics, menuItems, operationDays, opsPeriodLabel, type Operation } from "@/data/demo";
+import { menuItems } from "@/data/demo";
 import { AccountsPanel, SummaryPanel, TariffsPanel } from "@/components/dashboards/TabPanels";
 import { hasEntered, prepareDashboardRoleChange, resetEntry } from "@/lib/entry-session";
 import { hasKeptTemplatePayment, setTemplatePaymentKept } from "@/lib/quick-actions";
@@ -13,9 +13,11 @@ import { canUsePrototypeShortcut } from "@/lib/prototype-shortcuts";
 import { useClientName } from "@/lib/client-name";
 import AssistantBar from "@/components/chrome/AssistantBar";
 import CompanySwitcher from "@/components/chrome/CompanySwitcher";
-import OperationRow from "./OperationRow";
+import OperationsFeed, { downloadOperations } from "./OperationsFeed";
 import NewPaymentForm from "./NewPaymentForm";
 import TasksWidget from "./TasksWidget";
+import ResearchScreens from "./ResearchScreens";
+import type { ResearchScreen } from "@/data/research";
 import AssistantHome from "@/components/dashboards/AssistantHome";
 import { AssistantConversation, AssistantThreadMenu, threadAssets, type AssistantTopic } from "./AssistantThreads";
 import { useMenuDnd } from "@/lib/menuOrder";
@@ -29,10 +31,6 @@ function Icon({ name, className = "" }: { name: string; className?: string }) {
 
 function Indicator({ value, small = false }: { value: number; small?: boolean }) {
   return <span className={`indicator${small ? " indicator-small" : ""}`}>{value}</span>;
-}
-
-function Chevron({ direction = "right" }: { direction?: "right" | "down" }) {
-  return <Icon name="tasks-78e10.svg" className={`chevron chevron-${direction}`} />;
 }
 
 function AccountRow({ label, value, info, muted, children }: {
@@ -71,15 +69,13 @@ function RoleChip({ role, open, onToggle, triggerRef }: {
   );
 }
 
-const newPaymentPath = "/new-payment";
-
-function MenuItem({ id, label, icon, muted, loyalty, target, secondary, fixed, current }: {
+function MenuItem({ id, label, icon, muted, loyalty, href, secondary, fixed, current }: {
   id: string;
   label: string;
   icon: string;
   muted?: boolean;
   loyalty?: boolean;
-  target?: string;
+  href?: string;
   secondary?: boolean;
   fixed?: "top" | "bottom";
   current?: boolean;
@@ -96,11 +92,11 @@ function MenuItem({ id, label, icon, muted, loyalty, target, secondary, fixed, c
       {loyalty && <span className="loyalty">100<Icon name="menu-a8252.svg" /></span>}
     </>
   );
-  if (id === "pay") {
-    return <Link {...shared} href={newPaymentPath} aria-current={current ? "page" : undefined} draggable={false}>{body}</Link>;
+  if (href) {
+    return <Link {...shared} href={href} aria-current={current ? "page" : undefined} draggable={false}>{body}</Link>;
   }
   return (
-    <button {...shared} type="button" data-target={target} onClick={target ? () => document.getElementById(target)?.scrollIntoView({ behavior: "smooth" }) : undefined}>
+    <button {...shared} type="button">
       {body}
     </button>
   );
@@ -109,7 +105,7 @@ function MenuItem({ id, label, icon, muted, loyalty, target, secondary, fixed, c
 /* Пункты левого меню по id: «Все сервисы» и «Альфа-Выгодно» неподвижны,
    порядок остальных и содержимое «Ещё» — в lib/menuOrder.ts (INITIAL.entrepreneur). */
 const MENU_IDS = ["all", "bonus", "pay", "feed", "progress"] as const;
-const MENU_BY_ID: Record<string, { label: string; icon: string; muted?: boolean; loyalty?: boolean; target?: string; secondary?: boolean }> = {
+const MENU_BY_ID: Record<string, { label: string; icon: string; muted?: boolean; loyalty?: boolean; href?: string; secondary?: boolean }> = {
   ...Object.fromEntries(menuItems.map((item, i) => [MENU_IDS[i], item])),
   procurement: { label: "Госзакупки", icon: "menu-52c45.svg", muted: true, secondary: true },
   deposits: { label: "Депозиты", icon: "menu-353cb.svg", muted: true, secondary: true },
@@ -137,8 +133,10 @@ const TAB_HEIGHTS: Record<string, number> = {
   "Тарифы и подписки": 432,
 };
 
-export default function Glavnaya({ payment = false }: { payment?: boolean }) {
+export default function Glavnaya({ payment = false, operations = false, research }: { payment?: boolean; operations?: boolean; research?: ResearchScreen }) {
   const router = useRouter();
+  const currentMenuItem = payment ? "pay" : operations ? "feed" : undefined;
+  const innerPage = Boolean(research || operations);
   const [activeTab, setActiveTab] = useState("Ассистент");
   const logout = useCallback(() => {
     resetEntry();
@@ -154,8 +152,6 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
   const [tabPhase, setTabPhase] = useState<"idle" | "out" | "in-prep" | "in">("idle");
   const tabTimers = useRef<number[]>([]);
   const [counter, setCounter] = useState<"shown" | "hiding" | "gone">("shown");
-  const [search, setSearch] = useState("");
-  const [checked, setChecked] = useState<Set<string>>(new Set());
   const [accountOpen, setAccountOpen] = useState(false);
   const [quickAction, setQuickAction] = useState<"import" | "suggested" | "kept">("import");
   const suggestTemplate = quickAction === "suggested";
@@ -171,7 +167,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
 
   const closeAccount = useCallback(() => {
     setAccountOpen(false);
-    accountTriggerRef.current?.focus();
+    accountTriggerRef.current?.focus({ preventScroll: true });
   }, []);
   const resolveTemplateSuggestion = (keep: boolean) => {
     if (keep) setTemplatePaymentKept(true);
@@ -189,6 +185,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
   const assistantReturnRef = useRef<HTMLButtonElement | null>(null);
   const [assistantFlip, setAssistantFlip] = useState(16);
   const [assistantBrand, setAssistantBrand] = useState<[number, number]>([17, 17]);
+  const [assistantRootGutter, setAssistantRootGutter] = useState(0);
   /* повторный клик, пока панель ещё едет вниз: дашборд ещё скрыт, поэтому разворачиваемся сразу, без паузы 120 мс */
   const assistantClosingAtRef = useRef(0);
   const [assistantQuick, setAssistantQuick] = useState(false);
@@ -256,6 +253,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
     assistantReturnRef.current = from;
     /* FLIP: кластер кнопок шапки стартует с текущего y дашборда (28 / sticky) и едет на y8 */
     const reopening = assistantClosingAtRef.current > 0; /* v12: при повторном открытии во время закрытия геометрию не перемеряем — элементы ещё в движении */
+    if (!reopening) setAssistantRootGutter(Math.max(0, window.innerWidth - document.documentElement.offsetWidth));
     const row = topbarRef.current?.querySelector(".topbar-buttons");
     if (row && !reopening) setAssistantFlip(Math.round(row.getBoundingClientRect().top - 12));
     /* LogoCell «Альфа-Бизнес» стартует с места логотипа в карточке меню дашборда */
@@ -320,7 +318,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onDown);
-    accountCloseRef.current?.focus();
+    accountCloseRef.current?.focus({ preventScroll: true });
     return () => {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("mousedown", onDown);
@@ -365,9 +363,8 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
       cancelAnimationFrame(raf2);
     };
   }, [assistantPhase, closeAssistant, finishAssistantClose]);
-  /* The sticky backdrop is replaced by the assistant header. Read scroll
-     synchronously for that backing: sticky collapse is rAF-throttled and can
-     lag one frame when a wheel/smooth scroll lands just after opening. */
+  /* The assistant replaces the dashboard header. Read live scroll for its
+     backing, including when it opens before the dashboard reaches its sticky threshold. */
   useLayoutEffect(() => {
     if (!assistantOpen) return;
     const header = document.querySelector<HTMLElement>(".dashboard-page > .assistant");
@@ -501,7 +498,10 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
     } else if (assistantPhase === "closing") {
       assistantAnswerAnimsRef.current.forEach((a) => { if (a.playState === "running" || a.pending) a.pause(); });
     } else if (fresh) {
-      assistantAnswerAnimsRef.current = Array.from(answer.children).map((row, i) => row.animate([
+      const rows = answer.querySelectorAll(
+        ":scope > :not([data-assistant-answer-group]), :scope > [data-assistant-answer-group] > *",
+      );
+      assistantAnswerAnimsRef.current = Array.from(rows).map((row, i) => row.animate([
         { opacity: 0, filter: "blur(5px)", transform: "translateY(6px)" },
         { opacity: 1, filter: "blur(0px)", transform: "translateY(0px)" },
       ], { duration: 440, delay: 240 + i * 55, easing: "cubic-bezier(.22,1,.36,1)", fill: "both" }));
@@ -509,7 +509,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
       assistantAnswerAnimsRef.current.forEach((a) => { if (a.playState === "paused") a.play(); });
     }
     return () => media.removeEventListener("change", expose);
-  }, [assistantPhase, assistantView]);
+  }, [assistantPhase, assistantTopic, assistantView]);
   useEffect(() => () => {
     assistantAnswerAnimsRef.current.forEach((a) => a.cancel());
     assistantAnswerAnimsRef.current = [];
@@ -572,7 +572,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
   }, [activeTab]);
 
   useEffect(() => {
-    if (payment || quickAction === "kept" || accountOpen || assistantOpen || roleOpen) return;
+    if (payment || innerPage || quickAction === "kept" || accountOpen || assistantOpen || roleOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "1" || event.shiftKey || event.repeat || !canUsePrototypeShortcut(event)) return;
       if (document.body.classList.contains("name-modal-open") || document.querySelector("dialog[open]")) return;
@@ -582,7 +582,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [accountOpen, assistantOpen, changeTab, payment, quickAction, roleOpen]);
+  }, [accountOpen, assistantOpen, changeTab, innerPage, payment, quickAction, roleOpen]);
 
   /* Счётчик «2» на «Сводка»: 3 s пауза, затем
      1) бейдж только opacity+scale (без обрезки overflow),
@@ -604,74 +604,29 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
     return () => window.clearTimeout(hideId);
   }, [counter]);
 
-  /* Sticky collapse шапки → вид chrome-header бухгалтера.
-     Эталон /accountant .chrome-header (измерено 1600×900):
-       fixed; top:0; left:248; right:0; height:56; padding:0 24px;
-       gap:16; align-items:center; justify flex-end; bg #f2f3f5.
-     У предпринимателя сайдбар другой (z:5), полоса left:0 под ним;
-     контролы справа с padding 24 как у бухгалтера. Blur — по запросу
-     (у бухгалтера solid page-bg; здесь полупрозрачный + backdrop-filter).
-     Progress 0→1 по scrollY / RANGE (RANGE предложенный, iOS large-title). */
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = topbarRef.current;
     if (!el) return;
-    const RANGE = 64; /* предложенный диапазон collapse, px */
-    const reduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let raf = 0;
-    const apply = () => {
-      raf = 0;
-      const y = window.scrollY || document.documentElement.scrollTop || 0;
-      const raw = Math.min(1, Math.max(0, y / RANGE));
-      const p = reduceMq.matches ? (y > 0 ? 1 : 0) : raw;
-      el.style.setProperty("--tb-p", String(p));
-      /* предложение: blur 60px×p, alpha 0.96×p — фон почти не читается */
-      el.style.setProperty("--tb-blur", `${(60 * p).toFixed(2)}px`);
-      el.style.setProperty("--tb-bg-a", (0.96 * p).toFixed(4));
-      el.classList.toggle("is-stuck", p >= 0.999);
-      el.setAttribute("data-collapse", p.toFixed(3));
+    // Табы на высоте 120 px доходят до компактной шапки (56 px) после 64 px прокрутки.
+    const compactStart = 64;
+    const travel = 20; // Ряд кнопок поднимается с y=28 до y=8.
+    let lastScroll = -1;
+    const syncTopbar = () => {
+      const scroll = Math.max(0, Math.min(window.scrollY, compactStart + travel));
+      if (scroll === lastScroll) return;
+      lastScroll = scroll;
+      el.style.setProperty("--topbar-collapse", String(Math.max(0, (scroll - compactStart) / travel)));
+      el.style.setProperty("--topbar-backdrop", String(Math.min(1, scroll / compactStart)));
     };
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(apply);
-    };
-    apply();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    const onReduce = () => apply();
-    reduceMq.addEventListener?.("change", onReduce);
-    return () => {
-      if (raf) cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      reduceMq.removeEventListener?.("change", onReduce);
-    };
+    syncTopbar();
+    window.addEventListener("scroll", syncTopbar, { passive: true });
+    return () => window.removeEventListener("scroll", syncTopbar);
   }, []);
 
-  const toggleChecked = (id: string) => {
-    setChecked((current) => {
-      const next = new Set(current);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
-
-  const download = () => {
-    const rows = operationDays.flatMap((day) => day.rows.map((row) => [day.date, row.title, row.description, row.amount, row.number]));
-    const csv = ["Дата;Контрагент;Назначение;Сумма;Реквизиты", ...rows.map((row) => row.map((cell) => `"${cell.replaceAll('"', '""')}"`).join(";"))].join("\n");
-    const url = URL.createObjectURL(new Blob(["\ufeff", csv], { type: "text/csv;charset=utf-8" }));
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "vypiska.csv";
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const normalizedSearch = search.trim().toLocaleLowerCase("ru");
-  const filterRow = (row: Operation) => !normalizedSearch || `${row.title} ${row.description} ${row.details ?? ""} ${row.number}`.toLocaleLowerCase("ru").includes(normalizedSearch);
+  const openExpenses = (trigger: HTMLButtonElement) => openAssistant("expenses", trigger);
 
   return (
-    <main style={{ ["--brand-dx" as string]: `${assistantBrand[0]}px`, ["--brand-dy" as string]: `${assistantBrand[1]}px` }} className={`dashboard-page${payment ? " payment-page" : ""}${assistantOpen ? " assistant-shift" : ""}${assistantShown ? " assistant-shown" : ""}${assistantPhase === "closing" ? " is-closing" : ""}`}>
+    <main style={{ ["--brand-dx" as string]: `${assistantBrand[0]}px`, ["--brand-dy" as string]: `${assistantBrand[1]}px`, ["--assistant-root-gutter" as string]: `${assistantOpen ? assistantRootGutter : 0}px` }} className={`dashboard-page${payment ? " payment-page" : ""}${innerPage ? " research-page" : ""}${assistantOpen ? " assistant-shift" : ""}${assistantShown ? " assistant-shown" : ""}${assistantPhase === "closing" ? " is-closing" : ""}`}>
       <aside className={`sidebar${accountOpen ? " sidebar-solid" : ""}`} aria-label="Основная навигация">
         <Link className="sidebar-logo" href="/" aria-label="Альфа-Бизнес — на главную">
           <span className="logo-sign"><img src={asset("logo-sign.svg")} alt="" /></span>
@@ -705,7 +660,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
               <div className="menu-main">
                 {MENU_FIXED.map((id) => <MenuItem key={id} id={id} fixed="top" {...MENU_BY_ID[id]} />)}
                 <div data-menu-zone="main">
-                  {menu.state.main.map((id) => <MenuItem key={id} id={id} current={payment && id === "pay"} {...MENU_BY_ID[id]} />)}
+                  {menu.state.main.map((id) => <MenuItem key={id} id={id} current={id === currentMenuItem} {...MENU_BY_ID[id]} />)}
                 </div>
                 <div className="menu-folder">
                   <button className="menu-item menu-category" type="button" data-menu-folder="" aria-expanded={menu.state.folderOpen} aria-controls="menu-folder-body" onClick={menu.toggleFolder}>
@@ -713,7 +668,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
                   </button>
                   <div className="menu-folder-body" id="menu-folder-body" data-menu-folder-body="" data-open={menu.state.folderOpen ? "true" : "false"} inert={!menu.state.folderOpen}>
                     <div data-menu-zone="folder">
-                      {menu.state.folder.map((id) => <MenuItem key={id} id={id} current={payment && id === "pay"} {...MENU_BY_ID[id]} />)}
+                      {menu.state.folder.map((id) => <MenuItem key={id} id={id} current={id === currentMenuItem} {...MENU_BY_ID[id]} />)}
                       {menu.state.folder.length === 0 && <p className="menu-folder-empty">Перетащите разделы сюда, чтобы скрыть их из меню</p>}
                     </div>
                   </div>
@@ -729,6 +684,10 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
       </aside>
 
       <header className="topbar" ref={topbarRef}>
+        {(innerPage || payment) && <Link className="research-back" href="/">
+          <img src={asset("research/back-chevron.svg")} alt="" />
+          <span>Назад</span>
+        </Link>}
         <div className="topbar-buttons">
           <button className="icon-button" type="button" aria-label="Письма"><img src={asset("mail-icon.svg")} alt="" /></button>
           <button className="icon-button" type="button" aria-label="Уведомления"><img src={asset("notifications-icon.svg")} alt="" /></button>
@@ -748,7 +707,9 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
         <button className="icon-button" type="button" aria-label="Выйти" onClick={logout}><img src={asset("logout-icon.svg")} alt="" /></button>
       </header>
 
-      {payment ? <NewPaymentForm /> : (
+      {research ? <ResearchScreens key={research} screen={research} openExpenses={openExpenses} />
+        : payment ? <NewPaymentForm />
+        : operations ? <OperationsFeed standalone openExpenses={openExpenses} /> : (
       <div className="dashboard-content">
         <nav
           className={`tabs${counter !== "shown" ? ` tabs-compact tabs-${COMPACT_CLASS[activeTab] ?? "summary"}` : ""}${counter === "hiding" ? " tabs-counter-dismiss" : ""}`}
@@ -773,15 +734,17 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
             <div className="hero-subtitle">
               <button type="button" onClick={(event) => openAssistant("tasks", event.currentTarget)} aria-haspopup="dialog">
                 <span>Расходы за октябрь выросли на 12%. Подготовил разбор и два изменения в законодательстве,</span>
-                <span className="hero-summary-last">на которые стоит обратить внимание
-                <span className="hero-subtitle-action"><Icon name="hero-6a06a.svg" /><span>Узнать больше</span></span></span>
+                <span className="hero-summary-last">
+                  <span>на которые стоит обратить внимание</span>
+                  <span className="hero-subtitle-action"><Icon name="hero-6a06a.svg" /><span>Узнать больше</span></span>
+                </span>
               </button>
             </div>
           </div>
           <div className="hero-actions">
             <button className="hero-chip hero-chip-analytics" type="button" onClick={(event) => openAssistant("expenses", event.currentTarget)} aria-haspopup="dialog"><Icon name="financial-analytics-icon.svg" /><span>Расходы за месяц</span></button>
             <button className="hero-chip" type="button"><Icon name="hero-92b54.svg" /><span>Себе в Альфу</span></button>
-            <button className="hero-chip" type="button" onClick={download}><Icon name="hero-b373c.svg" /><span>Скачать выписку</span></button>
+            <button className="hero-chip" type="button" onClick={downloadOperations}><Icon name="hero-b373c.svg" /><span>Скачать выписку</span></button>
             <div className={`hero-action-slot${showTemplate ? " has-template" : ""}`}>
               <button
                 className={`hero-chip${suggestTemplate ? " hero-chip-suggested" : ""}`}
@@ -856,35 +819,7 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
 
         <TasksWidget afterPanel={activeTab !== "Ассистент"} />
 
-        <section className="operations" id="operations" aria-labelledby="operations-title">
-          <div className="operations-title">
-            <button className="operations-title-main" type="button">
-              <h2 id="operations-title">Лента операций</h2><Chevron />
-            </button>
-            <button className="expenses-link" type="button" onClick={(event) => openAssistant("expenses", event.currentTarget)} aria-haspopup="dialog">
-              <Icon name="ops-title-db9bc.svg" /><span>Расходы за месяц по категориям</span>
-            </button>
-          </div>
-          <div className="filters">
-            <button className="date-filter" type="button">
-              <img className="calendar-icon" src={asset("calendar-icon.svg")} alt="" />
-              <span>{opsPeriodLabel}</span>
-              <span className="date-clear"><img className="clear-icon" src={asset("clear-icon.svg")} alt="" /></span>
-            </button>
-            <label className="search-field"><img src={asset("search-icon.svg")} alt="" /><input type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Контрагент, ИНН, назначение платежа или номер счёта" aria-label="Поиск операций" /></label>
-            <button className="general-filter" type="button" aria-label="Все фильтры"><img src={asset("filter-icon.svg")} alt="" /></button>
-            <button className="download-button" type="button" onClick={download}>Скачать<Icon name="chevron-right-white.svg" className="chevron chevron-down" /></button>
-          </div>
-          <div className="analytics">{analytics.map((item) => <div className="analytics-card" key={item.label}><div><Icon name={item.icon} /><span>{item.label}</span></div><strong>{item.amount}</strong></div>)}</div>
-          <div className="operations-table">
-            {operationDays.map((day) => {
-              const rows = day.rows.filter(filterRow);
-              if (!rows.length) return null;
-              return <section className="operation-day" key={day.date}><div className="day-header"><h3>{day.date}</h3><span /></div><div>{rows.map((operation) => <OperationRow key={operation.id} operation={operation} checked={checked.has(operation.id)} onCheck={() => toggleChecked(operation.id)} />)}</div></section>;
-            })}
-            <button className="show-more" type="button">Показать ещё</button>
-          </div>
-        </section>
+        <OperationsFeed openExpenses={openExpenses} />
       </div>
       )}
 
@@ -919,34 +854,33 @@ export default function Glavnaya({ payment = false }: { payment?: boolean }) {
         </div>
       )}
 
-      {accountOpen && (
-        <section className="account-panel" id="account-details" role="dialog" aria-label="Детализация остатка" ref={accountPanelRef}>
-          <div className="account-panel-head">
-            <h2>Детализация остатка</h2>
-            <button className="account-panel-close" type="button" aria-label="Закрыть детализацию" onClick={closeAccount} ref={accountCloseRef}>
-              <img src="/assets/figma/close-icon.svg" alt="" />
-            </button>
-          </div>
-          <div className="account-panel-body">
-            <AccountRow label="Исходящий остаток" value={balanceLabel} info />
-            <span className="account-panel-divider" />
-            <AccountRow label="Фиксированный остаток" value={"0,00\u2009₽"} muted />
-            <AccountRow label="Ожидает списания" value={"0,00\u2009₽"} muted />
-            <AccountRow label="Арест" value={"0,00\u2009₽"} muted />
-            <AccountRow label="Блокировка ФНС" value={"0,00\u2009₽"} muted />
-            <div className="account-panel-subdivider"><p>Включить в доступный остаток</p></div>
-            <AccountRow label="Остаток по овердрафту" value={"0,00\u2009₽"} muted>
-              <span className="account-panel-switch" aria-hidden="true" />
-            </AccountRow>
-            <AccountRow label="Депозит">
-              <button className="account-panel-link" type="button">Открыть</button>
-            </AccountRow>
-            <span className="account-panel-divider" />
-            <AccountRow label="Доступный остаток" value={balanceLabel} info />
-          </div>
-          <button className="account-panel-cta" type="button">К счетам</button>
-        </section>
-      )}
+      <section className="account-panel" id="account-details" role="dialog" aria-label="Детализация остатка"
+        data-open={accountOpen} inert={!accountOpen} ref={accountPanelRef}>
+        <div className="account-panel-head">
+          <h2>Детализация остатка</h2>
+          <button className="account-panel-close" type="button" aria-label="Закрыть детализацию" onClick={closeAccount} ref={accountCloseRef}>
+            <img src="/assets/figma/close-icon.svg" alt="" />
+          </button>
+        </div>
+        <div className="account-panel-body">
+          <AccountRow label="Исходящий остаток" value={balanceLabel} info />
+          <span className="account-panel-divider" />
+          <AccountRow label="Фиксированный остаток" value={"0,00\u2009₽"} muted />
+          <AccountRow label="Ожидает списания" value={"0,00\u2009₽"} muted />
+          <AccountRow label="Арест" value={"0,00\u2009₽"} muted />
+          <AccountRow label="Блокировка ФНС" value={"0,00\u2009₽"} muted />
+          <div className="account-panel-subdivider"><p>Включить в доступный остаток</p></div>
+          <AccountRow label="Остаток по овердрафту" value={"0,00\u2009₽"} muted>
+            <span className="account-panel-switch" aria-hidden="true" />
+          </AccountRow>
+          <AccountRow label="Депозит">
+            <button className="account-panel-link" type="button">Открыть</button>
+          </AccountRow>
+          <span className="account-panel-divider" />
+          <AccountRow label="Доступный остаток" value={balanceLabel} info />
+        </div>
+        <button className="account-panel-cta" type="button">К счетам</button>
+      </section>
 
       <AssistantBar />
 

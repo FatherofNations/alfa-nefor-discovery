@@ -20,6 +20,7 @@
 [data-menu-folder-body] { display: grid; grid-template-rows: 0fr; }
 [data-menu-folder-body][data-open="true"] { grid-template-rows: 1fr; }
 [data-menu-folder-body] > [data-menu-zone] { min-height: 0; overflow: hidden; }
+.menu-folder-body[data-open="true"] > [data-menu-zone] { overflow: visible; }
 
 /* Метка места вставки (_DragDropLine): поля 22/16, полоса 2px, r16, status/info. */
 [data-menu-drop-line] { position: absolute; z-index: 11; left: 22px; right: 16px; height: 2px; margin-top: -1px; border-radius: 16px; background: var(--status-info, #2288fa); pointer-events: none; }

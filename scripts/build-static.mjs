@@ -11,6 +11,7 @@
    Запуск: npm run build:static */
 
 import { build } from "esbuild";
+import { reloadScrollScript } from "../lib/reload-scroll.mjs";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -37,6 +38,7 @@ const CSS_FILES = [
   "tasks-options.css",
   "tasks-flow.css",
   "new-payment.css",
+  "research.css",
   "menu-dnd.css",
   "accountant-tokens.css",
   "chrome.css",
@@ -151,6 +153,7 @@ fs.writeFileSync(
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Альфа-Бизнес — прототип</title>
+    <script>${reloadScrollScript}</script>
     <link rel="icon" href="icon.svg" />
     <link rel="stylesheet" href="app.css" />
   </head>

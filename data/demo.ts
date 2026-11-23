@@ -3,8 +3,8 @@ import { type Payment, CLOSING_BALANCE, OPENING_BALANCE, OPS_PERIOD, dayLabel, i
 export const menuItems = [
   { label: "Все сервисы", icon: "menu-889b6.svg" },
   { label: "Альфа-Выгодно", icon: "menu-a27d9.svg", loyalty: true },
-  { label: "Новый платёж", icon: "menu-6f742.svg", muted: true },
-  { label: "Лента операций", icon: "menu-34800.svg", muted: true, target: "operations" },
+  { label: "Новый платёж", icon: "menu-6f742.svg", muted: true, href: "/new-payment" },
+  { label: "Лента операций", icon: "menu-34800.svg", muted: true, href: "/operations" },
   { label: "Платежи в работе", icon: "menu-7ff07.svg", muted: true },
 ] as const;
 

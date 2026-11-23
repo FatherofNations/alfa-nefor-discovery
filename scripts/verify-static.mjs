@@ -89,11 +89,49 @@ export async function verifyStatic(browser, indexPath) {
     await button("Расходы за месяц").waitFor();
     await checkAssets("Главная предпринимателя");
 
+    const headerPositions = await page.locator(".topbar-buttons").evaluate(async (row) => {
+      const positions = [];
+      for (const top of [0, 40, 64, 70, 84, 180, 70, 0]) {
+        window.scrollTo({ top, behavior: "instant" });
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        positions.push(Math.round(row.getBoundingClientRect().top));
+      }
+      return positions;
+    });
+    assert.deepEqual(headerPositions, [28, 28, 28, 22, 8, 8, 22, 28], "Положение шапки определяется прокруткой");
+
+    const feedLink = page.getByRole("link", { name: "Лента операций", exact: true });
+    const homeOperations = await page.locator("#operations .operation-title").allTextContents();
+    await scrollDown();
+    await feedLink.click();
+    await waitForRoute("/operations");
+    const feed = page.getByRole("region", { name: "Лента операций" });
+    const feedHeading = feed.getByRole("heading", { name: "Лента операций", level: 1 });
+    await feedHeading.waitFor();
+    assert.equal(await feedHeading.evaluate(el =>
+      el.getBoundingClientRect().top - document.querySelector(".topbar").getBoundingClientRect().bottom), 40);
+    assert.equal(await feedLink.getAttribute("aria-current"), "page");
+    assert.equal(await page.evaluate(() => scrollY), 0);
+    assert.deepEqual(await feed.locator(".operation-title").allTextContents(), homeOperations);
+    await feed.getByRole("searchbox", { name: "Поиск операций" }).fill("Ромашка Логистик");
+    assert.equal(await feed.locator(".operation-row").count(), 1);
+    await checkAssets("Лента операций");
+    await page.getByRole("link", { name: "Назад", exact: true }).click();
+    await waitForRoute("/");
+    await page.locator(".dash-gate.gate-ready #hero-title").waitFor();
+
     const payLink = page.getByRole("link", { name: "Новый платёж" });
     await payLink.click();
     await waitForRoute("/new-payment");
     await page.getByRole("heading", { name: "Рублёвый платёж № 123457" }).waitFor();
     assert.equal(await payLink.getAttribute("aria-current"), "page");
+    assert.deepEqual(await payLink.evaluate((link) => {
+      const marker = getComputedStyle(link, "::after");
+      const sidebar = link.closest(".sidebar");
+      const sidebarInnerLeft = sidebar.getBoundingClientRect().left + sidebar.clientLeft;
+      const markerLeft = link.getBoundingClientRect().left + parseFloat(marker.left);
+      return [marker.width, marker.height, markerLeft - sidebarInnerLeft];
+    }), ["2px", "36px", 0], "Индикатор активного пункта виден целиком внутри рамки меню");
     const form = page.getByRole("form", { name: /Рублёвый платёж/ });
     await form.getByRole("textbox", { name: "ФИО получателя*" }).fill("Иванов Иван Иванович");
     await form.getByRole("textbox", { name: "Сумма*" }).fill("42750,00");
@@ -104,9 +142,11 @@ export async function verifyStatic(browser, indexPath) {
     await button("Без НДС").click();
     assert.equal(await button("Без НДС").getAttribute("aria-pressed"), "true");
     await checkAssets("Новый платёж");
-    await page.getByRole("link", { name: "Альфа-Бизнес — на главную" }).click();
+    await scrollDown();
+    await page.locator(".topbar").getByRole("link", { name: "Назад", exact: true }).click();
     await waitForRoute("/");
     await page.locator(".dash-gate.gate-ready #hero-title").waitFor();
+    assert.equal(await page.evaluate(() => window.scrollY), 0, "Возврат из платежа открывает верх главной");
 
     const assistant = page.getByRole("dialog", { name: "Альфа-Интеллект" });
     for (const [trigger, thread, answer] of [
@@ -115,8 +155,13 @@ export async function verifyStatic(browser, indexPath) {
     ]) {
       await button(trigger).click();
       await assistant.getByText(answer, { exact: true }).waitFor();
+      assert.match(await assistant.locator(".assistant-conversation").evaluate(node => getComputedStyle(node).scrollbarColor), /rgba\(0, 0, 0, 0\)$/, `${thread}: дорожка скроллбара прозрачная`);
+      assert.equal(await assistant.locator(".assistant-panel").evaluate(node => Math.round(node.getBoundingClientRect().right)), 1600, `${thread}: панель доходит до правого края экрана`);
       await assistant.locator("[aria-current='page']").getByText(thread, { exact: true }).waitFor();
       assert.equal(await assistant.locator(".assistant-recent li").count(), 10);
+      const blocks = assistant.locator(thread === "Сводка" ? ".october-summary > *" : ".assistant-answer > p");
+      const delays = await blocks.evaluateAll(nodes => nodes.slice(0, 2).map(node => node.getAnimations()[0]?.effect.getTiming().delay));
+      assert.deepEqual(delays, [240, 295], `${thread}: первые два блока проявляются по очереди`);
       await checkAssets(thread);
       await page.keyboard.press("Escape");
       await assistant.waitFor({ state: "detached" });
@@ -131,7 +176,7 @@ export async function verifyStatic(browser, indexPath) {
     await balance.click();
     await details.getByRole("button", { name: "К счетам" }).waitFor();
     await details.getByRole("button", { name: "Закрыть детализацию" }).click();
-    await details.waitFor({ state: "detached" });
+    await page.locator("#account-details").waitFor({ state: "hidden" });
     await expectFocused(balance);
     assert.equal(await offer.count(), 0, "Закрытие детализации сохраняет исходное действие");
     await page.keyboard.press("Space");
@@ -163,44 +208,216 @@ export async function verifyStatic(browser, indexPath) {
     const tasks = page.getByRole("region", { name: "Мои дела" });
     await tasks.getByRole("button", { name: /Требуют внимания/ }).click();
     const signals = tasks.getByRole("list", { name: "Сигналы" });
-    await signals.getByText("Заявка на кредит").waitFor();
-    const pay = tasks.getByRole("button", { name: /^Оплатить/ });
-    await pay.hover();
+    await signals.getByRole("link", { name: "Кредитная линия" }).waitFor();
+    const pay = tasks.getByRole("button", { name: /^Подписать/ });
     const work = tasks.getByRole("list", { name: "Дела в работе" });
-    await work.getByText("Входящие счета").waitFor();
+    const expectCarouselState = async (disabled) => {
+      await page.waitForFunction((isDisabled) => {
+        const carousel = document.querySelector(".research-task-carousel");
+        const columns = carousel?.querySelectorAll(".tasks-cards-column");
+        return columns?.length > 0 &&
+          Array.from(columns).every(column => column.inert === isDisabled && getComputedStyle(column).opacity === (isDisabled ? "0.5" : "1"));
+      }, disabled);
+    };
+    const expectHighlight = async (category) => {
+      const highlighted = await tasks.locator(".tasks-cards-signal, .tasks-cards-row").evaluateAll(
+        (rows) => rows
+          .filter((row) => getComputedStyle(row).backgroundColor !== "rgba(0, 0, 0, 0)")
+          .map((row) => row.getAttribute("data-tasks-trigger")),
+      );
+      assert.deepEqual(highlighted, [category], "Серый фон есть только у активной категории");
+    };
+    await pay.hover();
+    assert.equal(await work.count(), 0, "Первое наведение не раскрывает список");
+    assert.equal(await signals.count(), 1);
+    await expectCarouselState(false);
+    await pay.click();
+    await work.getByRole("link", { name: "Рублёвые платежи" }).waitFor();
     assert.equal(await signals.count(), 0);
+    await expectCarouselState(true);
+    await expectHighlight("sign");
+    await tasks.getByRole("button", { name: /^Доработать/ }).hover();
+    await work.getByText("Ожидают идентификации", { exact: true }).waitFor();
+    await expectHighlight("revise");
     await work.hover();
-    await work.getByText("Входящие счета").waitFor();
+    await expectHighlight("revise");
+    await pay.hover();
+    await work.getByRole("link", { name: "Рублёвые платежи" }).waitFor();
+    await pay.click();
+    await work.waitFor({ state: "hidden" });
+    await pay.press("Enter");
+    await work.getByRole("link", { name: "Рублёвые платежи" }).waitFor();
     await page.keyboard.press("Escape");
     await work.waitFor({ state: "hidden" });
     await expectFocused(pay);
+    await expectCarouselState(false);
 
     const more = tasks.getByRole("button", { name: /^Ещё/ });
     await more.click();
     const allTasks = tasks.getByRole("region", { name: "Все дела" });
     await allTasks.getByText("Черновики").waitFor();
-    const hide = allTasks.getByRole("button", { name: "Скрыть" });
+    const hide = tasks.getByRole("button", { name: "Скрыть" });
     await expectFocused(hide);
-    for (const [category, item] of [
-      ["Оплатить", "Входящие счета"],
-      ["Подписать", "Проценты на остаток"],
-      ["Отправить", "Реестры платежей"],
-      ["Доработать", "Ожидают идентификации"],
-      ["Отклонённые", "Реестры платежей"],
-      ["Черновики", "Валютные переводы"],
-      ["В работе у банка", "Платёжные требования"],
+    assert.deepEqual(await allTasks.locator(".tasks-work-list .tasks-cards-row-label").allTextContents(), [
+      "Подписать", "Отправить", "В работе у банка", "Отклонённые", "Доработать", "Черновики",
+    ]);
+    for (const title of ["Отправить", "В работе у банка"]) {
+      await allTasks.getByText(title, { exact: true }).hover();
+      assert.equal(await allTasks.locator(".tasks-cards-row[aria-disabled='true']").filter({ hasText: title }).count(), 1);
+      assert.equal(await work.count(), 0);
+    }
+    await pay.click();
+    await work.getByText("Валютные платежи", { exact: true }).waitFor();
+    await expectHighlight("sign");
+    await allTasks.getByText("Отправить", { exact: true }).hover();
+    await expectHighlight("sign");
+    for (const [category, title, item] of [
+      ["rejected", "Отклонённые", "Реестры платежей"],
+      ["revise", "Доработать", "Ожидают идентификации"],
+      ["drafts", "Черновики", "Реестры платежей"],
     ]) {
-      const row = allTasks.getByRole("button", { name: new RegExp(`^${category}`) });
+      const row = allTasks.getByRole("button", { name: new RegExp(`^${title}`) });
       await row.hover();
       await work.getByText(item, { exact: true }).waitFor();
       assert.equal(await row.getAttribute("aria-expanded"), "true");
+      await expectHighlight(category);
     }
+    await tasks.getByRole("heading", { name: "Мои дела" }).click();
+    await work.waitFor({ state: "hidden" });
+    await allTasks.waitFor({ state: "hidden" });
+    await more.click();
+    await allTasks.getByRole("button", { name: /^Черновики/ }).click();
     await page.keyboard.press("Escape");
     await work.waitFor({ state: "hidden" });
-    await expectFocused(allTasks.getByRole("button", { name: /^В работе у банка/ }));
+    await expectFocused(allTasks.getByRole("button", { name: /^Черновики/ }));
     await hide.click();
     await allTasks.waitFor({ state: "hidden" });
     await expectFocused(more);
+
+    const backToTasks = async () => {
+      await page.getByRole("link", { name: "Назад", exact: true }).click();
+      await waitForRoute("/");
+      await tasks.waitFor();
+      assert.equal(await page.evaluate(() => window.scrollY), 0, "Возврат на главную открывает верх страницы");
+    };
+    const checkFeedFilters = async (status) => {
+      const toggle = page.getByRole("button", { name: "Все фильтры, есть активные фильтры" });
+      await toggle.waitFor();
+      assert.equal(await page.locator(".research-feed-tools .research-filter-tags").count(), 0);
+      assert.equal(await toggle.locator(".research-feed-filter-indicator").count(), 1);
+      await toggle.click();
+      const select = page.getByRole("combobox", { name: "Статус" });
+      assert.equal(await select.inputValue(), status);
+      await page.getByText("Тип операции: Рублёвый платёж", { exact: true }).waitFor();
+      await toggle.click();
+      await select.waitFor({ state: "hidden" });
+    };
+    const checkFeedLogos = async () => {
+      const logos = await page.locator(".research-operations .company-logo").evaluateAll(images => images.map(image => image.getAttribute("src")));
+      assert.equal(new Set(logos).size, 2, "У компаний в ленте разные логотипы");
+    };
+    await pay.click();
+    await work.getByRole("link", { name: "Рублёвые платежи" }).click();
+    await waitForRoute("/research/sign");
+    await checkFeedFilters("sign");
+    assert.equal(await page.locator(".research-operations .operation-row").count(), 10);
+    await checkFeedLogos();
+    await page.getByRole("searchbox", { name: "Поиск операций" }).fill("Петрова");
+    assert.equal(await page.locator(".research-operations .operation-row").count(), 3);
+    await checkAssets("Рублёвые платежи на подпись");
+    await backToTasks();
+
+    await more.click();
+    await allTasks.getByRole("button", { name: /^Черновики/ }).click();
+    await page.waitForFunction(() => {
+      const overlay = document.querySelector('[data-tasks-layer="work"][data-open="true"]');
+      return overlay && getComputedStyle(overlay).transform === "none" && getComputedStyle(overlay).opacity === "1";
+    });
+    await work.getByRole("link", { name: "Рублёвые платежи" }).click();
+    await waitForRoute("/research/drafts");
+    await checkFeedFilters("drafts");
+    assert.equal(await page.locator(".research-operations .operation-row").count(), 8);
+    await checkFeedLogos();
+    await checkAssets("Черновики рублёвых платежей");
+    await backToTasks();
+
+    await tasks.getByRole("button", { name: /Требуют внимания/ }).click();
+    await signals.getByRole("link", { name: "Кредитная линия" }).click();
+    await waitForRoute("/research/credit");
+    const creditHeading = page.getByRole("heading", { name: "Кредитная линия № 07XW2L" });
+    await creditHeading.waitFor();
+    assert.equal(await creditHeading.evaluate(el =>
+      el.getBoundingClientRect().top - document.querySelector(".topbar").getBoundingClientRect().bottom), 40);
+    await page.getByText("Просрочено 1 332 000,00 ₽", { exact: true }).waitFor();
+    await backToTasks();
+
+    const previousTasks = tasks.getByRole("button", { name: "Предыдущие задания" });
+    const nextTasks = tasks.getByRole("button", { name: "Следующие задания" });
+    assert(await previousTasks.isDisabled());
+    await nextTasks.click();
+    await page.waitForFunction(() => document.querySelector(".research-task-carousel")?.scrollLeft === 328);
+    await nextTasks.click();
+    await page.waitForFunction(() => document.querySelector(".research-task-carousel")?.scrollLeft === 656);
+    assert(await nextTasks.isDisabled());
+    assert(await previousTasks.isEnabled());
+    assert.equal(await tasks.locator(".tasks-cards-body").getAttribute("data-fade-left"), "true");
+    const firstTask = tasks.locator(".tasks-cards-important");
+    assert.equal(await firstTask.evaluate(el =>
+      el.getBoundingClientRect().right < el.parentElement.getBoundingClientRect().left), true);
+    await tasks.getByRole("link", { name: "Все задания" }).click();
+    await waitForRoute("/research/rewards");
+    await backToTasks();
+    assert(await previousTasks.isDisabled());
+    assert(await nextTasks.isEnabled());
+    await nextTasks.click();
+    await page.waitForFunction(() => document.querySelector(".research-task-carousel")?.scrollLeft === 328);
+    await page.reload();
+    await tasks.waitFor();
+    assert(await previousTasks.isDisabled());
+    await tasks.getByRole("button", { name: /^Подключить индикатор риска/ }).click();
+    const riskIntro = page.getByRole("dialog", { name: "Оцените риски для вашего бизнеса" });
+    await riskIntro.getByRole("link", { name: "Узнать больше" }).click();
+    await waitForRoute("/research/risk");
+    await checkAssets("Индикатор риска");
+    await page.getByRole("button", { name: "Подключить бесплатно" }).first().click();
+    const completed = page.getByRole("dialog", { name: "Задание выполнено" });
+    await completed.getByRole("link", { name: "На Главную" }).click();
+    await waitForRoute("/");
+    await tasks.waitFor();
+    assert(await previousTasks.isDisabled());
+    const lastReward = tasks.locator(".tasks-cards-column").last().locator(".tasks-cards-task").nth(1);
+    await lastReward.getByText("500 получено", { exact: true }).waitFor();
+    assert.equal(await lastReward.getAttribute("data-completed"), "true");
+    assert.equal(await lastReward.locator('img[src$="widget-points-received.svg"]').count(), 1);
+
+    await tasks.getByRole("button", { name: /^Заполнить СНИЛС/ }).click();
+    await page.getByRole("dialog", { name: "Заполните СНИЛС" }).getByRole("link", { name: "В профиль" }).click();
+    await waitForRoute("/research/profile");
+    const snils = page.getByRole("dialog", { name: "Добавление СНИЛС" });
+    await snils.waitFor();
+    assert.equal((await snils.boundingBox()).width, 600);
+    const snilsInput = snils.getByRole("textbox", { name: "СНИЛС" });
+    const snilsSave = snils.getByRole("button", { name: "Сохранить" });
+    assert.equal(await snilsInput.inputValue(), "48273165910");
+    assert.equal(await snilsSave.isEnabled(), true);
+    await snilsInput.fill("123");
+    assert.equal(await snilsSave.isDisabled(), true);
+    await snilsInput.fill("123-456-789 01");
+    assert.equal(await snilsInput.inputValue(), "12345678901");
+    await snilsSave.click();
+    await completed.getByRole("link", { name: "На Главную" }).click();
+    await waitForRoute("/");
+    await tasks.waitFor();
+    assert(await previousTasks.isDisabled());
+    const lastService = tasks.locator(".tasks-cards-column > .tasks-cards-task:nth-child(3)").last();
+    await lastService.getByText("Выполнено", { exact: true }).waitFor();
+    assert.equal(await lastService.getAttribute("data-completed"), "true");
+    await tasks.getByRole("link", { name: "Все задания" }).click();
+    await waitForRoute("/research/rewards");
+    await page.getByText("12 500", { exact: true }).waitFor();
+    await page.getByRole("button", { name: "Архив", exact: true }).click();
+    await page.getByText("Заполнить СНИЛС · Выполнено").waitFor();
+    await backToTasks();
 
     const tabs = page.locator(".tabs");
     for (const name of ["Сводка", "Счета на главной", "Тарифы и подписки", "Ассистент"]) {

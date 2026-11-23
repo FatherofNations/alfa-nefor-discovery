@@ -12,7 +12,8 @@ const bad = (m) => {
   console.error(`  ✗ ${m}`);
 };
 
-const routes = ["/", "/new-payment", "/accountant", "/login", "/welcome", "/setup"];
+const researchRoutes = ["sign", "drafts", "credit", "rewards", "risk", "profile"].map(screen => `/research/${screen}`);
+const routes = ["/", "/new-payment", "/operations", "/accountant", "/login", "/welcome", "/setup", ...researchRoutes];
 const httpOnly = process.argv.includes("--http-only");
 
 console.log(`verify: ${BASE}, роуты: ${routes.join(", ")}`);
@@ -68,7 +69,8 @@ if (chromium) {
   page.on("pageerror", (err) => consoleErrors.push(String(err)));
 
   await page.addInitScript(() => { window.__alfaEntryState = { entered: true, role: "entrepreneur" }; });
-  const screenSelectors = { "/": ".dashboard-page", "/new-payment": ".payment-form", "/accountant": ".cur-content", "/login": ".entry-submit", "/welcome": ".entry-role-cards", "/setup": ".entry-setup" };
+  const screenSelectors = { "/": ".dashboard-page", "/new-payment": ".payment-form", "/operations": '[data-screen="operations"]', "/accountant": ".cur-content", "/login": ".entry-submit", "/welcome": ".entry-role-cards", "/setup": ".entry-setup" };
+  for (const route of researchRoutes) screenSelectors[route] = `.research-content[data-screen="${route.split("/").at(-1)}"]`;
   for (const route of routes) {
     await page.goto(BASE + route, { waitUntil: "networkidle" });
     if (!(await page.locator(screenSelectors[route]).count())) bad(`${route}: ожидаемый экран не найден`);

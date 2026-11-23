@@ -1,6 +1,6 @@
 export default function OctoberSummary() {
   return (
-    <div className="october-summary">
+    <div className="october-summary" data-assistant-answer-group>
       <p>В октябре расходы вашего бизнеса составили <strong>1 120 000 ₽ — на 120 000 ₽ больше, чем в сентябре.</strong> Основной прирост пришёлся на три категории:</p>
       <table aria-label="Сравнение расходов за сентябрь и октябрь">
         <thead><tr><th scope="col">Категория</th><th scope="col">Сентябрь</th><th scope="col">Октябрь</th><th scope="col">Изменение</th></tr></thead>

@@ -1,10 +1,11 @@
 /* Figma 357:27653 — форма рублёвого платежа по реквизитам. */
 .menu-item[href] { color: inherit; text-decoration: none; }
 .menu-item[aria-current="page"]::before { background: var(--neutral-translucent-100); opacity: 1; }
+/* ProductCell 46640:78262 — 2 × 36 внутри рамки меню. */
 .menu-item[aria-current="page"]::after {
   position: absolute;
   top: 6px;
-  left: -9px;
+  left: calc(-1 * var(--menu-inset));
   width: 2px;
   height: 36px;
   border-radius: 0 2px 2px 0;

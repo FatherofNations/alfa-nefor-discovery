@@ -70,7 +70,7 @@ export function AssistantConversation({ topic, answerRef }: { topic: AssistantTo
           <span>Расходы за месяц по категориям</span>
           <span className="assistant-time">12:30</span>
         </div>}
-        <div className="assistant-answer" ref={answerRef}>
+        <div className="assistant-answer" key={topic} ref={answerRef}>
           {important ? <OctoberSummary /> : (
             <>
               <p className="assistant-answer-title">Расходы за ноябрь 2026</p>

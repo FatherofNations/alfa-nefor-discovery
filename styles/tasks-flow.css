@@ -29,32 +29,45 @@
 .tasks-flow-overlay[data-tasks-layer="work"][data-expanded="true"] { left: 328px; }
 .tasks-flow-overlay[data-tasks-layer="work"][data-open="true"] { z-index: 3; }
 
-.tasks-flow-overlay.tasks-expanded {
-  top: 44px;
-  left: 0;
-  width: 324px;
-  padding: 10px;
-  border-radius: 16px;
-  color: var(--text-primary);
-  background: var(--neutral-0);
-  box-shadow: 0 20px 24px rgb(0 0 0 / 8%), 0 12px 16px rgb(0 0 0 / 4%),
-    0 4px 8px rgb(0 0 0 / 4%), 0 0 1px rgb(0 0 0 / 4%), 0 10px 20px rgb(0 0 0 / 5%);
-  font: 400 14px/20px var(--font);
-  letter-spacing: -.08px;
+/* Два неподвижных списка сменяют друг друга, пока подложка меняет размеры. */
+.tasks-work {
+  position: absolute;
+  z-index: 2;
+  inset: -12px 0 0;
+  pointer-events: none;
 }
-.tasks-expanded[data-open="false"] { transform: translateY(12px); }
-.tasks-expanded-list { list-style: none; }
-.tasks-expanded-close {
-  display: flex;
-  width: 100%;
-  height: 40px;
-  align-items: center;
-  gap: 4px;
-  padding: 10px;
-  text-align: left;
-  letter-spacing: inherit;
+.tasks-work-pane {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .22s ease-in;
+}
+.tasks-work-pane[data-full="true"] { right: -8px; }
+.tasks-work-pane[data-current="true"] {
+  opacity: 1;
+  transition: opacity .5s cubic-bezier(.25,.1,.25,1) .22s;
+}
+.tasks-work-list { list-style: none; }
+
+.tasks-work-item,
+.tasks-work-toggle {
+  position: absolute;
+  top: calc(12px + var(--work-row-y));
+  right: 10px;
+  left: 10px;
 }
 
+.tasks-work-pane[data-current="true"] .tasks-cards-row,
+.tasks-work-toggle { pointer-events: auto; }
+
+.tasks-work-pane[data-full="true"] .tasks-cards-row { gap: 12px; padding-inline: 8px; }
+
+.tasks-work-item .tasks-cards-row[aria-disabled="true"] { color: var(--text-tertiary); cursor: pointer; }
+.tasks-work-item .tasks-cards-row[aria-disabled="true"] .tasks-cards-amount { color: inherit; }
+
+.tasks-work-toggle { --work-row-y: 238px; width: auto; }
+.tasks-work[data-open="true"] .tasks-work-toggle { right: 2px; font-weight: 500; letter-spacing: .07px; }
+
 @media (prefers-reduced-motion: reduce) {
-  .tasks-flow-overlay { transition: none !important; }
+  .tasks-flow-overlay, .tasks-work-pane { transition: none !important; }
 }

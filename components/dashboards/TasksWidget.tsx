@@ -1,66 +1,72 @@
 "use client";
 
-import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
-import { workCategories, workOrder, workSummary, type WorkCategoryId, type WorkItem } from "@/data/work-tasks";
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import { featuredWork, workCategories, workOrder, workSummary, type WorkCategoryId, type WorkItem } from "@/data/work-tasks";
 import TasksCards from "./TasksCards";
 import TasksOptions from "./TasksOptions";
 
 type TasksMode = "signals" | "all";
+
+const moreCount = workOrder
+  .filter(category => !featuredWork.some(featured => featured === category))
+  .reduce((total, category) => total + workSummary(category).count, 0);
 type WorkPopover = {
   category: WorkCategoryId;
   anchor: HTMLButtonElement;
   open: boolean;
-  pinned: boolean;
   expanded: boolean;
   top: number;
 };
+
+function workPopoverTop(root: HTMLElement, anchor: HTMLButtonElement, category: WorkCategoryId) {
+  const items: WorkItem[] = workCategories[category].items;
+  const height = 20 + items.reduce((total, item) => total + (item.caption || item.route ? 64 : 40), 0);
+  const spotlight = root.closest(".dashboard-page")?.querySelector(".spotlight");
+  const bottom = spotlight?.getBoundingClientRect().top ?? window.innerHeight;
+  const top = Math.max(0, Math.min(anchor.getBoundingClientRect().top - 7, bottom - height));
+  return top - root.getBoundingClientRect().top;
+}
 
 export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
   const id = useId();
   const controls = { signals: `${id}-signals`, work: `${id}-work`, all: `${id}-all` };
   const [mode, setMode] = useState<TasksMode | null>(null);
+  const expanded = mode === "all";
   const [work, setWork] = useState<WorkPopover | null>(null);
   const activeWork = work?.open ? work : null;
   const rootRef = useRef<HTMLElement>(null);
   const hideRef = useRef<HTMLButtonElement>(null);
   const returnFocus = useRef<TasksMode | null>(null);
-  const closeTimer = useRef<number | undefined>(undefined);
-
-  const cancelWorkClose = useCallback(() => window.clearTimeout(closeTimer.current), []);
-  useEffect(() => cancelWorkClose, [cancelWorkClose]);
 
   const closeWork = useCallback(() => {
-    cancelWorkClose();
     setWork(current => current?.open ? { ...current, open: false } : current);
-  }, [cancelWorkClose]);
+  }, []);
 
-  const scheduleWorkClose = () => {
-    cancelWorkClose();
-    closeTimer.current = window.setTimeout(() => {
-      setWork(current => current?.open && !current.pinned ? { ...current, open: false } : current);
-    }, 220);
-  };
-
-  function openWork(category: WorkCategoryId, anchor: HTMLButtonElement, pinned: boolean, expanded: boolean) {
+  function selectWork(category: WorkCategoryId, anchor: HTMLButtonElement) {
     const root = rootRef.current;
     if (!root || root.closest("[data-clicks-locked='true']")) return;
-    cancelWorkClose();
-    if (activeWork?.anchor === anchor) {
-      if (!pinned) return;
-      if (activeWork.pinned) closeWork();
-      else setWork({ ...activeWork, pinned: true });
-      return;
-    }
 
-    const row = anchor.getBoundingClientRect();
-    const items: WorkItem[] = workCategories[category].items;
-    const listHeight = 20 + items.reduce((height, item) => height + (item.caption ? 64 : 40), 0);
-    const spotlight = root.closest(".dashboard-page")?.querySelector(".spotlight");
-    const visibleBottom = spotlight?.getBoundingClientRect().top ?? window.innerHeight;
-    const top = Math.max(0, Math.min(row.top - 7, Math.max(row.bottom, visibleBottom) - listHeight));
-    setWork({ category, anchor, pinned, expanded, top: top - root.getBoundingClientRect().top, open: true });
+    setWork({ category, anchor, expanded, top: workPopoverTop(root, anchor, category), open: true });
     if (mode === "signals") setMode(null);
   }
+
+  const visibleAnchor = activeWork?.anchor;
+  const visibleCategory = activeWork?.category;
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    if (!root || !visibleAnchor || !visibleCategory) return;
+    const updatePosition = () => {
+      const top = workPopoverTop(root, visibleAnchor, visibleCategory);
+      setWork(current => current?.anchor === visibleAnchor && current.top !== top ? { ...current, top } : current);
+    };
+    updatePosition();
+    window.addEventListener("scroll", updatePosition, { passive: true });
+    window.addEventListener("resize", updatePosition);
+    return () => {
+      window.removeEventListener("scroll", updatePosition);
+      window.removeEventListener("resize", updatePosition);
+    };
+  }, [visibleAnchor, visibleCategory]);
 
   const dismiss = useCallback((restoreFocus: boolean) => {
     closeWork();
@@ -69,7 +75,7 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
   }, [closeWork, mode]);
 
   useLayoutEffect(() => {
-    if (mode === "all") {
+    if (expanded) {
       hideRef.current?.focus({ preventScroll: true });
     } else if (!mode && returnFocus.current) {
       rootRef.current
@@ -77,7 +83,7 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
         ?.focus({ preventScroll: true });
       returnFocus.current = null;
     }
-  }, [mode]);
+  }, [expanded, mode]);
 
   useEffect(() => {
     if (!mode && !activeWork) return;
@@ -108,25 +114,33 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
     };
   }, [mode, activeWork, closeWork, dismiss]);
 
-  function renderWorkRow(category: WorkCategoryId, expanded: boolean) {
+  function renderWorkRow(category: WorkCategoryId, full: boolean) {
     const { title, count, amount, important } = workSummary(category);
+    const content = <>
+      <span className="tasks-cards-row-label">{title}</span>
+      <span className="tasks-cards-amount">{amount}</span>
+      <span className={important ? "tasks-cards-count tasks-cards-count-important" : "tasks-cards-count"}>{count}</span>
+    </>;
+    if (!count) return <div className="tasks-cards-row" aria-disabled="true">{content}</div>;
     return (
       <button
         key={category}
         className="tasks-cards-row"
         type="button"
         data-tasks-trigger={category}
-        aria-expanded={activeWork?.category === category && activeWork.expanded === expanded}
+        aria-expanded={activeWork?.category === category && activeWork.expanded === full}
         aria-controls={controls.work}
         onPointerEnter={event => {
-          if (event.pointerType !== "touch") openWork(category, event.currentTarget, false, expanded);
+          if (event.pointerType !== "touch" && activeWork && activeWork.anchor !== event.currentTarget) {
+            selectWork(category, event.currentTarget);
+          }
         }}
-        onPointerLeave={scheduleWorkClose}
-        onClick={event => openWork(category, event.currentTarget, true, expanded)}
+        onClick={event => {
+          if (activeWork?.anchor === event.currentTarget) closeWork();
+          else selectWork(category, event.currentTarget);
+        }}
       >
-        <span className="tasks-cards-row-label">{title}</span>
-        <span className="tasks-cards-amount">{amount}</span>
-        <span className={important ? "tasks-cards-count tasks-cards-count-important" : "tasks-cards-count"}>{count}</span>
+        {content}
       </button>
     );
   }
@@ -144,8 +158,48 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
           setMode(current => current === next ? null : next);
         }}
         controls={controls}
-        renderWorkRow={category => renderWorkRow(category, false)}
         workOpen={Boolean(activeWork)}
+        onSlide={() => {
+          if (mode || activeWork) dismiss(false);
+        }}
+        workList={
+          <div
+            id={controls.all}
+            className="tasks-work"
+            data-tasks-layer="all"
+            data-open={expanded}
+          >
+            {[false, true].map(full => (
+              <div key={String(full)} className="tasks-work-pane" data-current={full === expanded}
+                data-full={full} inert={full !== expanded} aria-hidden={full !== expanded}
+                role={full ? "region" : undefined} aria-label={full ? "Все дела" : undefined}>
+                <ul className="tasks-work-list">
+                  {(full ? workOrder : featuredWork).map((category, index) => (
+                    <li key={category} className="tasks-work-item"
+                      style={{ "--work-row-y": `${(full ? -2 : 118) + index * 40}px` } as CSSProperties}>
+                      {renderWorkRow(category, full)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <button ref={hideRef} className="tasks-cards-row tasks-work-toggle" type="button"
+              data-tasks-trigger="all" aria-expanded={expanded} aria-controls={controls.all}
+              onClick={() => {
+                if (expanded) dismiss(true);
+                else {
+                  closeWork();
+                  setMode("all");
+                }
+              }}>
+              <span className="tasks-cards-row-label">
+                {expanded ? "Скрыть" : "Ещё"}
+                <img src={expanded ? "/assets/figma/tasks-flow/chevron-up.svg" : "/assets/figma/tasks-flow/cards/more-chevron.svg"} width="20" height="20" alt="" />
+              </span>
+              {!expanded && <span className="tasks-cards-count">{moreCount}</span>}
+            </button>
+          </div>
+        }
       />
       <div className="tasks-flow-overlay" data-tasks-layer="signals" data-open={mode === "signals"} inert={mode !== "signals"} aria-hidden={mode !== "signals"}>
         <TasksOptions id={controls.signals} />
@@ -158,28 +212,8 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
         style={{ top: work?.top }}
         inert={!activeWork}
         aria-hidden={!activeWork}
-        onPointerEnter={cancelWorkClose}
-        onPointerLeave={scheduleWorkClose}
       >
-        <TasksOptions id={controls.work} items={workCategories[work?.category ?? "pay"].items} />
-      </div>
-      <div
-        id={controls.all}
-        className="tasks-flow-overlay tasks-expanded"
-        data-tasks-layer="all"
-        data-open={mode === "all"}
-        inert={mode !== "all"}
-        aria-hidden={mode !== "all"}
-        role="region"
-        aria-label="Все дела"
-      >
-        <ul className="tasks-expanded-list">
-          {workOrder.map(category => <li key={category}>{renderWorkRow(category, true)}</li>)}
-        </ul>
-        <button ref={hideRef} className="tasks-expanded-close" type="button" onClick={() => dismiss(true)}>
-          Скрыть
-          <img src="/assets/figma/tasks-flow/chevron-up.svg" width="20" height="20" alt="" />
-        </button>
+        <TasksOptions id={controls.work} items={workCategories[work?.category ?? "sign"].items} />
       </div>
     </section>
   );

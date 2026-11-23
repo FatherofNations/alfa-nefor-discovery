@@ -23,7 +23,6 @@ export default function Link({
   ...rest
 }: StaticLinkProps) {
   void prefetch;
-  void scroll;
   void shallow;
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -31,7 +30,7 @@ export default function Link({
     if (event.defaultPrevented) return;
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
     event.preventDefault();
-    navigateStatic(href, replace);
+    navigateStatic(href, replace, scroll);
   };
 
   return (
