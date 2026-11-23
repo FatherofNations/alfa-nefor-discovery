@@ -61,7 +61,7 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
 
   function openPopover(category: WorkCategoryId | "signals", anchor: HTMLButtonElement, hover: boolean) {
     const root = rootRef.current;
-    if (!root || root.closest("[data-clicks-locked='true']")) return;
+    if (!root) return;
 
     openedByHover.current = hover;
     if (category === "signals") {

@@ -13,7 +13,7 @@ export default function OperationRow({ operation, checked, onCheck }: { operatio
           </label>
           <div className="operation-info">
             <div className="operation-counterparty">
-              <img className="company-logo" src={`/assets/figma/operation-logos/${operation.logo}`} width={52} height={52} alt="" />
+              <img className={operation.logoIsGlyph ? "company-logo company-logo-glyph" : "company-logo"} src={operation.logo} width={52} height={52} alt="" />
               <div className="operation-copy">
                 <p className="operation-title">{operation.title}</p>
                 <p className="operation-description">{operation.description}{operation.details && <><br />{operation.details}</>}</p>

@@ -1,18 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { creditRows, researchCompanyLogos, researchRows, researchScreens, type ResearchScreen } from "@/data/research";
+import { creditLineOverdueAmount, creditRows, researchRows, researchScreens, type ResearchScreen } from "@/data/research";
 import { completeResearchTask, useResearchProgress, type ResearchTask } from "@/lib/research-progress";
 import { DASHBOARD_DATE, dayLabel, money } from "@/data/payments";
 import { ResearchComplete, SnilsForm, TaskIntro } from "./ResearchDialogs";
 
 const asset = "/assets/figma/";
 const riskArt = (number: number) => asset + `research/risk-${number}.png`;
-
-const documentAmounts = {
-  sign: [1240, 875, 610, 1910, 540, 2370, 495, 1238.58, 812, 2196],
-  drafts: [3800, 6300, 2900, 4250, 1100, 2480, 3670, 3550],
-} as const;
 
 function Feed({ initial }: { initial: "sign" | "drafts" }) {
   const statuses = { sign: "На подпись", drafts: "Черновик" } as const;
@@ -22,9 +17,9 @@ function Feed({ initial }: { initial: "sign" | "drafts" }) {
   const [checked, setChecked] = useState<Set<string>>(new Set());
   const term = search.trim().toLocaleLowerCase("ru");
   const rows = (["sign", "drafts"] as const).flatMap(mode =>
-    status && status !== mode ? [] : researchRows[mode].flatMap(([company, account, counterparty], index) =>
-      [company, account, counterparty].join(" ").toLocaleLowerCase("ru").includes(term)
-        ? [{ company, account, counterparty, status: statuses[mode], id: mode + index, date: index < 5 ? DASHBOARD_DATE : "2026-11-19", amount: documentAmounts[mode][index] }]
+    status && status !== mode ? [] : researchRows[mode].flatMap((row, index) =>
+      [row.company, row.account, row.counterparty].join(" ").toLocaleLowerCase("ru").includes(term)
+        ? [{ ...row, status: statuses[mode], id: mode + index, date: index < 5 ? DASHBOARD_DATE : "2026-11-19" }]
         : []
     )
   );
@@ -80,7 +75,7 @@ function Feed({ initial }: { initial: "sign" | "drafts" }) {
                 }} />{checked.has(row.id) ? <img className="checkbox-mark" src={asset + "ops-table-checkbox-checked.svg"} width={20} height={20} alt="" /> : <span className="checkbox-mark checkbox-mark-empty" aria-hidden="true" />}</label>
                 <div className="operation-info">
                   <div className="operation-counterparty">
-                    <img className="company-logo" src={`${asset}operation-logos/${researchCompanyLogos[row.company]}`} width={52} height={52} alt="" />
+                    <img className="company-logo" src={row.logo} width={52} height={52} alt="" />
                     <div className="operation-copy"><p className="operation-title">{row.company}</p><p className="operation-description">Рублёвый платёж</p></div>
                   </div>
                   <div className="operation-status" data-draft={row.status === "Черновик"}><span>{row.status}</span></div>
@@ -103,7 +98,7 @@ const creditColumns = ["№ договора", "Задолженность", "С
 function Credit() {
   return (
     <>
-      <div className="research-warning"><span><img src={asset + "research/credit-warning.svg"} alt="" /></span><strong>Просрочено 1 332 000,00 ₽</strong><img src={asset + "research/credit-chevron.svg"} alt="" /></div>
+      <div className="research-warning"><span><img src={asset + "research/credit-warning.svg"} alt="" /></span><strong>Просрочено {money(creditLineOverdueAmount, " ")} ₽</strong><img src={asset + "research/credit-chevron.svg"} alt="" /></div>
       <section className="research-credit-overview">
         <header>
           <div><p>Вам доступно</p><strong>1 000 000,00 ₽</strong> из 20 000 000,00 ₽</div>

@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { researchHref, type ResearchScreen } from "@/data/research";
+import { money } from "@/data/payments";
+import { creditLineOverdueAmount, researchHref, type ResearchScreen } from "@/data/research";
 import type { WorkItem } from "@/data/work-tasks";
 
 const signals: { state: string; status: string; title: string; caption: string[]; route?: ResearchScreen }[] = [
-  { state: "overdue", status: "Просрочено", title: "Кредитная линия", caption: ["от 18.11.26", "·", "1 332 000,00 ₽"], route: "credit" },
+  { state: "overdue", status: "Просрочено", title: "Кредитная линия", caption: ["от 18.11.26", "·", `${money(creditLineOverdueAmount, " ")} ₽`], route: "credit" },
   { state: "overdue", status: "Высокий", title: "Риск блокировки по 115-ФЗ", caption: [] },
   { state: "tomorrow", status: "Послезавтра", title: "Тариф «Стандартный»", caption: ["Счёт ··6235"] },
 ];

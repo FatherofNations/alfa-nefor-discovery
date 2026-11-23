@@ -1,6 +1,7 @@
 import { useRef, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
 import Link from "next/link";
-import { researchHref } from "@/data/research";
+import { money } from "@/data/payments";
+import { creditLineOverdueAmount, researchHref } from "@/data/research";
 import { useResearchProgress, type ResearchTask } from "@/lib/research-progress";
 import { TaskIntro } from "./ResearchDialogs";
 
@@ -161,7 +162,7 @@ export default function TasksCards({ mode, signalTrigger, controls, workOpen, on
                   <span className="tasks-cards-label">Просрочено</span>
                   <span className="tasks-cards-signal-text">
                     <span>Требуют внимания</span>
-                    <span>Кредитная линия · 1 332 000 ₽</span>
+                    <span>Кредитная линия · {money(creditLineOverdueAmount, " ").replace(/,00$/, "")} ₽</span>
                   </span>
                 </span>
                 <Count important>{3}</Count>

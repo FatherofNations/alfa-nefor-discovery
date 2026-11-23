@@ -5,6 +5,7 @@
    исходящий остаток берётся из общего справочника счетов. */
 
 import { accountsTotal } from "./accounts";
+import { operationCompanies } from "./operation-companies";
 
 export type Payment = {
   id: string;
@@ -16,22 +17,23 @@ export type Payment = {
   docNumber: string;
   bank: string;
   account: string;
-  logo: "company.png" | "person.png" | "alfa.svg" | "office.png" | "telecom.png" | "vector.png";
+  logo: string;
+  logoIsGlyph?: boolean;
 };
 
 export const DASHBOARD_DATE = "2026-11-20";
 export const OPS_PERIOD = { from: "2026-11-17", to: DASHBOARD_DATE } as const;
 
 export const payments: Payment[] = [
-  { id: "1184", date: "2026-11-20", title: "ООО «Ромашка Логистик»", purpose: "Перевозка груза по заявке №412 от 19.11.2026. НДС 20%", amount: 32400, docNumber: "1184", bank: "Сбербанк", account: "4417", logo: "company.png" },
-  { id: "88412", date: "2026-11-20", title: "АО «Альфа-Банк»", purpose: "Комиссия за ведение счёта за ноябрь 2026", details: "Согласно тарифам Банка", amount: -1990, docNumber: "88412", bank: "Альфа-Банк", account: "5370", logo: "alfa.svg" },
-  { id: "214", date: "2026-11-19", title: "ООО «Офис-Снаб»", purpose: "Канцелярские товары по счёту №2231 от 18.11.2026. НДС 20%", amount: -4680, docNumber: "214", bank: "ВТБ", account: "0821", logo: "office.png" },
-  { id: "213", date: "2026-11-19", title: "ООО «Волна Контура»", purpose: "Связь и интернет за ноябрь 2026 по договору №123 от 17.11.2026. НДС 20%", amount: -2490, docNumber: "213", bank: "Газпромбанк", account: "3310", logo: "telecom.png" },
-  { id: "5521", date: "2026-11-18", title: "ООО «Вектор»", purpose: "Предоплата 50% по договору поставки №17/11 от 17.11.2026. НДС 20%", amount: 17800, docNumber: "5521", bank: "Т-Банк", account: "9909", logo: "vector.png" },
-  { id: "212", date: "2026-11-18", title: "УФК по г. Москве (ФНС России)", purpose: "Единый налоговый платёж", amount: -12460, docNumber: "212", bank: "Казначейство России", account: "0101", logo: "company.png" },
-  { id: "211", date: "2026-11-18", title: "ИП Соколова Анна Викторовна", purpose: "Арендная плата за офис за ноябрь 2026 по договору №А-14 от 17.11.2026. Без НДС", amount: -22500, docNumber: "211", bank: "Т-Банк", account: "2286", logo: "person.png" },
-  { id: "210", date: "2026-11-17", title: "ООО «Курьер Сервис»", purpose: "Курьерская доставка за ноябрь по счёту №554. НДС 20%", amount: -2350, docNumber: "210", bank: "Альфа-Банк", account: "7712", logo: "office.png" },
-  { id: "3307", date: "2026-11-17", title: "ООО «Техно Плюс»", purpose: "Поставка комплектующих по договору №0915, счёт №301. НДС 20%", amount: 38900, docNumber: "3307", bank: "Райффайзенбанк", account: "6054", logo: "vector.png" },
+  { id: "1184", date: "2026-11-20", ...operationCompanies.terravait, purpose: "Перевозка груза по заявке №412 от 19.11.2026. НДС 20%", amount: 32400, docNumber: "1184", bank: "Сбербанк", account: "4417" },
+  { id: "88412", date: "2026-11-20", title: "АО «Альфа-Банк»", purpose: "Комиссия за ведение счёта за ноябрь 2026", details: "Согласно тарифам Банка", amount: -1990, docNumber: "88412", bank: "Альфа-Банк", account: "5370", logo: "/assets/figma/operation-logos/alfa.svg" },
+  { id: "214", date: "2026-11-19", ...operationCompanies.norvel, purpose: "Канцелярские товары по счёту №2231 от 18.11.2026. НДС 20%", amount: -4680, docNumber: "214", bank: "ВТБ", account: "0821" },
+  { id: "213", date: "2026-11-19", ...operationCompanies.linvera, purpose: "Связь и интернет за ноябрь 2026 по договору №123 от 17.11.2026. НДС 20%", amount: -2490, docNumber: "213", bank: "Газпромбанк", account: "3310" },
+  { id: "5521", date: "2026-11-18", ...operationCompanies.granvex, purpose: "Предоплата 50% по договору поставки №17/11 от 17.11.2026. НДС 20%", amount: 17800, docNumber: "5521", bank: "Т-Банк", account: "9909" },
+  { id: "212", date: "2026-11-18", title: "УФК по г. Москве (ФНС России)", purpose: "Единый налоговый платёж", amount: -12460, docNumber: "212", bank: "Казначейство России", account: "0101", logo: "/assets/accountant/curTblRub.svg", logoIsGlyph: true },
+  { id: "211", date: "2026-11-18", ...operationCompanies.rivern, purpose: "Арендная плата за офис за ноябрь 2026 по договору №А-14 от 17.11.2026. Без НДС", amount: -22500, docNumber: "211", bank: "Т-Банк", account: "2286" },
+  { id: "210", date: "2026-11-17", ...operationCompanies.forwell, purpose: "Курьерская доставка за ноябрь по счёту №554. НДС 20%", amount: -2350, docNumber: "210", bank: "Альфа-Банк", account: "7712" },
+  { id: "3307", date: "2026-11-17", ...operationCompanies.modulterm, purpose: "Поставка комплектующих по договору №0915, счёт №301. НДС 20%", amount: 38900, docNumber: "3307", bank: "Райффайзенбанк", account: "6054" },
 ];
 
 const MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];

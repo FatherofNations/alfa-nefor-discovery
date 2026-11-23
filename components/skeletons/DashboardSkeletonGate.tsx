@@ -1,10 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useState, type ReactNode, type SyntheticEvent } from "react";
+import { useLayoutEffect, useState, type ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { hasEntered, resetEntry, resetScrollOnRoleChange } from "@/lib/entry-session";
 import { useSelectedCompany } from "@/lib/company-selection";
-import { canUsePrototypeShortcut } from "@/lib/prototype-shortcuts";
 import { setTemplatePaymentKept } from "@/lib/quick-actions";
 
 /* Скелетон дашборда — прогрессивная загрузка ПО ВИДЖЕТАМ.
@@ -45,27 +44,10 @@ export default function DashboardSkeletonGate({
   const pathname = usePathname();
   const { inn: companyInn } = useSelectedCompany();
   const [loadedCount, setLoadedCount] = useState(0);
-  const [clicksLocked, setClicksLocked] = useState(false);
 
   useLayoutEffect(() => {
     resetScrollOnRoleChange(pathname);
   }, [pathname]);
-
-  useLayoutEffect(() => {
-    const onSpace = (event: KeyboardEvent) => {
-      if (event.code !== "Space" && event.key !== " ") return;
-      if (event.shiftKey || !canUsePrototypeShortcut(event) || document.body.classList.contains("name-modal-open")) return;
-      event.preventDefault();
-      event.stopPropagation();
-      if (event.type === "keydown" && !event.repeat) setClicksLocked((locked) => !locked);
-    };
-    document.addEventListener("keydown", onSpace, true);
-    document.addEventListener("keyup", onSpace, true);
-    return () => {
-      document.removeEventListener("keydown", onSpace, true);
-      document.removeEventListener("keyup", onSpace, true);
-    };
-  }, []);
 
   useLayoutEffect(() => {
     setLoadedCount(0);
@@ -116,24 +98,10 @@ export default function DashboardSkeletonGate({
   }, [companyInn, hardReload, router, widgets]);
 
   const allLoaded = loadedCount >= widgets.length;
-  const blockActivation = (event: SyntheticEvent) => {
-    if (!clicksLocked) return;
-    event.preventDefault();
-    event.stopPropagation();
-  };
-
   return (
     <div
       className={`dash-gate${allLoaded ? " gate-ready" : ""}`}
       aria-busy={allLoaded ? undefined : true}
-      data-clicks-locked={clicksLocked}
-      onPointerDownCapture={(event) => { if (clicksLocked) event.stopPropagation(); }}
-      onMouseDownCapture={blockActivation}
-      onClickCapture={blockActivation}
-      onAuxClickCapture={blockActivation}
-      onDoubleClickCapture={blockActivation}
-      onContextMenuCapture={blockActivation}
-      onKeyDownCapture={(event) => { if (event.key === "Enter") blockActivation(event); }}
     >
       {!allLoaded && <div className="gate-skeleton">{fallback}</div>}
       <div className="gate-content" key={companyInn}>{children}</div>

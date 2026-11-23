@@ -1,3 +1,5 @@
+import { operationCompanies, type OperationCompany } from "./operation-companies";
+
 export const researchScreens = {
   sign: "Лента операций",
   drafts: "Лента операций",
@@ -11,106 +13,39 @@ export type ResearchScreen = keyof typeof researchScreens;
 export const researchHref = (screen: ResearchScreen) => `/research/${screen}`;
 export const isResearchScreen = (value: string): value is ResearchScreen => Object.hasOwn(researchScreens, value);
 
+export const creditLineOverdueAmount = 1_332_000;
+
+const researchAccounts = {
+  terravait: "40559 575 9 5900 00058585",
+  norvel: "35559 4575 0 4940 00011404",
+  linvera: "40702 810 3 7710 00012643",
+  granvex: "40702 810 1 2040 00072189",
+  astern: "40702 810 8 7702 00018724",
+  forwell: "40702 810 4 4410 00029583",
+  rivern: "40702 810 6 2490 00041076",
+  modulterm: "40702 810 2 2260 00093218",
+} satisfies Record<OperationCompany, string>;
+
+function makeResearchRows(documents: readonly (readonly [OperationCompany, number])[]) {
+  return documents.map(([key, amount]) => ({
+    company: operationCompanies[key].title,
+    logo: operationCompanies[key].logo,
+    account: researchAccounts[key],
+    counterparty: key === "norvel" || key === "linvera" ? "ИП Петрова Анна Фёдоровна" : "ИП Сидоров Кирилл Ильич",
+    amount,
+  }));
+}
+
 export const researchRows = {
-  "sign": [
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Рога»",
-      "35559 4575 0 4940 00011404",
-      "ИП Петрова Анна Фёдоровна"
-    ],
-    [
-      "ООО «Рога»",
-      "35559 4575 0 4940 00011404",
-      "ИП Петрова Анна Фёдоровна"
-    ],
-    [
-      "ООО «Рога»",
-      "35559 4575 0 4940 00011404",
-      "ИП Петрова Анна Фёдоровна"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ]
-  ],
-  "drafts": [
-    [
-      "ООО «Рога»",
-      "35559 4575 0 4940 00011404",
-      "ИП Петрова Анна Фёдоровна"
-    ],
-    [
-      "ООО «Рога»",
-      "35559 4575 0 4940 00011404",
-      "ИП Петрова Анна Фёдоровна"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ],
-    [
-      "ООО «Поставщик плюс»",
-      "40559 575 9 5900 00058585",
-      "ИП Сидоров Кирилл Ильич"
-    ]
-  ]
-} as const;
-export const researchCompanyLogos = {
-  "ООО «Поставщик плюс»": "company.png",
-  "ООО «Рога»": "office.png",
-} satisfies Record<(typeof researchRows)["sign" | "drafts"][number][0], string>;
+  sign: makeResearchRows([
+    ["terravait", 1240], ["astern", 875], ["norvel", 610], ["linvera", 1910], ["modulterm", 540],
+    ["granvex", 2370], ["rivern", 495], ["forwell", 1238.58], ["terravait", 812], ["norvel", 2196],
+  ]),
+  drafts: makeResearchRows([
+    ["rivern", 3800], ["granvex", 6300], ["forwell", 2900], ["norvel", 4250],
+    ["linvera", 1100], ["terravait", 2480], ["modulterm", 3670], ["astern", 3550],
+  ]),
+};
 
 // Видимые строки таблицы траншей, Figma 503:34146.
 export const creditRows = [

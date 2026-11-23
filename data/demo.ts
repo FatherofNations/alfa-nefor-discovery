@@ -36,6 +36,7 @@ export type Operation = {
   number: string;
   status: string;
   logo: Payment["logo"];
+  logoIsGlyph?: boolean;
 };
 
 export const operationDays: { date: string; rows: Operation[] }[] = [...new Set(payments.map((p) => p.date))].map((date) => ({
@@ -50,5 +51,6 @@ export const operationDays: { date: string; rows: Operation[] }[] = [...new Set(
     number: `№${p.docNumber}, ${p.bank}, ··${R}${p.account}`,
     status: "Исполнено",
     logo: p.logo,
+    logoIsGlyph: p.logoIsGlyph,
   })),
 }));

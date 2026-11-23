@@ -138,6 +138,7 @@ export default function Glavnaya({ payment = false, operations = false, research
   const currentMenuItem = payment ? "pay" : operations ? "feed" : undefined;
   const innerPage = Boolean(research || operations);
   const [activeTab, setActiveTab] = useState("Ассистент");
+  const [tabsLocked, setTabsLocked] = useState(false);
   const logout = useCallback(() => {
     resetEntry();
     router.push("/login");
@@ -551,6 +552,23 @@ export default function Glavnaya({ payment = false, operations = false, research
     return () => tabList.forEach(clearTimeout);
   }, []);
 
+  useLayoutEffect(() => {
+    if (payment || innerPage) return;
+
+    const onSpace = (event: KeyboardEvent) => {
+      if (event.code !== "Space" && event.key !== " ") return;
+      if (event.shiftKey || !canUsePrototypeShortcut(event) || document.body.classList.contains("name-modal-open")) return;
+      event.preventDefault();
+      if (event.type === "keydown" && !event.repeat) setTabsLocked((locked) => !locked);
+    };
+    document.addEventListener("keydown", onSpace, true);
+    document.addEventListener("keyup", onSpace, true);
+    return () => {
+      document.removeEventListener("keydown", onSpace, true);
+      document.removeEventListener("keyup", onSpace, true);
+    };
+  }, [innerPage, payment]);
+
   const changeTab = useCallback((tab: string) => {
     if (tab === activeTab) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -716,7 +734,14 @@ export default function Glavnaya({ payment = false, operations = false, research
           aria-label="Разделы главной"
         >
           {TABS.map((tab) => (
-            <button key={tab} type="button" className={`tab${activeTab === tab ? " active" : ""}`} onClick={() => changeTab(tab)} aria-pressed={activeTab === tab}>
+            <button
+              key={tab}
+              type="button"
+              className={`tab${activeTab === tab ? " active" : ""}`}
+              disabled={tabsLocked}
+              onClick={() => changeTab(tab)}
+              aria-pressed={activeTab === tab}
+            >
               <span>{tab}</span>
               {tab === "Сводка" && counter !== "gone" && (
                 <span className={`tab-counter-slot${counter === "hiding" ? " hiding" : ""}`} aria-hidden={counter === "hiding"}>

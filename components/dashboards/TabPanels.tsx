@@ -4,8 +4,10 @@
 
 import { accounts } from "@/data/accounts";
 import { income, money, outcome } from "@/data/payments";
+import { creditLineOverdueAmount } from "@/data/research";
 
 const asset = (name: string) => `/assets/figma/${name}`;
+const riskCriteria = ["Контрагенты", "Налоговые платежи", "Хозяйственные платежи"];
 
 export function SummaryPanel() {
   return (
@@ -39,54 +41,54 @@ export function SummaryPanel() {
       </section>
 
       <section className="summary-card risk-card">
-        <span className="widget-badge widget-badge-important">Важное</span>
         <div className="widget-head">
           <h3>Индикатор риска</h3>
           <img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" />
         </div>
         <div className="risk-body">
           <div className="risk-gauge-wrap">
-            <img className="risk-gauge-img" src={asset("risk-gauge.svg")} alt="" />
+            <img className="risk-gauge-img" src={asset("summary-risk-gauge.svg")} alt="" />
+            <img className="risk-cup" src={asset("summary-risk-cup.svg")} alt="" />
             <div className="risk-center">
-              <img className="risk-flame" src={asset("risk-flame.svg")} alt="" />
-              <p className="risk-title">Высокий риск</p>
-              <p className="risk-sub">Действия компании нарушают<br />требования 115-ФЗ</p>
+              <p className="risk-title">Низкий риск</p>
+              <p className="risk-sub">Действия компании<br />не нарушают требования 115-ФЗ</p>
             </div>
           </div>
           <span className="summary-divider" />
           <div className="risk-rows">
-            <div className="risk-row"><span>Контрагенты</span><span className="risk-icon"><img src={asset("ic-risk-flash.svg")} alt="" /></span></div>
-            <div className="risk-row"><span>Налоговые платежи</span><span className="risk-icon"><img src={asset("ic-risk-flash.svg")} alt="" /></span></div>
-            <div className="risk-row"><span>Хоз. платежи</span><span className="risk-icon risk-icon-lg"><img src={asset("ic-risk-exclaim.svg")} alt="" /></span></div>
-            <div className="risk-row risk-row-more"><span>Ещё 4 критерия</span><span className="risk-icon" /></div>
+            {riskCriteria.map(criterion => (
+              <div className="risk-row" key={criterion}><span>{criterion}</span><img src={asset("summary-risk-check.svg")} width={20} height={20} alt="Всё в порядке" /></div>
+            ))}
+            <div className="risk-row risk-row-more">Ещё 4 критерия</div>
           </div>
         </div>
       </section>
 
       <section className="summary-card credit-card">
+        <span className="widget-badge widget-badge-important">Важное</span>
         <div className="credit-top">
           <div className="credit-head">
             <h3>Кредиты</h3>
             <img className="widget-chev" src={asset("chevron-right-credit.svg")} alt="" />
           </div>
           <div className="credit-title">
-            <strong>1 500 900,21&nbsp;₽</strong>
+            <strong>1 500 900,21 ₽</strong>
             <p>Осталось выплатить</p>
           </div>
         </div>
         <div className="credit-info">
-          <div className="credit-success">
-            <span className="credit-success-badge"><i /></span>
-            <div className="credit-success-copy">
-              <strong>Всё оплачено</strong>
-              <span>Просрочек нет — так держать</span>
+          <div className="credit-overdue">
+            <span className="credit-overdue-badge">Есть просрочка</span>
+            <div className="credit-title">
+              <strong>{money(creditLineOverdueAmount, " ")} ₽</strong>
+              <p>25 дней, кредитная линия</p>
             </div>
           </div>
           <div className="credit-help-wrap">
             <span className="summary-divider" />
             <div className="credit-help-copy">
-              <strong>Доступны кредитные каникулы</strong>
-              <span>Оформить можно онлайн</span>
+              <strong>Поможем погасить долг</strong>
+              <span>Снизим кредитную нагрузку</span>
             </div>
           </div>
         </div>

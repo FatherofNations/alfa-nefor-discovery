@@ -45,6 +45,31 @@ export async function verifyStatic(browser, indexPath) {
     });
     assert.deepEqual(broken, [], `${screen}: битые изображения`);
   };
+  const logosByCompany = new Map();
+  const checkFeedLogos = async (feed, expectedUnique) => {
+    const companies = await feed.locator(".operation-counterparty").evaluateAll(rows => rows.map(row => [
+      row.querySelector(".operation-title").textContent,
+      row.querySelector(".company-logo").getAttribute("src"),
+    ]));
+    assert.equal(new Set(companies.map(([, logo]) => logo)).size, expectedUnique);
+    for (const [name, logo] of companies) {
+      if (logosByCompany.has(name)) assert.equal(logo, logosByCompany.get(name), name);
+      logosByCompany.set(name, logo);
+    }
+    assert.equal(new Set(logosByCompany.values()).size, logosByCompany.size, "Логотип закреплён за одной компанией во всех лентах");
+  };
+  const checkTaxPaymentLogo = async (feed) => {
+    const logo = feed.locator(".operation-row", { hasText: "Единый налоговый платёж" }).locator(".company-logo");
+    await logo.evaluate(async (image) => {
+      await image.decode();
+      const styles = getComputedStyle(image);
+      const { width, height } = image.getBoundingClientRect();
+      if (width !== 52 || height !== 52 || styles.padding !== "14px" ||
+          styles.backgroundColor === "rgba(0, 0, 0, 0)" || styles.maskImage === "none") {
+        throw new Error("Знак рубля должен быть по центру серой подложки 52 × 52 px");
+      }
+    });
+  };
 
   try {
     await page.goto(entry.href);
@@ -101,7 +126,12 @@ export async function verifyStatic(browser, indexPath) {
     assert.deepEqual(headerPositions, [28, 28, 28, 22, 8, 8, 22, 28], "Положение шапки определяется прокруткой");
 
     const feedLink = page.getByRole("link", { name: "Лента операций", exact: true });
+    const dashboardTabs = page.getByRole("navigation", { name: "Разделы главной" }).getByRole("button");
     const homeOperations = await page.locator("#operations .operation-title").allTextContents();
+    await checkFeedLogos(page.locator("#operations"), 9);
+    await checkTaxPaymentLogo(page.locator("#operations"));
+    await page.keyboard.press("Space");
+    assert.equal(await dashboardTabs.and(page.locator(":disabled")).count(), 4);
     await scrollDown();
     await feedLink.click();
     await waitForRoute("/operations");
@@ -113,12 +143,15 @@ export async function verifyStatic(browser, indexPath) {
     assert.equal(await feedLink.getAttribute("aria-current"), "page");
     assert.equal(await page.evaluate(() => scrollY), 0);
     assert.deepEqual(await feed.locator(".operation-title").allTextContents(), homeOperations);
-    await feed.getByRole("searchbox", { name: "Поиск операций" }).fill("Ромашка Логистик");
+    await checkFeedLogos(feed, 9);
+    await checkTaxPaymentLogo(feed);
+    await feed.getByRole("searchbox", { name: "Поиск операций" }).fill("Терравейт Логистика");
     assert.equal(await feed.locator(".operation-row").count(), 1);
     await checkAssets("Лента операций");
     await page.getByRole("link", { name: "Назад", exact: true }).click();
     await waitForRoute("/");
     await page.locator(".dash-gate.gate-ready #hero-title").waitFor();
+    assert.equal(await dashboardTabs.and(page.locator(":enabled")).count(), 4, "После возврата вкладки доступны");
 
     const payLink = page.getByRole("link", { name: "Новый платёж" });
     await payLink.click();
@@ -180,9 +213,15 @@ export async function verifyStatic(browser, indexPath) {
     await expectFocused(balance);
     assert.equal(await offer.count(), 0, "Закрытие детализации сохраняет исходное действие");
     await page.keyboard.press("Space");
-    await page.locator(".dash-gate[data-clicks-locked='true']").waitFor();
+    for (const tab of await dashboardTabs.all()) {
+      assert(await tab.isDisabled());
+      await tab.click({ force: true });
+    }
+    assert.equal(await dashboardTabs.and(page.locator("[aria-pressed='true']")).innerText(), "Ассистент");
     await balance.click();
-    assert.equal(await details.count(), 0, "Пробел блокирует открытие детализации");
+    await details.getByRole("button", { name: "К счетам" }).waitFor();
+    await details.getByRole("button", { name: "Закрыть детализацию" }).click();
+    await details.waitFor({ state: "hidden" });
     await page.mouse.move(800, 680);
     await page.mouse.wheel(0, 420);
     await page.waitForFunction(() => scrollY > 0);
@@ -190,14 +229,24 @@ export async function verifyStatic(browser, indexPath) {
 
     await page.keyboard.press("1");
     await offer.waitFor();
-    await offer.getByRole("button", { name: "Оставить" }).click();
-    assert.equal(await offer.count(), 1);
-    await page.keyboard.press("Space");
-    await page.locator(".dash-gate[data-clicks-locked='false']").waitFor();
     assert.equal(await template.evaluate((node) => getComputedStyle(node).color), "rgb(137, 126, 255)");
     await checkAssets("Предложение заменить быстрое действие");
     await offer.getByRole("button", { name: "Отклонить замену действия" }).click();
     await button("Импорт платежей").waitFor();
+
+    const tasks = page.getByRole("region", { name: "Мои дела" });
+    const attention = tasks.getByRole("button", { name: /Требуют внимания/ });
+    const signals = tasks.getByRole("list", { name: "Сигналы" });
+    await attention.hover();
+    await signals.waitFor();
+    await tasks.getByRole("heading", { name: "Мои дела" }).hover();
+    await signals.waitFor({ state: "hidden" });
+
+    await page.keyboard.press("Space");
+    assert.equal(await dashboardTabs.and(page.locator(":enabled")).count(), 4);
+    const accountsTab = dashboardTabs.filter({ hasText: "Счета на главной" });
+    await accountsTab.click();
+    assert.equal(await accountsTab.getAttribute("aria-pressed"), "true");
     await page.keyboard.press("1");
     await offer.getByRole("button", { name: "Оставить" }).click();
     await offer.waitFor({ state: "detached" });
@@ -205,12 +254,10 @@ export async function verifyStatic(browser, indexPath) {
     assert.match(await template.locator("img").getAttribute("src"), /template-kept\.svg$/);
     await checkAssets("Сохранённое быстрое действие");
 
-    const tasks = page.getByRole("region", { name: "Мои дела" });
-    const attention = tasks.getByRole("button", { name: /Требуют внимания/ });
     await attention.hover();
-    const signals = tasks.getByRole("list", { name: "Сигналы" });
     const creditLink = signals.getByRole("link", { name: "Кредитная линия" });
     await creditLink.waitFor();
+    const overdueInTasks = await signals.getByText("1 332 000,00 ₽", { exact: true }).innerText();
     await attention.click();
     assert.equal(await attention.getAttribute("aria-expanded"), "true", "Клик мышью не закрывает список под курсором");
     await creditLink.hover();
@@ -326,16 +373,12 @@ export async function verifyStatic(browser, indexPath) {
       await toggle.click();
       await select.waitFor({ state: "hidden" });
     };
-    const checkFeedLogos = async () => {
-      const logos = await page.locator(".research-operations .company-logo").evaluateAll(images => images.map(image => image.getAttribute("src")));
-      assert.equal(new Set(logos).size, 2, "У компаний в ленте разные логотипы");
-    };
     await pay.hover();
     await work.getByRole("link", { name: "Рублёвые платежи" }).click();
     await waitForRoute("/research/sign");
     await checkFeedFilters("sign");
     assert.equal(await page.locator(".research-operations .operation-row").count(), 10);
-    await checkFeedLogos();
+    await checkFeedLogos(page.locator(".research-operations"), 8);
     await page.getByRole("searchbox", { name: "Поиск операций" }).fill("Петрова");
     assert.equal(await page.locator(".research-operations .operation-row").count(), 3);
     await checkAssets("Рублёвые платежи на подпись");
@@ -351,7 +394,7 @@ export async function verifyStatic(browser, indexPath) {
     await waitForRoute("/research/drafts");
     await checkFeedFilters("drafts");
     assert.equal(await page.locator(".research-operations .operation-row").count(), 8);
-    await checkFeedLogos();
+    await checkFeedLogos(page.locator(".research-operations"), 8);
     await checkAssets("Черновики рублёвых платежей");
     await backToTasks();
 
@@ -440,6 +483,14 @@ export async function verifyStatic(browser, indexPath) {
       await tabs.getByRole("button", { name: new RegExp(`^${name}`), pressed: true }).waitFor();
       await page.locator(".tab-stage.phase-idle").waitFor();
       await checkAssets(name);
+      if (name === "Сводка") {
+        const summary = page.locator(".summary-panel");
+        await summary.getByText("Низкий риск", { exact: true }).waitFor();
+        await summary.getByText("Есть просрочка", { exact: true }).waitFor();
+        assert.equal(await summary.getByRole("img", { name: "Всё в порядке" }).count(), 3);
+        const overdueInSummary = await summary.locator(".credit-overdue strong").innerText();
+        assert.equal(overdueInSummary.replace(/\s/g, " "), overdueInTasks, "Просрочка в Сводке совпадает с Моими делами");
+      }
       if (name === "Счета на главной") {
         const masks = await page.locator(".accounts-panel .account-card-copy > span").allTextContents();
         assert.equal(masks.length, 2);

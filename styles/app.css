@@ -394,6 +394,12 @@ img { display: block; }
 .operation-info { display: flex; min-width: 0; flex: 1; align-items: flex-start; gap: 24px; }
 .operation-counterparty { display: flex; min-width: 0; flex: 1; align-items: flex-start; gap: 20px; }
 .company-logo { display: block; width: 52px; height: 52px; flex: none; }
+.company-logo-glyph {
+  padding: 14px;
+  background: var(--neutral-translucent-100);
+  -webkit-mask: url("/assets/figma/balance-shape.svg") center / contain no-repeat;
+  mask: url("/assets/figma/balance-shape.svg") center / contain no-repeat;
+}
 .operation-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; align-items: flex-start; gap: 4px; font-size: 16px; line-height: 24px; color: var(--text-primary); overflow-wrap: break-word; }
 .operation-title { width: 100%; font-weight: 700; letter-spacing: .43px; white-space: pre-wrap; }
 .operation-description { width: 100%; font-weight: 400; letter-spacing: -.24px; }
@@ -512,26 +518,25 @@ img { display: block; }
 .account-panel-cta { position: absolute; left: 28px; right: 28px; bottom: 28px; height: 48px; border-radius: 10px; background: #ef3124; color: rgb(255 255 255 / 94%); font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: -.05px; }
 
 /* ── Вкладки табло: Сводка / Счета / Тарифы ──────────────────── */
-/* Геометрия и типографика — из design context кадров 59:27766 / 59:32554 /
-   59:33713 (карточки 316×384, зазор 12, паддинги из контекстов). */
+/* Геометрия и типографика — из design context кадров 59:27766 / 59:32554 / 59:33713. */
 .dash-panel { margin-top: 40px; }
 .tasks-after-panel { margin-top: 56px; }
-.summary-panel { display: flex; gap: 12px; }
-.summary-card { position: relative; display: flex; width: 316px; height: 384px; flex-direction: column; padding: 16px; border-radius: 16px; background: #fff; }
+.summary-panel { display: grid; grid-template-columns: 310.6667px 302.6667px minmax(0, 1fr); gap: 12px; }
+.summary-card { position: relative; display: flex; height: 384px; flex-direction: column; padding: 16px; border-radius: 16px; background: var(--base-bg-alt-secondary); }
 
 /* Бейдж над карточкой: Figma PropertyPreset 57×20 / 68×20, верх на 10 px выше
    карточки, левый край 20 px. Белое кольцо 4 px — strokeAlign: outside,
    поэтому box-shadow, а не border (внутри оно съело бы высоту плашки). */
 .widget-badge { position: absolute; z-index: 2; top: -10px; left: 20px; display: flex; height: 20px; align-items: center; padding: 0 8px; border-radius: 6px; box-shadow: 0 0 0 4px #fff; font-size: 11px; font-weight: 700; line-height: 16px; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; }
-.widget-badge-new { background: #d8eaff; color: #2a77ef; }
-.widget-badge-important { background: #ffdfdf; color: #ec2d20; }
+.widget-badge-new { background: var(--decorative-muted-alt-blue); color: var(--decorative-text-blue); }
+.widget-badge-important { background: var(--decorative-muted-alt-red); color: var(--decorative-text-red); }
 
-/* head карточки: 284×36, паддинг 8/12; шеврон 20 */
+/* Заголовок оборотов: высота 36 px, паддинг 8/12, шеврон 20. */
 .widget-head { display: flex; height: 36px; flex: none; align-items: center; justify-content: space-between; padding: 8px 12px; }
 .widget-head h3 { font-size: 16px; font-weight: 700; line-height: 20px; letter-spacing: .43px; }
 .widget-chev { width: 20px; height: 20px; }
 
-/* Обороты: тело py8, суммы px12, график во всю ширину тела (284) */
+/* Обороты: тело py8, суммы px12, график во всю ширину тела. */
 .turnover-body { display: flex; flex: 1; flex-direction: column; padding: 8px 0; }
 .turnover-amounts { display: flex; flex-direction: column; gap: 16px; padding: 0 12px; }
 .turnover-money { display: flex; flex-direction: column; gap: 4px; }
@@ -541,7 +546,7 @@ img { display: block; }
 .dot { width: 6px; height: 6px; border-radius: 50%; }
 .dot-green { background: #0cc44d; }
 .dot-red { background: #ff4837; }
-.turnover-chart { position: relative; display: flex; height: 162px; margin-top: auto; justify-content: space-between; padding: 36px 17px 0; }
+.turnover-chart { position: relative; display: flex; height: 162px; margin-top: auto; justify-content: space-between; padding: 36px 5.97% 0; }
 .turnover-bars { display: flex; width: 24px; height: 92px; align-items: flex-end; justify-content: center; gap: 4px; }
 .bar { width: 8px; border-radius: 4px 4px 2px 2px; }
 .bar-green { background: #0cc44d; }
@@ -549,29 +554,28 @@ img { display: block; }
 .bar-dot { width: 8px; height: 2px; border-radius: 4px; }
 .bar-dot.bar-red { background: #ff4837; }
 .bar-dot-empty { background: #d2d3d9; }
-.turnover-dates { position: absolute; bottom: 0; left: 17px; right: 17px; display: flex; justify-content: space-between; font-size: 14px; line-height: 20px; color: var(--text-secondary); letter-spacing: -.08px; }
+.turnover-dates { position: absolute; inset: auto 5.97% 0; display: flex; justify-content: space-between; font-size: 14px; line-height: 20px; color: var(--text-secondary); letter-spacing: -.08px; }
 
-/* Индикатор риска: тело pt12 px12 pb8, элементы разнесены justify-between
-   (макет: гейдж 126, разделитель 1, критерии 116 при теле 316) */
-.risk-body { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: space-between; padding: 12px 12px 8px; }
+/* 630:59240 — фон 294 px центрируется внутри колонки 302⅔ px. */
+.risk-card { isolation: isolate; overflow: clip; padding: 12px; background: transparent; }
+.risk-card::before { content: ""; position: absolute; z-index: -1; inset-block: 0; left: 50%; width: 294px; border-radius: inherit; background: var(--base-bg-alt-secondary); transform: translateX(-50%); }
+.risk-card .widget-head { width: 270px; height: 44px; padding: 12px 16px; }
+.risk-body { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: space-between; padding: 12px 16px; }
 .risk-gauge-wrap { position: relative; width: 238px; height: 126px; flex: none; }
-.risk-gauge-img { position: absolute; top: -20px; left: -28px; width: 294px; height: 178px; }
-.risk-center { position: absolute; top: 38px; left: 50%; display: flex; width: 238px; flex-direction: column; align-items: center; gap: 4px; padding: 0 12px; transform: translateX(-50%); }
-.risk-flame { width: 24px; height: 24px; }
+.risk-gauge-img { position: absolute; top: -3px; left: -28px; width: 294px; height: 161px; }
+.risk-cup { position: absolute; top: 34px; left: 50%; width: 24px; height: 24px; transform: translateX(-50%); }
+.risk-center { position: absolute; inset: 65px 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 12px; }
 .risk-title { font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.05px; }
-.risk-sub { width: 186px; font-size: 12px; line-height: 16px; color: var(--text-secondary); text-align: center; letter-spacing: .06px; }
-.summary-divider { display: block; height: 1px; flex: none; background: rgba(15, 25, 55, 0.1); }
+.risk-sub { width: 198px; font-size: 12px; line-height: 16px; color: var(--text-secondary); text-align: center; letter-spacing: .06px; }
+.summary-divider { display: block; height: 1px; flex: none; background: var(--neutral-translucent-300); }
 .risk-body > .summary-divider { width: 100%; }
 .risk-rows { display: flex; width: 100%; flex-direction: column; gap: 12px; }
 .risk-row { display: flex; height: 20px; align-items: center; justify-content: space-between; gap: 8px; font-size: 14px; line-height: 20px; letter-spacing: -.08px; }
-.risk-icon { display: flex; width: 20px; height: 20px; flex: none; align-items: center; justify-content: center; }
-.risk-icon img { width: 16px; height: 16px; }
-.risk-icon-lg img { width: 20px; height: 20px; }
+.risk-row img { flex: none; }
 .risk-row-more { color: var(--text-secondary); }
-.risk-row-more .risk-icon { width: 16px; height: 16px; opacity: 0; }
 
-/* Кредиты: карточка 316×384, паддинг 20/24, блоки разнесены по высоте */
-.credit-card { padding: 20px 24px; }
+/* Кредиты: карточка 334⅔ × 384 px, паддинг 24/28. */
+.credit-card { padding: 24px 28px; }
 .credit-top { display: flex; flex-direction: column; gap: 20px; }
 .credit-head { display: flex; height: 20px; align-items: center; justify-content: space-between; }
 .credit-head h3 { font-size: 16px; font-weight: 700; line-height: 20px; letter-spacing: .43px; }
@@ -579,12 +583,8 @@ img { display: block; }
 .credit-title strong { font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.05px; }
 .credit-title p { font-size: 14px; line-height: 20px; color: var(--text-secondary); letter-spacing: -.08px; }
 .credit-info { display: flex; margin-top: auto; flex-direction: column; gap: 24px; }
-.credit-success { display: flex; flex-direction: column; gap: 12px; padding: 16px 16px 12px; border-radius: 12px; background: #dff8e5; box-shadow: 0 0 0 1px #dff8e5; }
-.credit-success-badge { display: flex; width: 20px; height: 20px; align-items: center; justify-content: center; border-radius: 50%; background: #0cc44d; }
-.credit-success-badge i { display: block; width: 16px; height: 16px; background: #fff; -webkit-mask: url("/assets/figma/role-check.svg") center / 16px 16px no-repeat; mask: url("/assets/figma/role-check.svg") center / 16px 16px no-repeat; }
-.credit-success-copy { display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 20px; }
-.credit-success-copy strong { font-weight: 500; letter-spacing: .07px; }
-.credit-success-copy span { color: var(--text-secondary); letter-spacing: -.08px; }
+.credit-overdue { display: flex; flex-direction: column; gap: 12px; padding: 16px 16px 12px; border-radius: 12px; background: var(--status-muted-negative, #ffebeb); }
+.credit-overdue-badge { align-self: flex-start; padding: 2px 8px; border-radius: 99px; background: var(--decorative-red, #fe5e48); color: var(--static-text-inverted-primary); font: 500 11px/16px var(--font); letter-spacing: .24px; }
 .credit-help-wrap { display: flex; flex-direction: column; gap: 16px; }
 .credit-help-wrap .summary-divider { width: 100%; }
 .credit-help-copy { display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 20px; }
