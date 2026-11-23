@@ -1,14 +1,15 @@
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
 import Link from "next/link";
 import { researchHref } from "@/data/research";
 import { useResearchProgress, type ResearchTask } from "@/lib/research-progress";
 import { TaskIntro } from "./ResearchDialogs";
 
 type Mode = "signals" | "all";
+export type TaskPopoverTrigger = Pick<ButtonHTMLAttributes<HTMLButtonElement>, "onPointerEnter" | "onPointerLeave" | "onPointerDown" | "onClick">;
 
 type TasksCardsProps = {
   mode: Mode | null;
-  onToggle: (mode: Mode) => void;
+  signalTrigger: TaskPopoverTrigger;
   controls: Record<Mode, string>;
   workOpen: boolean;
   onSlide: () => void;
@@ -90,7 +91,7 @@ function Glyph({ name }: { name: string }) {
   return <span className="tasks-cards-glyph"><img src={researchAsset(name)} alt="" /></span>;
 }
 
-export default function TasksCards({ mode, onToggle, controls, workOpen, onSlide, workList }: TasksCardsProps) {
+export default function TasksCards({ mode, signalTrigger, controls, workOpen, onSlide, workList }: TasksCardsProps) {
   const progress = useResearchProgress();
   const [intro, setIntro] = useState<ResearchTask | null>(null);
   const [edges, setEdges] = useState({ left: false, right: true });
@@ -154,7 +155,7 @@ export default function TasksCards({ mode, onToggle, controls, workOpen, onSlide
                 data-tasks-trigger="signals"
                 aria-expanded={mode === "signals"}
                 aria-controls={controls.signals}
-                onClick={() => onToggle("signals")}
+                {...signalTrigger}
               >
                 <span className="tasks-cards-signal-copy">
                   <span className="tasks-cards-label">Просрочено</span>

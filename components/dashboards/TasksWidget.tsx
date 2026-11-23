@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { featuredWork, workCategories, workOrder, workSummary, type WorkCategoryId, type WorkItem } from "@/data/work-tasks";
-import TasksCards from "./TasksCards";
+import TasksCards, { type TaskPopoverTrigger } from "./TasksCards";
 import TasksOptions from "./TasksOptions";
 
 type TasksMode = "signals" | "all";
@@ -37,17 +37,56 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
   const rootRef = useRef<HTMLElement>(null);
   const hideRef = useRef<HTMLButtonElement>(null);
   const returnFocus = useRef<TasksMode | null>(null);
+  const closeTimer = useRef<number | undefined>(undefined);
+  const pointerType = useRef("");
+  const openedByHover = useRef(false);
 
-  const closeWork = useCallback(() => {
-    setWork(current => current?.open ? { ...current, open: false } : current);
+  const cancelClose = useCallback(() => {
+    window.clearTimeout(closeTimer.current);
   }, []);
 
-  function selectWork(category: WorkCategoryId, anchor: HTMLButtonElement) {
+  const closePopover = useCallback(() => {
+    cancelClose();
+    setWork(current => current?.open ? { ...current, open: false } : current);
+    setMode(current => current === "signals" ? null : current);
+  }, [cancelClose]);
+
+  useEffect(() => cancelClose, [cancelClose]);
+
+  function leavePopover(device: string) {
+    if (device === "touch" || !openedByHover.current || (!activeWork && mode !== "signals")) return;
+    cancelClose();
+    closeTimer.current = window.setTimeout(closePopover, 220);
+  }
+
+  function openPopover(category: WorkCategoryId | "signals", anchor: HTMLButtonElement, hover: boolean) {
     const root = rootRef.current;
     if (!root || root.closest("[data-clicks-locked='true']")) return;
 
+    openedByHover.current = hover;
+    if (category === "signals") {
+      closePopover();
+      setMode("signals");
+      return;
+    }
+    cancelClose();
     setWork({ category, anchor, expanded, top: workPopoverTop(root, anchor, category), open: true });
-    if (mode === "signals") setMode(null);
+    setMode(current => current === "signals" ? null : current);
+  }
+
+  function popoverTrigger(category: WorkCategoryId | "signals", isOpen: boolean): TaskPopoverTrigger {
+    return {
+      onPointerEnter: event => {
+        if (event.pointerType !== "touch") openPopover(category, event.currentTarget, true);
+      },
+      onPointerLeave: event => leavePopover(event.pointerType),
+      onPointerDown: event => { pointerType.current = event.pointerType; },
+      onClick: event => {
+        if (event.detail !== 0 && pointerType.current !== "touch") return;
+        if (isOpen) closePopover();
+        else openPopover(category, event.currentTarget, false);
+      },
+    };
   }
 
   const visibleAnchor = activeWork?.anchor;
@@ -69,10 +108,10 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
   }, [visibleAnchor, visibleCategory]);
 
   const dismiss = useCallback((restoreFocus: boolean) => {
-    closeWork();
+    closePopover();
     returnFocus.current = restoreFocus ? mode : null;
     setMode(null);
-  }, [closeWork, mode]);
+  }, [closePopover, mode]);
 
   useLayoutEffect(() => {
     if (expanded) {
@@ -101,7 +140,7 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
       if (event.key === "Escape") {
         event.preventDefault();
         if (activeWork) {
-          closeWork();
+          closePopover();
           activeWork.anchor.focus({ preventScroll: true });
         } else dismiss(true);
       }
@@ -112,7 +151,7 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [mode, activeWork, closeWork, dismiss]);
+  }, [mode, activeWork, closePopover, dismiss]);
 
   function renderWorkRow(category: WorkCategoryId, full: boolean) {
     const { title, count, amount, important } = workSummary(category);
@@ -122,23 +161,16 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
       <span className={important ? "tasks-cards-count tasks-cards-count-important" : "tasks-cards-count"}>{count}</span>
     </>;
     if (!count) return <div className="tasks-cards-row" aria-disabled="true">{content}</div>;
+    const isOpen = activeWork?.category === category && activeWork.expanded === full;
     return (
       <button
         key={category}
         className="tasks-cards-row"
         type="button"
         data-tasks-trigger={category}
-        aria-expanded={activeWork?.category === category && activeWork.expanded === full}
+        aria-expanded={isOpen}
         aria-controls={controls.work}
-        onPointerEnter={event => {
-          if (event.pointerType !== "touch" && activeWork && activeWork.anchor !== event.currentTarget) {
-            selectWork(category, event.currentTarget);
-          }
-        }}
-        onClick={event => {
-          if (activeWork?.anchor === event.currentTarget) closeWork();
-          else selectWork(category, event.currentTarget);
-        }}
+        {...popoverTrigger(category, isOpen)}
       >
         {content}
       </button>
@@ -153,10 +185,7 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
     >
       <TasksCards
         mode={mode}
-        onToggle={next => {
-          closeWork();
-          setMode(current => current === next ? null : next);
-        }}
+        signalTrigger={popoverTrigger("signals", mode === "signals")}
         controls={controls}
         workOpen={Boolean(activeWork)}
         onSlide={() => {
@@ -188,7 +217,7 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
               onClick={() => {
                 if (expanded) dismiss(true);
                 else {
-                  closeWork();
+                  closePopover();
                   setMode("all");
                 }
               }}>
@@ -201,7 +230,8 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
           </div>
         }
       />
-      <div className="tasks-flow-overlay" data-tasks-layer="signals" data-open={mode === "signals"} inert={mode !== "signals"} aria-hidden={mode !== "signals"}>
+      <div className="tasks-flow-overlay" data-tasks-layer="signals" data-open={mode === "signals"} inert={mode !== "signals"} aria-hidden={mode !== "signals"}
+        onPointerEnter={cancelClose} onPointerLeave={event => leavePopover(event.pointerType)}>
         <TasksOptions id={controls.signals} />
       </div>
       <div
@@ -212,6 +242,8 @@ export default function TasksWidget({ afterPanel }: { afterPanel: boolean }) {
         style={{ top: work?.top }}
         inert={!activeWork}
         aria-hidden={!activeWork}
+        onPointerEnter={cancelClose}
+        onPointerLeave={event => leavePopover(event.pointerType)}
       >
         <TasksOptions id={controls.work} items={workCategories[work?.category ?? "sign"].items} />
       </div>

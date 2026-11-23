@@ -206,9 +206,23 @@ export async function verifyStatic(browser, indexPath) {
     await checkAssets("Сохранённое быстрое действие");
 
     const tasks = page.getByRole("region", { name: "Мои дела" });
-    await tasks.getByRole("button", { name: /Требуют внимания/ }).click();
+    const attention = tasks.getByRole("button", { name: /Требуют внимания/ });
+    await attention.hover();
     const signals = tasks.getByRole("list", { name: "Сигналы" });
-    await signals.getByRole("link", { name: "Кредитная линия" }).waitFor();
+    const creditLink = signals.getByRole("link", { name: "Кредитная линия" });
+    await creditLink.waitFor();
+    await attention.click();
+    assert.equal(await attention.getAttribute("aria-expanded"), "true", "Клик мышью не закрывает список под курсором");
+    await creditLink.hover();
+    await tasks.getByRole("heading", { name: "Мои дела" }).hover();
+    await signals.waitFor({ state: "hidden" });
+    await attention.press("Enter");
+    await creditLink.waitFor();
+    await page.keyboard.press("Escape");
+    await signals.waitFor({ state: "hidden" });
+    await expectFocused(attention);
+    await attention.hover();
+    await creditLink.waitFor();
     const pay = tasks.getByRole("button", { name: /^Подписать/ });
     const work = tasks.getByRole("list", { name: "Дела в работе" });
     const expectCarouselState = async (disabled) => {
@@ -228,10 +242,6 @@ export async function verifyStatic(browser, indexPath) {
       assert.deepEqual(highlighted, [category], "Серый фон есть только у активной категории");
     };
     await pay.hover();
-    assert.equal(await work.count(), 0, "Первое наведение не раскрывает список");
-    assert.equal(await signals.count(), 1);
-    await expectCarouselState(false);
-    await pay.click();
     await work.getByRole("link", { name: "Рублёвые платежи" }).waitFor();
     assert.equal(await signals.count(), 0);
     await expectCarouselState(true);
@@ -244,7 +254,10 @@ export async function verifyStatic(browser, indexPath) {
     await pay.hover();
     await work.getByRole("link", { name: "Рублёвые платежи" }).waitFor();
     await pay.click();
+    await expectHighlight("sign");
+    await tasks.getByRole("heading", { name: "Мои дела" }).hover();
     await work.waitFor({ state: "hidden" });
+    await expectCarouselState(false);
     await pay.press("Enter");
     await work.getByRole("link", { name: "Рублёвые платежи" }).waitFor();
     await page.keyboard.press("Escape");
@@ -266,11 +279,11 @@ export async function verifyStatic(browser, indexPath) {
       assert.equal(await allTasks.locator(".tasks-cards-row[aria-disabled='true']").filter({ hasText: title }).count(), 1);
       assert.equal(await work.count(), 0);
     }
-    await pay.click();
+    await pay.hover();
     await work.getByText("Валютные платежи", { exact: true }).waitFor();
     await expectHighlight("sign");
     await allTasks.getByText("Отправить", { exact: true }).hover();
-    await expectHighlight("sign");
+    await work.waitFor({ state: "hidden" });
     for (const [category, title, item] of [
       ["rejected", "Отклонённые", "Реестры платежей"],
       ["revise", "Доработать", "Ожидают идентификации"],
@@ -286,7 +299,8 @@ export async function verifyStatic(browser, indexPath) {
     await work.waitFor({ state: "hidden" });
     await allTasks.waitFor({ state: "hidden" });
     await more.click();
-    await allTasks.getByRole("button", { name: /^Черновики/ }).click();
+    await allTasks.getByRole("button", { name: /^Черновики/ }).hover();
+    await work.getByRole("link", { name: "Рублёвые платежи" }).waitFor();
     await page.keyboard.press("Escape");
     await work.waitFor({ state: "hidden" });
     await expectFocused(allTasks.getByRole("button", { name: /^Черновики/ }));
@@ -316,7 +330,7 @@ export async function verifyStatic(browser, indexPath) {
       const logos = await page.locator(".research-operations .company-logo").evaluateAll(images => images.map(image => image.getAttribute("src")));
       assert.equal(new Set(logos).size, 2, "У компаний в ленте разные логотипы");
     };
-    await pay.click();
+    await pay.hover();
     await work.getByRole("link", { name: "Рублёвые платежи" }).click();
     await waitForRoute("/research/sign");
     await checkFeedFilters("sign");
@@ -328,7 +342,7 @@ export async function verifyStatic(browser, indexPath) {
     await backToTasks();
 
     await more.click();
-    await allTasks.getByRole("button", { name: /^Черновики/ }).click();
+    await allTasks.getByRole("button", { name: /^Черновики/ }).hover();
     await page.waitForFunction(() => {
       const overlay = document.querySelector('[data-tasks-layer="work"][data-open="true"]');
       return overlay && getComputedStyle(overlay).transform === "none" && getComputedStyle(overlay).opacity === "1";
@@ -341,8 +355,8 @@ export async function verifyStatic(browser, indexPath) {
     await checkAssets("Черновики рублёвых платежей");
     await backToTasks();
 
-    await tasks.getByRole("button", { name: /Требуют внимания/ }).click();
-    await signals.getByRole("link", { name: "Кредитная линия" }).click();
+    await attention.hover();
+    await creditLink.click();
     await waitForRoute("/research/credit");
     const creditHeading = page.getByRole("heading", { name: "Кредитная линия № 07XW2L" });
     await creditHeading.waitFor();
