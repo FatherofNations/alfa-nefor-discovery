@@ -177,7 +177,7 @@ export default function TasksCards({ mode, signalTrigger, controls, workOpen, on
             const service = services[index];
             const snils = service === "Заполнить СНИЛС";
             const snilsDone = snils && progress.snils;
-            return <div className="tasks-cards-column" inert={workOpen} key={index}>
+            return <div className="tasks-cards-column" inert={workOpen || mode === "signals"} key={index}>
               {rewardRows.map(row => {
                 const name = row[index];
                 const risk = name === "Подключить индикатор риска";

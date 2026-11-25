@@ -7,13 +7,16 @@ import { income, money, outcome } from "@/data/payments";
 import { creditLineOverdueAmount } from "@/data/research";
 
 const asset = (name: string) => `/assets/figma/${name}`;
-const riskCriteria = ["Контрагенты", "Налоговые платежи", "Хозяйственные платежи"];
+const riskCriteria = [
+  { label: "Контрагенты", icon: "alert", size: 16 },
+  { label: "Налоговые платежи", icon: "alert", size: 16 },
+  { label: "Хоз. платежи", icon: "warning", size: 20 },
+];
 
 export function SummaryPanel() {
   return (
     <div className="dash-panel summary-panel">
       <section className="summary-card turnover-card">
-        <span className="widget-badge widget-badge-new">Новое</span>
         <div className="widget-head">
           <h3>В ноябре</h3>
           <img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" />
@@ -41,23 +44,27 @@ export function SummaryPanel() {
       </section>
 
       <section className="summary-card risk-card">
+        <span className="widget-badge widget-badge-important">Важное</span>
         <div className="widget-head">
           <h3>Индикатор риска</h3>
           <img className="widget-chev" src={asset("chevron-right-card.svg")} alt="" />
         </div>
         <div className="risk-body">
           <div className="risk-gauge-wrap">
-            <img className="risk-gauge-img" src={asset("summary-risk-gauge.svg")} alt="" />
-            <img className="risk-cup" src={asset("summary-risk-cup.svg")} alt="" />
+            <img className="risk-gauge-img" src={asset("summary-risk-high-gauge.svg")} alt="" />
+            <img className="risk-flame" src={asset("summary-risk-flame.svg")} alt="" />
             <div className="risk-center">
-              <p className="risk-title">Низкий риск</p>
-              <p className="risk-sub">Действия компании<br />не нарушают требования 115-ФЗ</p>
+              <p className="risk-title">Высокий риск</p>
+              <p className="risk-sub">Действия компании нарушают требования 115-ФЗ</p>
             </div>
           </div>
           <span className="summary-divider" />
           <div className="risk-rows">
-            {riskCriteria.map(criterion => (
-              <div className="risk-row" key={criterion}><span>{criterion}</span><img src={asset("summary-risk-check.svg")} width={20} height={20} alt="Всё в порядке" /></div>
+            {riskCriteria.map(({ label, icon, size }) => (
+              <div className="risk-row" key={label}>
+                <span>{label}</span>
+                <span className="risk-criterion-icon"><img src={asset(`summary-risk-${icon}.svg`)} width={size} height={size} alt="Требует внимания" /></span>
+              </div>
             ))}
             <div className="risk-row risk-row-more">Ещё 4 критерия</div>
           </div>

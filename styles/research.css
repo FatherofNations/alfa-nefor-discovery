@@ -17,14 +17,12 @@
 .research-filter-tags { margin-top: 12px; }
 .research-tag { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; min-height: 40px; border-radius: 10px; background: var(--neutral-translucent-100); font: 400 14px/20px var(--font); }
 .research-tag.selected { color: white; background: var(--text-primary); }
-.research-filter-field { margin-top: 12px; max-width: 316px; }
 /* 539:90641 — фон с вырезом, индикатор и глиф из инстанса. */
 .general-filter.research-feed-filter { position: relative; isolation: isolate; background: none; backdrop-filter: none; }
 .research-feed-filter img { position: absolute; }
 .research-feed-filter .research-feed-filter-background { inset: 0; width: 40px; height: 40px; z-index: 1; }
 .research-feed-filter .research-feed-filter-indicator { top: 0; right: 0; width: 8px; height: 8px; }
 .research-feed-filter-icon { z-index: 2; }
-.research-feed-operation-type { margin-top: 8px; font-size: 14px; line-height: 20px; }
 .research-operations { align-items: stretch; margin-top: 24px; gap: 0; }
 .research-feed-note { color: var(--text-secondary); padding: 8px 16px 16px; }
 .research-feed-count { padding: 12px 16px 0; color: var(--text-secondary); font-size: 14px; line-height: 20px; }

@@ -237,10 +237,20 @@ export async function verifyStatic(browser, indexPath) {
     const tasks = page.getByRole("region", { name: "Мои дела" });
     const attention = tasks.getByRole("button", { name: /Требуют внимания/ });
     const signals = tasks.getByRole("list", { name: "Сигналы" });
+    const expectCarouselState = async (disabled) => {
+      await page.waitForFunction((isDisabled) => {
+        const carousel = document.querySelector(".research-task-carousel");
+        const columns = carousel?.querySelectorAll(".tasks-cards-column");
+        return columns?.length > 0 &&
+          Array.from(columns).every(column => column.inert === isDisabled && getComputedStyle(column).opacity === (isDisabled ? "0.5" : "1"));
+      }, disabled);
+    };
     await attention.hover();
     await signals.waitFor();
+    await expectCarouselState(true);
     await tasks.getByRole("heading", { name: "Мои дела" }).hover();
     await signals.waitFor({ state: "hidden" });
+    await expectCarouselState(false);
 
     await page.keyboard.press("Space");
     assert.equal(await dashboardTabs.and(page.locator(":enabled")).count(), 4);
@@ -261,6 +271,7 @@ export async function verifyStatic(browser, indexPath) {
     await attention.click();
     assert.equal(await attention.getAttribute("aria-expanded"), "true", "Клик мышью не закрывает список под курсором");
     await creditLink.hover();
+    await expectCarouselState(true);
     await tasks.getByRole("heading", { name: "Мои дела" }).hover();
     await signals.waitFor({ state: "hidden" });
     await attention.press("Enter");
@@ -272,14 +283,6 @@ export async function verifyStatic(browser, indexPath) {
     await creditLink.waitFor();
     const pay = tasks.getByRole("button", { name: /^Подписать/ });
     const work = tasks.getByRole("list", { name: "Дела в работе" });
-    const expectCarouselState = async (disabled) => {
-      await page.waitForFunction((isDisabled) => {
-        const carousel = document.querySelector(".research-task-carousel");
-        const columns = carousel?.querySelectorAll(".tasks-cards-column");
-        return columns?.length > 0 &&
-          Array.from(columns).every(column => column.inert === isDisabled && getComputedStyle(column).opacity === (isDisabled ? "0.5" : "1"));
-      }, disabled);
-    };
     const expectHighlight = async (category) => {
       const highlighted = await tasks.locator(".tasks-cards-signal, .tasks-cards-row").evaluateAll(
         (rows) => rows
@@ -362,21 +365,19 @@ export async function verifyStatic(browser, indexPath) {
       assert.equal(await page.evaluate(() => window.scrollY), 0, "Возврат на главную открывает верх страницы");
     };
     const checkFeedFilters = async (status) => {
-      const toggle = page.getByRole("button", { name: "Все фильтры, есть активные фильтры" });
-      await toggle.waitFor();
-      assert.equal(await page.locator(".research-feed-tools .research-filter-tags").count(), 0);
-      assert.equal(await toggle.locator(".research-feed-filter-indicator").count(), 1);
-      await toggle.click();
-      const select = page.getByRole("combobox", { name: "Статус" });
-      assert.equal(await select.inputValue(), status);
-      await page.getByText("Тип операции: Рублёвый платёж", { exact: true }).waitFor();
-      await toggle.click();
-      await select.waitFor({ state: "hidden" });
+      const indicator = page.getByRole("img", { name: `Применены фильтры: ${status}, рублёвые платежи` });
+      await indicator.waitFor();
+      assert.equal(await indicator.locator(".research-feed-filter-indicator").count(), 1);
+      await indicator.click();
+      assert.equal(await page.getByRole("combobox", { name: "Статус" }).count(), 0);
+      assert.deepEqual([...new Set(await page.locator(".research-operations .operation-status").allTextContents())], [status]);
+      await page.getByRole("searchbox", { name: "Поиск операций" }).press("Tab");
+      await expectFocused(button("Скачать"));
     };
     await pay.hover();
     await work.getByRole("link", { name: "Рублёвые платежи" }).click();
     await waitForRoute("/research/sign");
-    await checkFeedFilters("sign");
+    await checkFeedFilters("На подпись");
     assert.equal(await page.locator(".research-operations .operation-row").count(), 10);
     await checkFeedLogos(page.locator(".research-operations"), 8);
     await page.getByRole("searchbox", { name: "Поиск операций" }).fill("Петрова");
@@ -392,7 +393,7 @@ export async function verifyStatic(browser, indexPath) {
     });
     await work.getByRole("link", { name: "Рублёвые платежи" }).click();
     await waitForRoute("/research/drafts");
-    await checkFeedFilters("drafts");
+    await checkFeedFilters("Черновик");
     assert.equal(await page.locator(".research-operations .operation-row").count(), 8);
     await checkFeedLogos(page.locator(".research-operations"), 8);
     await checkAssets("Черновики рублёвых платежей");
@@ -485,9 +486,11 @@ export async function verifyStatic(browser, indexPath) {
       await checkAssets(name);
       if (name === "Сводка") {
         const summary = page.locator(".summary-panel");
-        await summary.getByText("Низкий риск", { exact: true }).waitFor();
+        await summary.getByText("Высокий риск", { exact: true }).waitFor();
         await summary.getByText("Есть просрочка", { exact: true }).waitFor();
-        assert.equal(await summary.getByRole("img", { name: "Всё в порядке" }).count(), 3);
+        assert.equal(await summary.getByRole("img", { name: "Требует внимания" }).count(), 3);
+        assert.equal(await summary.locator(".risk-card .widget-badge").textContent(), "Важное");
+        assert.equal(await summary.locator(".turnover-card .widget-badge").count(), 0);
         const overdueInSummary = await summary.locator(".credit-overdue strong").innerText();
         assert.equal(overdueInSummary.replace(/\s/g, " "), overdueInTasks, "Просрочка в Сводке совпадает с Моими делами");
       }

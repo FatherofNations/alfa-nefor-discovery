@@ -9,19 +9,15 @@ import { ResearchComplete, SnilsForm, TaskIntro } from "./ResearchDialogs";
 const asset = "/assets/figma/";
 const riskArt = (number: number) => asset + `research/risk-${number}.png`;
 
-function Feed({ initial }: { initial: "sign" | "drafts" }) {
-  const statuses = { sign: "На подпись", drafts: "Черновик" } as const;
-  const [status, setStatus] = useState<keyof typeof statuses | "">(initial);
+function Feed({ mode }: { mode: "sign" | "drafts" }) {
+  const status = mode === "sign" ? "На подпись" : "Черновик";
   const [search, setSearch] = useState("");
-  const [filters, setFilters] = useState(false);
   const [checked, setChecked] = useState<Set<string>>(new Set());
   const term = search.trim().toLocaleLowerCase("ru");
-  const rows = (["sign", "drafts"] as const).flatMap(mode =>
-    status && status !== mode ? [] : researchRows[mode].flatMap((row, index) =>
-      [row.company, row.account, row.counterparty].join(" ").toLocaleLowerCase("ru").includes(term)
-        ? [{ ...row, status: statuses[mode], id: mode + index, date: index < 5 ? DASHBOARD_DATE : "2026-11-19" }]
-        : []
-    )
+  const rows = researchRows[mode].flatMap((row, index) =>
+    [row.company, row.account, row.counterparty].join(" ").toLocaleLowerCase("ru").includes(term)
+      ? [{ ...row, status, id: mode + index, date: index < 5 ? DASHBOARD_DATE : "2026-11-19" }]
+      : []
   );
 
   const dates = [...new Set(rows.map(row => row.date))].sort().reverse();
@@ -41,24 +37,12 @@ function Feed({ initial }: { initial: "sign" | "drafts" }) {
       <div className="research-feed-tools">
         <span className="research-tag research-date"><img src={asset + "research/feed-calendar.svg"} width={16} height={16} alt="" />Период</span>
         <label className="search-field"><img src={asset + "search-icon.svg"} alt="" /><input type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Контрагент, ИНН, назначение платежа или номер счёта" aria-label="Поиск операций" /></label>
-        <button className="general-filter research-feed-filter" type="button" aria-label="Все фильтры, есть активные фильтры"
-          aria-expanded={filters} aria-controls="research-feed-filters" onClick={() => setFilters(value => !value)}>
+        <span className="general-filter research-feed-filter" role="img" aria-label={`Применены фильтры: ${status}, рублёвые платежи`}>
           <img className="research-feed-filter-background" src={asset + "research/feed-filters-active.svg"} alt="" />
           <img className="research-feed-filter-indicator" src={asset + "research/feed-filters-indicator.svg"} alt="" />
           <img className="research-feed-filter-icon" src={asset + "research/feed-filters-white.svg"} alt="" />
-        </button>
+        </span>
         <button className="download-button" type="button" onClick={download}>Скачать<img src={asset + "chevron-right-white.svg"} className="chevron chevron-down" alt="" /></button>
-      </div>
-      <div id="research-feed-filters" hidden={!filters}>
-        <label className="research-field research-filter-field">
-          Статус
-          <select value={status} onChange={e => setStatus(e.target.value as typeof status)}>
-            <option value="">Все</option>
-            <option value="sign">На подпись</option>
-            <option value="drafts">Черновик</option>
-          </select>
-        </label>
-        <p className="research-feed-operation-type">Тип операции: Рублёвый платёж</p>
       </div>
       <div className="research-feed-list">
         <p className="research-feed-note"><img src={asset + "research/feed-info.svg"} alt="" />Выберите период и счёт, чтобы увидеть обороты и остатки. При выборе нескольких счетов в одной валюте — покажем только обороты</p>
@@ -335,7 +319,7 @@ export default function ResearchScreens({ screen, openExpenses }: { screen: Rese
         {(screen === "sign" || screen === "drafts") && <button className="expenses-link" type="button" onClick={event => openExpenses(event.currentTarget)} aria-haspopup="dialog"><img className="icon" src={asset + "ops-title-db9bc.svg"} alt="" /><span>Расходы за месяц по категориям</span></button>}
       </div>}
       {screen === "risk" && progress.risk && <p className="research-risk-date">Дата обновления: 20.11.2026</p>}
-      {(screen === "sign" || screen === "drafts") && <Feed initial={screen} />}
+      {(screen === "sign" || screen === "drafts") && <Feed mode={screen} />}
       {screen === "credit" && <Credit />}
       {screen === "risk" && <Risk connected={progress.risk} connect={() => complete("risk")} />}
       {screen === "profile" && <Profile done={progress.snils} complete={() => complete("snils")} />}

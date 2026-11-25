@@ -528,7 +528,6 @@ img { display: block; }
    карточки, левый край 20 px. Белое кольцо 4 px — strokeAlign: outside,
    поэтому box-shadow, а не border (внутри оно съело бы высоту плашки). */
 .widget-badge { position: absolute; z-index: 2; top: -10px; left: 20px; display: flex; height: 20px; align-items: center; padding: 0 8px; border-radius: 6px; box-shadow: 0 0 0 4px #fff; font-size: 11px; font-weight: 700; line-height: 16px; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; }
-.widget-badge-new { background: var(--decorative-muted-alt-blue); color: var(--decorative-text-blue); }
 .widget-badge-important { background: var(--decorative-muted-alt-red); color: var(--decorative-text-red); }
 
 /* Заголовок оборотов: высота 36 px, паддинг 8/12, шеврон 20. */
@@ -556,22 +555,20 @@ img { display: block; }
 .bar-dot-empty { background: #d2d3d9; }
 .turnover-dates { position: absolute; inset: auto 5.97% 0; display: flex; justify-content: space-between; font-size: 14px; line-height: 20px; color: var(--text-secondary); letter-spacing: -.08px; }
 
-/* 630:59240 — фон 294 px центрируется внутри колонки 302⅔ px. */
-.risk-card { isolation: isolate; overflow: clip; padding: 12px; background: transparent; }
-.risk-card::before { content: ""; position: absolute; z-index: -1; inset-block: 0; left: 50%; width: 294px; border-radius: inherit; background: var(--base-bg-alt-secondary); transform: translateX(-50%); }
-.risk-card .widget-head { width: 270px; height: 44px; padding: 12px 16px; }
-.risk-body { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: space-between; padding: 12px 16px; }
+/* Индикатор высокого риска, Figma 719:59345. */
+.risk-card .widget-head h3 { letter-spacing: 0; }
+.risk-body { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: space-between; padding: 12px 12px 8px; }
 .risk-gauge-wrap { position: relative; width: 238px; height: 126px; flex: none; }
-.risk-gauge-img { position: absolute; top: -3px; left: -28px; width: 294px; height: 161px; }
-.risk-cup { position: absolute; top: 34px; left: 50%; width: 24px; height: 24px; transform: translateX(-50%); }
-.risk-center { position: absolute; inset: 65px 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 12px; }
+.risk-gauge-img { position: absolute; top: -20px; left: -28px; width: 294px; height: 178px; }
+.risk-flame { position: absolute; top: 38px; left: 50%; width: 24px; height: 24px; transform: translateX(-50%); }
+.risk-center { position: absolute; inset: 66px 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 12px; }
 .risk-title { font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.05px; }
-.risk-sub { width: 198px; font-size: 12px; line-height: 16px; color: var(--text-secondary); text-align: center; letter-spacing: .06px; }
+.risk-sub { width: 186px; font-size: 12px; line-height: 16px; color: var(--text-secondary); text-align: center; letter-spacing: .06px; }
 .summary-divider { display: block; height: 1px; flex: none; background: var(--neutral-translucent-300); }
 .risk-body > .summary-divider { width: 100%; }
 .risk-rows { display: flex; width: 100%; flex-direction: column; gap: 12px; }
 .risk-row { display: flex; height: 20px; align-items: center; justify-content: space-between; gap: 8px; font-size: 14px; line-height: 20px; letter-spacing: -.08px; }
-.risk-row img { flex: none; }
+.risk-criterion-icon { display: grid; width: 20px; height: 20px; flex: none; place-items: center; }
 .risk-row-more { color: var(--text-secondary); }
 
 /* Кредиты: карточка 334⅔ × 384 px, паддинг 24/28. */

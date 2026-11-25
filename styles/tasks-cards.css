@@ -389,7 +389,7 @@
 .tasks-cards-column { transition: opacity .5s cubic-bezier(.25,.1,.25,1); }
 
 .tasks-cards-highlight-signals { z-index: 2; }
-.tasks-cards:is([data-mode="all"], [data-work-open="true"]) .tasks-cards-column { opacity: .5; }
+.tasks-cards:is([data-mode="all"], [data-mode="signals"], [data-work-open="true"]) .tasks-cards-column { opacity: .5; }
 
 @media (prefers-reduced-motion: reduce) {
   .tasks-cards .tasks-cards-important::before,
