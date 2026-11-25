@@ -43,7 +43,7 @@ export function AssistantThreadMenu({ topic, home, onHome, onThread }: {
       </div>
       <button className="assistant-new-dialog" type="button" onClick={onHome}>
         <img src={threadAssets + "new.svg"} alt="" />
-        Новый диалог
+        Новый чат
       </button>
       <details className="assistant-recent" open>
         <summary>Недавние<img src={threadAssets + "chevron.svg"} alt="" /></summary>
