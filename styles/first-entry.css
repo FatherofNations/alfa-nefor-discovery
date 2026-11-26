@@ -2,7 +2,7 @@
    Геометрия и типографика — из design context секции 125:17512
    (фреймы 1:4660, 1:4709, 1:4763). */
 
-.entry-page { position: fixed; inset: 0; min-width: 1600px; overflow: hidden; background: #fff; color: var(--text-primary); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+.entry-page { position: fixed; inset: 0; overflow: hidden; background: #fff; color: var(--text-primary); font-family: var(--font); -webkit-font-smoothing: antialiased; }
 .entry-header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; display: flex; height: 72px; align-items: center; justify-content: space-between; padding: 0 24px 0 12px; animation: entry-fade .5s cubic-bezier(.25, .1, .25, 1) both; }
 .entry-logo { display: flex; align-items: center; }
 .entry-logo .logo-sign { width: 40px; height: 40px; }

@@ -140,7 +140,6 @@
   letter-spacing: -.24px;
 }
 .research-archive img { position: absolute; bottom: -.5px; left: 0; width: 100%; height: 1px; }
-.research-archive:hover { background-color: var(--neutral-translucent-100); }
 .research-archive:hover img { visibility: hidden; }
 .research-reward-section h2 { margin-bottom: 24px; line-height: 26px; }
 .research-reward-section .research-cards { gap: 24px; }
@@ -326,3 +325,31 @@
 .research-dialog[data-variant="snils"] .research-field input { min-height: 0; line-height: 20px; }
 .research-dialog[data-variant="snils"] .research-actions { margin-top: 45px; gap: 16px; }
 .research-dialog[data-variant="snils"] .research-action { min-width: 104px; margin-top: 0; padding-inline: 24px; border-radius: 8px; }
+
+
+.research-rewards-layout[data-archive="true"] :is(.research-rewards-summary, #research-rewards-list > .research-panel) { margin-top: 0; }
+
+@media (max-width: 1440px) {
+  .research-content,
+  .research-content[data-screen="profile"],
+  .research-content[data-screen="risk"][data-connected="false"] {
+    width: calc(100% - var(--workspace-left) - 2 * var(--inner-page-gutter));
+    margin-left: calc(var(--workspace-left) + var(--inner-page-gutter));
+  }
+
+  .research-rewards-layout { grid-template-columns: minmax(0, 1fr) minmax(264px, 30%); gap: 24px; }
+  .research-reward-section .research-cards.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .research-reward-section .research-cards.four > article { min-height: 146px; }
+  .research-reward-section .research-cards > :is(article, button) { padding-inline: 16px; }
+  .research-cards.four .research-reward-glyph { left: 16px; }
+  .research-level-art { right: 16px; width: 80px; height: 80px; }
+
+  .research-content .download-button, .research-content .date-filter { flex-shrink: 0; }
+  .research-content .search-field { min-width: 0; }
+  .research-risk-benefits { padding-inline: 32px; }
+  .research-risk-expert > img { position: static; align-self: flex-end; order: 1; width: 64px; height: 64px; }
+}
+
+@media (max-width: 1360px) {
+  .research-reward-section .research-cards.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

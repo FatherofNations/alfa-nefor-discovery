@@ -738,7 +738,7 @@ export default function Glavnaya({ payment = false, operations = false, research
               key={tab}
               type="button"
               className={`tab${activeTab === tab ? " active" : ""}`}
-              disabled={tabsLocked}
+              disabled={tabsLocked && tab !== "Счета на главной"}
               onClick={() => changeTab(tab)}
               aria-pressed={activeTab === tab}
             >

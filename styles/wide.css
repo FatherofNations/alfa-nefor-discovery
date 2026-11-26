@@ -8,3 +8,7 @@
 .dashboard-page > .topbar { left: var(--dashboard-edge-inset); right: var(--dashboard-edge-inset); }
 .dashboard-page > .account-panel { left: calc(var(--dashboard-edge-inset) + 324px); }
 .dashboard-page > .footer-fade { left: var(--dashboard-edge-inset); }
+
+@media (max-width: 1440px) {
+  .dashboard-page { --inner-page-gutter: clamp(38px, calc(5vw - 26px), 46px); }
+}

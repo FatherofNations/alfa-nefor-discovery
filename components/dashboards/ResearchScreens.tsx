@@ -225,7 +225,7 @@ function Rewards() {
           {archive ? researchScreens.rewards : <>Архив<img src={asset + "research/archive-underline.svg"} alt="" /></>}
         </button>
       </div>
-      <div className="research-rewards-layout">
+      <div className="research-rewards-layout" data-archive={archive}>
         <div id="research-rewards-list">
           {archive ? <section className="research-panel"><h2>Архив</h2><ul className="research-list">
             {progress.risk && <li>Защитить бизнес от блокировок · 500 получено</li>}

@@ -131,7 +131,7 @@ export async function verifyStatic(browser, indexPath) {
     await checkFeedLogos(page.locator("#operations"), 9);
     await checkTaxPaymentLogo(page.locator("#operations"));
     await page.keyboard.press("Space");
-    assert.equal(await dashboardTabs.and(page.locator(":disabled")).count(), 4);
+    assert.equal(await dashboardTabs.and(page.locator(":disabled")).count(), 3);
     await scrollDown();
     await feedLink.click();
     await waitForRoute("/operations");
@@ -213,7 +213,7 @@ export async function verifyStatic(browser, indexPath) {
     await expectFocused(balance);
     assert.equal(await offer.count(), 0, "Закрытие детализации сохраняет исходное действие");
     await page.keyboard.press("Space");
-    for (const tab of await dashboardTabs.all()) {
+    for (const tab of await dashboardTabs.and(page.locator(":disabled")).all()) {
       assert(await tab.isDisabled());
       await tab.click({ force: true });
     }
@@ -226,6 +226,11 @@ export async function verifyStatic(browser, indexPath) {
     await page.mouse.wheel(0, 420);
     await page.waitForFunction(() => scrollY > 0);
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+
+    const unlockedAccountsTab = dashboardTabs.filter({ hasText: "Счета на главной" });
+    await unlockedAccountsTab.click();
+    assert.equal(await unlockedAccountsTab.getAttribute("aria-pressed"), "true");
+    await page.locator(".accounts-panel").waitFor();
 
     await page.keyboard.press("1");
     await offer.waitFor();
